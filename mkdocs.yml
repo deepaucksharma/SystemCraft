@@ -1,0 +1,259 @@
+site_name: Amazon L6/L7 Engineering Manager Interview Prep
+site_description: Complete 6-month preparation guide for Amazon L6/L7 Engineering Manager Technical Interviews
+site_url: https://deepaucksharma.github.io/SystemCraft/
+site_author: SystemCraft
+repo_url: https://github.com/deepaucksharma/SystemCraft
+repo_name: deepaucksharma/SystemCraft
+edit_uri: edit/main/docs/
+copyright: Copyright &copy; 2025 SystemCraft
+
+theme:
+  name: material
+  language: en
+  
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: orange
+      accent: deep orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: orange
+      accent: deep orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  
+  font:
+    text: Roboto
+    code: Roboto Mono
+  
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - search.share
+    - header.autohide
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
+    - content.tabs.link
+    - content.tooltips
+    - announce.dismiss
+
+plugins:
+  - search:
+      lang:
+        - en
+  - tags:
+      tags_file: tags.md
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      slide_effect: slide
+      width: 100%
+      height: auto
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+  - minify:
+      minify_html: true
+      minify_js: true
+      minify_css: true
+      htmlmin_opts:
+          remove_comments: true
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/deepaucksharma
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - javascripts/learning-analytics.js
+  - javascripts/interactive-design-canvas.js
+  - javascripts/gamification-engine.js
+  - javascripts/spaced-repetition.js
+  - javascripts/assessment-tools.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js
+  - https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js
+  - https://unpkg.com/konva@8.4.3/konva.min.js
+
+extra_css:
+  - stylesheets/extra.css
+  - stylesheets/learning-platform.css
+  - stylesheets/interactive-components.css
+  - stylesheets/gamification.css
+
+nav:
+  - Home:
+    - index.md
+    - Getting Started: getting-started.md
+    - Quick Reference: quick-reference.md
+    - Enhancement Plan: enhancement-plan.md
+  
+  - "Module 0: Foundational Mindset":
+    - foundational-mindset/index.md
+  
+  - Fundamentals:
+    - fundamentals/index.md
+    - L6 vs L7 Differences: fundamentals/l6-vs-l7.md
+    - Technical Competencies: fundamentals/technical-competencies.md
+    - Leadership Principles: fundamentals/leadership-principles.md
+    - Interview Process: fundamentals/interview-process.md
+  
+  - System Design:
+    - system-design/index.md
+    - Design Fundamentals: system-design/fundamentals.md
+    - Scale & Architecture: system-design/scale-architecture.md
+    - AWS Services Deep Dive: system-design/aws-services.md
+    - Well-Architected Framework: system-design/well-architected.md
+    - L6 Design Problems: system-design/l6-problems.md
+    - L7 Design Problems: system-design/l7-problems.md
+    - Case Studies: system-design/case-studies.md
+  
+  - Coding Preparation:
+    - coding/index.md
+    - Coding Strategy: coding/strategy.md
+    - Data Structures: coding/data-structures.md
+    - Algorithms: coding/algorithms.md
+    - Problem Patterns: coding/patterns.md
+    - Amazon Top 100: coding/amazon-top-100.md
+    - Mock Problems: coding/mock-problems.md
+  
+  - Technical Deep Dives:
+    - deep-dives/index.md
+    - Distributed Systems: deep-dives/distributed-systems.md
+    - Consistency Models: deep-dives/consistency-models.md
+    - Performance & Scale: deep-dives/performance-scale.md
+    - Security & Compliance: deep-dives/security.md
+    - Incident Response: deep-dives/incident-response.md
+  
+  - Leadership & Behavioral:
+    - behavioral/index.md
+    - STAR Framework: behavioral/star-framework.md
+    - L6 Scenarios: behavioral/l6-scenarios.md
+    - L7 Scenarios: behavioral/l7-scenarios.md
+    - Bar Raiser Prep: behavioral/bar-raiser.md
+    - Decision Making: behavioral/decision-making.md
+  
+  - "Story Engineering Workshop":
+    - story-engineering/index.md
+  
+  - "Interview Mechanics Masterclass":
+    - interview-mechanics/index.md
+  
+  - "2025 Special Considerations":
+    - 2025-considerations/index.md
+  
+  - "Level-Specific Playbooks":
+    - level-playbooks/index.md
+  
+  - "Red Flags & Success Patterns":
+    - red-flags-success/index.md
+  
+  - Interactive Learning Platform:
+    - interactive/index.md
+    - Learning Analytics Dashboard: interactive/analytics-dashboard.md
+    - Interactive Assessment Tools: interactive/assessment-tools.md
+    - System Design Canvas: interactive/design-canvas.md
+    - Collaborative Learning Hub: interactive/collaborative-hub.md
+    - Progress Tracking: interactive/progress-tracking.md
+    - Learning Style Assessment: interactive/learning-style-assessment.md
+  
+  - Real Experiences:
+    - experiences/index.md
+    - Candidate Quotes 2024-2025: experiences/candidate-quotes.md
+    - Interview Questions Database: experiences/question-database.md
+    - Success Story Templates: experiences/success-templates.md
+    - Failure Case Studies: experiences/failure-case-studies.md
+    - Timeline Examples: experiences/timeline-examples.md
+    - Technical Examples Library: experiences/technical-examples.md
+  
+  - Compensation & Negotiation:
+    - compensation/negotiation-guide.md
+  
+  - Practice & Mock:
+    - practice/index.md
+    - Complete 6-Month Timeline: practice/comprehensive-timeline.md
+    - Week-by-Week Plan: practice/weekly-plan.md
+    - Mock Interviews: practice/mock-interviews.md
+    - Self Assessment: practice/self-assessment.md
+    - Resources & Tools: practice/resources.md
+  
+  - Portfolio & Artifacts:
+    - portfolio/index.md
+    - Technical Portfolio: portfolio/technical-portfolio.md
+    - Architecture Diagrams: portfolio/architecture-diagrams.md
+    - Case Study Templates: portfolio/case-study-templates.md
+    - Code Samples: portfolio/code-samples.md
+    - Decision Records: portfolio/decision-records.md
+  
+  - FAQ:
+    - faq/index.md
+  
+  - Downloads:
+    - downloads/index.md
+  
+  - Resources:
+    - Video Learning: resources/video-learning.md
+    - Mock Problems: practice/mock-problems.md

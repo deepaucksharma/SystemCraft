@@ -1,0 +1,412 @@
+/* Advanced Learning Platform Styles */
+
+/* Learning Analytics Dashboard */
+.learning-dashboard {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    padding: 2rem;
+    color: white;
+    margin: 2rem 0;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.dashboard-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.metric-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0.8;
+    margin-bottom: 0.5rem;
+}
+
+.metric-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.metric-change {
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.metric-change.positive {
+    color: #4ade80;
+}
+
+.metric-change.negative {
+    color: #f87171;
+}
+
+/* Progress Tracking */
+.progress-container {
+    margin: 1.5rem 0;
+}
+
+.progress-bar-wrapper {
+    background: #e5e7eb;
+    border-radius: 50px;
+    overflow: hidden;
+    height: 12px;
+    position: relative;
+    margin: 0.5rem 0;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(45deg, #ff6b6b, #feca57);
+    border-radius: 50px;
+    transition: width 1s ease-in-out;
+    position: relative;
+}
+
+.progress-bar.system-design {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+}
+
+.progress-bar.behavioral {
+    background: linear-gradient(45deg, #f093fb, #f5576c);
+}
+
+.progress-bar.coding {
+    background: linear-gradient(45deg, #4facfe, #00f2fe);
+}
+
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        rgba(255,255,255,0.2) 25%, 
+        transparent 25%, 
+        transparent 50%, 
+        rgba(255,255,255,0.2) 50%, 
+        rgba(255,255,255,0.2) 75%, 
+        transparent 75%);
+    background-size: 20px 20px;
+    animation: move-stripes 1s linear infinite;
+}
+
+@keyframes move-stripes {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 20px 0;
+    }
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+/* Skill Radar Chart */
+.skill-radar-container {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin: 2rem 0;
+}
+
+.skill-radar-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+}
+
+.radar-canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Learning Objectives Tree */
+.learning-objectives-tree {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.objective-level {
+    margin: 1rem 0;
+    padding-left: 2rem;
+    border-left: 3px solid #e2e8f0;
+    position: relative;
+}
+
+.objective-level.remember {
+    border-left-color: #f56565;
+}
+
+.objective-level.understand {
+    border-left-color: #ed8936;
+}
+
+.objective-level.apply {
+    border-left-color: #ecc94b;
+}
+
+.objective-level.analyze {
+    border-left-color: #48bb78;
+}
+
+.objective-level.evaluate {
+    border-left-color: #38b2ac;
+}
+
+.objective-level.create {
+    border-left-color: #805ad5;
+}
+
+.objective-level::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 0.5rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: inherit;
+    border: 2px solid white;
+}
+
+.objective-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+.objective-description {
+    color: #4a5568;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.measurable-outcomes {
+    background: white;
+    border-radius: 6px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.outcome-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.outcome-item:hover {
+    background: #f1f5f9;
+}
+
+.outcome-icon {
+    color: #10b981;
+    font-weight: bold;
+    margin-top: 0.1rem;
+}
+
+/* Competency Gates */
+.competency-gates {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.gate-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-top: 4px solid;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gate-card.foundation {
+    border-top-color: #f56565;
+}
+
+.gate-card.proficiency {
+    border-top-color: #ed8936;
+}
+
+.gate-card.mastery {
+    border-top-color: #10b981;
+}
+
+.gate-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.gate-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 1rem;
+}
+
+.gate-timeline {
+    background: #f7fafc;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 1rem;
+}
+
+.gate-criteria {
+    list-style: none;
+    padding: 0;
+}
+
+.gate-criteria li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    border-radius: 4px;
+    background: #f8fafc;
+}
+
+.gate-criteria li::before {
+    content: '□';
+    color: #cbd5e0;
+    font-weight: bold;
+    margin-top: 0.1rem;
+}
+
+.gate-criteria li.completed::before {
+    content: '☑';
+    color: #10b981;
+}
+
+/* Assessment Integration */
+.assessment-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    padding: 2rem;
+    color: white;
+    margin: 2rem 0;
+}
+
+.assessment-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.assessment-method {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.assessment-method:hover {
+    transform: scale(1.02);
+}
+
+.method-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.method-title {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.method-description {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .competency-gates {
+        grid-template-columns: 1fr;
+    }
+    
+    .assessment-methods {
+        grid-template-columns: 1fr;
+    }
+    
+    .learning-dashboard,
+    .skill-radar-container,
+    .learning-objectives-tree {
+        padding: 1rem;
+    }
+}
+
+/* Dark mode support */
+[data-md-color-scheme="slate"] .skill-radar-container,
+[data-md-color-scheme="slate"] .learning-objectives-tree {
+    background: #1e293b;
+    color: #e2e8f0;
+}
+
+[data-md-color-scheme="slate"] .gate-card {
+    background: #1e293b;
+    color: #e2e8f0;
+}
+
+[data-md-color-scheme="slate"] .objective-title,
+[data-md-color-scheme="slate"] .gate-title {
+    color: #e2e8f0;
+}
+
+[data-md-color-scheme="slate"] .measurable-outcomes {
+    background: #334155;
+}
+
+[data-md-color-scheme="slate"] .outcome-item:hover {
+    background: #475569;
+}

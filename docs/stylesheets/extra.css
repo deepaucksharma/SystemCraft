@@ -1,0 +1,111 @@
+/* Custom styles for Amazon L6/L7 Interview Prep */
+
+:root {
+  --md-primary-fg-color: #FF9900;
+  --md-primary-fg-color--light: #FFB84D;
+  --md-primary-fg-color--dark: #CC7A00;
+  --md-accent-fg-color: #FF6600;
+}
+
+/* Code block improvements */
+.md-typeset code {
+  background-color: rgba(255, 153, 0, 0.1);
+}
+
+.md-typeset pre code {
+  background-color: transparent;
+}
+
+/* Table improvements */
+.md-typeset table {
+  font-size: 0.9rem;
+}
+
+.md-typeset table th {
+  background-color: var(--md-primary-fg-color);
+  color: white;
+}
+
+/* Admonition improvements */
+.md-typeset .admonition.success,
+.md-typeset details.success {
+  border-color: #4CAF50;
+}
+
+.md-typeset .admonition.warning,
+.md-typeset details.warning {
+  border-color: #FF9800;
+}
+
+.md-typeset .admonition.danger,
+.md-typeset details.danger {
+  border-color: #F44336;
+}
+
+/* Progress checklist styling */
+.md-typeset .task-list-item input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+.md-typeset .task-list-item input[type="checkbox"]:checked + label {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+/* Interview timeline styling */
+.interview-timeline {
+  position: relative;
+  padding-left: 2rem;
+  margin: 2rem 0;
+}
+
+.interview-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.5rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--md-primary-fg-color);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+  padding-left: 1rem;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -1.5rem;
+  top: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+  background: var(--md-primary-fg-color);
+  border-radius: 50%;
+}
+
+/* STAR story formatting */
+.star-story {
+  background: linear-gradient(135deg, rgba(255, 153, 0, 0.05) 0%, rgba(255, 102, 0, 0.05) 100%);
+  border-left: 4px solid var(--md-primary-fg-color);
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.star-story h4 {
+  color: var(--md-primary-fg-color);
+  margin-top: 0;
+}
+
+/* Responsive improvements */
+@media screen and (max-width: 768px) {
+  .md-typeset table {
+    font-size: 0.8rem;
+  }
+  
+  .md-nav--primary .md-nav__item {
+    font-size: 0.9rem;
+  }
+}
