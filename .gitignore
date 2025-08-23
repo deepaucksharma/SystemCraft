@@ -1,19 +1,37 @@
-# MkDocs
-site/
-.cache/
-
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.env
+.venv
 env/
 venv/
 ENV/
-.venv/
-pip-log.txt
-pip-delete-this-directory.txt
+env.bak/
+venv.bak/
+
+# MkDocs
+site/
+.mkdocs_cache/
 
 # IDE
 .vscode/
@@ -21,23 +39,19 @@ pip-delete-this-directory.txt
 *.swp
 *.swo
 *~
+
+# OS
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
 # Logs
 *.log
-logs/
-
-# Environment variables
-.env
-.env.local
-
-# Documentation build
-docs/overrides/
-.sass-cache/
 
 # Temporary files
 *.tmp
 *.temp
-*.bak
-tmp/
-temp/

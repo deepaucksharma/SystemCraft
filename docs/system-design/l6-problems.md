@@ -729,6 +729,163 @@ CREATE TABLE notification_analytics (
           failed: integer
 ```
 
+**Algorithm Details**
+
+*Smart Routing Algorithm:*
+```python
+class NotificationRouter:
+    def __init__(self, preference_service, device_service):
+        self.preference_service = preference_service
+        self.device_service = device_service
+        
+    def route_notification(self, user_id, template, priority):
+        # Get user preferences and device availability
+        preferences = self.preference_service.get_preferences(user_id)
+        devices = self.device_service.get_active_devices(user_id)
+        
+        channels = self._select_channels(template, preferences, devices, priority)
+        schedule = self._determine_schedule(preferences, priority)
+        
+        return {
+            'channels': channels,
+            'schedule': schedule,
+            'fallback_chain': self._build_fallback_chain(channels, priority)
+        }
+    
+    def _select_channels(self, template, preferences, devices, priority):
+        available_channels = template.supported_channels
+        enabled_channels = [ch for ch in available_channels 
+                          if preferences.is_enabled(template.category, ch)]
+        
+        if priority >= 4:  # Critical notifications
+            # Try multiple channels for critical notifications
+            return self._prioritize_channels(enabled_channels, devices)
+        
+        # Normal priority - respect user preferences strictly
+        return enabled_channels[:1] if enabled_channels else []
+    
+    def _prioritize_channels(self, channels, devices):
+        # Priority order for critical notifications
+        priority_order = ['push', 'sms', 'email', 'voice']
+        
+        # Sort channels by availability and priority
+        available = []
+        for channel in priority_order:
+            if channel in channels:
+                if channel == 'push' and any(d.is_active for d in devices):
+                    available.append(channel)
+                elif channel in ['sms', 'voice'] and any(d.phone for d in devices):
+                    available.append(channel)
+                elif channel == 'email':
+                    available.append(channel)
+        
+        return available[:2]  # Max 2 channels for critical notifications
+```
+
+*Template Processing Engine:*
+```python
+import jinja2
+from typing import Dict, Any
+
+class TemplateEngine:
+    def __init__(self):
+        self.env = jinja2.Environment(
+            loader=jinja2.DictLoader({}),
+            autoescape=True,
+            trim_blocks=True,
+            lstrip_blocks=True
+        )
+        self.env.filters['currency'] = self._currency_filter
+        self.env.filters['datetime'] = self._datetime_filter
+    
+    def render(self, template: dict, variables: Dict[str, Any], 
+               user_context: dict) -> dict:
+        # Merge user context with variables
+        context = {**variables, **user_context}
+        
+        # Add helper functions
+        context['user'] = user_context
+        context['now'] = datetime.now()
+        
+        rendered = {}
+        
+        # Render title
+        if template.get('title_template'):
+            title_tmpl = self.env.from_string(template['title_template'])
+            rendered['title'] = title_tmpl.render(context)
+        
+        # Render body with proper escaping for different channels
+        if template.get('body_template'):
+            body_tmpl = self.env.from_string(template['body_template'])
+            rendered['body'] = body_tmpl.render(context)
+        
+        # Channel-specific rendering
+        for channel in template.get('channels', []):
+            if template.get(f'{channel}_template'):
+                channel_tmpl = self.env.from_string(template[f'{channel}_template'])
+                rendered[f'{channel}_content'] = channel_tmpl.render(context)
+        
+        return rendered
+    
+    def _currency_filter(self, value, currency='USD'):
+        """Format currency values"""
+        if currency == 'USD':
+            return f"${value:,.2f}"
+        return f"{value:,.2f} {currency}"
+    
+    def _datetime_filter(self, value, format='%Y-%m-%d %H:%M'):
+        """Format datetime values"""
+        if isinstance(value, str):
+            value = datetime.fromisoformat(value)
+        return value.strftime(format)
+```
+
+**Data Flow**
+
+*Notification Processing Flow:*
+```
+1. API Request → Notification Gateway
+   - Request validation and rate limiting
+   - Authentication and authorization check
+   - Template resolution and validation
+
+2. Notification Gateway → Orchestrator Service
+   - User preference lookup and channel selection
+   - Template rendering with user context
+   - Priority-based queue assignment
+
+3. Orchestrator Service → Message Queues
+   - High priority: Immediate processing queue
+   - Normal priority: Batched processing queue
+   - Scheduled: Time-based trigger queue
+
+4. Queue Consumers → Channel Services
+   - Push Service: FCM/APNS integration
+   - Email Service: SES integration with templates
+   - SMS Service: SNS/Twilio integration
+   - In-app Service: WebSocket/Server-sent events
+
+5. Channel Services → External Providers
+   - Retry logic with exponential backoff
+   - Dead letter queues for failed deliveries
+   - Success/failure callback handling
+
+6. Delivery Tracking → Analytics Pipeline
+   - Real-time delivery status updates
+   - User engagement metrics collection
+   - Performance monitoring and alerting
+```
+
+*User Preference Synchronization:*
+```
+1. User Updates Preferences → Preference Service
+2. Preference Service → Cache Update (Redis)
+3. Preference Service → Database Update (PostgreSQL)
+4. Preference Service → Event Publication (SNS)
+5. Notification Services → Cache Refresh
+6. Analytics Service → Preference Change Tracking
+```
+
 **Technology Choices with Trade-offs**
 
 ```yaml
@@ -763,13 +920,155 @@ Database:
     Alternative: DynamoDB for infinite scaling, eventual consistency
 ```
 
+**Scaling Considerations**
+
+*Horizontal Scaling Strategy:*
+```
+Notification Gateway:
+- Auto-scaling based on request rate and queue depth
+- Load balancing with session affinity for WebSocket connections
+- Circuit breakers for third-party service failures
+- Regional deployment with cross-region failover
+
+Template Service:
+- Read-heavy workload with aggressive caching
+- Template pre-compilation and caching in Redis
+- CDN for static template assets and images
+- Template versioning for A/B testing support
+
+Channel Services:
+- Independent scaling based on channel-specific metrics
+- Push service: Scale based on device connection count
+- Email service: Scale based on SES sending rate limits
+- SMS service: Scale based on SNS throughput limits
+
+Queue Management:
+- Separate queues for different priority levels
+- Dead letter queues for failed notifications
+- Queue auto-scaling based on message depth
+- Cross-region replication for disaster recovery
+
+Database Scaling:
+- Read replicas for user preferences (5 replicas)
+- Partitioning delivery logs by date and user_id
+- Archive old data to S3 for cost optimization
+- Connection pooling and query optimization
+```
+
+*Geographic Distribution:*
+```
+Multi-Region Architecture:
+- Primary regions: us-east-1, eu-west-1, ap-southeast-1
+- Regional notification processing to reduce latency
+- Cross-region template and preference replication
+- Local compliance handling (GDPR, data residency)
+- Intelligent routing based on user location
+```
+
+**Monitoring and Alerts**
+
+*Key Metrics:*
+```yaml
+Delivery Metrics:
+  - delivery_success_rate: >99% (critical)
+  - delivery_latency_p95: <5s for high priority
+  - delivery_latency_p99: <30s for normal priority
+  - bounce_rate: <2% for email
+  - opt_out_rate: <0.5% per campaign
+
+Performance Metrics:
+  - api_response_time_p95: <100ms
+  - queue_processing_time: <1s average
+  - template_render_time: <50ms
+  - throughput: >5.8K notifications/second
+
+Business Metrics:
+  - click_through_rate: track by template and channel
+  - conversion_rate: track business outcomes
+  - user_engagement_score: composite metric
+  - cost_per_notification: optimize spend efficiency
+
+System Health:
+  - queue_depth: monitor backlog by priority
+  - error_rate: <0.1% for all services
+  - third_party_api_health: monitor external dependencies
+  - resource_utilization: CPU <70%, Memory <80%
+```
+
+*Alerting Strategy:*
+```yaml
+Critical Alerts (PagerDuty):
+  - Delivery success rate < 95% for 5 minutes
+  - High priority notification delay > 10 seconds
+  - Third-party service outage affecting >10% of traffic
+  - Database connection failures
+  - Queue processing stopped for >1 minute
+
+Warning Alerts (Slack):
+  - Delivery success rate < 98% for 15 minutes
+  - Queue depth > 10,000 messages for >10 minutes
+  - Template rendering errors > 1% for 5 minutes
+  - Unusual bounce rates or opt-out spikes
+
+Capacity Alerts:
+  - Queue depth trending to capacity within 30 minutes
+  - Database connections > 80% of pool
+  - Third-party service rate limits approaching (80%)
+  - Memory usage > 75% across services
+```
+
+*Dashboard Design:*
+```yaml
+Executive Dashboard:
+  - Daily/Weekly notification volume trends
+  - Delivery success rates by channel
+  - User engagement metrics and conversion rates
+  - Cost per notification and ROI metrics
+
+Operational Dashboard:
+  - Real-time system health and service status
+  - Queue depths and processing rates by priority
+  - Third-party service health and rate limits
+  - Error rates and failure modes by service
+
+Engineering Dashboard:
+  - API performance metrics and latency distributions
+  - Database performance and query execution times
+  - Template rendering performance and cache hit rates
+  - Resource utilization and auto-scaling events
+```
+
 **Follow-up Questions**
 
 1. **How would you handle notification delivery during third-party service outages?**
+   - Implement graceful degradation with backup providers
+   - Use circuit breaker patterns to detect and route around failures
+   - Queue notifications for retry when services recover
+   - Provide fallback channels (SMS when push fails, email when SMS fails)
+
 2. **How would you implement smart notification batching to reduce user fatigue?**
+   - Implement frequency capping per user per time period
+   - Batch non-urgent notifications into digest formats
+   - Use machine learning to optimize send times per user
+   - A/B test different batching strategies and measure engagement
+
 3. **How would you ensure GDPR compliance for EU users?**
+   - Implement data residency with EU-only processing for EU users
+   - Provide explicit opt-in/opt-out mechanisms for all channels
+   - Support right-to-deletion with cascading data removal
+   - Maintain audit logs for compliance reporting
+
 4. **How would you implement real-time notification analytics dashboard?**
+   - Stream delivery events to Kinesis for real-time processing
+   - Use ElasticSearch for real-time search and aggregation
+   - WebSocket connections for live dashboard updates
+   - Pre-compute common metrics in real-time with Redis
+
 5. **How would you handle notification delivery across different time zones efficiently?**
+   - Store user timezone preferences and respect quiet hours
+   - Implement timezone-aware scheduling in orchestrator service
+   - Use distributed cron jobs across regions for scheduled notifications
+   - Buffer notifications during user's night hours with intelligent batching
 
 ---
 
@@ -930,6 +1229,85 @@ CREATE TABLE branded_domains (
 );
 ```
 
+**API Design**
+
+```yaml
+# URL Shortener Service API
+
+/api/v1/urls:
+  post:
+    description: Create a shortened URL
+    request:
+      url: string (required)
+      custom_alias: string (optional)
+      expires_at: timestamp (optional)
+      description: string (optional)
+    response:
+      short_code: string
+      short_url: string
+      long_url: string
+      created_at: timestamp
+      expires_at: timestamp
+
+/api/v1/urls/{short_code}:
+  get:
+    description: Get URL details
+    response:
+      short_code: string
+      long_url: string
+      created_at: timestamp
+      expires_at: timestamp
+      click_count: integer
+      is_active: boolean
+  
+  put:
+    description: Update URL (requires ownership)
+    request:
+      expires_at: timestamp (optional)
+      is_active: boolean (optional)
+    response:
+      updated_at: timestamp
+      
+  delete:
+    description: Delete URL (requires ownership)
+    response:
+      deleted: boolean
+
+/api/v1/urls/bulk:
+  post:
+    description: Create multiple URLs
+    request:
+      urls: array
+        - url: string
+          custom_alias: string (optional)
+          expires_at: timestamp (optional)
+    response:
+      results: array
+        - short_code: string
+          short_url: string
+          status: string
+
+/r/{short_code}:
+  get:
+    description: Redirect to original URL
+    response: 302 redirect with analytics tracking
+
+/api/v1/analytics/{short_code}:
+  get:
+    description: Get click analytics
+    parameters:
+      start_date: date (optional)
+      end_date: date (optional)
+      granularity: enum [hour, day, week] (optional)
+    response:
+      total_clicks: integer
+      unique_clicks: integer
+      click_timeline: array
+      geographic_distribution: object
+      device_breakdown: object
+      referrer_stats: object
+```
+
 **Algorithm Details**
 
 *Base62 Encoding for Short Codes:*
@@ -992,6 +1370,66 @@ class AliasValidator:
         return True, "Valid"
 ```
 
+**Data Flow**
+
+*URL Creation Flow:*
+```
+1. Client Request → API Gateway
+   - Rate limiting and authentication
+   - Request validation and URL normalization
+   - Custom alias availability check
+
+2. API Gateway → URL Creation Service
+   - Generate unique counter from distributed counter service
+   - Create short code using Base62 encoding + randomization
+   - Store URL mapping in DynamoDB
+   - Update user quota and usage tracking
+
+3. URL Creation Service → Cache Layer
+   - Pre-populate Redis cache for immediate availability
+   - Set appropriate TTL based on URL type
+   - Warm CDN cache for popular domains
+
+4. Response → Client
+   - Return short URL and metadata
+   - Include analytics tracking parameters
+   - Provide management URLs for registered users
+```
+
+*URL Redirect Flow:*
+```
+1. Browser/Client → CDN (CloudFront)
+   - Geographic edge location routing
+   - Cache hit for popular URLs (99% hit rate)
+   - Cache miss forwards to origin
+
+2. CDN → Load Balancer → Redirect Service
+   - Health check and traffic distribution
+   - SSL termination and security headers
+   - Request logging for analytics
+
+3. Redirect Service → Cache (Redis)
+   - Check Redis for URL mapping
+   - Cache hit: immediate redirect response
+   - Cache miss: query database
+
+4. Cache Miss → Database Query
+   - Query DynamoDB for URL mapping
+   - Check expiration and active status
+   - Update cache with result
+
+5. Analytics Collection (Async)
+   - Extract user agent, IP, referrer
+   - Geo-location and device detection
+   - Queue analytics event to Kinesis
+   - Batch processing for aggregation
+
+6. Redirect Response → Client
+   - HTTP 302 redirect to original URL
+   - Analytics tracking pixels/headers
+   - Cache headers for CDN optimization
+```
+
 **Scaling Considerations**
 
 *Horizontal Scaling Strategy:*
@@ -1013,15 +1451,128 @@ Cache Strategy:
   - L2: Application cache (Redis) for recent URLs
   - L3: Database read replicas for remaining requests
   - Cache warming for newly created URLs
+
+Database Scaling:
+  - DynamoDB with on-demand scaling for URLs table
+  - Global secondary indexes for user queries
+  - DynamoDB Streams for real-time analytics
+  - S3 archival for old analytics data
+
+Analytics Pipeline:
+  - Kinesis Data Streams for real-time ingestion
+  - Kinesis Analytics for real-time aggregation
+  - ClickHouse cluster for analytical queries
+  - S3 + Athena for historical analysis
+```
+
+*Performance Optimization:*
+```yaml
+Caching Layers:
+  - CDN: 1-hour TTL for redirect responses
+  - Redis: URL mappings with 24-hour TTL
+  - Application: In-memory cache for frequent lookups
+  - Database: Connection pooling and query optimization
+
+Load Distribution:
+  - Geographic DNS routing for regional traffic
+  - Consistent hashing for cache distribution
+  - Read replicas for analytics queries
+  - Separate write/read workloads
+
+Resource Optimization:
+  - Container auto-scaling based on CPU/memory
+  - Database connection pooling
+  - Async processing for non-critical operations
+  - Efficient data structures for high throughput
+```
+
+**Monitoring and Alerts**
+
+*Key Metrics:*
+```yaml
+Performance Metrics:
+  - redirect_latency_p95: <50ms globally
+  - redirect_latency_p99: <100ms globally
+  - url_creation_latency: <200ms
+  - cache_hit_ratio: >99% for redirects
+  - cdn_hit_ratio: >95% for popular URLs
+
+Availability Metrics:
+  - redirect_success_rate: >99.9%
+  - url_creation_success_rate: >99.5%
+  - database_availability: >99.99%
+  - third_party_service_health: monitor dependencies
+
+Business Metrics:
+  - daily_url_creation_count: track growth trends
+  - click_through_rate: measure engagement
+  - user_retention_rate: track active users
+  - revenue_per_user: track monetization
+
+System Health:
+  - database_read_latency: <10ms p95
+  - database_write_latency: <20ms p95
+  - queue_processing_lag: <1 second
+  - error_rate: <0.1% across all services
+```
+
+*Alerting Strategy:*
+```yaml
+Critical Alerts (PagerDuty):
+  - Redirect service down for >1 minute
+  - Database connectivity issues
+  - CDN performance degradation (>500ms p95)
+  - URL creation service failure rate >5%
+
+Warning Alerts (Slack):
+  - Cache hit ratio drops below 95%
+  - Unusual traffic patterns (10x normal)
+  - High error rates from specific user agents
+  - Database connection pool exhaustion
+
+Capacity Alerts:
+  - Daily URL creation approaching quota limits
+  - Database storage utilization >80%
+  - Redis memory usage >75%
+  - Auto-scaling events triggering frequently
 ```
 
 **Follow-up Questions**
 
 1. **How would you handle a viral URL that receives 1M clicks per minute?**
+   - Implement CDN edge caching with longer TTLs (6+ hours)
+   - Use geo-distributed caching layers
+   - Separate analytics collection to avoid bottlenecks
+   - Auto-scale redirect service based on traffic patterns
+   - Implement circuit breakers to prevent cascade failures
+
 2. **How would you implement URL preview features securely?**
+   - Create isolated preview service with limited resources
+   - Use headless browsers in sandboxed containers
+   - Implement request timeouts and resource limits
+   - Cache preview results with appropriate TTLs
+   - Filter malicious content and scripts in previews
+
 3. **How would you detect and handle malicious URLs?**
+   - Integrate with URL reputation services (Google Safe Browsing)
+   - Implement real-time scanning during URL creation
+   - Monitor click patterns for suspicious activity
+   - Provide user reporting mechanism for abuse
+   - Automated takedown system for confirmed malicious URLs
+
 4. **How would you migrate from short codes to a new encoding scheme?**
+   - Implement dual encoding system during transition
+   - Maintain backward compatibility for existing URLs
+   - Use feature flags to gradually roll out new encoding
+   - Batch migrate existing URLs during low-traffic periods
+   - Monitor performance impact and rollback capability
+
 5. **How would you implement real-time click analytics for enterprise users?**
+   - Stream click events to Kinesis Data Streams
+   - Use Kinesis Analytics for real-time aggregation
+   - WebSocket connections for dashboard updates
+   - Pre-compute common metrics in Redis
+   - Implement custom alerting on click thresholds
 
 ---
 
@@ -1096,6 +1647,337 @@ Consider that tasks may have dependencies on each other, require specific worker
 └───────────────┘ └───────────────────┘ └───────────────┘
 ```
 
+**Database Design**
+
+*Task Metadata Schema (PostgreSQL):*
+```sql
+CREATE TABLE tasks (
+    task_id UUID PRIMARY KEY,
+    task_type VARCHAR(100) NOT NULL,
+    payload JSONB NOT NULL,
+    priority INTEGER DEFAULT 5,
+    max_retries INTEGER DEFAULT 3,
+    retry_count INTEGER DEFAULT 0,
+    timeout_seconds INTEGER DEFAULT 300,
+    status VARCHAR(20) DEFAULT 'pending',
+    scheduled_at TIMESTAMP,
+    started_at TIMESTAMP,
+    completed_at TIMESTAMP,
+    failed_at TIMESTAMP,
+    created_at TIMESTAMP DEFAULT NOW(),
+    created_by VARCHAR(255),
+    worker_id VARCHAR(255),
+    error_message TEXT,
+    result JSONB
+);
+
+CREATE TABLE task_dependencies (
+    task_id UUID REFERENCES tasks(task_id),
+    depends_on UUID REFERENCES tasks(task_id),
+    created_at TIMESTAMP DEFAULT NOW(),
+    PRIMARY KEY (task_id, depends_on)
+);
+
+CREATE TABLE worker_pools (
+    pool_id VARCHAR(100) PRIMARY KEY,
+    task_types TEXT[],
+    min_workers INTEGER DEFAULT 1,
+    max_workers INTEGER DEFAULT 10,
+    current_workers INTEGER DEFAULT 0,
+    worker_config JSONB,
+    is_active BOOLEAN DEFAULT true,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE task_execution_history (
+    execution_id UUID PRIMARY KEY,
+    task_id UUID REFERENCES tasks(task_id),
+    worker_id VARCHAR(255),
+    started_at TIMESTAMP,
+    completed_at TIMESTAMP,
+    status VARCHAR(20),
+    error_message TEXT,
+    execution_time_ms INTEGER,
+    resource_usage JSONB
+);
+
+-- Indexes for performance
+CREATE INDEX idx_tasks_status_priority ON tasks(status, priority DESC, created_at);
+CREATE INDEX idx_tasks_scheduled_at ON tasks(scheduled_at) WHERE status = 'scheduled';
+CREATE INDEX idx_tasks_worker_id ON tasks(worker_id) WHERE worker_id IS NOT NULL;
+CREATE INDEX idx_task_dependencies_depends_on ON task_dependencies(depends_on);
+```
+
+*Queue Configuration (Redis):*
+```yaml
+# Priority Queues in Redis
+Priority_1_Queue: "queue:priority:1"  # Critical tasks
+Priority_2_Queue: "queue:priority:2"  # High priority
+Priority_3_Queue: "queue:priority:3"  # Normal priority
+Priority_4_Queue: "queue:priority:4"  # Low priority
+Priority_5_Queue: "queue:priority:5"  # Background tasks
+
+# Delayed Tasks
+Scheduled_Tasks: "queue:scheduled"  # Sorted set by execution time
+Retry_Tasks: "queue:retry"          # Tasks awaiting retry
+
+# Dead Letter Queue
+Dead_Letter_Queue: "queue:dlq"     # Failed tasks after max retries
+
+# Worker Tracking
+Active_Workers: "workers:active"   # Set of active worker IDs
+Worker_Heartbeats: "workers:heartbeats"  # Hash of worker_id -> timestamp
+```
+
+**API Design**
+
+```yaml
+# Task Queue Service API
+
+/api/v1/tasks:
+  post:
+    description: Submit a new task
+    request:
+      task_type: string (required)
+      payload: object (required)
+      priority: integer (1-10, default: 5)
+      scheduled_at: timestamp (optional)
+      timeout_seconds: integer (default: 300)
+      max_retries: integer (default: 3)
+      dependencies: array[string] (task_ids)
+    response:
+      task_id: string
+      status: string
+      estimated_execution: timestamp
+
+/api/v1/tasks/{task_id}:
+  get:
+    description: Get task details and status
+    response:
+      task_id: string
+      task_type: string
+      status: string
+      priority: integer
+      created_at: timestamp
+      started_at: timestamp
+      completed_at: timestamp
+      result: object
+      error_message: string
+
+/api/v1/tasks/{task_id}/cancel:
+  post:
+    description: Cancel a pending or running task
+    response:
+      cancelled: boolean
+      message: string
+
+/api/v1/tasks/{task_id}/retry:
+  post:
+    description: Retry a failed task
+    response:
+      retried: boolean
+      new_task_id: string
+
+/api/v1/workers:
+  get:
+    description: List active workers
+    response:
+      workers: array
+        - worker_id: string
+          pool_id: string
+          status: string
+          current_task: string
+          last_heartbeat: timestamp
+
+/api/v1/queues/stats:
+  get:
+    description: Get queue statistics
+    response:
+      queues: array
+        - priority: integer
+          pending_tasks: integer
+          processing_tasks: integer
+          average_wait_time: integer
+      total_workers: integer
+      tasks_per_minute: integer
+```
+
+**Algorithm Details**
+
+*Task Scheduling Algorithm:*
+```python
+import heapq
+from datetime import datetime, timedelta
+from typing import List, Optional
+
+class TaskScheduler:
+    def __init__(self, redis_client, db_connection):
+        self.redis = redis_client
+        self.db = db_connection
+        self.priority_queues = [f"queue:priority:{i}" for i in range(1, 6)]
+        self.scheduled_queue = "queue:scheduled"
+    
+    def submit_task(self, task: dict) -> str:
+        # Validate dependencies
+        if task.get('dependencies'):
+            self._validate_dependencies(task['dependencies'])
+        
+        # Generate task ID and store metadata
+        task_id = self._generate_task_id()
+        task_record = self._create_task_record(task_id, task)
+        
+        # Store in database
+        self.db.insert_task(task_record)
+        
+        # Queue task based on scheduling and dependencies
+        if task.get('scheduled_at'):
+            self._schedule_delayed_task(task_id, task)
+        elif task.get('dependencies'):
+            self._queue_dependent_task(task_id, task)
+        else:
+            self._queue_immediate_task(task_id, task)
+        
+        return task_id
+    
+    def _queue_immediate_task(self, task_id: str, task: dict):
+        priority = task.get('priority', 5)
+        queue_name = f"queue:priority:{priority}"
+        
+        task_payload = {
+            'task_id': task_id,
+            'task_type': task['task_type'],
+            'payload': task['payload'],
+            'timeout': task.get('timeout_seconds', 300),
+            'max_retries': task.get('max_retries', 3)
+        }
+        
+        # Use Redis LPUSH for FIFO within priority level
+        self.redis.lpush(queue_name, json.dumps(task_payload))
+        
+        # Update metrics
+        self.redis.incr(f"metrics:queued:{priority}")
+    
+    def _schedule_delayed_task(self, task_id: str, task: dict):
+        scheduled_time = datetime.fromisoformat(task['scheduled_at'])
+        timestamp = scheduled_time.timestamp()
+        
+        task_payload = {
+            'task_id': task_id,
+            'priority': task.get('priority', 5),
+            'scheduled_for': task['scheduled_at']
+        }
+        
+        # Use sorted set for time-based scheduling
+        self.redis.zadd(self.scheduled_queue, {json.dumps(task_payload): timestamp})
+    
+    def process_scheduled_tasks(self):
+        """Background process to move scheduled tasks to execution queues"""
+        current_time = datetime.now().timestamp()
+        
+        # Get tasks ready for execution
+        ready_tasks = self.redis.zrangebyscore(
+            self.scheduled_queue, 0, current_time, withscores=True
+        )
+        
+        for task_json, score in ready_tasks:
+            task = json.loads(task_json)
+            
+            # Remove from scheduled queue
+            self.redis.zrem(self.scheduled_queue, task_json)
+            
+            # Move to appropriate priority queue
+            self._queue_immediate_task(task['task_id'], task)
+```
+
+*Worker Management System:*
+```python
+import threading
+import time
+from typing import Dict, List
+
+class WorkerManager:
+    def __init__(self, redis_client, db_connection):
+        self.redis = redis_client
+        self.db = db_connection
+        self.active_workers = {}
+        self.worker_pools = {}
+        self.heartbeat_thread = None
+        
+    def register_worker_pool(self, pool_config: dict):
+        pool_id = pool_config['pool_id']
+        self.worker_pools[pool_id] = {
+            'task_types': pool_config['task_types'],
+            'min_workers': pool_config['min_workers'],
+            'max_workers': pool_config['max_workers'],
+            'current_workers': 0,
+            'worker_config': pool_config.get('worker_config', {})
+        }
+        
+        # Start initial workers
+        for _ in range(pool_config['min_workers']):
+            self._spawn_worker(pool_id)
+    
+    def _spawn_worker(self, pool_id: str) -> str:
+        worker_id = f"{pool_id}_{int(time.time())}_{random.randint(1000, 9999)}"
+        
+        worker_config = {
+            'worker_id': worker_id,
+            'pool_id': pool_id,
+            'task_types': self.worker_pools[pool_id]['task_types'],
+            'config': self.worker_pools[pool_id]['worker_config']
+        }
+        
+        # Start worker process/container
+        worker_process = self._start_worker_process(worker_config)
+        
+        self.active_workers[worker_id] = {
+            'process': worker_process,
+            'pool_id': pool_id,
+            'status': 'idle',
+            'current_task': None,
+            'last_heartbeat': time.time()
+        }
+        
+        self.worker_pools[pool_id]['current_workers'] += 1
+        
+        return worker_id
+    
+    def auto_scale_workers(self):
+        """Auto-scale workers based on queue depth and performance metrics"""
+        for pool_id, pool_config in self.worker_pools.items():
+            queue_depths = self._get_queue_depths_for_pool(pool_id)
+            total_pending = sum(queue_depths.values())
+            
+            current_workers = pool_config['current_workers']
+            target_workers = self._calculate_target_workers(
+                current_workers, total_pending, pool_config
+            )
+            
+            if target_workers > current_workers:
+                # Scale up
+                for _ in range(target_workers - current_workers):
+                    if current_workers < pool_config['max_workers']:
+                        self._spawn_worker(pool_id)
+            elif target_workers < current_workers:
+                # Scale down
+                workers_to_remove = current_workers - target_workers
+                self._gracefully_remove_workers(pool_id, workers_to_remove)
+    
+    def _calculate_target_workers(self, current: int, pending: int, config: dict) -> int:
+        # Simple scaling algorithm - can be made more sophisticated
+        if pending == 0:
+            return max(config['min_workers'], current - 1)
+        
+        # Target: 1 worker per 10 pending tasks, with bounds
+        target = max(config['min_workers'], min(config['max_workers'], pending // 10 + 1))
+        
+        # Avoid thrashing - only scale if significant difference
+        if abs(target - current) >= 2:
+            return target
+        
+        return current
+```
+
 **Technology Choices with Trade-offs**
 
 ```yaml
@@ -1124,13 +2006,200 @@ Scheduling:
     Alternative: Apache Airflow for complex workflows
 ```
 
+**Data Flow**
+
+*Task Submission Flow:*
+```
+1. Client Application → Task Queue API
+   - Task validation and authentication
+   - Dependency checking and validation
+   - Resource requirement assessment
+
+2. Task Queue API → PostgreSQL
+   - Store task metadata and configuration
+   - Record task dependencies in graph structure
+   - Update user quotas and usage tracking
+
+3. Task Router → Priority Assessment
+   - Evaluate task priority and resource requirements
+   - Check for immediate execution or scheduling
+   - Dependency resolution for workflow tasks
+
+4. Task Router → Redis Queues
+   - Queue immediate tasks in priority-based queues
+   - Schedule delayed tasks in time-sorted sets
+   - Update queue depth metrics and monitoring
+
+5. Background Scheduler → Queue Management
+   - Move scheduled tasks to execution queues
+   - Process dependency chains as tasks complete
+   - Handle retry logic for failed tasks
+```
+
+*Task Execution Flow:*
+```
+1. Worker Manager → Worker Pool Monitoring
+   - Monitor queue depths and worker utilization
+   - Auto-scale worker pools based on demand
+   - Health check workers with heartbeat monitoring
+
+2. Workers → Task Polling
+   - Poll priority queues (highest priority first)
+   - Claim tasks with distributed locks
+   - Update task status to 'running' in database
+
+3. Worker → Task Execution
+   - Load task payload and configuration
+   - Execute task with timeout and resource monitoring
+   - Stream execution logs and progress updates
+
+4. Task Completion → Result Handling
+   - Store task results and execution metadata
+   - Update task status in database
+   - Trigger dependent tasks if applicable
+
+5. Worker → Queue Return
+   - Release worker resources and update status
+   - Return to queue polling for next task
+   - Report execution metrics and health status
+```
+
+**Scaling Considerations**
+
+*Horizontal Scaling Strategy:*
+```yaml
+Queue Management:
+  - Separate Redis clusters for different priority levels
+  - Consistent hashing for queue distribution
+  - Cross-AZ replication for high availability
+  - Queue sharding based on task type patterns
+
+Worker Orchestration:
+  - ECS auto-scaling groups per task type
+  - Mixed instance types for different workloads
+  - Spot instances for batch processing workloads
+  - Reserved capacity for critical task types
+
+Database Scaling:
+  - Read replicas for task status queries
+  - Partitioning of task history by date
+  - Connection pooling with PgBouncer
+  - Archival of completed tasks to S3
+
+Resource Management:
+  - CPU/memory-based worker scaling
+  - GPU worker pools for ML tasks
+  - Network-optimized instances for I/O intensive tasks
+  - Storage-optimized instances for data processing
+```
+
+*Performance Optimization:*
+```yaml
+Queue Processing:
+  - Batch task processing where applicable
+  - In-memory task caching for frequent operations
+  - Lazy loading of task payload data
+  - Compression of large task payloads
+
+Worker Efficiency:
+  - Connection pooling for database operations
+  - Keep-alive connections to external services
+  - Task result streaming for large outputs
+  - Resource pre-warming for predictable workloads
+
+Monitoring Integration:
+  - Real-time queue depth monitoring
+  - Worker performance and utilization tracking
+  - Task execution time distribution analysis
+  - Resource usage optimization recommendations
+```
+
+**Monitoring and Alerts**
+
+*Key Metrics:*
+```yaml
+Queue Health:
+  - queue_depth: Monitor backlog by priority level
+  - task_wait_time_p95: <5 minutes for high priority
+  - task_processing_rate: >116 tasks/second
+  - dead_letter_queue_size: <1% of total tasks
+
+Worker Performance:
+  - worker_utilization: 70-90% target range
+  - task_success_rate: >99.5% excluding business logic failures
+  - worker_startup_time: <30 seconds average
+  - worker_failure_rate: <1% per hour
+
+System Performance:
+  - api_response_time_p95: <100ms
+  - database_connection_pool_usage: <80%
+  - redis_memory_usage: <80% of allocated
+  - task_execution_time_distribution: track by task type
+
+Business Metrics:
+  - tasks_completed_per_minute: track throughput trends
+  - task_retry_rate: <5% of total tasks
+  - sla_violation_rate: <1% for priority tasks
+  - cost_per_task: optimize resource efficiency
+```
+
+*Alerting Strategy:*
+```yaml
+Critical Alerts (PagerDuty):
+  - Queue processing stopped for >2 minutes
+  - Worker failure rate >10% for 5 minutes
+  - Database connectivity issues
+  - Task success rate <95% for high priority tasks
+
+Warning Alerts (Slack):
+  - Queue depth >1000 for priority 1-2 tasks
+  - Worker utilization >90% for 15 minutes
+  - Task wait time >10 minutes for normal priority
+  - Dead letter queue size increasing
+
+Capacity Alerts:
+  - Projected queue capacity exhaustion within 1 hour
+  - Worker auto-scaling approaching max limits
+  - Database storage >85% full
+  - Redis memory usage >75%
+```
+
 **Follow-up Questions**
 
 1. **How would you implement task dependencies and workflow orchestration?**
+   - Create dependency graph using adjacency lists in PostgreSQL
+   - Use topological sorting to determine execution order
+   - Implement event-driven dependency resolution
+   - Support conditional dependencies based on task outcomes
+   - Provide workflow visualization and debugging tools
+
 2. **How would you handle worker failures and ensure task completion?**
+   - Implement heartbeat monitoring with 30-second intervals
+   - Use distributed locks with TTL for task claiming
+   - Automatic task requeuing after worker timeout
+   - Circuit breaker patterns for failing worker pools
+   - Graceful worker shutdown with task completion
+
 3. **How would you implement rate limiting for different task types?**
+   - Token bucket algorithm per task type
+   - Redis-based rate limiting with sliding windows
+   - Priority-based rate limit overrides
+   - Per-client rate limiting with quotas
+   - Dynamic rate limit adjustment based on system load
+
 4. **How would you handle tasks that require specific hardware (GPU, high-memory)?**
+   - Create specialized worker pools with resource tagging
+   - Task routing based on resource requirements
+   - Resource reservation and allocation system
+   - Auto-scaling groups with specific instance types
+   - Resource utilization monitoring and optimization
+
 5. **How would you implement task auditing and compliance logging?**
+   - Comprehensive task execution logging to S3
+   - Immutable audit trail with cryptographic signatures
+   - GDPR-compliant data retention and deletion
+   - Real-time compliance monitoring and alerting
+   - Integration with enterprise SIEM systems
 
 ---
 
@@ -1190,13 +2259,188 @@ Consider that feature flags may control critical business logic, require approva
 └───────────────┘             └───────────────┘
 ```
 
+**Database Design**
+
+*PostgreSQL Schema (Configuration Management):*
+```sql
+CREATE TABLE feature_flags (
+    flag_id SERIAL PRIMARY KEY,
+    flag_key VARCHAR(255) UNIQUE NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    flag_type VARCHAR(50) DEFAULT 'boolean',
+    default_value JSONB NOT NULL,
+    is_active BOOLEAN DEFAULT true,
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW(),
+    created_by VARCHAR(255),
+    tags TEXT[]
+);
+
+CREATE TABLE flag_environments (
+    environment_id SERIAL PRIMARY KEY,
+    environment_key VARCHAR(100) UNIQUE NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    is_production BOOLEAN DEFAULT false,
+    approval_required BOOLEAN DEFAULT true
+);
+
+CREATE TABLE flag_rules (
+    rule_id SERIAL PRIMARY KEY,
+    flag_id INTEGER REFERENCES feature_flags(flag_id),
+    environment_id INTEGER REFERENCES flag_environments(environment_id),
+    rule_order INTEGER NOT NULL,
+    conditions JSONB NOT NULL,
+    variation JSONB NOT NULL,
+    rollout_percentage INTEGER DEFAULT 100,
+    is_active BOOLEAN DEFAULT true
+);
+
+CREATE TABLE flag_audit_log (
+    audit_id BIGSERIAL PRIMARY KEY,
+    flag_id INTEGER REFERENCES feature_flags(flag_id),
+    environment_id INTEGER REFERENCES flag_environments(environment_id),
+    action VARCHAR(100) NOT NULL,
+    old_value JSONB,
+    new_value JSONB,
+    user_id VARCHAR(255),
+    timestamp TIMESTAMP DEFAULT NOW()
+);
+```
+
+**API Design**
+
+```yaml
+/api/v1/evaluate:
+  post:
+    description: Evaluate feature flags for user
+    request:
+      flag_keys: array[string]
+      user_context: object
+      environment: string
+    response:
+      evaluations: array
+        - flag_key: string
+          value: any
+          variation: string
+          reason: string
+
+/api/v1/flags:
+  post:
+    description: Create a new feature flag
+    request:
+      flag_key: string
+      name: string
+      description: string
+      flag_type: enum [boolean, string, number, json]
+      default_value: any
+    response:
+      flag_id: integer
+      flag_key: string
+
+/api/v1/flags/{flag_key}/toggle:
+  post:
+    description: Toggle flag on/off
+    request:
+      environment: string
+      enabled: boolean
+    response:
+      enabled: boolean
+      updated_at: timestamp
+```
+
+**Algorithm Details**
+
+*Flag Evaluation Engine:*
+```python
+class FlagEvaluator:
+    def evaluate_flag(self, flag_key: str, user_context: dict, environment: str):
+        # Get flag configuration from cache
+        flag_config = self._get_flag_config(flag_key, environment)
+        
+        # Evaluate targeting rules
+        for rule in sorted(flag_config['rules'], key=lambda x: x['rule_order']):
+            if self._evaluate_conditions(rule['conditions'], user_context):
+                if self._user_in_rollout(user_context, rule['rollout_percentage']):
+                    return {
+                        'flag_key': flag_key,
+                        'value': rule['variation']['value'],
+                        'variation': rule['variation']['key'],
+                        'reason': f'rule_{rule["rule_id"]}'
+                    }
+        
+        return self._default_response(flag_key, flag_config)
+    
+    def _user_in_rollout(self, user_context: dict, rollout_percentage: int):
+        user_id = user_context.get('user_id', 'anonymous')
+        hash_value = int(hashlib.md5(user_id.encode()).hexdigest()[:8], 16)
+        bucket = hash_value % 100
+        return bucket < rollout_percentage
+```
+
+**Scaling Considerations**
+
+```yaml
+Evaluation Service:
+  - Stateless evaluation nodes with auto-scaling
+  - Redis cluster for flag configuration caching
+  - Edge locations for global low latency
+  - WebSocket for real-time flag updates
+
+Configuration Management:
+  - PostgreSQL with read replicas for flag configs
+  - Cross-region replication for disaster recovery
+  - Connection pooling for database optimization
+  - Audit logging for compliance requirements
+```
+
+**Monitoring and Alerts**
+
+```yaml
+Key Metrics:
+  - evaluation_latency_p95: <5ms
+  - cache_hit_ratio: >95%
+  - flag_update_propagation_time: <30 seconds
+  - conversion_impact_by_flag: business metrics
+
+Alerting:
+  - Flag evaluation service down >30 seconds
+  - Cache cluster failure affecting evaluations
+  - Unusual flag evaluation volume (>5x normal)
+  - Automatic rollback triggered
+```
+
 **Follow-up Questions**
 
 1. **How would you implement gradual rollouts with automatic rollback on errors?**
+   - Monitor error rates and conversion metrics during rollouts
+   - Implement circuit breakers with configurable thresholds
+   - Automated rollback triggers based on health metrics
+   - Blue-green evaluation for instant rollback capability
+
 2. **How would you handle flag evaluation for offline mobile applications?**
+   - Local flag evaluation with cached configurations
+   - Periodic sync of flag configs when online
+   - Offline-first architecture with eventual consistency
+   - Local fallback values for critical flags
+
 3. **How would you implement flag dependencies (Flag A requires Flag B to be enabled)?**
+   - Dependency graph validation during configuration
+   - Runtime dependency checking during evaluation
+   - Topological sorting for complex dependency chains
+   - Visual dependency mapping in admin interface
+
 4. **How would you ensure data consistency across global regions for flag updates?**
+   - Master-slave replication with conflict resolution
+   - Eventually consistent updates with version vectors
+   - Regional flag overrides for compliance
+   - Cross-region health checks and failover
+
 5. **How would you implement flag cleanup and automated technical debt reduction?**
+   - Usage analytics to identify unused flags
+   - Automated notifications for stale flags
+   - Deprecation workflow with sunset timelines
+   - Code scanning for flag removal opportunities
 
 ---
 
@@ -1256,13 +2500,316 @@ Consider that metrics have different criticality levels - some require immediate
 └───────────────┘ └───────────┘ └───────────────┘
 ```
 
+**Database Design**
+
+*InfluxDB Schema (Real-time Metrics):*
+```sql
+-- High-frequency metrics (1-second resolution)
+CREATE RETENTION POLICY "realtime" ON "metrics" DURATION 24h REPLICATION 1
+
+-- Medium-frequency metrics (1-minute resolution)  
+CREATE RETENTION POLICY "hourly" ON "metrics" DURATION 7d REPLICATION 1
+
+-- Low-frequency metrics (5-minute resolution)
+CREATE RETENTION POLICY "daily" ON "metrics" DURATION 30d REPLICATION 1
+
+-- Measurements
+cpu_usage,host=server1,region=us-east-1 value=75.2 1640995200000000000
+memory_usage,host=server1,region=us-east-1 value=8.5 1640995200000000000
+request_count,service=api,endpoint=/users value=1250 1640995200000000000
+response_time,service=api,endpoint=/users p50=45,p95=120,p99=250 1640995200000000000
+```
+
+*ClickHouse Schema (Long-term Analytics):*
+```sql
+CREATE TABLE metrics (
+    timestamp DateTime,
+    metric_name String,
+    tags Map(String, String),
+    value Float64,
+    aggregation_type Enum('sum', 'avg', 'min', 'max', 'count'),
+    resolution_minutes UInt16
+) ENGINE = MergeTree()
+PARTITION BY toYYYYMM(timestamp)
+ORDER BY (metric_name, timestamp)
+TTL timestamp + INTERVAL 2 YEAR;
+
+CREATE TABLE metric_metadata (
+    metric_name String,
+    description String,
+    unit String,
+    metric_type Enum('counter', 'gauge', 'histogram', 'timer'),
+    retention_policy String,
+    owner String,
+    created_at DateTime
+) ENGINE = ReplacingMergeTree()
+ORDER BY metric_name;
+```
+
+**API Design**
+
+```yaml
+# Metrics Aggregation Service API
+
+/api/v1/metrics/ingest:
+  post:
+    description: Ingest metrics data
+    request:
+      metrics: array
+        - name: string
+          value: number
+          timestamp: timestamp
+          tags: object
+          type: enum [counter, gauge, histogram, timer]
+    response:
+      ingested: integer
+      errors: array
+
+/api/v1/metrics/query:
+  post:
+    description: Query metrics data
+    request:
+      query: string (PromQL-like syntax)
+      start_time: timestamp
+      end_time: timestamp
+      step: string (resolution)
+    response:
+      result_type: string
+      data: array
+
+/api/v1/metrics/metadata:
+  get:
+    description: Get metric metadata
+    parameters:
+      metric_name: string (optional)
+      namespace: string (optional)
+    response:
+      metrics: array
+        - name: string
+          description: string
+          type: string
+          unit: string
+
+/api/v1/alerts/rules:
+  post:
+    description: Create alerting rule
+    request:
+      rule_name: string
+      expression: string (PromQL)
+      threshold: number
+      severity: enum [critical, warning, info]
+      notifications: array
+    response:
+      rule_id: string
+```
+
+**Algorithm Details**
+
+*Metric Aggregation Engine:*
+```python
+class MetricAggregator:
+    def __init__(self, time_windows=[60, 300, 3600]):  # 1m, 5m, 1h
+        self.time_windows = time_windows
+        self.aggregation_buffers = {}
+        
+    def ingest_metric(self, metric_name, value, timestamp, tags, metric_type):
+        # Route to appropriate aggregation window
+        for window in self.time_windows:
+            window_key = self._get_window_key(timestamp, window)
+            buffer_key = f"{metric_name}:{window}:{window_key}"
+            
+            if buffer_key not in self.aggregation_buffers:
+                self.aggregation_buffers[buffer_key] = MetricBuffer(
+                    metric_name, window, metric_type
+                )
+            
+            self.aggregation_buffers[buffer_key].add_value(value, timestamp, tags)
+    
+    def _get_window_key(self, timestamp, window_seconds):
+        """Get the window bucket for a given timestamp"""
+        return (timestamp // window_seconds) * window_seconds
+    
+    def flush_completed_windows(self):
+        """Flush completed time windows to storage"""
+        current_time = time.time()
+        completed_buffers = []
+        
+        for buffer_key, buffer in list(self.aggregation_buffers.items()):
+            if buffer.is_complete(current_time):
+                aggregated_data = buffer.get_aggregated_data()
+                self._store_aggregated_data(aggregated_data)
+                completed_buffers.append(buffer_key)
+        
+        # Cleanup completed buffers
+        for key in completed_buffers:
+            del self.aggregation_buffers[key]
+
+class MetricBuffer:
+    def __init__(self, metric_name, window_seconds, metric_type):
+        self.metric_name = metric_name
+        self.window_seconds = window_seconds
+        self.metric_type = metric_type
+        self.values = []
+        self.start_time = None
+        
+    def add_value(self, value, timestamp, tags):
+        if self.start_time is None:
+            self.start_time = (timestamp // self.window_seconds) * self.window_seconds
+        
+        self.values.append({
+            'value': value,
+            'timestamp': timestamp,
+            'tags': tags
+        })
+    
+    def is_complete(self, current_time):
+        if self.start_time is None:
+            return False
+        return current_time >= self.start_time + self.window_seconds
+    
+    def get_aggregated_data(self):
+        if not self.values:
+            return None
+            
+        if self.metric_type == 'counter':
+            return {
+                'metric_name': self.metric_name,
+                'timestamp': self.start_time,
+                'window_seconds': self.window_seconds,
+                'sum': sum(v['value'] for v in self.values),
+                'count': len(self.values),
+                'rate': sum(v['value'] for v in self.values) / self.window_seconds
+            }
+        elif self.metric_type == 'gauge':
+            values = [v['value'] for v in self.values]
+            return {
+                'metric_name': self.metric_name,
+                'timestamp': self.start_time,
+                'window_seconds': self.window_seconds,
+                'avg': statistics.mean(values),
+                'min': min(values),
+                'max': max(values),
+                'last': values[-1]
+            }
+        elif self.metric_type == 'histogram':
+            values = [v['value'] for v in self.values]
+            return {
+                'metric_name': self.metric_name,
+                'timestamp': self.start_time,
+                'window_seconds': self.window_seconds,
+                'count': len(values),
+                'sum': sum(values),
+                'p50': statistics.median(values),
+                'p95': statistics.quantiles(values, n=20)[18] if len(values) > 20 else max(values),
+                'p99': statistics.quantiles(values, n=100)[98] if len(values) > 100 else max(values)
+            }
+```
+
+**Data Flow**
+
+*Metric Ingestion Flow:*
+```
+1. Applications → Metric Agents
+   - StatsD/Prometheus agents collect local metrics
+   - Batch and compress metrics for efficiency
+   - Add metadata tags and timestamps
+
+2. Metric Agents → Gateway Service
+   - Load balancing across gateway instances
+   - Authentication and rate limiting
+   - Metric validation and normalization
+
+3. Gateway Service → Stream Processing
+   - Kafka streams for high-throughput ingestion
+   - Real-time aggregation for dashboard updates
+   - Routing to appropriate storage systems
+
+4. Stream Processing → Storage Systems
+   - InfluxDB for real-time queries and dashboards
+   - ClickHouse for long-term analytics and reporting
+   - S3 for archival and compliance storage
+
+5. Storage Systems → Query Service
+   - Query federation across multiple storage backends
+   - Result caching for frequently accessed data
+   - API responses to dashboards and alerting
+```
+
+**Scaling Considerations**
+
+```yaml
+Ingestion Scaling:
+  - Kafka partitioning by metric namespace
+  - Auto-scaling gateway services based on throughput
+  - Batch processing for high-volume metrics
+  - Compression and efficient serialization
+
+Storage Scaling:
+  - InfluxDB clustering for real-time data
+  - ClickHouse sharding for analytical queries
+  - Tiered storage with automatic data lifecycle
+  - Read replicas for query performance
+
+Query Optimization:
+  - Pre-aggregated rollups for common queries
+  - Materialized views for dashboard queries
+  - Query result caching with TTL
+  - Parallel query execution across shards
+```
+
+**Monitoring and Alerts**
+
+```yaml
+System Metrics:
+  - ingestion_rate: 1M metrics/second target
+  - query_latency_p95: <100ms for dashboard queries
+  - storage_utilization: <80% across all systems
+  - data_loss_rate: <0.01% of ingested metrics
+
+Business Metrics:
+  - unique_metric_series: track growth patterns
+  - query_patterns: optimize for common queries
+  - retention_compliance: ensure policy adherence
+  - cost_per_metric: optimize storage efficiency
+
+Alerting Rules:
+  - Ingestion pipeline down >30 seconds
+  - Query latency >500ms for 5 minutes
+  - Storage utilization >90%
+  - Data loss rate >0.1%
+```
+
 **Follow-up Questions**
 
 1. **How would you implement metric sampling during high load while preserving accuracy?**
+   - Implement reservoir sampling for high-cardinality metrics
+   - Use consistent hashing for deterministic sampling
+   - Apply different sampling rates based on metric importance
+   - Maintain statistical accuracy with weighted aggregation
+
 2. **How would you handle metric schema evolution without breaking existing queries?**
+   - Version metric schemas with backward compatibility
+   - Implement query translation layers for old versions
+   - Gradual migration with dual-write patterns
+   - Schema registry for coordinated changes
+
 3. **How would you implement cost-effective long-term storage for compliance requirements?**
+   - Tiered storage with automatic lifecycle policies
+   - Compression and deduplication for old data
+   - Cold storage in S3 Glacier for archival
+   - Query federation across storage tiers
+
 4. **How would you detect and handle anomalous metric patterns automatically?**
+   - Statistical anomaly detection using ML models
+   - Seasonal pattern recognition for baseline establishment
+   - Real-time alerting on significant deviations
+   - Automatic data quality checks and filtering
+
 5. **How would you implement cross-datacenter metric replication for disaster recovery?**
+   - Asynchronous replication with eventual consistency
+   - Conflict resolution for duplicate metrics
+   - Cross-region query federation
+   - Automated failover with health checking
 
 ---
 
@@ -1322,13 +2869,91 @@ Consider that sessions must be globally accessible, support graceful degradation
                             └───────────┘
 ```
 
+**Database Design**
+
+*DynamoDB Schema (Session Storage):*
+```yaml
+# Sessions Table
+sessions:
+  PartitionKey: session_id
+  Attributes:
+    session_id: "sess_abc123"
+    user_id: "user_456"
+    device_id: "device_789"
+    created_at: 1640995200
+    expires_at: 1641081600
+    ip_address: "192.168.1.100"
+    is_active: true
+    session_data: {...}
+```
+
+**API Design**
+
+```yaml
+/api/v1/sessions:
+  post:
+    description: Create new session
+    request:
+      user_id: string
+      device_info: object
+    response:
+      session_token: string
+      expires_at: timestamp
+
+/api/v1/sessions/{session_id}/validate:
+  post:
+    description: Validate session
+    response:
+      valid: boolean
+      user_id: string
+      permissions: array
+```
+
+**Monitoring**
+
+```yaml
+Key Metrics:
+  - session_validation_latency_p95: <10ms
+  - concurrent_sessions_per_user: monitor limits
+  - suspicious_activity_rate: track security events
+
+Security Monitoring:
+  - Unusual login patterns and locations
+  - Session hijacking attempt detection
+  - Concurrent session limit violations
+```
+
 **Follow-up Questions**
 
 1. **How would you implement secure session sharing across different Amazon domains?**
+   - Use secure cross-domain cookies with proper SameSite policies
+   - Implement JWT tokens with domain-specific claims
+   - Create session federation service for cross-domain validation
+   - Use OAuth 2.0 for secure token exchange between domains
+
 2. **How would you handle session migration during system maintenance or failures?**
+   - Implement session replication across availability zones
+   - Use graceful session transfer during rolling updates
+   - Provide session backup and restore mechanisms
+   - Design stateless session validation where possible
+
 3. **How would you implement session concurrency limits (max devices per user)?**
+   - Track active sessions per user in Redis sets
+   - Implement FIFO eviction when limits are exceeded
+   - Provide user interface for managing active sessions
+   - Send notifications when new sessions are created
+
 4. **How would you detect and handle session hijacking or replay attacks?**
+   - Monitor IP address and geolocation changes
+   - Implement device fingerprinting validation
+   - Use challenge-response for suspicious activities
+   - Automatic session termination on high-risk events
+
 5. **How would you implement session debugging for customer support scenarios?**
+   - Create read-only session inspection tools
+   - Implement audit logs for all session operations
+   - Provide session timeline and activity history
+   - Design privacy-compliant debugging interfaces
 
 ---
 
@@ -1390,13 +3015,137 @@ Consider that files may need different processing pipelines (image resizing, vid
 └───────────┘
 ```
 
+**Database Design**
+
+*File Metadata (PostgreSQL):*
+```sql
+CREATE TABLE file_uploads (
+    file_id UUID PRIMARY KEY,
+    user_id VARCHAR(255),
+    filename VARCHAR(500),
+    content_type VARCHAR(100),
+    file_size BIGINT,
+    storage_path VARCHAR(1000),
+    upload_status VARCHAR(50),
+    created_at TIMESTAMP DEFAULT NOW(),
+    metadata JSONB
+);
+
+CREATE TABLE upload_chunks (
+    chunk_id UUID PRIMARY KEY,
+    file_id UUID REFERENCES file_uploads(file_id),
+    chunk_number INTEGER,
+    chunk_size INTEGER,
+    etag VARCHAR(100),
+    uploaded_at TIMESTAMP DEFAULT NOW()
+);
+```
+
+**API Design**
+
+```yaml
+/api/v1/uploads/initiate:
+  post:
+    description: Initiate file upload
+    request:
+      filename: string
+      content_type: string
+      file_size: integer
+    response:
+      upload_id: string
+      signed_urls: array
+
+/api/v1/uploads/{upload_id}/complete:
+  post:
+    description: Complete multipart upload
+    request:
+      parts: array
+        - part_number: integer
+          etag: string
+    response:
+      file_url: string
+      cdn_url: string
+```
+
+**Algorithm Details**
+
+*Upload Resume Manager:*
+```python
+class UploadResumeManager:
+    def initiate_upload(self, file_info):
+        # Generate presigned URLs for multipart upload
+        upload_id = self._create_multipart_upload(file_info)
+        
+        # Calculate chunk size (5MB-100MB based on file size)
+        chunk_size = self._calculate_optimal_chunk_size(file_info['file_size'])
+        
+        # Generate presigned URLs for each chunk
+        signed_urls = []
+        num_chunks = math.ceil(file_info['file_size'] / chunk_size)
+        
+        for i in range(num_chunks):
+            url = self._generate_presigned_url(upload_id, i+1)
+            signed_urls.append({
+                'part_number': i+1,
+                'url': url,
+                'start_byte': i * chunk_size,
+                'end_byte': min((i+1) * chunk_size - 1, file_info['file_size'] - 1)
+            })
+        
+        return {
+            'upload_id': upload_id,
+            'chunk_size': chunk_size,
+            'signed_urls': signed_urls
+        }
+```
+
+**Scaling and Monitoring**
+
+```yaml
+Scaling Strategy:
+  - S3 multipart uploads for large files
+  - Lambda functions for file processing
+  - SQS for async processing workflows
+  - CloudFront for global file delivery
+
+Key Metrics:
+  - upload_success_rate: >99.9%
+  - upload_completion_time_p95: <30 seconds for 1GB files
+  - processing_latency: <5 minutes for standard operations
+  - storage_cost_optimization: deduplication savings
+```
+
 **Follow-up Questions**
 
 1. **How would you implement deduplication to save storage costs?**
+   - Calculate file hashes (SHA-256) during upload
+   - Check hash against existing files before storage
+   - Use reference counting for shared file storage
+   - Implement copy-on-write for file modifications
+
 2. **How would you handle file uploads that require real-time processing?**
+   - Stream processing during upload using Lambda
+   - Real-time virus scanning with ClamAV integration
+   - Immediate thumbnail generation for images
+   - WebSocket connections for live progress updates
+
 3. **How would you implement secure direct uploads to S3 from client applications?**
+   - Generate presigned URLs with strict policies
+   - Implement upload token validation
+   - Use CORS policies for browser-based uploads
+   - Monitor and rate-limit upload attempts
+
 4. **How would you handle file corruption detection and automatic repair?**
+   - Verify checksums after upload completion
+   - Implement automatic retry for failed chunks
+   - Use S3 versioning for file recovery
+   - Cross-region replication for disaster recovery
+
 5. **How would you implement efficient file search and discovery across billions of files?**
+   - Index file metadata in Elasticsearch
+   - Implement full-text search for documents
+   - Use machine learning for content-based search
+   - Cache frequently accessed search results
 
 ---
 
@@ -1456,13 +3205,117 @@ Consider that autocomplete suggestions influence user behavior and business metr
 └───────────────┘               └───────────────┘
 ```
 
+**Database Design**
+
+*Elasticsearch Schema:*
+```json
+{
+  "mappings": {
+    "properties": {
+      "query": {"type": "text", "analyzer": "autocomplete_analyzer"},
+      "suggestions": {"type": "completion"},
+      "popularity_score": {"type": "integer"},
+      "category": {"type": "keyword"},
+      "language": {"type": "keyword"}
+    }
+  }
+}
+```
+
+**API Design**
+
+```yaml
+/api/v1/autocomplete:
+  get:
+    description: Get autocomplete suggestions
+    parameters:
+      q: string (query prefix)
+      limit: integer (max results)
+      user_id: string (for personalization)
+    response:
+      suggestions: array
+        - text: string
+          score: number
+          category: string
+```
+
+**Algorithm Details**
+
+*Autocomplete Ranking Engine:*
+```python
+class AutocompleteRanker:
+    def rank_suggestions(self, query, suggestions, user_context):
+        ranked = []
+        
+        for suggestion in suggestions:
+            score = 0
+            
+            # Base popularity score (40%)
+            score += suggestion['popularity'] * 0.4
+            
+            # Query relevance (30%)
+            score += self._calculate_relevance(query, suggestion['text']) * 0.3
+            
+            # Personalization (20%)
+            score += self._calculate_personalization(suggestion, user_context) * 0.2
+            
+            # Trending boost (10%)
+            score += self._calculate_trending_boost(suggestion) * 0.1
+            
+            ranked.append({
+                'suggestion': suggestion,
+                'final_score': score
+            })
+        
+        return sorted(ranked, key=lambda x: x['final_score'], reverse=True)
+```
+
+**Monitoring**
+
+```yaml
+Performance Metrics:
+  - autocomplete_latency_p95: <100ms
+  - cache_hit_ratio: >95%
+  - suggestion_accuracy: measure click-through rates
+  - personalization_effectiveness: A/B test results
+
+System Health:
+  - elasticsearch_cluster_health: monitor yellow/red status
+  - cache_memory_usage: <80% of allocated
+  - suggestion_index_freshness: <1 hour lag
+```
+
 **Follow-up Questions**
 
 1. **How would you implement real-time trending topic integration?**
+   - Stream search queries to Kafka for real-time processing
+   - Use sliding window counters to detect trending patterns
+   - Update suggestion scores in real-time based on query volume
+   - Implement decay functions for time-sensitive trends
+
 2. **How would you handle autocomplete for voice queries with speech recognition errors?**
+   - Implement phonetic matching algorithms (Soundex, Metaphone)
+   - Use edit distance calculations for fuzzy matching
+   - Maintain pronunciation dictionaries for common terms
+   - Apply machine learning models trained on speech recognition errors
+
 3. **How would you implement and measure the effectiveness of personalization?**
+   - Track user search history and click patterns
+   - Build user interest profiles based on behavior
+   - A/B test personalized vs non-personalized suggestions
+   - Measure engagement metrics like click-through rates
+
 4. **How would you handle autocomplete suggestions for sensitive or inappropriate content?**
+   - Implement content filtering with blacklists
+   - Use machine learning for automated content moderation
+   - Provide admin controls for suggestion management
+   - Regional filtering based on local regulations
+
 5. **How would you implement A/B testing for different ranking algorithms?**
+   - Route users to different ranking variants based on user ID hash
+   - Track conversion metrics for each algorithm variant
+   - Implement statistical significance testing
+   - Gradual rollout of winning algorithms
 
 ---
 
@@ -1521,13 +3374,139 @@ Consider that events have different priorities and processing requirements - som
 └───┘     └───────────┘ └───────────┘
 ```
 
+**Database Design**
+
+*Event Schema (Kafka + Data Lake):*
+```json
+{
+  "event_id": "evt_123456",
+  "user_id": "user_789",
+  "session_id": "sess_abc",
+  "event_type": "page_view",
+  "timestamp": 1640995200000,
+  "properties": {
+    "page_url": "/products/item123",
+    "referrer": "https://google.com"
+  },
+  "context": {
+    "ip_address": "192.168.1.100",
+    "device_type": "mobile",
+    "country": "US"
+  }
+}
+```
+
+**API Design**
+
+```yaml
+/api/v1/events:
+  post:
+    description: Track user events
+    request:
+      events: array
+        - event_type: string
+          user_id: string
+          properties: object
+          timestamp: timestamp
+    response:
+      ingested: integer
+      status: string
+
+/api/v1/analytics/funnel:
+  post:
+    description: Analyze conversion funnel
+    request:
+      steps: array[string]
+      start_date: date
+      end_date: date
+      filters: object
+    response:
+      funnel_data: array
+        - step: string
+          users: integer
+          conversion_rate: number
+```
+
+**Algorithm Details**
+
+*Real-time Event Processor:*
+```python
+class EventProcessor:
+    def process_event(self, event):
+        # Enrich with additional context
+        enriched_event = self._enrich_event(event)
+        
+        # Real-time analytics update
+        self._update_realtime_metrics(enriched_event)
+        
+        # User journey tracking
+        self._update_user_journey(enriched_event)
+        
+        # Route to appropriate storage
+        self._route_to_storage(enriched_event)
+    
+    def _update_user_journey(self, event):
+        # Reconstruct user session from events
+        session_events = self._get_session_events(event['session_id'])
+        journey = self._reconstruct_journey(session_events)
+        
+        # Update user behavior profile
+        self._update_user_profile(event['user_id'], journey)
+```
+
+**Scaling and Monitoring**
+
+```yaml
+Scaling Strategy:
+  - Kafka partitioning by user_id for session reconstruction
+  - Spark Streaming for real-time processing
+  - S3 + Athena for long-term analytics
+  - Redis for real-time metrics caching
+
+Key Metrics:
+  - event_ingestion_rate: 116K events/second average
+  - processing_latency: <100ms for real-time events
+  - data_completeness: >99.9% of events successfully processed
+  - query_performance: <5s for standard analytics queries
+
+Privacy Compliance:
+  - GDPR deletion workflows within 30 days
+  - Data anonymization for long-term storage
+  - Consent management integration
+  - Audit logging for compliance reporting
+```
+
 **Follow-up Questions**
 
 1. **How would you implement user session reconstruction from individual events?**
+   - Use session_id to group related events
+   - Sort events by timestamp to create chronological journey
+   - Handle session timeout and continuation logic
+   - Implement sliding window aggregation for session metrics
+
 2. **How would you handle duplicate events and ensure exactly-once processing?**
+   - Use event_id for deduplication at ingestion
+   - Implement idempotent processing with Redis tracking
+   - Use Kafka exactly-once semantics for stream processing
+   - Design retry logic with exponential backoff
+
 3. **How would you implement real-time anomaly detection on user behavior patterns?**
+   - Use statistical models to detect unusual patterns
+   - Implement machine learning for behavioral anomalies
+   - Set up real-time alerting for suspicious activities
+   - Create automated response systems for fraud detection
+
 4. **How would you ensure GDPR compliance for user data deletion requests?**
+   - Implement data lineage tracking across all systems
+   - Create automated deletion workflows
+   - Use data retention policies with automatic expiration
+   - Maintain audit logs for compliance verification
+
 5. **How would you implement cost-effective long-term storage for regulatory compliance?**
+   - Use tiered storage with lifecycle policies
+   - Compress and deduplicate historical data
+   - Archive old data to Glacier for compliance
+   - Implement query federation across storage tiers
 
 ## Summary
 

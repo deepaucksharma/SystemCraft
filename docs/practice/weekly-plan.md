@@ -416,11 +416,284 @@ Daily Targets:
 - Post-interview reflection and learning capture
 ```
 
-## 📚 Weekly Planning Resources
+## 📅 Detailed Week-by-Week Progression Guide
+
+### Weeks 1-4: Foundation Phase
+**Focus: Assessment, Core Skills, and Routine Building**
+
+#### Week 1: Comprehensive Baseline Assessment
+**Theme: "Know Your Starting Point" | Target: 15 hours**
+
+**Time Allocation:**
+- System Design: 5 hours (33%) - Foundation concepts
+- Behavioral: 5 hours (33%) - Story mapping and initial development  
+- Coding: 3 hours (20%) - Pattern assessment
+- Planning: 2 hours (14%) - Setup and strategy
+
+**Daily Breakdown:**
+- **Monday (3h)**: Complete [self-assessment](self-assessment.md) + [L6/L7 alignment](../fundamentals/l6-vs-l7.md)
+- **Tuesday (3h)**: Technical baseline - coding problems + basic system design
+- **Wednesday (3h)**: Map experiences to [Leadership Principles](../fundamentals/leadership-principles.md)
+- **Thursday (3h)**: First mock interview + feedback analysis
+- **Friday (2h)**: Week review + Week 2 planning
+- **Weekend (1h)**: Light study + environment setup
+
+**Key Deliverables:**
+- [ ] Complete skills gap analysis with specific improvement targets
+- [ ] Initial 5-story STAR portfolio covering core Leadership Principles
+- [ ] Technical baseline established across coding and system design
+- [ ] 12-week personalized learning plan created
+
+#### Week 2: Core Pattern Development  
+**Theme: "Build Fundamental Skills" | Target: 16 hours**
+
+**Time Allocation:**
+- System Design: 5.5 hours (34%) - Core patterns and frameworks
+- Behavioral: 4.5 hours (28%) - Story development and practice
+- Coding: 4 hours (25%) - Algorithm patterns mastery
+- Integration: 2 hours (13%) - Mock practice
+
+**Daily Focus:**
+- **Monday (3.5h)**: Algorithm patterns - Arrays, Strings, Hash Maps ([patterns guide](../coding/patterns.md))
+- **Tuesday (3.5h)**: [System design fundamentals](../system-design/fundamentals.md) + URL shortener problem
+- **Wednesday (3.5h)**: Develop 3 new STAR stories using [framework](../behavioral/star-framework.md)
+- **Thursday (3.5h)**: Technical mock interview + immediate feedback integration
+- **Friday (2h)**: Deep dive topic selection based on target level
+
+**L6 vs L7 Specific Focus:**
+- **L6 Track**: Microservices, database scaling, team leadership stories
+- **L7 Track**: Platform engineering, organizational transformation stories
+
+#### Week 3: Integration and Advanced Practice
+**Theme: "Connect Technical and Leadership" | Target: 17 hours**
+
+**Time Allocation:**  
+- System Design: 6 hours (35%) - Complex problems with leadership context
+- Behavioral: 5 hours (29%) - Advanced scenarios and leadership depth
+- Coding: 4 hours (24%) - Complex patterns + system design coding
+- Mock Practice: 2 hours (12%) - Full integration practice
+
+**Advanced Skills Development:**
+- **Monday**: Advanced behavioral scenarios - [L6](../behavioral/l6-scenarios.md)/[L7](../behavioral/l7-scenarios.md) specific
+- **Tuesday**: Complex system design with operational concerns
+- **Wednesday**: Coding problems with architectural implications  
+- **Thursday**: Full mock interview loop with technical + behavioral integration
+- **Friday**: Strategic thinking development for target level
+
+#### Week 4: Foundation Consolidation
+**Theme: "Solidify and Assess" | Target: 17 hours**
+
+**Milestone Assessment:**
+- [ ] Can solve medium coding problems consistently in 30-40 minutes
+- [ ] Complete level-appropriate system design problems with clear explanation
+- [ ] Have 8-10 polished STAR stories with natural delivery
+- [ ] Mock interview performance meets 70%+ of target level expectations
+
+### Weeks 5-8: Advanced Development Phase
+**Focus: Complex Scenarios, Integration Mastery, Leadership Depth**
+
+#### Week 5: Advanced Technical Mastery
+**Theme: "Level-Appropriate Complexity" | Target: 18 hours**
+
+**Daily Intensive Focus:**
+- **Monday (4h)**: Advanced algorithm patterns - DP, graphs, advanced trees
+- **Tuesday (4h)**: Level-specific system design: [L6 problems](../system-design/l6-problems.md) or [L7 problems](../system-design/l7-problems.md)
+- **Wednesday (4h)**: Technical leadership stories with hands-on examples
+- **Thursday (4h)**: Advanced mock with increased complexity and pressure
+- **Friday (2h)**: Technical deep dive expansion - add second expertise area
+
+**L6 Focus**: Deep expertise in 2-3 domains, team-scale architecture
+**L7 Focus**: Broad expertise across 4-5 domains, organizational-scale platforms
+
+#### Week 6: Organizational Leadership Excellence
+**Theme: "Leadership Through Influence" | Target: 18 hours**
+
+**Behavioral Excellence Development:**
+- Cross-functional influence and collaboration stories
+- Crisis leadership and transformation narratives  
+- Executive-level communication and strategic thinking
+- [Bar raiser preparation](../behavioral/bar-raiser.md) and cultural fit demonstration
+
+#### Week 7: Seamless Technical-Leadership Integration  
+**Theme: "Natural Integration" | Target: 18 hours**
+
+**Integration Mastery:**
+- System design problems with team and organizational context
+- Coding problems with management perspective and mentoring opportunities
+- Technical decisions with business impact and stakeholder management
+- Leadership stories with deep technical context and implications
+
+#### Week 8: Advanced Scenario Mastery
+**Theme: "Handle Any Challenge" | Target: 19 hours**
+
+**Edge Case Preparation:**
+- Complex technical problems with multiple constraints
+- Advanced behavioral scenarios with ethical and strategic complexity
+- Mock interviews with challenging interviewer styles and pressure
+- Integration of all skills with peak performance demonstration
+
+### Weeks 9-12: Interview Mastery Phase  
+**Focus: Peak Performance, Polish, Confidence**
+
+#### Week 9: Mock Interview Intensive
+**Theme: "Practice Under Pressure" | Target: 19 hours**
+
+**Daily Mock Interview Focus:**
+- Different interviewer personalities and challenge styles
+- Full interview loops with realistic timing and pressure
+- Advanced edge cases and unexpected scenario handling
+- Immediate feedback integration and performance optimization
+
+#### Week 10: Edge Cases and Advanced Scenarios
+**Theme: "Expect the Unexpected" | Target: 19 hours**
+
+**Advanced Challenge Preparation:**
+- Technical problems with significant ambiguity or missing information
+- Leadership scenarios with competing stakeholders and political complexity
+- Integration challenges requiring both technical depth and political sophistication
+- Stress testing with maximum complexity and pressure scenarios
+
+#### Week 11: Final Polish and Confidence Building  
+**Theme: "Peak Performance" | Target: 18 hours**
+
+**Excellence Refinement:**
+- Signature story and response perfection with memorable delivery
+- Technical confidence and clarity in explanation and presentation
+- Integration excellence with seamless transitions and consistent narrative
+- Confidence building through positive visualization and authentic preparation
+
+#### Week 12: Interview Execution Preparation
+**Theme: "Execute with Excellence" | Target: 15 hours**
+
+**Final Preparation:**
+- Light maintenance practice to stay sharp without overworking
+- Interview day logistics preparation with comprehensive backup planning
+- Mental preparation, stress management, and confidence optimization
+- Interview execution with authentic leadership presence and genuine engagement
+
+## 📊 Level-Specific Weekly Progressions
+
+### L6 Engineering Manager Track
+
+#### Technical Progression (12 weeks)
+```markdown
+Weeks 1-2: Master core algorithms and basic system design
+Weeks 3-4: Multi-service architecture and database design
+Weeks 5-6: Microservices patterns and API design mastery  
+Weeks 7-8: Advanced scaling and operational excellence
+Weeks 9-10: Complex integration and edge case handling
+Weeks 11-12: Technical confidence and clear explanation mastery
+```
+
+#### Leadership Progression (12 weeks)  
+```markdown
+Weeks 1-2: Core team leadership and individual contributor management
+Weeks 3-4: Cross-team collaboration and technical decision-making
+Weeks 5-6: Organizational influence and strategic technical thinking
+Weeks 7-8: Crisis leadership and transformation management
+Weeks 9-10: Advanced behavioral scenarios and cultural demonstration
+Weeks 11-12: Executive presence and confident leadership communication
+```
+
+### L7 Principal Engineering Manager Track
+
+#### Technical Progression (12 weeks)
+```markdown
+Weeks 1-2: Advanced system design and platform thinking foundations
+Weeks 3-4: Distributed systems and organizational-scale architecture
+Weeks 5-6: Platform engineering and cross-organizational technical strategy
+Weeks 7-8: Industry-leading architecture and innovation demonstration  
+Weeks 9-10: Complex technical-business integration and strategic influence
+Weeks 11-12: Technical vision and transformational architecture confidence
+```
+
+#### Leadership Progression (12 weeks)
+```markdown
+Weeks 1-2: Senior manager leadership and organizational awareness
+Weeks 3-4: Multi-organizational influence and strategic thinking
+Weeks 5-6: Transformational leadership and culture change management
+Weeks 7-8: Executive-level influence and company-wide impact demonstration
+Weeks 9-10: Advanced strategic scenarios and visionary leadership
+Weeks 11-12: Transformational presence and industry leadership confidence
+```
+
+## 🎯 Weekly Success Metrics and Checkpoints
+
+### Quantitative Weekly Targets
+```markdown
+**Weeks 1-4 (Foundation):**
+- Study Hours: 15-17/week (gradually increasing)
+- Coding Problems: 15-25/week (building consistency)
+- System Design: 2-3/week (learning patterns)
+- STAR Stories: 2-3 new stories/week (developing portfolio)
+- Mock Interviews: 1/week (establishing baseline)
+
+**Weeks 5-8 (Development):**
+- Study Hours: 17-19/week (sustained intensity)
+- Coding Problems: 20-30/week (advanced patterns)
+- System Design: 3-4/week (complex scenarios)
+- Story Integration: 1-2 refined stories/week (adding depth)
+- Mock Interviews: 2/week (building performance)
+
+**Weeks 9-12 (Mastery):**  
+- Study Hours: 15-19/week (focused intensity)
+- Coding Problems: 15-25/week (maintenance + edge cases)
+- System Design: 2-4/week (peak performance)
+- Story Polish: Refinement focus (perfecting delivery)
+- Mock Interviews: 2-3/week (performance optimization)
+```
+
+### Qualitative Weekly Assessment Framework
+```markdown
+**Technical Growth Questions:**
+1. What new technical patterns or concepts did I master this week?
+2. How has my approach to system design problems evolved?
+3. Can I explain technical decisions clearly to different audiences?
+4. Do I demonstrate technical leadership credibility authentically?
+
+**Behavioral Excellence Questions:**
+1. Which Leadership Principles do I now demonstrate more effectively?
+2. How has my storytelling clarity and impact improved?
+3. Can I handle unexpected behavioral questions with confidence?
+4. Do my stories show consistent leadership growth and learning?
+
+**Integration and Performance Questions:**
+1. How seamlessly do I transition between technical and leadership discussions?
+2. What is my confidence level if interviewed today (1-10 scale)?
+3. How effectively do I handle pressure and recover from mistakes?
+4. Do I maintain authentic leadership presence throughout mock interviews?
+
+**Learning and Development Questions:**
+1. What external validation or feedback have I received this week?
+2. How am I addressing my top 2 identified improvement areas?
+3. What industry knowledge or current trends have I incorporated?
+4. How sustainable is my current pace and approach for remaining weeks?
+```
+
+## 📚 Enhanced Weekly Planning Resources
+
+### Core Planning Tools
+- **[6-Week Intensive Plan](6-week-plan.md)** - For candidates with confirmed interviews
+- **[12-Week Comprehensive Plan](12-week-plan.md)** - For thorough systematic preparation  
 - **[Self Assessment](self-assessment.md)** - Set weekly goals based on current level
-- **[Practice Framework](index.md)** - Overall structure for weekly planning
 - **[Mock Interviews](mock-interviews.md)** - Schedule and structure weekly practice
+
+### Level-Specific Resources
+- **[L6 vs L7 Comparison](../fundamentals/l6-vs-l7.md)** - Align weekly focus to target level
+- **[L6 System Design Problems](../system-design/l6-problems.md)** - Level-appropriate technical practice
+- **[L7 System Design Problems](../system-design/l7-problems.md)** - Advanced architectural scenarios
+- **[L6 Behavioral Scenarios](../behavioral/l6-scenarios.md)** - Team leadership focus
+- **[L7 Behavioral Scenarios](../behavioral/l7-scenarios.md)** - Organizational transformation focus
+
+### Skill Development Resources  
+- **[System Design Fundamentals](../system-design/fundamentals.md)** - Core technical concepts
+- **[STAR Framework](../behavioral/star-framework.md)** - Behavioral story development
+- **[Leadership Principles](../fundamentals/leadership-principles.md)** - Amazon culture alignment
+- **[Coding Patterns](../coding/patterns.md)** - Technical problem-solving approaches
 
 ---
 
-*Start with our [practice framework](index.md) and [self-assessment](self-assessment.md) to create your first weekly plan while this detailed guide is being developed.*
+!!! tip "Choosing Your Timeline"
+    **6-Week Plan**: Choose if you have confirmed interviews and need intensive preparation
+    **12-Week Plan**: Choose for comprehensive skill building and thorough preparation  
+    **Custom Plan**: Use this weekly framework to create your own timeline based on specific needs

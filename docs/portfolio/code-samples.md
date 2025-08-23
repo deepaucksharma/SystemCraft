@@ -293,379 +293,6 @@ func (r *TokenBucketLimiter) GetStats(ctx context.Context, key string) (*BucketS
 - **Performance**: Single Redis call using Lua script to minimize latency
 - **Monitoring**: Stats interface for observability
 
-### Sample 2: Event Sourcing Implementation (Java)
-
-**Purpose**: Shows understanding of complex architectural patterns, data consistency, and domain modeling.
-
-```java
-package com.portfolio.eventsourcing;
-
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-
-import java.time.Instant;
-import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-import java.util.stream.Collectors;
-
-/**
- * Event Sourcing implementation for order management system
- * Demonstrates CQRS, event sourcing, and aggregate design patterns
- */
-
-// Base event interface with type information for JSON serialization
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, property = "@type")
-public interface Event {
-    UUID getAggregateId();
-    Instant getTimestamp();
-    String getEventType();
-    long getVersion();
-}
-
-// Abstract base for all events
-public abstract class BaseEvent implements Event {
-    private final UUID aggregateId;
-    private final Instant timestamp;
-    private final long version;
-
-    protected BaseEvent(UUID aggregateId, long version) {
-        this.aggregateId = aggregateId;
-        this.timestamp = Instant.now();
-        this.version = version;
-    }
-
-    @Override
-    public UUID getAggregateId() { return aggregateId; }
-
-    @Override
-    public Instant getTimestamp() { return timestamp; }
-
-    @Override
-    public long getVersion() { return version; }
-
-    @Override
-    public String getEventType() { return this.getClass().getSimpleName(); }
-}
-
-// Domain Events
-public class OrderCreatedEvent extends BaseEvent {
-    private final String customerId;
-    private final List<OrderItem> items;
-    private final double totalAmount;
-
-    public OrderCreatedEvent(UUID aggregateId, long version, String customerId, 
-                           List<OrderItem> items, double totalAmount) {
-        super(aggregateId, version);
-        this.customerId = customerId;
-        this.items = new ArrayList<>(items);
-        this.totalAmount = totalAmount;
-    }
-
-    // Getters...
-    public String getCustomerId() { return customerId; }
-    public List<OrderItem> getItems() { return Collections.unmodifiableList(items); }
-    public double getTotalAmount() { return totalAmount; }
-}
-
-public class OrderItemAddedEvent extends BaseEvent {
-    private final OrderItem item;
-
-    public OrderItemAddedEvent(UUID aggregateId, long version, OrderItem item) {
-        super(aggregateId, version);
-        this.item = item;
-    }
-
-    public OrderItem getItem() { return item; }
-}
-
-public class OrderShippedEvent extends BaseEvent {
-    private final String shippingAddress;
-    private final String trackingNumber;
-
-    public OrderShippedEvent(UUID aggregateId, long version, String shippingAddress, String trackingNumber) {
-        super(aggregateId, version);
-        this.shippingAddress = shippingAddress;
-        this.trackingNumber = trackingNumber;
-    }
-
-    public String getShippingAddress() { return shippingAddress; }
-    public String getTrackingNumber() { return trackingNumber; }
-}
-
-// Value Objects
-public class OrderItem {
-    private final String productId;
-    private final int quantity;
-    private final double price;
-
-    public OrderItem(String productId, int quantity, double price) {
-        if (quantity <= 0) throw new IllegalArgumentException("Quantity must be positive");
-        if (price < 0) throw new IllegalArgumentException("Price cannot be negative");
-        
-        this.productId = productId;
-        this.quantity = quantity;
-        this.price = price;
-    }
-
-    public String getProductId() { return productId; }
-    public int getQuantity() { return quantity; }
-    public double getPrice() { return price; }
-    public double getTotalPrice() { return quantity * price; }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof OrderItem)) return false;
-        OrderItem orderItem = (OrderItem) o;
-        return quantity == orderItem.quantity &&
-               Double.compare(orderItem.price, price) == 0 &&
-               Objects.equals(productId, orderItem.productId);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(productId, quantity, price);
-    }
-}
-
-// Order Aggregate
-public class Order {
-    private UUID id;
-    private String customerId;
-    private List<OrderItem> items;
-    private OrderStatus status;
-    private double totalAmount;
-    private String shippingAddress;
-    private String trackingNumber;
-    private long version;
-
-    // List of uncommitted events
-    private final List<Event> uncommittedEvents = new ArrayList<>();
-
-    public enum OrderStatus {
-        CREATED, CONFIRMED, SHIPPED, DELIVERED, CANCELLED
-    }
-
-    // Constructor for new orders
-    public Order(UUID id, String customerId, List<OrderItem> items) {
-        this.id = id;
-        this.customerId = customerId;
-        this.items = new ArrayList<>(items);
-        this.status = OrderStatus.CREATED;
-        this.totalAmount = items.stream().mapToDouble(OrderItem::getTotalPrice).sum();
-        this.version = 0;
-
-        // Raise domain event
-        addEvent(new OrderCreatedEvent(id, getNextVersion(), customerId, items, totalAmount));
-    }
-
-    // Constructor for rebuilding from events
-    private Order(UUID id) {
-        this.id = id;
-        this.items = new ArrayList<>();
-        this.version = 0;
-    }
-
-    // Factory method to rebuild aggregate from events
-    public static Order fromEvents(UUID id, List<Event> events) {
-        Order order = new Order(id);
-        events.forEach(order::apply);
-        return order;
-    }
-
-    // Apply event to update aggregate state
-    private void apply(Event event) {
-        switch (event.getEventType()) {
-            case "OrderCreatedEvent":
-                apply((OrderCreatedEvent) event);
-                break;
-            case "OrderItemAddedEvent":
-                apply((OrderItemAddedEvent) event);
-                break;
-            case "OrderShippedEvent":
-                apply((OrderShippedEvent) event);
-                break;
-            default:
-                throw new IllegalArgumentException("Unknown event type: " + event.getEventType());
-        }
-        this.version = event.getVersion();
-    }
-
-    private void apply(OrderCreatedEvent event) {
-        this.customerId = event.getCustomerId();
-        this.items = new ArrayList<>(event.getItems());
-        this.totalAmount = event.getTotalAmount();
-        this.status = OrderStatus.CREATED;
-    }
-
-    private void apply(OrderItemAddedEvent event) {
-        this.items.add(event.getItem());
-        this.totalAmount += event.getItem().getTotalPrice();
-    }
-
-    private void apply(OrderShippedEvent event) {
-        this.status = OrderStatus.SHIPPED;
-        this.shippingAddress = event.getShippingAddress();
-        this.trackingNumber = event.getTrackingNumber();
-    }
-
-    // Business methods that generate events
-    public void addItem(OrderItem item) {
-        if (status != OrderStatus.CREATED) {
-            throw new IllegalStateException("Cannot add items to order in status: " + status);
-        }
-
-        addEvent(new OrderItemAddedEvent(id, getNextVersion(), item));
-        apply(uncommittedEvents.get(uncommittedEvents.size() - 1));
-    }
-
-    public void ship(String shippingAddress, String trackingNumber) {
-        if (status != OrderStatus.CREATED && status != OrderStatus.CONFIRMED) {
-            throw new IllegalStateException("Cannot ship order in status: " + status);
-        }
-
-        addEvent(new OrderShippedEvent(id, getNextVersion(), shippingAddress, trackingNumber));
-        apply(uncommittedEvents.get(uncommittedEvents.size() - 1));
-    }
-
-    private void addEvent(Event event) {
-        uncommittedEvents.add(event);
-    }
-
-    private long getNextVersion() {
-        return version + uncommittedEvents.size() + 1;
-    }
-
-    public List<Event> getUncommittedEvents() {
-        return Collections.unmodifiableList(uncommittedEvents);
-    }
-
-    public void markEventsAsCommitted() {
-        uncommittedEvents.clear();
-    }
-
-    // Getters
-    public UUID getId() { return id; }
-    public String getCustomerId() { return customerId; }
-    public List<OrderItem> getItems() { return Collections.unmodifiableList(items); }
-    public OrderStatus getStatus() { return status; }
-    public double getTotalAmount() { return totalAmount; }
-    public long getVersion() { return version; }
-    public String getShippingAddress() { return shippingAddress; }
-    public String getTrackingNumber() { return trackingNumber; }
-}
-
-// Event Store Interface
-public interface EventStore {
-    void saveEvents(UUID aggregateId, List<Event> events, long expectedVersion);
-    List<Event> getEvents(UUID aggregateId);
-    List<Event> getEvents(UUID aggregateId, long fromVersion);
-}
-
-// In-memory implementation for demonstration
-public class InMemoryEventStore implements EventStore {
-    private final Map<UUID, List<Event>> eventStreams = new ConcurrentHashMap<>();
-    private final ReadWriteLock lock = new ReentrantReadWriteLock();
-    private final ObjectMapper objectMapper;
-
-    public InMemoryEventStore() {
-        this.objectMapper = new ObjectMapper();
-        this.objectMapper.registerModule(new JavaTimeModule());
-    }
-
-    @Override
-    public void saveEvents(UUID aggregateId, List<Event> events, long expectedVersion) {
-        lock.writeLock().lock();
-        try {
-            List<Event> existingEvents = eventStreams.getOrDefault(aggregateId, new ArrayList<>());
-            
-            // Check for concurrency conflicts
-            if (!existingEvents.isEmpty() && existingEvents.get(existingEvents.size() - 1).getVersion() != expectedVersion) {
-                throw new ConcurrencyException("Expected version " + expectedVersion + 
-                    " but was " + existingEvents.get(existingEvents.size() - 1).getVersion());
-            }
-
-            // Validate event versions
-            for (int i = 0; i < events.size(); i++) {
-                long expectedEventVersion = expectedVersion + i + 1;
-                if (events.get(i).getVersion() != expectedEventVersion) {
-                    throw new IllegalArgumentException("Event version mismatch");
-                }
-            }
-
-            existingEvents.addAll(events);
-            eventStreams.put(aggregateId, existingEvents);
-        } finally {
-            lock.writeLock().unlock();
-        }
-    }
-
-    @Override
-    public List<Event> getEvents(UUID aggregateId) {
-        lock.readLock().lock();
-        try {
-            return new ArrayList<>(eventStreams.getOrDefault(aggregateId, Collections.emptyList()));
-        } finally {
-            lock.readLock().unlock();
-        }
-    }
-
-    @Override
-    public List<Event> getEvents(UUID aggregateId, long fromVersion) {
-        lock.readLock().lock();
-        try {
-            return eventStreams.getOrDefault(aggregateId, Collections.emptyList())
-                .stream()
-                .filter(event -> event.getVersion() > fromVersion)
-                .collect(Collectors.toList());
-        } finally {
-            lock.readLock().unlock();
-        }
-    }
-}
-
-// Repository for Order aggregate
-public class OrderRepository {
-    private final EventStore eventStore;
-
-    public OrderRepository(EventStore eventStore) {
-        this.eventStore = eventStore;
-    }
-
-    public Order getById(UUID id) {
-        List<Event> events = eventStore.getEvents(id);
-        if (events.isEmpty()) {
-            throw new AggregateNotFoundException("Order not found: " + id);
-        }
-        return Order.fromEvents(id, events);
-    }
-
-    public void save(Order order) {
-        List<Event> uncommittedEvents = order.getUncommittedEvents();
-        if (!uncommittedEvents.isEmpty()) {
-            eventStore.saveEvents(order.getId(), uncommittedEvents, order.getVersion() - uncommittedEvents.size());
-            order.markEventsAsCommitted();
-        }
-    }
-}
-
-// Custom exceptions
-public class ConcurrencyException extends RuntimeException {
-    public ConcurrencyException(String message) {
-        super(message);
-    }
-}
-
-public class AggregateNotFoundException extends RuntimeException {
-    public AggregateNotFoundException(String message) {
-        super(message);
-    }
-}
-```
-
 **Key Technical Concepts Demonstrated**:
 - **Event Sourcing**: Complete implementation with event store and aggregate reconstruction
 - **Domain-Driven Design**: Proper aggregate boundaries and domain events
@@ -674,6 +301,239 @@ public class AggregateNotFoundException extends RuntimeException {
 - **Design Patterns**: Factory, Repository, and Command patterns
 - **Data Integrity**: Validation and consistency checks
 - **Thread Safety**: Proper synchronization for concurrent access
+
+### Sample 2: Event Sourcing Implementation (Java)
+
+**Purpose**: Shows understanding of complex architectural patterns, data consistency, and domain modeling.
+
+=== "Order.java (Aggregate Root)"
+
+    ```java
+    package com.portfolio.eventsourcing;
+    
+    import java.util.*;
+    
+    // Order Aggregate
+    public class Order {
+        private UUID id;
+        private String customerId;
+        private List<OrderItem> items;
+        private OrderStatus status;
+        private double totalAmount;
+        private String shippingAddress;
+        private String trackingNumber;
+        private long version;
+    
+        // List of uncommitted events
+        private final List<Event> uncommittedEvents = new ArrayList<>();
+    
+        public enum OrderStatus {
+            CREATED, CONFIRMED, SHIPPED, DELIVERED, CANCELLED
+        }
+    
+        // Constructor for new orders
+        public Order(UUID id, String customerId, List<OrderItem> items) {
+            // ... constructor logic ...
+            addEvent(new OrderCreatedEvent(id, getNextVersion(), customerId, items, totalAmount));
+        }
+    
+        // Constructor for rebuilding from events
+        private Order(UUID id) {
+            this.id = id;
+            this.items = new ArrayList<>();
+            this.version = 0;
+        }
+    
+        // Factory method to rebuild aggregate from events
+        public static Order fromEvents(UUID id, List<Event> events) {
+            Order order = new Order(id);
+            events.forEach(order::apply);
+            return order;
+        }
+    
+        // Apply event to update aggregate state
+        private void apply(Event event) {
+            if (event instanceof OrderCreatedEvent) {
+                apply((OrderCreatedEvent) event);
+            } else if (event instanceof OrderItemAddedEvent) {
+                apply((OrderItemAddedEvent) event);
+            } else if (event instanceof OrderShippedEvent) {
+                apply((OrderShippedEvent) event);
+            } else {
+                throw new IllegalArgumentException("Unknown event type: " + event.getClass().getSimpleName());
+            }
+            this.version = event.getVersion();
+        }
+    
+        // ... private apply methods for each event type ...
+    
+        // Business methods that generate events
+        public void addItem(OrderItem item) {
+            if (status != OrderStatus.CREATED) {
+                throw new IllegalStateException("Cannot add items to order in status: " + status);
+            }
+            addEvent(new OrderItemAddedEvent(id, getNextVersion(), item));
+            apply(uncommittedEvents.get(uncommittedEvents.size() - 1));
+        }
+    
+        public void ship(String shippingAddress, String trackingNumber) {
+            if (status != OrderStatus.CREATED && status != OrderStatus.CONFIRMED) {
+                throw new IllegalStateException("Cannot ship order in status: " + status);
+            }
+            addEvent(new OrderShippedEvent(id, getNextVersion(), shippingAddress, trackingNumber));
+            apply(uncommittedEvents.get(uncommittedEvents.size() - 1));
+        }
+    
+        private void addEvent(Event event) { uncommittedEvents.add(event); }
+        private long getNextVersion() { return version + uncommittedEvents.size() + 1; }
+        public List<Event> getUncommittedEvents() { return Collections.unmodifiableList(uncommittedEvents); }
+        public void markEventsAsCommitted() { uncommittedEvents.clear(); }
+    
+        // Getters...
+    }
+    ```
+
+=== "Events.java (Domain Events)"
+
+    ```java
+    package com.portfolio.eventsourcing;
+    
+    import com.fasterxml.jackson.annotation.JsonTypeInfo;
+    import java.time.Instant;
+    import java.util.*;
+    
+    @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, property = "@type")
+    public interface Event {
+        UUID getAggregateId();
+        Instant getTimestamp();
+        long getVersion();
+    }
+    
+    public abstract class BaseEvent implements Event {
+        // ... implementation ...
+    }
+    
+    public class OrderCreatedEvent extends BaseEvent {
+        // ... implementation ...
+    }
+    
+    public class OrderItemAddedEvent extends BaseEvent {
+        // ... implementation ...
+    }
+    
+    public class OrderShippedEvent extends BaseEvent {
+        // ... implementation ...
+    }
+    ```
+
+=== "EventStore.java (Persistence)"
+
+    ```java
+    package com.portfolio.eventsourcing;
+    
+    import java.util.*;
+    import java.util.concurrent.ConcurrentHashMap;
+    import java.util.concurrent.locks.ReadWriteLock;
+    import java.util.concurrent.locks.ReentrantReadWriteLock;
+    import java.util.stream.Collectors;
+    
+    public interface EventStore {
+        void saveEvents(UUID aggregateId, List<Event> events, long expectedVersion);
+        List<Event> getEvents(UUID aggregateId);
+    }
+    
+    // In-memory implementation for demonstration
+    public class InMemoryEventStore implements EventStore {
+        private final Map<UUID, List<Event>> eventStreams = new ConcurrentHashMap<>();
+        private final ReadWriteLock lock = new ReentrantReadWriteLock();
+    
+        @Override
+        public void saveEvents(UUID aggregateId, List<Event> events, long expectedVersion) {
+            lock.writeLock().lock();
+            try {
+                List<Event> existingEvents = eventStreams.getOrDefault(aggregateId, new ArrayList<>());
+                
+                // Check for concurrency conflicts
+                if (!existingEvents.isEmpty() && existingEvents.get(existingEvents.size() - 1).getVersion() != expectedVersion) {
+                    throw new ConcurrencyException("Version mismatch");
+                }
+    
+                existingEvents.addAll(events);
+                eventStreams.put(aggregateId, existingEvents);
+            } finally {
+                lock.writeLock().unlock();
+            }
+        }
+    
+        @Override
+        public List<Event> getEvents(UUID aggregateId) {
+            lock.readLock().lock();
+            try {
+                return new ArrayList<>(eventStreams.getOrDefault(aggregateId, Collections.emptyList()));
+            } finally {
+                lock.readLock().unlock();
+            }
+        }
+    }
+    ```
+
+=== "OrderRepository.java"
+
+    ```java
+    package com.portfolio.eventsourcing;
+    
+    import java.util.List;
+    import java.util.UUID;
+    
+    public class OrderRepository {
+        private final EventStore eventStore;
+    
+        public OrderRepository(EventStore eventStore) {
+            this.eventStore = eventStore;
+        }
+    
+        public Order getById(UUID id) {
+            List<Event> events = eventStore.getEvents(id);
+            if (events.isEmpty()) {
+                throw new AggregateNotFoundException("Order not found: " + id);
+            }
+            return Order.fromEvents(id, events);
+        }
+    
+        public void save(Order order) {
+            List<Event> uncommittedEvents = order.getUncommittedEvents();
+            if (!uncommittedEvents.isEmpty()) {
+                long expectedVersion = order.getVersion() - uncommittedEvents.size();
+                eventStore.saveEvents(order.getId(), uncommittedEvents, expectedVersion);
+                order.markEventsAsCommitted();
+            }
+        }
+    }
+    ```
+
+=== "Value Objects & Exceptions"
+
+    ```java
+    package com.portfolio.eventsourcing;
+    
+    import java.util.Objects;
+    
+    public class OrderItem {
+        // ... implementation ...
+    }
+    
+    public class ConcurrencyException extends RuntimeException {
+        public ConcurrencyException(String message) {
+            super(message);
+        }
+    }
+    
+    public class AggregateNotFoundException extends RuntimeException {
+        public AggregateNotFoundException(String message) {
+            super(message);
+        }
+    }
+    ```
 
 ### Sample 3: Machine Learning Pipeline (Python)
 
@@ -2846,7 +2706,7 @@ What worked well and what could be improved.
 
 Senior Software Engineer with X years of experience building scalable distributed systems and leading technical teams.
 
-## =€ Featured Projects
+## =ï¿½ Featured Projects
 
 ### [Distributed Cache System](./projects/distributed-cache)
 Built a Redis-compatible distributed cache handling 1M+ requests/second with <1ms latency.
@@ -2860,22 +2720,22 @@ Real-time fraud detection system processing 500K+ transactions/day.
 - **Scale**: <50ms prediction latency
 - **Impact**: 78% reduction in fraud losses
 
-## =à Technical Skills
+## =ï¿½ Technical Skills
 
 **Languages**: Python, Go, Java, JavaScript/TypeScript  
 **Systems**: Kubernetes, Docker, AWS, Terraform  
 **Databases**: PostgreSQL, Redis, MongoDB, Elasticsearch  
 **Tools**: Git, Jenkins, Prometheus, Grafana
 
-## =Ê GitHub Stats
+## =ï¿½ GitHub Stats
 [GitHub stats badges and contribution graphs]
 
-## =Ý Technical Writing
+## =ï¿½ Technical Writing
 - [Architecture Decision Records](./docs/architecture-decisions/)
 - [System Design Case Studies](./docs/case-studies/)
 - [Technical Blog Posts](./docs/blog-posts/)
 
-## =ë Contact
+## =ï¿½ Contact
 [Contact information and social links]
 ```
 

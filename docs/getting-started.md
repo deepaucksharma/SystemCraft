@@ -4,14 +4,32 @@
 
 **New to interview prep or short on time? Start here:**
 
-👉 **[Use our Quick Start Tools](quick-start-tools.md)** - Get interview-ready fast with focused, actionable resources designed for busy professionals.
+### Instant Assessment and Direction
+Before diving into comprehensive preparation, take our **5-Minute Readiness Assessment** to understand exactly where you stand and get your personalized roadmap.
 
-These tools include:
-- **5-Minute Readiness Assessment** - Know where you stand instantly
-- **30-Minute Daily Practice Cards** - Efficient skill building
-- **One-Page STAR Story Builder** - Develop compelling behavioral responses
-- **Interview Readiness Checklist** - Validate you're ready before scheduling
-- **Progress Tracking Templates** - Monitor improvement automatically
+**Quick Assessment Questions (2 minutes each):**
+
+1. **Technical Foundation**: Can you design systems for 1M+ users with appropriate scaling, AWS services, and trade-offs?
+2. **Leadership Experience**: How many engineers have you successfully led, hired, and developed?
+3. **Behavioral Stories**: How many strong STAR stories with quantified results can you tell right now?
+4. **Coding Proficiency**: How quickly can you solve medium LeetCode problems with optimal solutions?
+5. **Amazon Alignment**: How well do you understand Amazon's culture and Leadership Principles?
+
+**Score Yourself (1-5 points each, total /25):**
+- **Interview Ready (22-25)**: 2-4 weeks final polish
+- **Almost There (18-21)**: 6-10 weeks focused prep
+- **Preparation Needed (14-17)**: 12-16 weeks structured prep
+- **Major Preparation (10-13)**: 20-24 weeks comprehensive prep
+- **Not Yet Ready (<10)**: 6+ months or gain more experience
+
+### Quick Start Tools for Busy Professionals
+
+**Essential preparation tools designed for maximum efficiency:**
+
+- **30-Minute Daily Practice Cards** - Progressive skill building that fits your schedule
+- **One-Page STAR Story Builder** - Transform experiences into compelling stories in 10 minutes
+- **Interview Readiness Checklist** - 107-point assessment to validate you're truly ready
+- **Progress Tracking Templates** - Monitor improvement with automated calculations
 
 **For systematic, comprehensive preparation, continue with the detailed guide below.**
 
@@ -26,7 +44,7 @@ Welcome to your Amazon Engineering Manager interview journey. This detailed guid
 Before diving into preparation, assess your current readiness:
 
 !!! tip "Quick Alternative"
-    For a faster assessment, try our **[5-Minute Readiness Assessment](quick-start-assessment.md)** that provides instant scoring and personalized recommendations.
+    If you completed the 5-Minute Assessment above, skip to the customized study plan based on your score. This detailed assessment below is for those wanting comprehensive evaluation.
 
 ### Technical Skills Assessment
 
@@ -174,7 +192,13 @@ Focus on these core services:
 ## 💡 Daily Routine Template
 
 !!! tip "Alternative: 30-Minute Focused Practice"
-    For busy professionals, try our **[30-Minute Daily Practice Cards](quick-start-practice-cards.md)** - structured sessions designed for maximum efficiency with progressive skill building.
+    For busy professionals, use our structured 30-minute daily sessions:
+    - **Phase 1 (Weeks 1-4)**: Foundation building with core concepts
+    - **Phase 2 (Weeks 5-8)**: Skill integration and practice
+    - **Phase 3 (Weeks 9-12)**: Interview readiness and performance
+    - **Phase 4 (Week 13)**: Final fine-tuning without over-practice
+    
+    Each session includes specific objectives, time management, and progress tracking.
 
 Establish this routine from Day 1:
 

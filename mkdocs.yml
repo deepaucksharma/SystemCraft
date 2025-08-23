@@ -118,6 +118,10 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tilde
 
+  # Enable snippets for content includes from your consolidation plan
+  - pymdownx.snippets:
+      base_path: docs/_includes
+
 extra:
   social:
     - icon: fontawesome/brands/github
@@ -145,100 +149,67 @@ extra_css:
   - stylesheets/gamification.css
 
 nav:
-  - Home:
-    - index.md
-    - Getting Started: getting-started.md
+  - Getting Started:
+    - Home: index.md
+    - Quick Start: getting-started.md
     - Quick Reference: quick-reference.md
-    - Enhancement Plan: enhancement-plan.md
-  
-  - "Module 0: Foundational Mindset":
-    - foundational-mindset/index.md
+    - Study Plans:
+      - Enhancement Plan: enhancement-plan.md
+      - Complete 6-Month Timeline: practice/comprehensive-timeline.md
+      - Week-by-Week Plan: practice/weekly-plan.md
   
   - Fundamentals:
     - fundamentals/index.md
     - L6 vs L7 Differences: fundamentals/l6-vs-l7.md
-    - Technical Competencies: fundamentals/technical-competencies.md
     - Leadership Principles: fundamentals/leadership-principles.md
     - Interview Process: fundamentals/interview-process.md
+    - Technical Competencies: fundamentals/technical-competencies.md
+    - Foundational Mindset: foundational-mindset/index.md
   
-  - System Design:
-    - system-design/index.md
-    - Design Fundamentals: system-design/fundamentals.md
-    - Scale & Architecture: system-design/scale-architecture.md
-    - AWS Services Deep Dive: system-design/aws-services.md
-    - Well-Architected Framework: system-design/well-architected.md
-    - L6 Design Problems: system-design/l6-problems.md
-    - L7 Design Problems: system-design/l7-problems.md
-    - Case Studies: system-design/case-studies.md
+  - Technical Preparation:
+    - System Design:
+      - system-design/index.md
+      - Design Fundamentals: system-design/fundamentals.md
+      - Scale & Architecture: system-design/scale-architecture.md
+      - AWS Services Deep Dive: system-design/aws-services.md
+      - Well-Architected Framework: system-design/well-architected.md
+      - L6 Design Problems: system-design/l6-problems.md
+      - L7 Design Problems: system-design/l7-problems.md
+      - Case Studies: system-design/case-studies.md
+    - Coding Preparation:
+      - coding/index.md
+      - Coding Strategy: coding/strategy.md
+      - Data Structures: coding/data-structures.md
+      - Algorithms: coding/algorithms.md
+      - Problem Patterns: coding/patterns.md
+      - Amazon Top 100: coding/amazon-top-100.md
+      - Mock Problems: coding/mock-problems.md
+    - Technical Deep Dives:
+      - deep-dives/index.md
+      - Distributed Systems: deep-dives/distributed-systems.md
+      - Consistency Models: deep-dives/consistency-models.md
+      - Performance & Scale: deep-dives/performance-scale.md
+      - Security & Compliance: deep-dives/security.md
+      - Incident Response: deep-dives/incident-response.md
   
-  - Coding Preparation:
-    - coding/index.md
-    - Coding Strategy: coding/strategy.md
-    - Data Structures: coding/data-structures.md
-    - Algorithms: coding/algorithms.md
-    - Problem Patterns: coding/patterns.md
-    - Amazon Top 100: coding/amazon-top-100.md
-    - Mock Problems: coding/mock-problems.md
-  
-  - Technical Deep Dives:
-    - deep-dives/index.md
-    - Distributed Systems: deep-dives/distributed-systems.md
-    - Consistency Models: deep-dives/consistency-models.md
-    - Performance & Scale: deep-dives/performance-scale.md
-    - Security & Compliance: deep-dives/security.md
-    - Incident Response: deep-dives/incident-response.md
-  
-  - Leadership & Behavioral:
+  - Behavioral & Leadership:
     - behavioral/index.md
     - STAR Framework: behavioral/star-framework.md
     - L6 Scenarios: behavioral/l6-scenarios.md
     - L7 Scenarios: behavioral/l7-scenarios.md
     - Bar Raiser Prep: behavioral/bar-raiser.md
     - Decision Making: behavioral/decision-making.md
+    - Story Engineering Workshop: story-engineering/index.md
+    - Interview Mechanics Masterclass: interview-mechanics/index.md
   
-  - "Story Engineering Workshop":
-    - story-engineering/index.md
-  
-  - "Interview Mechanics Masterclass":
-    - interview-mechanics/index.md
-  
-  - "2025 Special Considerations":
-    - 2025-considerations/index.md
-  
-  - "Level-Specific Playbooks":
-    - level-playbooks/index.md
-  
-  - "Red Flags & Success Patterns":
-    - red-flags-success/index.md
-  
-  - Interactive Learning Platform:
-    - interactive/index.md
-    - Learning Analytics Dashboard: interactive/analytics-dashboard.md
-    - Interactive Assessment Tools: interactive/assessment-tools.md
-    - System Design Canvas: interactive/design-canvas.md
-    - Collaborative Learning Hub: interactive/collaborative-hub.md
-    - Progress Tracking: interactive/progress-tracking.md
-    - Learning Style Assessment: interactive/learning-style-assessment.md
-  
-  - Real Experiences:
-    - experiences/index.md
-    - Candidate Quotes 2024-2025: experiences/candidate-quotes.md
-    - Interview Questions Database: experiences/question-database.md
-    - Success Story Templates: experiences/success-templates.md
-    - Failure Case Studies: experiences/failure-case-studies.md
-    - Timeline Examples: experiences/timeline-examples.md
-    - Technical Examples Library: experiences/technical-examples.md
-  
-  - Compensation & Negotiation:
-    - compensation/negotiation-guide.md
-  
-  - Practice & Mock:
+  - Practice & Assessment:
     - practice/index.md
-    - Complete 6-Month Timeline: practice/comprehensive-timeline.md
-    - Week-by-Week Plan: practice/weekly-plan.md
     - Mock Interviews: practice/mock-interviews.md
     - Self Assessment: practice/self-assessment.md
     - Resources & Tools: practice/resources.md
+    - Level-Specific Playbooks: level-playbooks/index.md
+    - Red Flags & Success Patterns: red-flags-success/index.md
+    - 2025 Special Considerations: 2025-considerations/index.md
   
   - Portfolio & Artifacts:
     - portfolio/index.md
@@ -247,13 +218,26 @@ nav:
     - Case Study Templates: portfolio/case-study-templates.md
     - Code Samples: portfolio/code-samples.md
     - Decision Records: portfolio/decision-records.md
+    - Success Story Templates: experiences/success-templates.md
+    - Technical Examples Library: experiences/technical-examples.md
   
-  - FAQ:
-    - faq/index.md
-  
-  - Downloads:
-    - downloads/index.md
+  - Interactive Tools:
+    - interactive/index.md
+    - Learning Analytics Dashboard: interactive/analytics-dashboard.md
+    - Interactive Assessment Tools: interactive/assessment-tools.md
+    - System Design Canvas: interactive/design-canvas.md
+    - Collaborative Learning Hub: interactive/collaborative-hub.md
+    - Progress Tracking: interactive/progress-tracking.md
+    - Learning Style Assessment: interactive/learning-style-assessment.md
   
   - Resources:
+    - FAQ: faq/index.md
+    - Downloads: downloads/index.md
     - Video Learning: resources/video-learning.md
-    - Mock Problems: practice/mock-problems.md
+    - Real Experiences:
+      - experiences/index.md
+      - Candidate Quotes 2024-2025: experiences/candidate-quotes.md
+      - Interview Questions Database: experiences/question-database.md
+      - Failure Case Studies: experiences/failure-case-studies.md
+      - Timeline Examples: experiences/timeline-examples.md
+    - Compensation & Negotiation: compensation/negotiation-guide.md

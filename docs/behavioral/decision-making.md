@@ -1,7 +1,5 @@
 # Strategic Decision Making for Amazon L6/L7 Leaders
 
-## = Coming Soon - Expected Completion: March 18, 2025
-
 !!! info "Executive-Level Decision Making"
     This guide will provide frameworks for strategic technical decision making specifically for L6/L7 engineering managers, including Type 1 vs Type 2 decisions, stakeholder management, and Amazon's decision-making culture.
 
@@ -85,11 +83,208 @@
 **Result**: Decision outcome, implementation success, lessons learned
 ```
 
-## = Coming Soon - March 18, 2025
-- Complete decision making frameworks with Amazon-specific examples
-- Type 1 vs Type 2 decision case studies
-- Stakeholder management and consensus building strategies
-- Decision communication and change management approaches
+## 🔄 Real-World Decision Making Examples
+
+### Case Study 1: Technology Migration Decision
+
+**SITUATION: Legacy system migration affecting multiple teams**
+```markdown
+Context: 5-year-old legacy system serving 10M+ customers
+Problem: System becoming maintenance burden, affecting team velocity
+Options: 
+- Complete rewrite (18-month project, high risk)
+- Incremental modernization (3-year project, lower risk)
+- Status quo with improved maintenance (short-term stability)
+
+Stakeholders: 4 engineering teams, product management, business leadership
+Constraints: Limited engineering capacity, customer impact concerns
+```
+
+**DECISION PROCESS:**
+```markdown
+Analysis Framework:
+1. Customer Impact Assessment
+   - Rewrite: Potential service disruption, but long-term performance gains
+   - Incremental: Minimal disruption, gradual improvements
+   - Status quo: Increasing reliability issues over time
+
+2. Engineering Team Impact
+   - Rewrite: High motivation, learning opportunity, but delivery risk
+   - Incremental: Sustained team engagement, skill development
+   - Status quo: Decreased team morale, technical debt accumulation
+
+3. Business Risk Assessment
+   - Rewrite: High short-term risk, high long-term value
+   - Incremental: Moderate risk, moderate value
+   - Status quo: Low short-term risk, high long-term business risk
+```
+
+**DECISION OUTCOME:**
+Chose incremental modernization with specific criteria:
+- Start with highest-risk components first
+- Maintain full backward compatibility
+- Measure performance improvements at each phase
+- Re-evaluate approach every 6 months
+
+**RESULT:**
+- 18 months later: 60% of system modernized, zero customer impact
+- Team satisfaction increased, technical debt reduced by 40%
+- Gained confidence to accelerate modernization timeline
+
+### Case Study 2: Resource Allocation Decision
+
+**SITUATION: Limited engineering capacity, competing priorities**
+```markdown
+Context: 20-person engineering team, 3 major product initiatives
+Options:
+- Focus on single highest-priority initiative (fastest delivery)
+- Split team across all initiatives (parallel progress)
+- Sequence initiatives with dedicated team focus (balanced approach)
+
+Constraints: Fixed team size, aggressive product timelines, customer commitments
+```
+
+**DECISION FRAMEWORK:**
+```markdown
+**Context Gathering:**
+- Customer research: Which initiative has highest customer impact?
+- Technical analysis: Which approach minimizes technical risk?
+- Team input: What does the team think is most sustainable?
+- Business alignment: What does executive leadership prioritize?
+
+**Decision Criteria:**
+1. Customer value delivery speed
+2. Technical risk and quality maintenance
+3. Team sustainability and growth
+4. Business strategy alignment
+```
+
+**IMPLEMENTATION:**
+```markdown
+**Chosen Approach:** Sequenced focus with overlapping phases
+- Phase 1: Full team on highest customer impact initiative (8 weeks)
+- Phase 2: Split team 70/30 between completing Phase 1 and starting Phase 2
+- Phase 3: Full transition to next highest priority initiative
+
+**Risk Mitigation:**
+- Weekly stakeholder updates on progress and trade-offs
+- Clear success criteria and exit conditions for each phase
+- Buffer time built in for technical debt and team development
+```
+
+### Case Study 3: Technical Standard Decision
+
+**SITUATION: Multiple teams choosing different technologies**
+```markdown
+Context: 15 engineering teams, growing inconsistency in technology choices
+Problem: Operational complexity, knowledge sharing difficulties, hiring challenges
+Decision needed: Technology standardization vs team autonomy
+
+Options:
+- Mandate single technology stack (fast standardization, reduced autonomy)
+- Create recommended standards with flexibility (balanced approach)
+- Maintain full team autonomy (current state, increasing complexity)
+```
+
+**CONSENSUS BUILDING PROCESS:**
+```markdown
+**Phase 1: Information Gathering (4 weeks)**
+- Survey all teams on current technology choices and satisfaction
+- Analysis of operational costs for current technology diversity
+- Assessment of hiring and knowledge sharing challenges
+
+**Phase 2: Collaborative Decision Making (3 weeks)**
+- Architecture working group with representatives from each team
+- Prototyping sessions with most popular technology choices
+- Cost-benefit analysis of standardization vs flexibility
+
+**Phase 3: Implementation Planning (2 weeks)**
+- Migration timeline for teams using non-standard technologies
+- Training and support plan for teams adopting standards
+- Exception process for teams with specific technical requirements
+```
+
+**RESULT:**
+- Achieved 80% standardization while maintaining team satisfaction
+- Reduced operational overhead by 35%
+- Improved cross-team collaboration and knowledge sharing
+
+## 🎯 Decision Making for Behavioral Interviews
+
+### Structuring Decision Stories with STAR+
+
+#### Enhanced STAR Framework for Decision Questions
+
+```markdown
+**SITUATION (30% of response)**
+- Business/technical context requiring decision
+- Multiple stakeholders with different perspectives
+- Constraints and success criteria
+- Timeline pressures and resource limitations
+
+**TASK (15% of response)**  
+- Your specific role in the decision-making process
+- What outcome you were responsible for achieving
+- Success metrics you would be measured against
+
+**ACTION (40% of response)**
+- Information gathering and analysis process
+- Stakeholder consultation and consensus building
+- Decision criteria and evaluation framework
+- Communication strategy for decision rollout
+- Risk mitigation and contingency planning
+
+**RESULT (15% of response)**
+- Short-term outcomes and metrics
+- Long-term impact and lessons learned
+- What you would do differently next time
+- How the decision influenced future decision-making processes
+```
+
+### Common L6/L7 Decision Scenarios
+
+#### "Tell me about a difficult technical decision you had to make"
+
+**Framework for Strong Response:**
+```markdown
+**Focus Areas:**
+- Scale and complexity of the decision
+- Multiple valid options with trade-offs
+- Stakeholder management and consensus building
+- Long-term thinking and customer impact
+- Your decision-making process and rationale
+
+**Avoid:**
+- Decisions that were obviously correct
+- Blaming others for constraints or pressure
+- Decisions made in isolation without stakeholder input
+- Focus on technical details rather than decision process
+```
+
+#### "Describe a time you made a decision with incomplete information"
+
+**Framework for Strong Response:**
+```markdown
+**Key Elements:**
+- Why information was incomplete (time pressure, complexity, unknowns)
+- How you assessed risk vs. waiting for more information
+- Decision framework you used with uncertainty
+- How you planned to adapt based on new information
+- Outcome and what you learned about decision-making under uncertainty
+```
+
+#### "How do you handle decisions when stakeholders disagree?"
+
+**Framework for Strong Response:**
+```markdown
+**Process Elements:**
+- Understanding each stakeholder's perspective and underlying concerns
+- Identifying shared goals and common ground
+- Creating decision criteria that stakeholders agree on
+- Facilitating discussion focused on criteria rather than positions
+- Making decision transparently with clear rationale
+- Following up to ensure stakeholders remain engaged
+```
 
 ## 📚 Related Resources
 - **[STAR Framework](star-framework.md)** - Structure decision stories for interviews
