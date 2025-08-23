@@ -1,10 +1,10 @@
 # Fundamentals of Amazon L6/L7 Engineering Manager Interviews
 
-## 📚 Understanding the Foundation
+## Understanding the Foundation
 
 Before diving into technical preparation, it's crucial to understand the fundamental differences between L6 and L7 roles at Amazon, the competencies required, and how the interview process evaluates these skills.
 
-## 🎯 What This Section Covers
+## What This Section Covers
 
 This section provides the foundational knowledge you need to understand:
 
@@ -14,7 +14,7 @@ This section provides the foundational knowledge you need to understand:
 - **Interview Structure**: The specific format and evaluation criteria
 - **Success Factors**: What separates successful candidates
 
-## 📊 The Amazon Engineering Manager Ladder
+## The Amazon Engineering Manager Ladder
 
 ```mermaid
 graph TD
@@ -35,7 +35,7 @@ graph TD
 | **L6** | Multiple teams | 10-25 engineers | $10M+ initiatives | Component expert |
 | **L7** | Organization | 100+ engineers | $100M+ initiatives | Domain expert |
 
-## 🔍 Key Differentiators
+## Key Differentiators
 
 ### L6: Senior Engineering Manager
 
@@ -57,7 +57,7 @@ graph TD
 - **Executive Influence**: Regular interaction with VPs/SVPs
 - **Talent Multiplication**: Developing other senior leaders
 
-## 📋 Core Competencies Framework
+## Core Competencies Framework
 
 ### Technical Competencies
 
@@ -93,7 +93,7 @@ technical_skills_L7 = {
 | **Decision Making** | Component decisions | Organizational decisions |
 | **Communication** | Clear team communication | Executive presentations |
 
-## 🎬 Interview Process Overview
+## Interview Process Overview
 
 ### L6 Interview Loop Structure
 
@@ -140,7 +140,7 @@ graph LR
 5. **Bar Raiser** (1): 60 minutes
 6. **Executive Discussion** (optional): 30-45 minutes
 
-## 🎯 Evaluation Criteria
+## Evaluation Criteria
 
 ### Technical Assessment Matrix
 
@@ -168,7 +168,7 @@ graph LR
 4. **Have Backbone** - Influence up
 5. **Success and Scale** - Organizational growth
 
-## 📈 Success Metrics
+## Success Metrics
 
 ### What Gets You Hired at L6
 
@@ -204,7 +204,7 @@ graph LR
 - Represented engineering externally
 - Drove $100M+ initiatives
 
-## 🚫 Common Failure Points
+## Common Failure Points
 
 ### L6 Interview Failures
 
@@ -230,14 +230,14 @@ graph LR
 - Outdated technical knowledge
 - No innovation or thought leadership
 
-## 📚 Preparation Resources
+## Preparation Resources
 
 ### Essential Reading
-- [ ] "Staff Engineer" by Will Larson
-- [ ] "An Elegant Puzzle" by Will Larson
-- [ ] "The Manager's Path" by Camille Fournier
-- [ ] Amazon's Leadership Principles deep dive
-- [ ] AWS Well-Architected Framework
+- "Staff Engineer" by Will Larson
+- "An Elegant Puzzle" by Will Larson
+- "The Manager's Path" by Camille Fournier
+- Amazon's Leadership Principles deep dive
+- AWS Well-Architected Framework
 
 ### Key Skills to Develop
 
@@ -255,7 +255,7 @@ graph LR
 - Change management
 - Talent development
 
-## 🎬 Next Steps
+## Next Steps
 
 1. **Assess Your Level**: Use our [L6 vs L7 comparison](l6-vs-l7.md) to determine your target level
 2. **Understand Competencies**: Deep dive into [Technical Competencies](technical-competencies.md)

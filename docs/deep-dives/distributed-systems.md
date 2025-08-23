@@ -861,29 +861,48 @@ import time
 from datetime import datetime, timedelta
 
 class TokenService:
-    def __init__(self, secret_key, issuer):
-        self.secret_key = secret_key
+    def __init__(self, issuer):
+        # SECURITY: Never hardcode secrets - always use environment variables
+        self.secret_key = os.getenv('JWT_SECRET_KEY')
+        if not self.secret_key:
+            raise ValueError("JWT_SECRET_KEY environment variable must be set")
         self.issuer = issuer
     
     def generate_token(self, user_id, roles, expires_in=3600):
+        # SECURITY: Keep token expiration time short (default 1 hour)
+        # For refresh tokens, use longer expiration with secure storage
         payload = {
             'user_id': user_id,
             'roles': roles,
             'iss': self.issuer,
             'iat': datetime.utcnow(),
-            'exp': datetime.utcnow() + timedelta(seconds=expires_in)
+            'exp': datetime.utcnow() + timedelta(seconds=expires_in),
+            'jti': str(uuid.uuid4())  # Unique token ID for revocation tracking
         }
         return jwt.encode(payload, self.secret_key, algorithm='HS256')
     
     def verify_token(self, token):
         try:
+            # SECURITY: Always specify allowed algorithms to prevent algorithm confusion attacks
             payload = jwt.decode(token, self.secret_key, 
                                algorithms=['HS256'], issuer=self.issuer)
+            
+            # SECURITY: Additional validation for security-critical systems
+            if 'jti' in payload:
+                # Check if token is revoked in Redis/database
+                if self._is_token_revoked(payload['jti']):
+                    raise Exception("Token has been revoked")
+            
             return payload
         except jwt.ExpiredSignatureError:
             raise Exception("Token has expired")
         except jwt.InvalidTokenError:
             raise Exception("Invalid token")
+    
+    def _is_token_revoked(self, jti):
+        # Implementation would check against revoked token list
+        # e.g., Redis SET or database table
+        return False  # Placeholder implementation
 ```
 
 **Service-to-Service Authentication:**

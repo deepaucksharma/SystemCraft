@@ -1,6 +1,6 @@
 # Amazon Leadership Principles: The Ultimate L6/L7 Interview Guide
 
-## 🎯 The Leadership Principles Reality Check (2024-2025)
+## The Leadership Principles Reality Check (2024-2025)
 
 !!! danger "Critical Insight"
     **Every single answer must tie to Leadership Principles**. Based on 2024-2025 interviews, LPs are evaluated in EVERY round, including technical. Bar Raisers have veto power based solely on LP demonstration.
@@ -9,7 +9,7 @@
     
     **December 2024 Bar Raiser**: "Pure Leadership Principles, no technical"
 
-## 📊 Leadership Principles Weighting by Level and Round
+## Leadership Principles Weighting by Level and Round
 
 ### Interview Round Leadership Principles Focus
 
@@ -21,7 +21,7 @@
 | **Bar Raiser** | 100% | 100% | Culture fit across all LPs |
 | **Hiring Manager** | 70% | 80% | Hire and Develop, Earn Trust |
 
-## 🌟 The 16 Leadership Principles: L6 vs L7 Expectations
+## The 16 Leadership Principles: L6 vs L7 Expectations
 
 ### 1. Customer Obsession
 
@@ -318,7 +318,7 @@ A:
 R: Eliminated bias, became industry model for ethical AI, influenced regulation
 ```
 
-## 📝 STAR Story Development Framework
+## STAR Story Development Framework
 
 ### STAR Framework for Leadership Principles
 
@@ -343,7 +343,7 @@ For comprehensive STAR methodology and examples, see the dedicated **[STAR Frame
 | Have Backbone | "Respectfully challenged...", "Stood firm on..." |
 | Deliver Results | "Despite obstacles...", "Achieved X% of goal..." |
 
-## 🎯 Leadership Principles Preparation Strategy
+## Leadership Principles Preparation Strategy
 
 ### Month 1-2: Story Development
 - Identify 30 situations from your career
@@ -363,31 +363,31 @@ For comprehensive STAR methodology and examples, see the dedicated **[STAR Frame
 - Prepare for follow-up questions
 - Master smooth transitions
 
-## ⚠️ Common Leadership Principles Mistakes to Avoid
+## Common Leadership Principles Mistakes to Avoid
 
 ### Red Flags That Kill Interviews
 
 1. **Generic Stories Without Specifics**
-   - ❌ "We improved performance"
-   - ✅ "Reduced P99 latency from 500ms to 50ms, improving conversion 12%"
+   - Avoid: "We improved performance"
+   - Better: "Reduced P99 latency from 500ms to 50ms, improving conversion 12%"
 
 2. **Team Achievements Without Your Role**
-   - ❌ "My team delivered the project"
-   - ✅ "I specifically led the architecture design while Sarah handled..."
+   - Avoid: "My team delivered the project"
+   - Better: "I specifically led the architecture design while Sarah handled..."
 
 3. **Missing Business Impact**
-   - ❌ "Fixed the bug"
-   - ✅ "Fixed bug preventing $2M in daily transactions"
+   - Avoid: "Fixed the bug"
+   - Better: "Fixed bug preventing $2M in daily transactions"
 
 4. **Blaming Others**
-   - ❌ "The other team didn't deliver"
-   - ✅ "I took ownership and worked with them to unblock"
+   - Avoid: "The other team didn't deliver"
+   - Better: "I took ownership and worked with them to unblock"
 
 5. **No Learning from Failures**
-   - ❌ "The project failed due to circumstances"
-   - ✅ "I learned to validate assumptions earlier, now I always..."
+   - Avoid: "The project failed due to circumstances"
+   - Better: "I learned to validate assumptions earlier, now I always..."
 
-## 📚 Leadership Principles Question Bank (2024-2025 Actual Questions)
+## Leadership Principles Question Bank (2024-2025 Actual Questions)
 
 ### Top L6 Behavioral Questions
 1. "Tell me about a time you disagreed with your manager" (Have Backbone)
@@ -403,7 +403,7 @@ For comprehensive STAR methodology and examples, see the dedicated **[STAR Frame
 4. "How do you balance competing VP priorities?" (Deliver Results)
 5. "Describe creating a multi-year technical strategy" (Think Big)
 
-## 💡 Advanced Leadership Principles Techniques
+## Advanced Leadership Principles Techniques
 
 ### The "Double Leadership Principles" Technique
 Answer showing multiple LPs:
@@ -417,17 +417,17 @@ Show growth over time:
 Turn failures into strengths:
 "When the first approach failed, I applied Learn and Be Curious to understand why, then used Invent and Simplify to find a better solution..."
 
-## ✅ Leadership Principles Mastery Checklist
+## Leadership Principles Mastery Checklist
 
 ### Before Your Interview
-- [ ] Have 3 stories per LP (48 total minimum)
-- [ ] Each story has quantified impact
-- [ ] Practice 2-minute and 5-minute versions
-- [ ] Prepare for "Tell me more" follow-ups
-- [ ] Map stories to multiple LPs
-- [ ] Record and review yourself
-- [ ] Get mock interview feedback
-- [ ] Prepare failure stories with learning
+- Have 3 stories per LP (48 total minimum)
+- Each story has quantified impact
+- Practice 2-minute and 5-minute versions
+- Prepare for "Tell me more" follow-ups
+- Map stories to multiple LPs
+- Record and review yourself
+- Get mock interview feedback
+- Prepare failure stories with learning
 
 ---
 

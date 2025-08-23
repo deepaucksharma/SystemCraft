@@ -172,7 +172,7 @@ Success Metrics:
 
 ### Update: Successful Reapplication
 
-**18 Months Later (April 2025):**
+**18 Months Later:**
 - **Outcome:** Successful L7 hire at Amazon (different team)
 - **Package:** $650K total compensation Year 1
 - **Role:** Principal Engineering Manager, AI/ML Platform
@@ -871,10 +871,13 @@ Week 5-6: Amazon-Specific Preparation
 
 ## 🎯 Recovery Success Patterns
 
-### Successful Reapplication Statistics
+!!! info "Reapplication Pattern Disclaimer"
+    The patterns below are based on self-reported experiences from interview preparation communities. Individual outcomes vary significantly based on many factors.
+
+### Observed Reapplication Patterns
 ```
-Candidates who address feedback systematically:
-- 65% success rate on reapplication
+Candidates who address feedback systematically (community reports):
+- Higher success rates on reapplication (reported improvement)
 - Average time between attempts: 8-12 months
 - Most successful preparation time: 3-6 months
 - Key success factor: Targeted gap addressing

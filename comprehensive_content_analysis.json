@@ -1,0 +1,244 @@
+{
+  "total_metrics": {
+    "files": 121,
+    "words": 201058,
+    "reading_hours": 15.750000000000004,
+    "code_examples": 4972,
+    "practice_problems": 306,
+    "templates": 25,
+    "external_links": 35
+  },
+  "section_metrics": {
+    "other": {
+      "files": 7,
+      "words": 8453,
+      "reading_minutes": 40,
+      "code_examples": 199,
+      "practice_problems": 52,
+      "templates": 0,
+      "external_links": 0
+    },
+    "fundamentals": {
+      "files": 33,
+      "words": 40659,
+      "reading_minutes": 187,
+      "code_examples": 873,
+      "practice_problems": 5,
+      "templates": 1,
+      "external_links": 10
+    },
+    "system_design": {
+      "files": 11,
+      "words": 22690,
+      "reading_minutes": 107,
+      "code_examples": 1064,
+      "practice_problems": 60,
+      "templates": 3,
+      "external_links": 6
+    },
+    "deep_dives": {
+      "files": 5,
+      "words": 6267,
+      "reading_minutes": 29,
+      "code_examples": 235,
+      "practice_problems": 7,
+      "templates": 0,
+      "external_links": 2
+    },
+    "coding": {
+      "files": 8,
+      "words": 15210,
+      "reading_minutes": 71,
+      "code_examples": 727,
+      "practice_problems": 54,
+      "templates": 1,
+      "external_links": 0
+    },
+    "behavioral": {
+      "files": 14,
+      "words": 46908,
+      "reading_minutes": 229,
+      "code_examples": 499,
+      "practice_problems": 5,
+      "templates": 5,
+      "external_links": 0
+    },
+    "templates": {
+      "files": 8,
+      "words": 9777,
+      "reading_minutes": 45,
+      "code_examples": 133,
+      "practice_problems": 64,
+      "templates": 8,
+      "external_links": 9
+    },
+    "compensation": {
+      "files": 1,
+      "words": 3082,
+      "reading_minutes": 15,
+      "code_examples": 86,
+      "practice_problems": 0,
+      "templates": 0,
+      "external_links": 3
+    },
+    "resources": {
+      "files": 1,
+      "words": 964,
+      "reading_minutes": 4,
+      "code_examples": 29,
+      "practice_problems": 0,
+      "templates": 0,
+      "external_links": 0
+    },
+    "interactive": {
+      "files": 4,
+      "words": 5297,
+      "reading_minutes": 25,
+      "code_examples": 9,
+      "practice_problems": 4,
+      "templates": 1,
+      "external_links": 0
+    },
+    "portfolio": {
+      "files": 5,
+      "words": 10668,
+      "reading_minutes": 52,
+      "code_examples": 145,
+      "practice_problems": 2,
+      "templates": 2,
+      "external_links": 5
+    },
+    "experiences": {
+      "files": 5,
+      "words": 4767,
+      "reading_minutes": 20,
+      "code_examples": 408,
+      "practice_problems": 12,
+      "templates": 1,
+      "external_links": 0
+    },
+    "practice": {
+      "files": 11,
+      "words": 22094,
+      "reading_minutes": 104,
+      "code_examples": 527,
+      "practice_problems": 40,
+      "templates": 1,
+      "external_links": 0
+    },
+    "includes": {
+      "files": 8,
+      "words": 4222,
+      "reading_minutes": 17,
+      "code_examples": 38,
+      "practice_problems": 1,
+      "templates": 2,
+      "external_links": 0
+    }
+  },
+  "preparation_paths": {
+    "quick_start": {
+      "reading_hours": 4.8,
+      "estimated_total_hours": 12.1,
+      "practice_problems": 45,
+      "sections_included": [
+        "fundamentals",
+        "practice"
+      ],
+      "description": "Essential basics for immediate interview prep"
+    },
+    "l6_preparation": {
+      "reading_hours": 11.6,
+      "estimated_total_hours": 29.1,
+      "practice_problems": 164,
+      "sections_included": [
+        "fundamentals",
+        "behavioral",
+        "coding",
+        "system_design",
+        "practice"
+      ],
+      "description": "Complete L6 (Senior SDE) preparation"
+    },
+    "l7_preparation": {
+      "reading_hours": 13.0,
+      "estimated_total_hours": 32.5,
+      "practice_problems": 173,
+      "sections_included": [
+        "fundamentals",
+        "behavioral",
+        "coding",
+        "system_design",
+        "deep_dives",
+        "portfolio",
+        "practice"
+      ],
+      "description": "Complete L7 (Principal SDE) preparation"
+    },
+    "comprehensive": {
+      "reading_hours": 13.6,
+      "estimated_total_hours": 33.9,
+      "practice_problems": 185,
+      "sections_included": [
+        "fundamentals",
+        "behavioral",
+        "coding",
+        "system_design",
+        "deep_dives",
+        "portfolio",
+        "practice",
+        "compensation",
+        "experiences"
+      ],
+      "description": "Complete mastery of all content"
+    }
+  },
+  "content_completeness": {
+    "behavioral": {
+      "word_completeness": 100,
+      "reading_time_completeness": 95.41666666666667,
+      "practice_problems": 5,
+      "assessment": "adequate"
+    },
+    "coding": {
+      "word_completeness": 100,
+      "reading_time_completeness": 14.791666666666666,
+      "practice_problems": 54,
+      "assessment": "needs_expansion",
+      "problem_completeness": 36.0
+    },
+    "system_design": {
+      "word_completeness": 100,
+      "reading_time_completeness": 29.72222222222222,
+      "practice_problems": 60,
+      "assessment": "needs_expansion",
+      "problem_completeness": 100
+    },
+    "fundamentals": {
+      "word_completeness": 100,
+      "reading_time_completeness": 100,
+      "practice_problems": 5,
+      "assessment": "comprehensive"
+    }
+  },
+  "resource_availability": {
+    "templates": 25,
+    "code_examples": 4972,
+    "practice_problems": 306,
+    "external_references": 35,
+    "interactive_tools": 4,
+    "study_plans": 3,
+    "assessment_tools": 5
+  },
+  "comparison_to_standards": {
+    "content_coverage": {
+      "l6_coverage_percentage": 29.100000000000005,
+      "l7_coverage_percentage": 21.666666666666668
+    },
+    "problem_coverage": {
+      "coding_problems_vs_minimum": 27.0,
+      "system_design_problems_vs_minimum": 400.0,
+      "behavioral_scenarios_vs_minimum": 16.666666666666664
+    }
+  }
+}

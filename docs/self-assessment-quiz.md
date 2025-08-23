@@ -402,13 +402,13 @@ E) I'm recognized for transformational results that have changed organizational 
 4. **Schedule regular reassessment** (every 4 weeks for major preparation, every 2 weeks for final prep)
 
 **Choose Your Preparation Path**:
-- **Score 85+**: [Final Interview Preparation](quick-start-readiness-checklist.md)
-- **Score 70-84**: [L6 Quick Start Guide](quick-start-l6.md) or [L7 Quick Start Guide](quick-start-l7.md)
+- **Score 85+**: [Final Interview Preparation](quick-reference.md)
+- **Score 70-84**: [Quick Start Guide](getting-started.md) - use the 6-week intensive plan
 - **Score 55-69**: [Comprehensive Preparation Timeline](practice/comprehensive-timeline.md)
 - **Score <55**: [Foundational Skills Development](fundamentals/technical-competencies.md)
 
 **Weekly Progress Tracking**:
-Use the [Progress Tracking Templates](quick-start-tracking-template.md) to monitor improvement and maintain motivation throughout your preparation journey.
+Use the [Progress Tracking Templates](practice/self-assessment.md) to monitor improvement and maintain motivation throughout your preparation journey.
 
 ---
 

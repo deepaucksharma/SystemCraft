@@ -1,327 +1,152 @@
-# Getting Started with Your Amazon L6/L7 Interview Preparation
+# Getting Started Guide - Amazon L6/L7 Interview Prep
 
-## 🚀 Quick Start (Recommended)
+!!! info "New to SystemCraft? Start Here"
+    This guide walks you through SystemCraft's approach and helps you understand what you need to succeed in Amazon L6/L7 interviews.
 
-**New to interview prep or short on time? Start here:**
+## Step 1: Understand What You're Up Against
 
-### Instant Assessment and Direction
-Before diving into comprehensive preparation, take our **5-Minute Readiness Assessment** to understand exactly where you stand and get your personalized roadmap.
+### The Amazon L6/L7 Engineering Manager Interview Structure
+- **Behavioral Leadership (50%)**: STAR stories demonstrating 16 Leadership Principles
+- **System Design (30%)**: Designing scalable systems at Amazon's scale  
+- **Technical Coding (20%)**: Problem-solving and technical depth verification
 
-**Quick Assessment Questions (2 minutes each):**
+### Success vs Failure Patterns
+**Most successful candidates excel at:** Behavioral storytelling with quantified business impact  
+**Most failed candidates struggle with:** Demonstrating leadership through authentic stories
 
-1. **Technical Foundation**: Can you design systems for 1M+ users with appropriate scaling, AWS services, and trade-offs?
-2. **Leadership Experience**: How many engineers have you successfully led, hired, and developed?
-3. **Behavioral Stories**: How many strong STAR stories with quantified results can you tell right now?
-4. **Coding Proficiency**: How quickly can you solve medium LeetCode problems with optimal solutions?
-5. **Amazon Alignment**: How well do you understand Amazon's culture and Leadership Principles?
+## Step 2: Take the Assessment to Find Your Starting Point
 
-**Score Yourself (1-5 points each, total /25):**
-- **Interview Ready (22-25)**: 2-4 weeks final polish
-- **Almost There (18-21)**: 6-10 weeks focused prep
-- **Preparation Needed (14-17)**: 12-16 weeks structured prep
-- **Major Preparation (10-13)**: 20-24 weeks comprehensive prep
-- **Not Yet Ready (<10)**: 6+ months or gain more experience
-
-### Quick Start Tools for Busy Professionals
-
-**Essential preparation tools designed for maximum efficiency:**
-
-- **30-Minute Daily Practice Cards** - Progressive skill building that fits your schedule
-- **One-Page STAR Story Builder** - Transform experiences into compelling stories in 10 minutes
-- **Interview Readiness Checklist** - 107-point assessment to validate you're truly ready
-- **Progress Tracking Templates** - Monitor improvement with automated calculations
-
-**For systematic, comprehensive preparation, continue with the detailed guide below.**
-
----
-
-## 🎯 Your First Week: Setting the Foundation
-
-Welcome to your Amazon Engineering Manager interview journey. This detailed guide will help you establish a strong foundation in your first week and set you up for success over the next 6 months.
-
-## 📋 Initial Assessment Checklist
-
-Before diving into preparation, assess your current readiness:
-
-!!! tip "Quick Alternative"
-    If you completed the 5-Minute Assessment above, skip to the customized study plan based on your score. This detailed assessment below is for those wanting comprehensive evaluation.
-
-### Technical Skills Assessment
-
-| Area | L6 Requirement | L7 Requirement | Your Level | Gap |
-|------|----------------|----------------|------------|-----|
-| **Years of Experience** | 8+ years | 12+ years | ___ | ___ |
-| **Team Leadership** | 10-25 engineers | 100+ engineers | ___ | ___ |
-| **Primary Language** | Expert in 1 | Expert in 2+ | ___ | ___ |
-| **System Design** | Component-level | Organization-level | ___ | ___ |
-| **AWS Knowledge** | Working knowledge | Deep expertise | ___ | ___ |
-| **Distributed Systems** | Solid understanding | Expert level | ___ | ___ |
-| **Production Experience** | 5+ years | 10+ years | ___ | ___ |
-
-### Leadership Experience Assessment
-
-- [ ] Led technical initiatives affecting multiple teams
-- [ ] Mentored senior engineers (L5+)
-- [ ] Influenced technical decisions at Director/VP level
-- [ ] Managed $1M+ technical budgets
-- [ ] Drove organization-wide technical transformations
-- [ ] Published technical papers or patents
-- [ ] Presented at technical conferences
-
-## 🗓️ Week 1 Action Plan
-
-### Day 1-2: Environment Setup
-
-#### Tools Installation
-```bash
-# Install essential tools
-pip install mkdocs mkdocs-material
-npm install -g @aws-amplify/cli
-brew install awscli
-
-# Set up practice environment
-git clone https://github.com/your-prep-repo
-cd interview-prep
-```
-
-#### Account Setup
-- [ ] LeetCode Premium (for Amazon-specific problems)
-- [ ] System Design Interview course access
-- [ ] AWS Free Tier account for hands-on practice
-- [ ] Calendly or similar for mock interview scheduling
-
-### Day 3-4: Baseline Testing
-
-#### Coding Baseline
-Complete these problems to gauge your current level:
-
-1. **Easy**: Two Sum (15 minutes)
-2. **Medium**: LRU Cache (30 minutes)
-3. **Medium**: Number of Islands (30 minutes)
-
-!!! tip "Baseline Metrics"
-    - **L6 Target**: Solve all three with optimal solutions
-    - **L7 Target**: Solve Medium problems in 20 minutes with production-quality code
-
-#### System Design Baseline
-Spend 45 minutes designing: "URL Shortener at Amazon Scale"
-
-Include:
-- High-level architecture
-- Database schema
-- API design
-- Scale calculations
-- Trade-offs
-
-### Day 5-6: Study Plan Customization
-
-Based on your assessment, customize your study plan:
-
-=== "L6 Focus Areas"
-    ```markdown
-    Weekly Time Allocation (15 hours):
-    - System Design: 6 hours (40%)
-    - Coding: 5 hours (33%)
-    - Behavioral: 3 hours (20%)
-    - Mock Interviews: 1 hour (7%)
-    ```
-
-=== "L7 Focus Areas"
-    ```markdown
-    Weekly Time Allocation (15 hours):
-    - System Design: 8 hours (53%)
-    - Technical Vision: 3 hours (20%)
-    - Behavioral: 3 hours (20%)
-    - Coding: 1 hour (7%)
-    ```
-
-### Day 7: Resource Organization
-
-Create your personal knowledge base:
-
-```
-📁 interview-prep/
-├── 📁 system-design/
-│   ├── 📄 patterns.md
-│   ├── 📄 aws-services.md
-│   └── 📄 solved-problems.md
-├── 📁 coding/
-│   ├── 📄 patterns.md
-│   ├── 📄 templates.py
-│   └── 📄 solved-problems.md
-├── 📁 behavioral/
-│   ├── 📄 star-stories.md
-│   ├── 📄 leadership-principles.md
-│   └── 📄 impact-metrics.md
-└── 📁 mock-interviews/
-    └── 📄 feedback-log.md
-```
-
-## 📚 Essential First Resources
-
-### Must-Read This Week
-
-1. **Amazon Leadership Principles Deep Dive**
-   - [Official Amazon LPs](https://www.amazon.jobs/principles)
-   - Map each principle to 2 personal stories
-
-2. **System Design Fundamentals**
-   - Read "Designing Data-Intensive Applications" Chapter 1
-   - Watch "AWS re:Invent - Amazon DynamoDB Deep Dive"
-
-3. **Coding Patterns**
-   - Master these 5 patterns first:
-     - Two Pointers
-     - Sliding Window
-     - BFS/DFS
-     - Binary Search
-     - Dynamic Programming basics
-
-### AWS Services to Study First
-
-Focus on these core services:
-
-| Service | Why It's Critical | Week 1 Goal |
-|---------|------------------|-------------|
-| **DynamoDB** | NoSQL at scale | Understand partitioning |
-| **S3** | Object storage | Learn consistency model |
-| **Lambda** | Serverless compute | Know cold starts |
-| **SQS/SNS** | Messaging | Understand fan-out |
-| **CloudFront** | CDN | Learn edge locations |
-
-## 💡 Daily Routine Template
-
-!!! tip "Alternative: 30-Minute Focused Practice"
-    For busy professionals, use our structured 30-minute daily sessions:
-    - **Phase 1 (Weeks 1-4)**: Foundation building with core concepts
-    - **Phase 2 (Weeks 5-8)**: Skill integration and practice
-    - **Phase 3 (Weeks 9-12)**: Interview readiness and performance
-    - **Phase 4 (Week 13)**: Final fine-tuning without over-practice
+!!! tip "Required First Step"
+    Before diving into study materials, take our 15-minute assessment to identify your specific gaps and get a personalized study plan.
     
-    Each session includes specific objectives, time management, and progress tracking.
+    [Take the Assessment Now →](self-assessment-quiz.md)
 
-Establish this routine from Day 1:
+## Step 3: Choose Your Study Plan Based on Assessment Results
 
-### Morning (1 hour)
-```
-6:00 - 6:30: Solve 1 LeetCode Medium
-6:30 - 7:00: Review solution, understand patterns
-```
+After taking the assessment, you'll be directed to one of these paths:
 
-### Lunch (30 minutes)
-```
-12:00 - 12:30: Read system design article/watch video
-```
+| Assessment Score | Recommended Path | Timeline | Focus |
+|-----------------|------------------|----------|-------|
+| **85-100** | [Quick Reference](quick-reference.md) | 1-2 weeks | Final polish & practice |
+| **70-84** | [6-Week Intensive](practice/6-week-plan.md) | 6 weeks | Targeted skill building |
+| **55-69** | [12-Week Comprehensive](practice/12-week-plan.md) | 12 weeks | Foundation + mastery |
+| **<55** | Foundation Building | 16+ weeks | Gain experience first |
 
-### Evening (1.5 hours)
-```
-8:00 - 9:00: Deep dive into one topic
-9:00 - 9:30: Document learnings, update notes
-```
+!!! warning "Important: Don't Skip the Assessment"
+    Self-assessment is notoriously inaccurate. Our structured assessment prevents wasted time on wrong priorities.
 
-### Weekend (4 hours)
-```
-Saturday: 2-hour mock system design
-Sunday: 2-hour behavioral story development
-```
+## Step 4: Understand Core Success Factors
 
-## 🎯 Week 1 Deliverables
+### The #1 Success Factor: Behavioral Excellence
+**80% of L6/L7 failures happen in behavioral interviews**, not technical sections.
 
-By end of Week 1, you should have:
+**What Amazon Really Wants:**
+- **Authentic stories** demonstrating leadership growth over time
+- **Quantified business impact** from your decisions
+- **Deep understanding** of Amazon's 16 Leadership Principles
+- **Natural storytelling** that doesn't sound rehearsed
 
-- [x] Completed initial assessment
-- [x] Set up all tools and accounts
-- [x] Solved 10 coding problems
-- [x] Designed 2 systems
-- [x] Documented 5 STAR stories
-- [x] Created study schedule for next month
-- [x] Scheduled first mock interview
+### Essential Story Portfolio
+You need strong STAR stories for these core scenarios:
+1. **Technical Leadership** - Major system design or architecture decision
+2. **People Leadership** - Team transformation or conflict resolution  
+3. **Cross-Functional Influence** - Working across departments/organizations
+4. **Failure & Learning** - Significant failure and how you grew from it
+5. **Innovation** - Something new you created or pioneered
 
-## ⚠️ Common Week 1 Mistakes
+[Master STAR Framework →](behavioral/star-framework.md)
 
-!!! warning "Avoid These Pitfalls"
-    1. **Over-planning**: Don't spend entire week planning - start doing
-    2. **Ignoring weak areas**: Address gaps early, don't postpone
-    3. **Solo preparation**: Find study partners or mentors now
-    4. **Generic examples**: Start collecting Amazon-specific scenarios
-    5. **Skipping fundamentals**: Don't jump to advanced topics
+## Step 5: Build Technical Credibility
 
-## 📈 Progress Tracking
+### System Design Focus Areas
+- **L6**: Component and service-level design (10M+ users)
+- **L7**: Platform and ecosystem design (100M+ users)
 
-Create a simple tracker:
+**Start here:** [System Design Fundamentals](system-design/fundamentals.md)
 
-```python
-# week_1_tracker.py
-progress = {
-    "coding_problems": 0,  # Target: 10
-    "system_designs": 0,   # Target: 2
-    "star_stories": 0,     # Target: 5
-    "aws_services": 0,     # Target: 5
-    "mock_interviews": 0   # Target: 1
-}
+### Coding Expectations
+- **Medium-level problems** solved clearly in 30-45 minutes
+- **Code quality** and **explanation clarity** matter more than speed
+- **Leadership context** - How would you scale this with a team?
 
-def update_progress(category, count):
-    progress[category] += count
-    print(f"Progress: {progress}")
-```
+**Start here:** [Coding Strategy for Managers](coding/index.md)
 
-## 🤝 Finding Support
+## Step 6: Set Up for Success
 
-### Study Groups
-- Join Amazon interview prep Discord/Slack channels
-- Form a group with 3-4 people at similar level
-- Schedule weekly design reviews
+### Essential First Resources
+1. **[Leadership Principles Deep Dive](fundamentals/leadership-principles.md)** - Master Amazon's culture
+2. **[L6 vs L7 Comparison](fundamentals/l6-vs-l7.md)** - Target the right level
+3. **[Interview Process Guide](fundamentals/interview-process.md)** - Know what to expect
+4. **[STAR Framework](behavioral/star-framework.md)** - Structure your stories
 
-### Mentorship
-- Reach out to current Amazon EMs on LinkedIn
-- Use Blind for anonymous advice
-- Consider paid coaching for L7 roles
+### Set Up Your Practice Environment
+- **Digital whiteboard** (Miro, Figma, or similar) for system design
+- **Timer and recording setup** for mock interview practice
+- **Study schedule** integrated with your work calendar
+- **Progress tracking** using our assessment tools
 
-### Mock Interview Partners
-- Pramp.com for free peer interviews
-- Interviewing.io for expert feedback
-- Internal referrals for Amazon employees
+### Find Practice Partners
+- **Mock interview partners** for realistic practice
+- **Peer study groups** for accountability
+- **Mentors or coaches** for expert feedback
 
-## 🚀 Next Steps
+[Mock Interview Setup Guide →](practice/mock-interviews.md)
 
-After completing Week 1:
+## Quick Wins You Can Do Today
 
-1. **Move to Fundamentals**: Deep dive into [L6 vs L7 Differences](fundamentals/l6-vs-l7.md)
-2. **Start System Design**: Begin with [Design Fundamentals](system-design/fundamentals.md)
-3. **Coding Patterns**: Master [Problem Patterns](coding/patterns.md)
-4. **Build Portfolio**: Start your [Technical Portfolio](portfolio/technical-portfolio.md)
+### 1. Take the Assessment (15 minutes)
+Before anything else: [Complete the Assessment](self-assessment-quiz.md)
 
-## 📝 Quick Reference Card
+### 2. Choose Your Target Level (10 minutes)
+Read: [L6 vs L7 Complete Guide](fundamentals/l6-vs-l7.md)
 
-Keep this handy for daily reminders:
+### 3. Understand the Process (15 minutes)
+Read: [Amazon Interview Process](fundamentals/interview-process.md)
 
-```markdown
-Daily Minimums:
-□ 1 coding problem (30-40 min)
-□ 1 system design concept (30 min)
-□ 1 behavioral story refinement (15 min)
-□ 1 AWS service deep dive (15 min)
+### 4. Start Your Story Bank (30 minutes)
+- Identify 5 potential experiences for STAR stories
+- Draft one story using the [STAR Framework](behavioral/star-framework.md)
+- Focus on quantified business impact
 
-Weekly Goals:
-□ 10 coding problems
-□ 2 full system designs
-□ 3 new STAR stories
-□ 1 mock interview
-□ 1 technical blog post/video
+!!! tip "Today's Goal"
+    Complete steps 1-3 today. You'll have clarity on your path and gaps within an hour.
 
-Monthly Milestones:
-□ 40 coding problems solved
-□ 8 system designs completed
-□ 12 STAR stories polished
-□ 4 mock interviews done
-□ Complete 1 major topic area
-```
+## Next Steps After Assessment
+
+Once you complete the assessment, you'll be guided to the right path:
+
+**If you scored 85+ (Interview Ready):**
+→ Focus on [Quick Reference](quick-reference.md) and [Mock Interviews](practice/mock-interviews.md)
+
+**If you scored 70-84 (Good Foundation):**
+→ Follow the [6-Week Intensive Plan](practice/6-week-plan.md)
+
+**If you scored 55-69 (Needs Development):**
+→ Start with [12-Week Comprehensive Plan](practice/12-week-plan.md)
+
+**If you scored <55 (Major Gaps):**
+→ Focus on gaining more experience before intensive interview prep
+
+[Take Assessment to Get Your Personalized Path →](self-assessment-quiz.md)
+
+## Success Tips from L6/L7 Hires
+
+!!! success "#1 Success Factor"
+    "Spend 60% of prep time on behavioral stories. Most technical people fail here, not on coding." - Recent L7 hire
+
+!!! warning "Common Mistake"
+    "Don't memorize stories. Understand the principles and tell authentic experiences naturally." - L6 Principal Engineer 
+
+!!! tip "Time Management"
+    "2 hours daily is better than 10 hours on weekends. Consistency builds confidence." - Staff Engineer → L6
+
+## Need More Help?
+
+- **🤔 Have questions?** [Frequently Asked Questions](faq/index.md)
+- **📈 Want examples?** [Real Interview Experiences](experiences/index.md)  
+- **📥 Need templates?** [Downloads & Resources](downloads/index.md)
+- **💰 Planning offer negotiation?** [Compensation Guide](compensation/negotiation-guide.md)
 
 ---
 
-!!! success "You're Ready!"
-    Completing this first week sets a strong foundation. Remember: consistency beats intensity. Better to study 2 hours daily than 14 hours on weekends. Let's begin your journey to Amazon!
-
----
-
-*Next: [Complete 6-Month Timeline](practice/comprehensive-timeline.md) →*
+**Ready to start?** [Take the 15-minute assessment](self-assessment-quiz.md) to get your personalized roadmap.

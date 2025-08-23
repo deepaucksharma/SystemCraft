@@ -32,10 +32,14 @@
 ```python
 def binary_search(arr, target):
     """Standard binary search implementation."""
+    if not arr:
+        return -1
+    if not hasattr(arr, '__len__') or not hasattr(arr, '__getitem__'):
+        raise TypeError("arr must be a sequence type")
     left, right = 0, len(arr) - 1
     
     while left <= right:
-        mid = (left + right) // 2
+        mid = left + (right - left) // 2
         if arr[mid] == target:
             return mid
         elif arr[mid] < target:
@@ -56,11 +60,15 @@ def binary_search(arr, target):
 ```python
 def search_first_occurrence(arr, target):
     """Find first occurrence of target."""
+    if not arr:
+        return -1
+    if not hasattr(arr, '__len__') or not hasattr(arr, '__getitem__'):
+        raise TypeError("arr must be a sequence type")
     left, right = 0, len(arr) - 1
     result = -1
     
     while left <= right:
-        mid = (left + right) // 2
+        mid = left + (right - left) // 2
         if arr[mid] == target:
             result = mid
             right = mid - 1  # Continue searching left
@@ -76,7 +84,7 @@ def search_in_rotated_array(nums, target):
     left, right = 0, len(nums) - 1
     
     while left <= right:
-        mid = (left + right) // 2
+        mid = left + (right - left) // 2
         
         if nums[mid] == target:
             return mid
@@ -108,6 +116,8 @@ def search_in_rotated_array(nums, target):
 ```python
 def merge_sort(arr):
     """Merge sort with stable sorting property."""
+    if not hasattr(arr, '__len__') or not hasattr(arr, '__getitem__'):
+        raise TypeError("arr must be a sequence type")
     if len(arr) <= 1:
         return arr
     
@@ -178,6 +188,11 @@ from collections import deque
 
 def bfs(graph, start):
     """BFS traversal of graph."""
+    if not graph:
+        raise ValueError("Graph cannot be empty")
+    if start not in graph:
+        raise ValueError(f"Start node '{start}' not found in graph")
+    
     visited = set()
     queue = deque([start])
     result = []
@@ -548,6 +563,13 @@ def unbounded_knapsack(weights, values, capacity):
 ```python
 def coin_change_min(coins, amount):
     """Minimum coins needed to make amount."""
+    if amount < 0:
+        return -1
+    if not coins:
+        return -1 if amount > 0 else 0
+    if any(coin <= 0 for coin in coins):
+        raise ValueError("All coin denominations must be positive")
+    
     dp = [float('inf')] * (amount + 1)
     dp[0] = 0
     

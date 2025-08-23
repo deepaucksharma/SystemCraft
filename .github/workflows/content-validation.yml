@@ -1,0 +1,226 @@
+name: Content Standards Validation
+
+on:
+  pull_request:
+    paths:
+      - 'docs/**/*.md'
+      - 'scripts/**/*.py'
+      - 'mkdocs.yml'
+      - '.pre-commit-config.yaml'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**/*.md'
+      - 'scripts/**/*.py'
+      - 'mkdocs.yml'
+
+jobs:
+  validate-content-standards:
+    runs-on: ubuntu-latest
+    name: Validate Content Standards
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install pyyaml markdown beautifulsoup4 requests
+          
+      - name: Validate YAML front-matter
+        run: |
+          echo "🔍 Validating YAML front-matter compliance..."
+          python scripts/validate-frontmatter.py
+        
+      - name: Check internal links
+        run: |
+          echo "🔗 Validating internal links..."
+          python scripts/check-links.py
+        
+      - name: Validate content standards
+        run: |
+          echo "📋 Validating content standards compliance..."
+          python scripts/validate-content.py
+        
+      - name: Generate content report
+        run: |
+          echo "📊 Generating content quality report..."
+          python scripts/generate-content-report.py
+        continue-on-error: true
+        
+      - name: Upload content report
+        uses: actions/upload-artifact@v3
+        with:
+          name: content-validation-report
+          path: content-report.html
+          retention-days: 30
+        if: always()
+
+  markdown-lint:
+    runs-on: ubuntu-latest
+    name: Markdown Linting
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          
+      - name: Install markdownlint
+        run: npm install -g markdownlint-cli
+        
+      - name: Run markdownlint
+        run: |
+          echo "📝 Running markdown linting..."
+          markdownlint docs/**/*.md --config .markdownlint.yaml
+        continue-on-error: true
+
+  build-test:
+    runs-on: ubuntu-latest
+    name: Test MkDocs Build
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          
+      - name: Install MkDocs and dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      - name: Test MkDocs build
+        run: |
+          echo "🏗️ Testing MkDocs build..."
+          mkdocs build --strict --verbose
+        
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: mkdocs-build
+          path: site/
+          retention-days: 7
+        if: success()
+
+  content-analytics:
+    runs-on: ubuntu-latest
+    name: Content Analytics
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install pyyaml markdown beautifulsoup4 matplotlib seaborn pandas
+          
+      - name: Generate analytics report
+        run: |
+          echo "📈 Generating content analytics..."
+          python scripts/generate-analytics.py
+        continue-on-error: true
+        
+      - name: Upload analytics report
+        uses: actions/upload-artifact@v3
+        with:
+          name: content-analytics
+          path: analytics-report.html
+          retention-days: 90
+        if: always()
+
+  validate-pr-changes:
+    runs-on: ubuntu-latest
+    name: Validate PR Changes
+    if: github.event_name == 'pull_request'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install pyyaml markdown beautifulsoup4
+          
+      - name: Get changed files
+        id: changed-files
+        run: |
+          echo "changed_files=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep '\.md$' | tr '\n' ' ')" >> $GITHUB_OUTPUT
+          
+      - name: Validate changed content
+        run: |
+          echo "🔍 Validating changed files: ${{ steps.changed-files.outputs.changed_files }}"
+          python scripts/validate-pr-changes.py ${{ steps.changed-files.outputs.changed_files }}
+        if: steps.changed-files.outputs.changed_files != ''
+        
+      - name: Comment on PR
+        uses: actions/github-script@v6
+        if: failure()
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '⚠️ Content validation failed. Please check the workflow logs for details and fix any issues before merging.'
+            })
+
+  security-scan:
+    runs-on: ubuntu-latest
+    name: Security Scan
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Run security scan
+        run: |
+          echo "🔒 Running security scan on content..."
+          # Check for potential security issues in content
+          find docs -name "*.md" -exec grep -l "password\|secret\|key\|token" {} \; > potential_secrets.txt
+          if [ -s potential_secrets.txt ]; then
+            echo "⚠️ Potential secrets found in content:"
+            cat potential_secrets.txt
+            echo "Please review these files for sensitive information."
+            exit 1
+          else
+            echo "✅ No potential secrets found in content."
+          fi
+        continue-on-error: true
+
+# Workflow permissions
+permissions:
+  contents: read
+  pull-requests: write
+  actions: read

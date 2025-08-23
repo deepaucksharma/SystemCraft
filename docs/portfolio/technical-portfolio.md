@@ -338,4 +338,4 @@ across 3 product teams, improving delivery velocity by 40% and reducing incident
 
 ---
 
-*This comprehensive technical portfolio guide will provide the frameworks and templates needed to showcase your engineering leadership impact effectively. Check back for the complete guide in March 2025.*
+*This comprehensive technical portfolio guide provides frameworks and templates to showcase your engineering leadership impact effectively.*

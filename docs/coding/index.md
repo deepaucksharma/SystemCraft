@@ -35,6 +35,11 @@ def length_of_longest_substring(s: str) -> int:
     """
     Time: O(n), Space: O(min(n, m)) where m is size of charset
     """
+    if not isinstance(s, str):
+        raise TypeError("Input must be a string")
+    if not s:
+        return 0
+    
     char_index = {}
     max_length = 0
     start = 0
@@ -78,9 +83,9 @@ class LRUCache:
     
     def _remove_node(self, node):
         prev = node.prev
-        new = node.next
-        prev.next = new
-        new.prev = prev
+        next_node = node.next
+        prev.next = next_node
+        next_node.prev = prev
     
     def _move_to_head(self, node):
         self._remove_node(node)
@@ -210,6 +215,11 @@ def two_sum_sorted(nums: List[int], target: int) -> List[int]:
     Classic two pointer approach
     Time: O(n), Space: O(1)
     """
+    if not nums:
+        return []
+    if len(nums) < 2:
+        return []
+        
     left, right = 0, len(nums) - 1
     
     while left < right:

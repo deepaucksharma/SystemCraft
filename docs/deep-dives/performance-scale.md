@@ -392,13 +392,24 @@ class HighPerformanceConnectionManager:
         
         # HTTP connection pooling for service-to-service calls
         self.http_session = requests.Session()
+        
+        # Security: Configure secure headers and SSL verification
+        self.http_session.headers.update({
+            'User-Agent': 'YourAppName/1.0.0',  # Avoid revealing internal system details
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        })
+        
+        # Security: Always verify SSL certificates in production
+        self.http_session.verify = True  # Enable SSL certificate verification
+        
         adapter = requests.adapters.HTTPAdapter(
             pool_connections=100,  # Connection pools
             pool_maxsize=100,      # Connections per pool
             max_retries=3,
             pool_block=False
         )
-        self.http_session.mount('http://', adapter)
+        self.http_session.mount('https://', adapter)
         self.http_session.mount('https://', adapter)
         
     def execute_query_with_fallback(self, query, params, read_only=False):

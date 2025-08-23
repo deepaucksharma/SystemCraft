@@ -22,6 +22,7 @@ Code samples are crucial evidence of your technical capabilities and engineering
 - **Design Patterns**: Proper use of established patterns
 - **Error Handling**: Robust error handling and edge case management
 - **Testing**: Comprehensive test coverage and testing strategies
+- **Security Best Practices**: Input validation, authentication, data protection
 
 #### Business Impact
 - **Production Code**: Real code that solved actual business problems
@@ -48,7 +49,11 @@ Code samples are crucial evidence of your technical capabilities and engineering
 
 #### 5. Infrastructure as Code
 **Purpose**: Demonstrate DevOps and automation skills  
-**Examples**: Terraform modules, Kubernetes deployments, CI/CD pipelines
+**Examples**: Terraform configurations, Kubernetes manifests, CI/CD pipelines
+
+#### 6. Security Implementations
+**Purpose**: Show security-first development mindset  
+**Examples**: Authentication systems, data encryption, input validation, rate limiting
 
 ## Language Selection Strategy
 
@@ -293,7 +298,7 @@ func (r *TokenBucketLimiter) GetStats(ctx context.Context, key string) (*BucketS
 - **Performance**: Single Redis call using Lua script to minimize latency
 - **Monitoring**: Stats interface for observability
 
-**Key Technical Concepts Demonstrated**:
+**Event Sourcing Implementation Highlights**:
 - **Event Sourcing**: Complete implementation with event store and aggregate reconstruction
 - **Domain-Driven Design**: Proper aggregate boundaries and domain events
 - **CQRS**: Separation of command and query responsibilities
@@ -542,10 +547,12 @@ func (r *TokenBucketLimiter) GetStats(ctx context.Context, key string) (*BucketS
 ```python
 """
 Machine Learning Pipeline for Real-time Fraud Detection
-Demonstrates ML engineering best practices, data validation, and monitoring
+Demonstrates ML engineering best practices, data validation, monitoring, and SECURITY
 """
 
 import logging
+import hashlib  # SECURITY: For hashing sensitive data
+import secrets  # SECURITY: For cryptographically secure random numbers
 import pickle
 import numpy as np
 import pandas as pd
@@ -570,7 +577,7 @@ feature_drift = Gauge('feature_drift_score', 'Feature drift score', ['feature'])
 
 @dataclass
 class Transaction:
-    """Transaction data structure with validation"""
+    """Transaction data structure with validation and SECURITY enhancements"""
     transaction_id: str
     user_id: str
     amount: float
@@ -583,11 +590,36 @@ class Transaction:
     metadata: Dict[str, Any] = field(default_factory=dict)
     
     def __post_init__(self):
-        """Validate transaction data"""
-        if self.amount <= 0:
-            raise ValueError("Transaction amount must be positive")
+        """Validate transaction data with security checks"""
+        # SECURITY: Input validation to prevent injection attacks
+        if self.amount <= 0 or self.amount > 999999.99:  # Reasonable amount limits
+            raise ValueError("Transaction amount must be positive and reasonable")
         if not self.user_id or not self.transaction_id:
             raise ValueError("User ID and Transaction ID are required")
+        
+        # SECURITY: Sanitize string inputs to prevent injection
+        self.merchant_category = self._sanitize_string(self.merchant_category)
+        self.payment_method = self._sanitize_string(self.payment_method)
+        self.location_country = self._sanitize_string(self.location_country)
+        
+        # SECURITY: Hash sensitive identifiers
+        self.user_id_hash = self._hash_sensitive_data(self.user_id)
+        self.device_fingerprint_hash = self._hash_sensitive_data(self.device_fingerprint)
+    
+    def _sanitize_string(self, input_str: str) -> str:
+        """SECURITY: Sanitize string input to prevent injection attacks"""
+        if not isinstance(input_str, str):
+            raise TypeError("Expected string input")
+        # Remove potentially dangerous characters
+        import re
+        sanitized = re.sub(r'[<>"\'\\\x00-\x1f]', '', input_str)
+        return sanitized.strip()[:100]  # Limit length
+    
+    def _hash_sensitive_data(self, data: str) -> str:
+        """SECURITY: Hash sensitive data for privacy protection"""
+        # Use a salt for additional security
+        salt = b'fraud_detection_salt_2024'  # In production, use a proper secret
+        return hashlib.sha256(salt + data.encode('utf-8')).hexdigest()
 
 @dataclass
 class PredictionResult:
@@ -1109,11 +1141,13 @@ if __name__ == "__main__":
 ```python
 """
 High-performance async API service for order management
-Demonstrates FastAPI, async patterns, caching, and production practices
+Demonstrates FastAPI, async patterns, caching, production practices, and SECURITY
 """
 
 import asyncio
 import logging
+import hashlib  # SECURITY: For secure hashing
+import secrets  # SECURITY: For secure tokens
 import time
 from contextlib import asynccontextmanager
 from datetime import datetime, timedelta
@@ -1123,12 +1157,20 @@ from uuid import UUID, uuid4
 
 import aioredis
 import asyncpg
-from fastapi import FastAPI, HTTPException, Depends, BackgroundTasks, Request
+import bcrypt  # SECURITY: For password hashing
+import jwt  # SECURITY: For JWT tokens
+from fastapi import FastAPI, HTTPException, Depends, BackgroundTasks, Request, Security
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
-from pydantic import BaseModel, Field, validator
+from fastapi.middleware.trustedhost import TrustedHostMiddleware  # SECURITY: Host validation
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials  # SECURITY: Auth
+from pydantic import BaseModel, Field, validator, EmailStr  # SECURITY: Email validation
 from prometheus_client import Counter, Histogram, generate_latest
 from prometheus_fastapi_instrumentator import Instrumentator
+from slowapi import Limiter, _rate_limit_exceeded_handler  # SECURITY: Rate limiting
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
+from slowapi.middleware import SlowAPIMiddleware
 import structlog
 
 # Configure structured logging
@@ -2708,13 +2750,13 @@ Senior Software Engineer with X years of experience building scalable distribute
 
 ## =� Featured Projects
 
-### [Distributed Cache System](./projects/distributed-cache)
+### Distributed Cache System
 Built a Redis-compatible distributed cache handling 1M+ requests/second with <1ms latency.
 - **Technologies**: Go, Redis, Kubernetes
 - **Scale**: 99.99% uptime, 10TB+ data
 - **Impact**: 40% performance improvement across platform
 
-### [ML Fraud Detection Pipeline](./projects/ml-fraud-detection)
+### ML Fraud Detection Pipeline
 Real-time fraud detection system processing 500K+ transactions/day.
 - **Technologies**: Python, Apache Kafka, TensorFlow
 - **Scale**: <50ms prediction latency
@@ -2739,4 +2781,221 @@ Real-time fraud detection system processing 500K+ transactions/day.
 [Contact information and social links]
 ```
 
-Your code samples should tell a story about your technical journey, problem-solving approach, and growth as an engineer. Focus on demonstrating not just what you can build, but how you think about technical problems, make trade-offs, and deliver business value through code.
+## Security Best Practices in Code Examples
+
+When presenting code samples for L6/L7 interviews, demonstrating security awareness is crucial. Here are key security practices to highlight:
+
+### 1. Input Validation and Sanitization
+```python
+# Security Best Practice: Always validate and sanitize inputs
+def process_user_data(user_input: str) -> str:
+    # Input validation
+    if not isinstance(user_input, str):
+        raise TypeError("Expected string input")
+    
+    if len(user_input) > 1000:  # Reasonable length limit
+        raise ValueError("Input too long")
+    
+    # Sanitization to prevent injection attacks
+    import re
+    sanitized = re.sub(r'[<>"\'\\\x00-\x1f]', '', user_input)
+    return sanitized.strip()
+```
+
+### 2. Authentication and Authorization
+```python
+# Security Best Practice: Proper JWT token handling
+import jwt
+from datetime import datetime, timedelta
+
+def create_secure_token(user_id: str, role: str) -> str:
+    """Create a JWT token with proper expiration and claims."""
+    payload = {
+        'user_id': user_id,
+        'role': role,
+        'iat': datetime.utcnow(),
+        'exp': datetime.utcnow() + timedelta(hours=1),  # Short expiration
+        'iss': 'your-service',
+        'aud': 'your-api'
+    }
+    # Use strong secret from environment
+    secret = os.getenv('JWT_SECRET_KEY')
+    if not secret:
+        raise ValueError("JWT_SECRET_KEY must be set")
+    
+    return jwt.encode(payload, secret, algorithm='HS256')
+```
+
+### 3. Data Protection and Encryption
+```python
+# Security Best Practice: Hash sensitive data
+import hashlib
+import secrets
+from cryptography.fernet import Fernet
+
+def hash_password(password: str) -> tuple[str, str]:
+    """Securely hash password with salt."""
+    salt = secrets.token_hex(16)
+    password_hash = hashlib.pbkdf2_hmac('sha256', 
+                                       password.encode('utf-8'), 
+                                       salt.encode('utf-8'), 
+                                       100000)  # 100k iterations
+    return password_hash.hex(), salt
+
+def encrypt_sensitive_data(data: str, key: bytes) -> str:
+    """Encrypt sensitive data using Fernet symmetric encryption."""
+    f = Fernet(key)
+    encrypted_data = f.encrypt(data.encode('utf-8'))
+    return encrypted_data.decode('utf-8')
+```
+
+### 4. Rate Limiting and DDoS Protection
+```python
+# Security Best Practice: Implement rate limiting
+from collections import defaultdict
+from datetime import datetime, timedelta
+import time
+
+class RateLimiter:
+    def __init__(self, max_requests: int, time_window: int):
+        self.max_requests = max_requests
+        self.time_window = time_window  # seconds
+        self.requests = defaultdict(list)
+    
+    def is_allowed(self, identifier: str) -> bool:
+        """Check if request is allowed based on rate limits."""
+        now = time.time()
+        window_start = now - self.time_window
+        
+        # Clean old requests
+        self.requests[identifier] = [
+            req_time for req_time in self.requests[identifier] 
+            if req_time > window_start
+        ]
+        
+        # Check if limit exceeded
+        if len(self.requests[identifier]) >= self.max_requests:
+            return False
+        
+        # Add current request
+        self.requests[identifier].append(now)
+        return True
+```
+
+### 5. SQL Injection Prevention
+```python
+# Security Best Practice: Use parameterized queries
+import sqlite3
+
+def get_user_orders(user_id: int, status: str = None) -> list:
+    """Get user orders with SQL injection prevention."""
+    conn = sqlite3.connect('database.db')
+    
+    if status:
+        # Use parameterized query to prevent SQL injection
+        query = "SELECT * FROM orders WHERE user_id = ? AND status = ?"
+        cursor = conn.execute(query, (user_id, status))
+    else:
+        query = "SELECT * FROM orders WHERE user_id = ?"
+        cursor = conn.execute(query, (user_id,))
+    
+    results = cursor.fetchall()
+    conn.close()
+    return results
+```
+
+### 6. API Security Headers
+```python
+# Security Best Practice: Add security headers
+from fastapi import FastAPI, Response
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.trustedhost import TrustedHostMiddleware
+
+app = FastAPI()
+
+# Add security middleware
+app.add_middleware(
+    TrustedHostMiddleware, 
+    allowed_hosts=["yourdomain.com", "*.yourdomain.com"]
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://yourdomain.com"],  # Specific origins only
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
+    allow_headers=["*"],
+)
+
+@app.middleware("http")
+async def add_security_headers(request, call_next):
+    """Add security headers to all responses."""
+    response = await call_next(request)
+    
+    # Security headers
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "DENY"
+    response.headers["X-XSS-Protection"] = "1; mode=block"
+    response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
+    response.headers["Content-Security-Policy"] = "default-src 'self'"
+    
+    return response
+```
+
+### 7. Secure Configuration Management
+```python
+# Security Best Practice: Secure configuration
+import os
+from dataclasses import dataclass
+from typing import Optional
+
+@dataclass
+class SecurityConfig:
+    """Secure configuration management."""
+    jwt_secret: str
+    database_url: str
+    redis_url: str
+    encryption_key: bytes
+    allowed_origins: list[str]
+    
+    @classmethod
+    def from_env(cls) -> 'SecurityConfig':
+        """Load configuration from environment variables."""
+        jwt_secret = os.getenv('JWT_SECRET_KEY')
+        if not jwt_secret or len(jwt_secret) < 32:
+            raise ValueError("JWT_SECRET_KEY must be at least 32 characters")
+        
+        database_url = os.getenv('DATABASE_URL')
+        if not database_url:
+            raise ValueError("DATABASE_URL must be set")
+        
+        # Validate encryption key
+        encryption_key = os.getenv('ENCRYPTION_KEY', '').encode()
+        if len(encryption_key) != 32:
+            raise ValueError("ENCRYPTION_KEY must be exactly 32 bytes")
+        
+        allowed_origins = os.getenv('ALLOWED_ORIGINS', '').split(',')
+        if not allowed_origins or not all(origin.strip() for origin in allowed_origins):
+            raise ValueError("ALLOWED_ORIGINS must be specified")
+        
+        return cls(
+            jwt_secret=jwt_secret,
+            database_url=database_url,
+            redis_url=os.getenv('REDIS_URL', 'redis://localhost:6379'),
+            encryption_key=encryption_key,
+            allowed_origins=[origin.strip() for origin in allowed_origins]
+        )
+```
+
+### Security Interview Talking Points
+
+When presenting these security practices in interviews:
+
+1. **Defense in Depth**: Explain how multiple security layers work together
+2. **Threat Modeling**: Show understanding of potential attack vectors
+3. **Compliance**: Mention relevant standards (SOX, PCI DSS, GDPR)
+4. **Security Testing**: Discuss security testing practices and tools
+5. **Incident Response**: Explain how security incidents are detected and handled
+6. **Performance Impact**: Balance security with performance requirements
+
+Your code samples should tell a story about your technical journey, problem-solving approach, and growth as an engineer. Focus on demonstrating not just what you can build, but how you think about technical problems, make trade-offs, deliver business value through code, and **maintain security throughout the development lifecycle**.

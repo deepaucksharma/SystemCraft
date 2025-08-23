@@ -7,13 +7,51 @@
   --md-accent-fg-color: #FF6600;
 }
 
-/* Code block improvements */
+/* Critical above-the-fold styles */
+.critical-content {
+  contain: layout style;
+}
+
+/* Performance optimizations */
+.loaded {
+  transition: opacity 0.3s ease-in-out;
+}
+
+img:not(.loaded) {
+  opacity: 0.8;
+}
+
+/* Hardware acceleration for smooth animations */
+.md-nav__link,
+.md-button,
+.md-clipboard {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Optimize font loading */
+@font-face {
+  font-display: swap;
+}
+
+/* Code block improvements with performance optimizations */
 .md-typeset code {
   background-color: rgba(255, 153, 0, 0.1);
+  contain: layout;
 }
 
 .md-typeset pre code {
   background-color: transparent;
+}
+
+/* Copy button optimizations */
+.md-clipboard {
+  contain: layout;
+}
+
+.md-clipboard--copied {
+  transform: scale(0.95);
+  opacity: 0.7;
 }
 
 /* Table improvements */
@@ -99,13 +137,507 @@
   margin-top: 0;
 }
 
-/* Responsive improvements */
-@media screen and (max-width: 768px) {
-  .md-typeset table {
-    font-size: 0.8rem;
+/* ================================
+   MOBILE-FIRST RESPONSIVE DESIGN
+   ================================ */
+
+/* Defer non-critical animations for performance */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Base mobile styles (320px+) */
+@media screen and (max-width: 1200px) {
+  /* Improve navigation spacing for tablets/smaller screens */
+  .md-nav--primary .md-nav__item {
+    margin: 0.2rem 0;
   }
   
+  .md-nav__link {
+    padding: 0.8rem 1rem;
+  }
+}
+
+/* Mobile landscape and small tablets (768px and below) */
+@media screen and (max-width: 768px) {
+  /* Navigation improvements */
   .md-nav--primary .md-nav__item {
     font-size: 0.9rem;
+    margin: 0.1rem 0;
+  }
+  
+  .md-nav__link {
+    padding: 1rem;
+    border-radius: 0.25rem;
+    transition: all 0.2s ease;
+  }
+  
+  .md-nav__link:hover, .md-nav__link:focus {
+    background-color: rgba(255, 153, 0, 0.1);
+    transform: translateX(0.25rem);
+  }
+
+  /* Header improvements */
+  .md-header {
+    height: auto;
+    min-height: 3rem;
+  }
+  
+  .md-header__inner {
+    padding: 0 0.5rem;
+  }
+  
+  .md-header__button {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0.5rem;
+  }
+
+  /* Content area adjustments */
+  .md-main__inner {
+    padding-top: 0.5rem;
+  }
+  
+  .md-content {
+    padding: 0.75rem;
+  }
+
+  /* Typography scaling */
+  .md-typeset h1 {
+    font-size: 1.8rem;
+    line-height: 1.3;
+    margin: 1rem 0 0.75rem;
+  }
+  
+  .md-typeset h2 {
+    font-size: 1.4rem;
+    line-height: 1.4;
+    margin: 0.75rem 0 0.5rem;
+  }
+  
+  .md-typeset h3 {
+    font-size: 1.2rem;
+    line-height: 1.4;
+    margin: 0.5rem 0;
+  }
+  
+  .md-typeset p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  /* Table responsive design */
+  .md-typeset table {
+    font-size: 0.8rem;
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  
+  .md-typeset table thead,
+  .md-typeset table tbody,
+  .md-typeset table tr {
+    display: table;
+    width: 100%;
+  }
+  
+  .md-typeset table th,
+  .md-typeset table td {
+    padding: 0.75rem 0.5rem;
+    min-width: 120px;
+    word-wrap: break-word;
+    white-space: normal;
+  }
+  
+  /* Table wrapper for horizontal scroll */
+  .md-typeset .table-wrapper {
+    overflow-x: auto;
+    margin: 1rem 0;
+    border-radius: 0.25rem;
+    border: 1px solid rgba(255, 153, 0, 0.2);
+  }
+
+  /* Touch targets - buttons and links */
+  .md-typeset a {
+    padding: 0.25rem 0;
+    display: inline-block;
+    min-height: 44px;
+    line-height: 1.4;
+  }
+  
+  .md-button {
+    min-height: 44px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    margin: 0.25rem 0;
+  }
+
+  /* Code blocks mobile optimization */
+  .md-typeset pre {
+    overflow-x: auto;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+  
+  .md-typeset code {
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-size: 0.9em;
+    word-break: break-word;
+  }
+
+  /* Search improvements */
+  .md-search__form {
+    border-radius: 0.5rem;
+  }
+  
+  .md-search__input {
+    height: 3rem;
+    font-size: 1rem;
+    padding: 0 2.5rem 0 3rem;
+  }
+
+  /* TOC improvements */
+  .md-nav--secondary .md-nav__link {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Mobile portrait (480px and below) */
+@media screen and (max-width: 480px) {
+  /* More aggressive space optimization */
+  .md-content {
+    padding: 0.5rem;
+  }
+  
+  .md-typeset {
+    font-size: 0.9rem;
+  }
+  
+  .md-typeset h1 {
+    font-size: 1.6rem;
+  }
+  
+  .md-typeset h2 {
+    font-size: 1.3rem;
+  }
+  
+  .md-typeset h3 {
+    font-size: 1.1rem;
+  }
+
+  /* Navigation optimizations */
+  .md-nav__link {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  /* Table further optimizations */
+  .md-typeset table {
+    font-size: 0.75rem;
+  }
+  
+  .md-typeset table th,
+  .md-typeset table td {
+    padding: 0.5rem 0.25rem;
+    min-width: 100px;
+  }
+
+  /* Button adjustments */
+  .md-button {
+    width: 100%;
+    text-align: center;
+    margin: 0.5rem 0;
+  }
+
+  /* Search full width */
+  .md-search__form {
+    margin: 0.25rem;
+  }
+}
+
+/* Small mobile devices (320px and below) */
+@media screen and (max-width: 320px) {
+  .md-content {
+    padding: 0.25rem;
+  }
+  
+  .md-typeset {
+    font-size: 0.85rem;
+  }
+  
+  .md-nav__link {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+  
+  .md-typeset table th,
+  .md-typeset table td {
+    min-width: 80px;
+    padding: 0.4rem 0.2rem;
+  }
+}
+
+/* ================================
+   NAVIGATION OVERFLOW FIXES
+   ================================ */
+
+/* Prevent navigation overflow on all screen sizes */
+.md-nav {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.md-nav__list {
+  overflow: hidden;
+}
+
+.md-nav__item {
+  overflow: hidden;
+}
+
+.md-nav__link {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+/* Navigation tabs overflow handling */
+@media screen and (max-width: 1200px) {
+  .md-tabs {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .md-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .md-tabs__list {
+    flex-wrap: nowrap;
+    min-width: max-content;
+  }
+  
+  .md-tabs__item {
+    flex-shrink: 0;
+  }
+}
+
+/* Mobile navigation drawer improvements */
+@media screen and (max-width: 768px) {
+  /* Navigation drawer full height */
+  .md-nav--primary {
+    height: 100vh;
+    overflow-y: auto;
+  }
+  
+  /* Improve drawer scrolling */
+  .md-nav--primary .md-nav__list {
+    padding: 1rem 0;
+  }
+  
+  /* Navigation item spacing */
+  .md-nav--primary .md-nav__item {
+    margin: 0.25rem 0;
+  }
+  
+  /* Long navigation text handling */
+  .md-nav__link {
+    white-space: normal;
+    word-wrap: break-word;
+    text-overflow: unset;
+    height: auto;
+    min-height: 44px;
+    padding: 0.75rem 1rem;
+    line-height: 1.4;
+  }
+  
+  /* Nested navigation handling */
+  .md-nav__item .md-nav__link {
+    padding-left: 1.5rem;
+  }
+  
+  .md-nav__item .md-nav__item .md-nav__link {
+    padding-left: 2rem;
+  }
+  
+  .md-nav__item .md-nav__item .md-nav__item .md-nav__link {
+    padding-left: 2.5rem;
+  }
+}
+
+/* ================================
+   MOBILE PERFORMANCE OPTIMIZATIONS
+   ================================ */
+
+/* Reduce repaints and reflows on mobile */
+@media screen and (max-width: 768px) {
+  /* Optimize image loading */
+  .md-typeset img {
+    height: auto;
+    max-width: 100%;
+    loading: lazy;
+    content-visibility: auto;
+    contain-intrinsic-size: 300px;
+  }
+  
+  /* Optimize font rendering */
+  .md-typeset {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeSpeed; /* Changed for better performance */
+  }
+  
+  /* Use contain for better performance */
+  .md-nav__item,
+  .md-content__inner,
+  .md-sidebar {
+    contain: layout style;
+  }
+  
+  /* Optimize scrolling performance */
+  .md-nav--primary,
+  .md-content {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ================================
+   ADDITIONAL MOBILE ENHANCEMENTS
+   ================================ */
+
+/* Focus improvements for accessibility */
+@media screen and (max-width: 768px) {
+  .md-nav__link:focus,
+  .md-button:focus,
+  .md-search__input:focus {
+    outline: 2px solid var(--md-accent-fg-color);
+    outline-offset: 2px;
+  }
+  
+  /* Larger tap targets */
+  .md-header__button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  .md-nav__link {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Table mobile enhancements */
+.md-typeset table {
+  margin: 1rem 0;
+}
+
+@media screen and (max-width: 768px) {
+  /* Create table wrapper automatically */
+  .md-typeset table {
+    overflow-x: auto;
+    display: block;
+    max-width: 100%;
+    white-space: nowrap;
+  }
+  
+  .md-typeset table thead,
+  .md-typeset table tbody,
+  .md-typeset table tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+  
+  .md-typeset table th,
+  .md-typeset table td {
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  /* Zebra striping for better mobile readability */
+  .md-typeset table tbody tr:nth-child(even) {
+    background-color: rgba(255, 153, 0, 0.05);
+  }
+}
+
+/* Mobile-specific admonitions */
+@media screen and (max-width: 768px) {
+  .md-typeset .admonition,
+  .md-typeset details {
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    contain: layout;
+  }
+  
+  .md-typeset .admonition-title,
+  .md-typeset summary {
+    margin: -1rem -1rem 0.75rem -1rem;
+    padding: 1rem;
+    font-weight: 700;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Additional performance enhancements */
+
+/* Lazy loading for below-the-fold content */
+.below-fold {
+  content-visibility: auto;
+  contain-intrinsic-size: 200px;
+}
+
+/* Optimize table rendering */
+.md-typeset table {
+  contain: layout;
+}
+
+/* Optimize code blocks */
+.md-typeset pre {
+  contain: layout;
+  content-visibility: auto;
+  contain-intrinsic-size: 100px;
+}
+
+/* Optimize search results */
+.md-search-result {
+  contain: layout;
+}
+
+/* Connection-aware optimizations */
+@media (prefers-reduced-data: reduce) {
+  /* Disable non-essential animations on slow connections */
+  * {
+    animation-duration: 0s !important;
+    transition-duration: 0s !important;
+  }
+  
+  /* Use smaller images */
+  img {
+    filter: contrast(1.1);
   }
 }

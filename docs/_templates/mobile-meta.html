@@ -1,0 +1,23 @@
+<!-- Mobile optimization meta tags -->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#FF9900">
+<meta name="msapplication-navbutton-color" content="#FF9900">
+<meta name="apple-mobile-web-app-title" content="Amazon L6/L7 Prep">
+
+<!-- Preload critical resources for better mobile performance -->
+<link rel="preload" href="{{ 'stylesheets/extra.css' | url }}" as="style">
+<link rel="preload" href="{{ 'javascripts/mobile-enhancements.js' | url }}" as="script">
+
+<!-- DNS prefetch for external resources -->
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+
+<!-- Mobile-specific PWA features -->
+<link rel="manifest" href="{{ 'manifest.json' | url }}">
+
+<!-- Optimize for mobile search engines -->
+<meta name="format-detection" content="telephone=no">
+<meta name="format-detection" content="address=no">

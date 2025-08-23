@@ -104,7 +104,7 @@ import base62
 class URLShortener:
     def __init__(self):
         self.counter = 0
-        self.base_url = "http://short.ly/"
+        self.base_url = "https://short.ly/"
     
     def encode_url(self, long_url, user_id=None):
         # Method 1: Counter-based (predictable but simple)

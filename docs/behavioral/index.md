@@ -1,18 +1,18 @@
 # Behavioral Interview Mastery for Amazon L6/L7
 
-## 🎭 The Behavioral Interview Reality (2024-2025)
+## 🎭 The Behavioral Interview Reality
 
-!!! danger "Critical Insight from 2024-2025"
-    **Bar Raiser (December 2024)**: "Pure Leadership Principles, no technical"
+!!! danger "Critical Insight from Recent Interviews"
+    **Bar Raiser Interview**: "Pure Leadership Principles, no technical"
     
-    **May 2024**: "Amazon prioritized leadership questions over coding"
+    **Recent Feedback**: "Amazon prioritizes leadership questions over coding for L6/L7 roles"
     
     **L7 Loops**: Up to 70% behavioral with VP-level strategic discussions
 
 Behavioral interviews are where Amazon L6/L7 decisions are really made. Technical skills get you in the door, but Leadership Principles determine if you're hired.
 
 !!! tip "Real Candidate Voices"
-    📚 **[See Comprehensive Candidate Quotes](../experiences/candidate-quotes.md)** for authentic insights from 2024-2025 interviews
+    📚 **[See Comprehensive Candidate Quotes](../experiences/candidate-quotes.md)** for authentic insights from recent interviews
     
     📝 **[View Real Questions Database](../experiences/question-database.md)** for actual behavioral questions with follow-ups
 
@@ -27,7 +27,7 @@ Behavioral interviews are where Amazon L6/L7 decisions are really made. Technica
 | **Hiring Manager** | 1 (50% behavioral) | 1 (80% behavioral) | Team fit, management style |
 | **Technical + LP** | All rounds | All rounds | LP integrated in technical |
 
-## 🎯 Actual Behavioral Questions from 2024-2025
+## 🎯 Actual Behavioral Questions from Recent Interviews
 
 ### L6 Top Questions (Confirmed from Interviews)
 

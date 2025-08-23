@@ -1,0 +1,210 @@
+# SystemCraft Content Metadata Schema
+# Version: 1.0
+# Last Updated: January 2025
+
+# Required fields for ALL content
+required_fields:
+  title:
+    type: string
+    max_length: 60
+    description: "Descriptive title (60 chars max)"
+    
+  summary:
+    type: string
+    max_length: 160
+    description: "One clear sentence describing purpose and value"
+    
+  content_type:
+    type: enum
+    values: [guide, tutorial, reference, assessment, template, overview, deep_dive, checklist]
+    description: "Type of content for categorization and filtering"
+    
+  audience:
+    type: array
+    values: [L6, L7, Both]
+    description: "Target audience level"
+    
+  difficulty:
+    type: enum
+    values: [beginner, intermediate, advanced, expert]
+    description: "Content complexity level"
+    
+  estimated_time:
+    type: string
+    pattern: "^\\d+\\s+(min|hour|hours)$"
+    description: "Reading/completion time estimate (e.g., '15 min', '2 hours')"
+    
+  tags:
+    type: array
+    min_items: 2
+    max_items: 6
+    description: "Content categorization tags"
+    
+  last_updated:
+    type: string
+    pattern: "^\\d{4}-\\d{2}-\\d{2}$"
+    description: "Date in YYYY-MM-DD format"
+    
+  version:
+    type: string
+    pattern: "^\\d+\\.\\d+$"
+    description: "Content version (e.g., '1.0', '2.1')"
+    
+  status:
+    type: enum
+    values: [published, draft, archived, review_needed]
+    description: "Publication status"
+
+# Optional fields for enhanced functionality
+optional_fields:
+  author:
+    type: string
+    description: "Content author"
+    
+  contributors:
+    type: array
+    description: "Additional contributors"
+    
+  prerequisites:
+    type: array
+    description: "Required prior knowledge or content"
+    
+  related_content:
+    type: array
+    description: "Related pages and resources"
+    
+  interview_rounds:
+    type: array
+    values: [coding, system_design, behavioral, bar_raiser, hiring_manager]
+    description: "Applicable interview round types"
+    
+  success_metrics:
+    type: object
+    description: "Measurable outcomes for assessments"
+    
+  practice_time:
+    type: string
+    description: "Additional practice time needed"
+    
+  complexity_score:
+    type: integer
+    min: 1
+    max: 10
+    description: "Content complexity rating (1-10)"
+    
+  business_context:
+    type: string
+    description: "Real-world business application"
+    
+  amazon_relevance:
+    type: integer
+    min: 1
+    max: 5
+    description: "Amazon interview relevance (1-5)"
+    
+  feedback_score:
+    type: number
+    description: "User feedback rating"
+    
+  view_count:
+    type: integer
+    description: "Page view analytics"
+    
+  completion_rate:
+    type: number
+    description: "User completion percentage"
+    
+  last_reviewed:
+    type: string
+    pattern: "^\\d{4}-\\d{2}-\\d{2}$"
+    description: "Last content review date"
+    
+  review_cycle:
+    type: enum
+    values: [monthly, quarterly, biannual, annual]
+    description: "Required review frequency"
+
+# Content-type specific required fields
+content_type_requirements:
+  guide:
+    required_additional: [prerequisites, practice_time]
+    recommended: [related_content, success_metrics]
+    
+  tutorial:
+    required_additional: [prerequisites, complexity_score]
+    recommended: [practice_time, business_context]
+    
+  assessment:
+    required_additional: [success_metrics, complexity_score]
+    recommended: [feedback_score, completion_rate]
+    
+  template:
+    required_additional: [related_content]
+    recommended: [business_context, amazon_relevance]
+
+# Tag taxonomy
+tag_categories:
+  technical:
+    - system-design
+    - coding
+    - algorithms
+    - data-structures
+    - distributed-systems
+    - performance
+    - security
+    - aws-services
+    - architecture
+    - databases
+    
+  behavioral:
+    - leadership-principles
+    - star-framework
+    - behavioral-scenarios
+    - conflict-resolution
+    - team-management
+    - stakeholder-management
+    - decision-making
+    - failure-recovery
+    
+  interview_prep:
+    - mock-interviews
+    - practice-problems
+    - assessment-tools
+    - timeline-planning
+    - readiness-check
+    - interview-logistics
+    
+  level_specific:
+    - l6-specific
+    - l7-specific
+    - level-comparison
+    - career-progression
+    - promotion-strategy
+    
+  amazon_specific:
+    - bar-raiser
+    - hiring-manager
+    - leadership-principles
+    - amazon-culture
+    - compensation
+    - onboarding
+
+# Validation rules
+validation_rules:
+  - title_length_check: "Title must be between 10 and 60 characters"
+  - summary_completeness: "Summary must be a complete sentence"
+  - tag_minimum: "Must have at least 2 tags"
+  - audience_consistency: "Content must match stated audience level"
+  - estimated_time_realism: "Time estimates should be realistic for content length"
+  - version_increment: "Version should increment with significant changes"
+  - status_workflow: "Status changes must follow: draft → review_needed → published"
+
+# Quality metrics
+quality_thresholds:
+  minimum_word_count: 500
+  maximum_word_count: 5000
+  code_block_documentation: required
+  external_link_validation: required
+  internal_link_validation: required
+  spell_check_score: 95
+  readability_score: 70

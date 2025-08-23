@@ -86,12 +86,16 @@ class DynamicArray:
     
     def __getitem__(self, index):
         """O(1) access by index."""
+        if not isinstance(index, int):
+            raise TypeError("Index must be an integer")
         if 0 <= index < self.size:
             return self.data[index]
         raise IndexError("Index out of range")
     
     def __setitem__(self, index, value):
         """O(1) assignment by index."""
+        if not isinstance(index, int):
+            raise TypeError("Index must be an integer")
         if 0 <= index < self.size:
             self.data[index] = value
         else:
@@ -124,6 +128,8 @@ class DynamicArray:
     
     def insert(self, index, value):
         """O(n) insertion at arbitrary position."""
+        if not isinstance(index, int):
+            raise TypeError("Index must be an integer")
         if index < 0 or index > self.size:
             raise IndexError("Index out of range")
         
@@ -702,8 +708,13 @@ class HashTable:
         self.load_factor_threshold = 0.75
     
     def _hash(self, key):
-        """Simple hash function."""
-        return hash(key) % self.capacity
+        """Simple hash function with error handling."""
+        if key is None:
+            raise ValueError("Cannot hash None key")
+        try:
+            return hash(key) % self.capacity
+        except TypeError:
+            raise TypeError(f"Key of type {type(key).__name__} is not hashable")
     
     def _resize(self):
         """Resize hash table when load factor exceeds threshold."""
@@ -719,6 +730,8 @@ class HashTable:
     
     def put(self, key, value):
         """Insert or update key-value pair."""
+        if key is None:
+            raise ValueError("Key cannot be None")
         if self.size >= self.capacity * self.load_factor_threshold:
             self._resize()
         
@@ -737,6 +750,8 @@ class HashTable:
     
     def get(self, key):
         """Get value by key."""
+        if key is None:
+            raise ValueError("Key cannot be None")
         index = self._hash(key)
         bucket = self.buckets[index]
         
@@ -748,6 +763,8 @@ class HashTable:
     
     def delete(self, key):
         """Delete key-value pair."""
+        if key is None:
+            raise ValueError("Key cannot be None")
         index = self._hash(key)
         bucket = self.buckets[index]
         
@@ -938,8 +955,13 @@ class HashSet:
         self.load_factor_threshold = 0.75
     
     def _hash(self, item):
-        """Hash function for items."""
-        return hash(item) % self.capacity
+        """Hash function for items with error handling."""
+        if item is None:
+            raise ValueError("Cannot hash None item")
+        try:
+            return hash(item) % self.capacity
+        except TypeError:
+            raise TypeError(f"Item of type {type(item).__name__} is not hashable")
     
     def _resize(self):
         """Resize when load factor exceeds threshold."""
@@ -1215,6 +1237,8 @@ class BinarySearchTree:
     
     def insert(self, val):
         """Insert value into BST."""
+        if val is None:
+            raise ValueError("Cannot insert None value into BST")
         self.root = self._insert_recursive(self.root, val)
     
     def _insert_recursive(self, node, val):
@@ -1929,6 +1953,8 @@ class MaxHeap:
     
     def insert(self, val):
         """Insert value into heap."""
+        if val is None:
+            raise ValueError("Cannot insert None value into heap")
         self.heap.append(val)
         self.heapify_up(len(self.heap) - 1)
     
@@ -2014,6 +2040,8 @@ class MinHeap:
     
     def insert(self, val):
         """Insert value into min heap."""
+        if val is None:
+            raise ValueError("Cannot insert None value into min heap")
         self.heap.append(val)
         self.heapify_up(len(self.heap) - 1)
     

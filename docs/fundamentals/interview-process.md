@@ -1,6 +1,6 @@
 # Amazon L6/L7 Interview Process: Complete Guide
 
-## < Understanding Amazon's Engineering Manager Interview Philosophy
+## Understanding Amazon's Engineering Manager Interview Philosophy
 
 Amazon's interview process for L6/L7 Engineering Manager positions is designed to assess not just technical competence, but cultural fit, leadership potential, and the ability to "raise the bar" for the organization. Unlike traditional technical interviews, Amazon's process heavily emphasizes behavioral assessment through their 16 Leadership Principles, combined with technical depth evaluation.
 
@@ -9,7 +9,7 @@ Amazon's interview process for L6/L7 Engineering Manager positions is designed t
     
     **L6 Success (November 2024):** "What surprised me was how much they cared about the 'why' behind technical decisions. Every system design choice had to connect back to customer impact and business value."
 
-## = Complete Interview Process Overview
+## Complete Interview Process Overview
 
 ### Process Timeline and Structure
 
@@ -40,7 +40,7 @@ graph TD
 | **On-Site Loop** | 6-8 hours | 15-25% pass | Complete assessment across all dimensions |
 | **Total Process** | 3-5 weeks | 8-15% overall | Comprehensive evaluation |
 
-## = Stage-by-Stage Deep Dive
+## Stage-by-Stage Deep Dive
 
 ### Stage 1: Initial Phone Screen (30 minutes)
 
@@ -375,7 +375,7 @@ Each behavioral round typically covers 4-6 Leadership Principles with deep follo
 - Cultural addition rather than just cultural fit
 ```
 
-For detailed Bar Raiser preparation, see our [Bar Raiser Deep Dive Guide](../behavioral/bar-raiser-deep-dive.md).
+For detailed Bar Raiser preparation, see our [Bar Raiser Deep Dive Guide](../behavioral/bar-raiser.md).
 
 #### Round 7: Hiring Manager Interview (45-60 minutes)
 
@@ -399,7 +399,7 @@ For detailed Bar Raiser preparation, see our [Bar Raiser Deep Dive Guide](../beh
 - Realistic expectations and genuine interest
 ```
 
-## = Interview Process Timeline and Logistics
+## Interview Process Timeline and Logistics
 
 ### Typical Process Timeline
 
@@ -454,7 +454,7 @@ remote_interview_process:
     technology: "Test all tools beforehand"
 ```
 
-## < L6 vs L7 Process Differences
+## L6 vs L7 Process Differences
 
 ### Interview Scope and Expectations
 
@@ -499,7 +499,7 @@ remote_interview_process:
 - Not demonstrating strategic long-term thinking
 ```
 
-## = Common Failure Points and Recovery Strategies
+## Common Failure Points and Recovery Strategies
 
 ### Technical Interview Failures
 
@@ -577,7 +577,7 @@ remote_interview_process:
    - Prevention: Practice acknowledging contributions of others and personal growth areas
 ```
 
-## = Post-Interview Process and Decision Making
+## Post-Interview Process and Decision Making
 
 ### Amazon's Decision Framework
 
@@ -705,7 +705,7 @@ remote_interview_process:
 - [ ] Thank each interviewer and express genuine interest
 ```
 
-## < Key Takeaways and Success Principles
+## Key Takeaways and Success Principles
 
 !!! success "Critical Success Factors"
     1. **Technical Excellence**: Demonstrate strong coding and system design capabilities appropriate for your level

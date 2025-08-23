@@ -349,7 +349,10 @@
 
 ## Success Patterns Analysis
 
-### Data from 150+ Interview Experiences
+!!! info "Pattern Analysis Disclaimer"
+    The patterns below are based on self-reported experiences shared in interview preparation communities and forums. Individual results may vary significantly based on many factors including background, preparation approach, team needs, and market conditions.
+
+### Observed Patterns from Interview Communities
 
 #### Common Success Factors
 

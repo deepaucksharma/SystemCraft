@@ -317,9 +317,9 @@ PostgreSQL provides the best balance of ACID compliance, performance, and operat
 
 ## References
 
-- [PostgreSQL Performance Benchmarks](internal-link)
-- [Migration Runbook](internal-link)
-- [Team PostgreSQL Training Materials](internal-link)
+- PostgreSQL Performance Benchmarks (internal documentation)
+- Migration Runbook (internal documentation)
+- Team PostgreSQL Training Materials (internal documentation)
 - [AWS RDS Best Practices](https://docs.aws.amazon.com/rds/)
 
 ---
@@ -626,11 +626,11 @@ This hybrid approach provides the best balance of consistency, performance, and 
 
 ## References
 
-- [Event-Driven Architecture Patterns](internal-wiki)
-- [Service Communication Guidelines](internal-docs)
-- [Migration Runbooks](internal-runbooks)
-- [Team Training Materials](internal-training)
-- [Observability Playbook](internal-playbook)
+- Event-Driven Architecture Patterns (internal documentation)
+- Service Communication Guidelines (internal documentation)
+- Migration Runbooks (internal documentation)
+- Team Training Materials (internal documentation)
+- Observability Playbook (internal documentation)
 
 ---
 
@@ -957,8 +957,8 @@ public void handleProductUpdate(ProductUpdateEvent event) {
 - [Redis Cluster Documentation](https://redis.io/topics/cluster-tutorial)
 - [Spring Cache Abstraction](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache)
 - [Caffeine Cache Documentation](https://github.com/ben-manes/caffeine/wiki)
-- [Internal Cache Performance Testing Results](internal-link)
-- [Production Monitoring Dashboard](internal-link)
+- Internal Cache Performance Testing Results (internal documentation)
+- Production Monitoring Dashboard (internal documentation)
 
 ---
 

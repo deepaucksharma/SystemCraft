@@ -1,15 +1,29 @@
 # 12-Week Comprehensive Amazon L6/L7 Interview Preparation Plan
 
-!!! success "Thorough Preparation Timeline"
-    This 12-week plan provides **comprehensive preparation** for Amazon L6/L7 engineering management interviews. It requires **15-18 hours per week** and builds skills systematically from foundations to advanced scenarios. Perfect for candidates who want thorough preparation or are targeting a stretch level.
+!!! success "Professional-Friendly Comprehensive Preparation"
+    This 12-week plan provides **thorough, sustainable preparation** for Amazon L6/L7 engineering management interviews. It requires **8-12 hours per week** with flexible pacing for working professionals. Choose between standard (12 hours/week), part-time (8-10 hours/week), or minimum viable (6-8 hours/week) tracks. Perfect for comprehensive preparation while maintaining work-life balance.
 
 ## 🎯 Plan Overview & Learning Philosophy
 
-### Target Allocation (Weekly 16 hours)
-- **System Design**: 35% (5.6 hours) - Deep technical mastery
-- **Behavioral**: 30% (4.8 hours) - Leadership story development
-- **Coding**: 20% (3.2 hours) - Technical fundamentals
-- **Mock Practice**: 15% (2.4 hours) - Integration and feedback
+### Target Allocation Options
+
+#### Standard Track (12 hours/week)
+- **System Design**: 35% (4.2 hours) - Deep technical mastery
+- **Behavioral**: 35% (4.2 hours) - Leadership story development
+- **Coding**: 20% (2.4 hours) - Technical fundamentals
+- **Mock Practice**: 10% (1.2 hours) - Integration and feedback
+
+#### Part-Time Track (9 hours/week)  
+- **System Design**: 40% (3.6 hours) - Focused technical preparation
+- **Behavioral**: 40% (3.6 hours) - Essential story development
+- **Coding**: 15% (1.35 hours) - Core patterns only
+- **Mock Practice**: 5% (0.45 hours) - Lightweight practice
+
+#### Minimum Viable Track (7 hours/week)
+- **System Design**: 45% (3.15 hours) - High-impact problems
+- **Behavioral**: 45% (3.15 hours) - Core story portfolio
+- **Coding**: 8% (0.56 hours) - Maintenance only
+- **Mock Practice**: 2% (0.14 hours) - Self-practice focus
 
 ### 3-Phase Learning Approach
 ```markdown
@@ -37,38 +51,47 @@
 ### Week 1: Comprehensive Assessment & Strategic Planning
 **Theme: "Know Thyself"**
 
-#### Monday: Complete Skills Assessment (3 hours)
-**Morning Block (2 hours)**
-- [ ] Complete [comprehensive self-assessment](self-assessment.md) across all dimensions
+#### Monday: Complete Skills Assessment (2 hours)
+**Main Block (1.5 hours - flexible timing)**
+- [ ] Complete [comprehensive self-assessment](self-assessment.md) - focus on key dimensions
 - [ ] Map current experience to [L6 vs L7 requirements](../fundamentals/l6-vs-l7.md)
-- [ ] Identify top 5 improvement areas with specific skill gaps
+- [ ] Identify top 3-4 improvement areas with specific gaps
 
-**Evening Block (1 hour)**
-- [ ] Create personalized 12-week learning roadmap
-- [ ] Set up practice environment (whiteboard, timer, recording equipment)
-- [ ] Establish weekly schedule and time blocking
+**Planning Block (30 min)**
+- [ ] Create realistic 12-week learning roadmap aligned with work schedule
+- [ ] Set up basic practice environment (whiteboard app, timer, notes system)
+- [ ] Establish sustainable weekly schedule with buffer time
 
-#### Tuesday: Technical Baseline Assessment (3 hours)
-**Morning Block (2 hours)**
-- [ ] Solve 5 coding problems across different patterns - establish timing baseline
-- [ ] Attempt 1 system design problem - document approach and gaps
-- [ ] Review [technical competencies framework](../fundamentals/technical-competencies.md)
+*Part-time: 1 hour total, focus on critical gaps only*
+*Minimum viable: 45 min, basic assessment and planning*
 
-**Evening Block (1 hour)**
-- [ ] Analyze technical performance and identify specific improvement needs
-- [ ] Choose primary programming language and set up practice environment
-- [ ] Plan Week 2-4 technical learning priorities
+#### Tuesday: Technical Baseline Assessment (2 hours)
+**Main Block (1.5 hours)**
+- [ ] Solve 3-4 coding problems across patterns - establish baseline
+- [ ] Attempt 1 system design problem - note approach and gaps
+- [ ] Skim [technical competencies framework](../fundamentals/technical-competencies.md)
 
-#### Wednesday: Behavioral Foundation Assessment (3 hours)
-**Morning Block (2 hours)**
-- [ ] Map your experiences to all 16 [Leadership Principles](../fundamentals/leadership-principles.md)
-- [ ] Identify 10-15 potential STAR story experiences
-- [ ] Draft 2 initial STAR stories using [framework](../behavioral/star-framework.md)
+**Analysis Block (30 min)**
+- [ ] Analyze performance and identify top 2 improvement areas
+- [ ] Confirm programming language and basic practice setup
+- [ ] Plan Phase 1 technical learning priorities
 
-**Evening Block (1 hour)**
-- [ ] Practice story delivery and timing - record for self-review
-- [ ] Identify additional experiences needed for complete LP coverage
-- [ ] Plan behavioral development focus for upcoming weeks
+*Part-time: 3 coding problems, skip competencies framework*
+*Minimum viable: 2 coding problems, 1 system design, basic gap analysis*
+
+#### Wednesday: Behavioral Foundation Assessment (2 hours)
+**Main Block (1.5 hours)**
+- [ ] Map your experiences to key [Leadership Principles](../fundamentals/leadership-principles.md) (focus on top 10)
+- [ ] Identify 6-8 strong potential STAR story experiences
+- [ ] Draft 1-2 initial STAR stories using [framework](../behavioral/star-framework.md)
+
+**Practice Block (30 min)**
+- [ ] Practice 1 story delivery and basic timing
+- [ ] Identify 2-3 additional experiences for development
+- [ ] Plan Phase 1 behavioral priorities
+
+*Part-time: 5-6 experiences, 1 story draft*
+*Minimum viable: 4-5 experiences, story outline only*
 
 #### Thursday: Mock Interview Baseline (3 hours)
 **Morning Block (2 hours)**
@@ -837,39 +860,58 @@
 - [ ] OR final mental preparation for upcoming interviews
 - [ ] Celebration of comprehensive preparation completion
 
-## 📊 Daily Study Schedule Templates
+## 📊 Daily Study Schedule Templates for Working Professionals
 
-### Phase 1 Schedule (2.5-3 hours/day)
+### Standard Track Schedules (2-2.5 hours/day)
+
+#### Option A: Early Bird Professional
 ```markdown
-**Early Morning (7:30-9:00 AM): 1.5 hours**
-- Primary skill development (alternates by day)
-- High-energy challenging work when fresh
+**Phase 1-2 (Foundation & Development)**
+- 6:00-7:00 AM: Main study block (1 hour)
+- 12:00-12:30 PM: Light practice (30 min)
+- 8:00-8:30 PM: Review/planning (30 min)
 
-**Evening Deep Work (7:30-9:00 PM): 1.5 hours**
-- Focus practice and application
-- Integration and review work
+**Phase 3 (Mastery)**  
+- 6:00-7:00 AM: Mock practice (1 hour)
+- 8:00-9:00 PM: Integration work (1 hour)
 ```
 
-### Phase 2 Schedule (3-3.5 hours/day)
+#### Option B: Evening Focused Professional
 ```markdown
-**Extended Morning (7:00-9:30 AM): 2.5 hours**  
-- Primary intensive skill development
-- Most challenging work of the day
+**Phase 1-2**
+- 12:00-12:30 PM: Reading/review (30 min)
+- 7:30-9:00 PM: Main study blocks (1.5 hours)
+- Before bed: Quick planning (15 min)
 
-**Evening Application (7:30-8:30 PM): 1 hour**
-- Practice application and integration
-- Review and planning for next day
+**Phase 3**
+- 7:00-8:30 PM: Practice intensive (1.5 hours)
+- Weekend: Extended mock sessions
 ```
 
-### Phase 3 Schedule (3.5-4 hours/day)
-```markdown
-**Morning Intensive (7:00-10:00 AM): 3 hours**
-- Mock interviews and performance practice
-- Peak performance skill demonstration
+### Part-Time Track Schedules (1.5-2 hours/day)
 
-**Evening Refinement (7:30-8:30 PM): 1 hour**
-- Feedback integration and polish
-- Mental preparation and confidence building
+#### Weekday Minimal + Weekend Focus
+```markdown
+**Monday-Friday**
+- 6:30-7:30 AM OR 8:00-9:00 PM: Core study (1 hour)
+- Lunch OR commute: Light review (15-30 min)
+
+**Weekends**
+- Saturday: 2-3 hours focused study
+- Sunday: 1-2 hours practice and planning
+```
+
+### Minimum Viable Schedules (1-1.5 hours/day)
+
+#### Ultra-Compressed for Busy Periods
+```markdown
+**Daily Core (45-75 min)**
+- Single focused block: alternating between behavioral/technical
+- 15-30 min: Quick review or planning
+
+**Weekend Intensive (3-4 hours total)**
+- Mock interview practice
+- Week consolidation and planning
 ```
 
 ## 🎯 Progress Tracking Framework
@@ -988,11 +1030,49 @@
 
 ---
 
-!!! success "12-Week Comprehensive Success Factors"
-    **Systematic Development**: This plan builds skills systematically from foundations to advanced mastery
-    **Sustainable Intensity**: Balanced approach prevents burnout while ensuring thorough preparation
-    **Integration Focus**: Emphasizes seamless connection of technical expertise and leadership capabilities
-    **Authentic Leadership**: Develops genuine leadership presence rather than scripted interview performance
-    **Adaptability**: Built-in assessment and adjustment mechanisms ensure optimal preparation for each individual
+## 🔄 Professional Flexibility Framework
+
+### Workload Adaptation Strategies
+```markdown
+**Heavy Work Periods (Crunch time, deadlines)**
+- Drop to minimum viable track (6-7 hours/week)
+- Focus on highest-ROI activities (behavioral stories, key system design patterns)
+- Use micro-sessions (15-30 min blocks during day)
+- Postpone low-priority items to lighter work periods
+
+**Travel/Remote Work Periods**
+- Shift to behavioral focus (stories, case studies, reading)
+- Use commute/flight time for audio learning
+- Video mock interviews via phone/laptop
+- Flexible schedule adaptation
+
+**Family/Personal Commitments**
+- Reduce daily targets by 30-50%
+- Extend timeline by 2-4 weeks if needed
+- Focus on consistency over intensity
+- Use family time for story development (reflect on experiences)
+```
+
+### Recovery and Catch-Up Strategies
+```markdown
+**Behind Schedule Recovery**
+1. Assess current progress vs. interview timeline
+2. Focus on minimum viable preparation elements
+3. Increase weekend study time temporarily
+4. Consider extending timeline or adjusting expectations
+
+**Burnout Prevention**
+1. Mandatory rest days when exhausted
+2. Reduce intensity rather than skip days entirely
+3. Focus on enjoyable aspects (interesting system design problems)
+4. Celebrate small wins and progress made
+```
+
+!!! success "12-Week Success Factors for Working Professionals"
+    **Sustainable Pace**: Consistent progress over long period beats sprint-and-crash
+    **Flexible Adaptation**: Built-in adjustment mechanisms for real-world constraints
+    **Quality Focus**: Deep understanding over breadth when time is limited
+    **Work-Life Integration**: Preparation that enhances rather than detracts from career
+    **Realistic Timeline**: 12 weeks allows for interruptions and recovery periods
 
 *For accelerated preparation with confirmed interviews, see our [6-week intensive plan](6-week-plan.md).*

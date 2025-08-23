@@ -354,7 +354,7 @@
 
 ### Practice Tools
 - [Mock Interview Scripts](../practice/mock-interviews.md)
-- [Peer Review Checklist](../practice/story-review-checklist.md)
+- [Self-Assessment Guide](../practice/self-assessment.md)
 - [Recording and Analysis Tools](../practice/self-assessment.md)
 
 ---

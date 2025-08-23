@@ -619,28 +619,64 @@ Weeks 11-12: Transformational presence and industry leadership confidence
 
 ## 🎯 Weekly Success Metrics and Checkpoints
 
-### Quantitative Weekly Targets
+### Realistic Weekly Targets by Track
+
+#### Standard Professional Track (12-15 hours/week)
 ```markdown
-**Weeks 1-4 (Foundation):**
-- Study Hours: 15-17/week (gradually increasing)
-- Coding Problems: 15-25/week (building consistency)
-- System Design: 2-3/week (learning patterns)
-- STAR Stories: 2-3 new stories/week (developing portfolio)
-- Mock Interviews: 1/week (establishing baseline)
+**Foundation Phase (Weeks 1-4):**
+- Study Hours: 12-15/week (building routine)
+- Coding Problems: 10-15/week (core patterns)
+- System Design: 2/week (learning fundamentals)
+- STAR Stories: 1-2 new stories/week (building portfolio)
+- Mock Practice: 30-45 min/week (baseline establishment)
 
-**Weeks 5-8 (Development):**
-- Study Hours: 17-19/week (sustained intensity)
-- Coding Problems: 20-30/week (advanced patterns)
-- System Design: 3-4/week (complex scenarios)
-- Story Integration: 1-2 refined stories/week (adding depth)
-- Mock Interviews: 2/week (building performance)
+**Development Phase (Weeks 5-8):**
+- Study Hours: 12-15/week (consistent pace)
+- Coding Problems: 12-18/week (pattern mastery)
+- System Design: 2-3/week (increasing complexity)
+- Story Refinement: 1 polished story/week (adding depth)
+- Mock Interviews: 1/week (skill building)
 
-**Weeks 9-12 (Mastery):**  
-- Study Hours: 15-19/week (focused intensity)
-- Coding Problems: 15-25/week (maintenance + edge cases)
-- System Design: 2-4/week (peak performance)
-- Story Polish: Refinement focus (perfecting delivery)
-- Mock Interviews: 2-3/week (performance optimization)
+**Mastery Phase (Weeks 9-12):**
+- Study Hours: 12-15/week (focused preparation)
+- Coding Problems: 8-12/week (maintenance + edge cases)
+- System Design: 2/week (peak performance)
+- Story Polish: Refinement focus (delivery perfection)
+- Mock Interviews: 1-2/week (performance optimization)
+```
+
+#### Part-Time Track (8-10 hours/week)
+```markdown
+**Foundation Phase:**
+- Study Hours: 8-10/week
+- Coding Problems: 6-10/week
+- System Design: 1-2/week
+- STAR Stories: 1 new story/week
+- Mock Practice: 20-30 min/week
+
+**Development Phase:**
+- Study Hours: 8-10/week
+- Coding Problems: 8-12/week
+- System Design: 1-2/week
+- Story Work: Refinement focus
+- Mock Interviews: 30-45 min/week
+
+**Mastery Phase:**
+- Study Hours: 8-10/week
+- Coding Problems: 5-8/week
+- System Design: 1/week
+- Story Polish: Delivery practice
+- Mock Interviews: 45-60 min/week
+```
+
+#### Minimum Viable Track (6-8 hours/week)
+```markdown
+**All Phases - Consistent Targets:**
+- Study Hours: 6-8/week
+- Coding Problems: 4-8/week (focus on weakest areas)
+- System Design: 1/week (core problems only)
+- STAR Stories: 1 every 2 weeks (quality over quantity)
+- Mock Practice: 15-30 min/week (self-practice focus)
 ```
 
 ### Qualitative Weekly Assessment Framework
@@ -693,7 +729,68 @@ Weeks 11-12: Transformational presence and industry leadership confidence
 
 ---
 
-!!! tip "Choosing Your Timeline"
-    **6-Week Plan**: Choose if you have confirmed interviews and need intensive preparation
-    **12-Week Plan**: Choose for comprehensive skill building and thorough preparation  
-    **Custom Plan**: Use this weekly framework to create your own timeline based on specific needs
+## 🔄 Working Professional Adaptations
+
+### Weekly Flexibility Strategies
+```markdown
+**High Work Demand Weeks:**
+- Drop to minimum viable track (6-8 hours)
+- Focus on highest ROI activities (behavioral stories, core system design)
+- Use micro-learning sessions (15-30 min blocks)
+- Defer non-critical items to lighter weeks
+
+**Travel/Conference Weeks:**
+- Shift to behavioral focus (stories, reading, case studies)
+- Use commute/flight time for audio learning
+- Mobile-friendly activities (LP study, story practice)
+- Virtual mock interviews if possible
+
+**Family/Personal Commitment Weeks:**
+- Reduce daily targets by 40-50%
+- Focus on consistency over intensity
+- Use family time for reflection on leadership experiences
+- Weekend catch-up sessions as possible
+```
+
+### Recovery and Buffer Strategies
+```markdown
+**Behind Schedule Recovery:**
+1. Assess gap between current progress and interview timeline
+2. Focus on minimum viable elements for remaining weeks
+3. Temporarily increase weekend study time (2-4 hours)
+4. Consider extending overall timeline by 2-3 weeks
+
+**Avoiding Burnout:**
+1. Mandatory rest day when feeling overwhelmed
+2. Reduce intensity rather than skip completely
+3. Focus on enjoyable aspects (interesting problems, success stories)
+4. Celebrate weekly progress and small wins
+
+**Catch-up Options:**
+- Extended weekend sessions (3-5 hours)
+- Vacation day for intensive prep
+- Lunch-and-learn style sessions
+- Early morning intensive periods
+```
+
+### Work-Life Integration Tips
+```markdown
+**Use Work Experience:**
+- Recent projects become system design practice
+- Team challenges become behavioral stories
+- Technical decisions become trade-off discussions
+- Meeting dynamics become leadership examples
+
+**Efficiency Maximizers:**
+- Batch similar activities (all behavioral work on one day)
+- Use commute time for audio content (LP principles, case studies)
+- Practice explanations during walks or exercise
+- Leverage work downtime for light reading
+```
+
+!!! tip "Choosing Your Timeline and Track"
+    **6-Week Intensive**: Confirmed interviews, can commit 12-15 hours/week
+    **12-Week Comprehensive**: Want thorough prep, 8-12 hours/week sustainable
+    **Standard Professional Track**: 12-15 hours/week, good work-life balance
+    **Part-Time Track**: 8-10 hours/week, busy with work/family commitments
+    **Minimum Viable**: 6-8 hours/week, extremely busy but need to prep

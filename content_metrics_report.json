@@ -1,0 +1,1350 @@
+{
+  "summary": {
+    "total_files": 121,
+    "total_words": 201058,
+    "total_reading_time_minutes": 1005,
+    "total_reading_time_hours": 16.8,
+    "average_words_per_file": 1662,
+    "total_code_examples": 4972,
+    "total_templates": 20,
+    "total_practice_problems": 194,
+    "unique_external_resources": 32
+  },
+  "content_distribution": {
+    "root": {
+      "percentage": 4.9,
+      "words": 9899
+    },
+    "l6-problems.md": {
+      "percentage": 3.0,
+      "words": 5937
+    },
+    "index.md": {
+      "percentage": 15.0,
+      "words": 30163
+    },
+    "well-architected.md": {
+      "percentage": 0.5,
+      "words": 928
+    },
+    "aws-services.md": {
+      "percentage": 0.3,
+      "words": 517
+    },
+    "case-studies.md": {
+      "percentage": 1.6,
+      "words": 3241
+    },
+    "l7-problems.md": {
+      "percentage": 2.8,
+      "words": 5673
+    },
+    "scale-architecture.md": {
+      "percentage": 0.3,
+      "words": 596
+    },
+    "fundamentals.md": {
+      "percentage": 1.0,
+      "words": 1974
+    },
+    "time-management-template.md": {
+      "percentage": 0.2,
+      "words": 334
+    },
+    "incident-response.md": {
+      "percentage": 0.4,
+      "words": 720
+    },
+    "distributed-systems.md": {
+      "percentage": 1.1,
+      "words": 2272
+    },
+    "security.md": {
+      "percentage": 0.4,
+      "words": 760
+    },
+    "consistency-models.md": {
+      "percentage": 0.9,
+      "words": 1833
+    },
+    "performance-scale.md": {
+      "percentage": 0.3,
+      "words": 682
+    },
+    "mock-problems.md": {
+      "percentage": 1.1,
+      "words": 2281
+    },
+    "patterns.md": {
+      "percentage": 1.3,
+      "words": 2534
+    },
+    "amazon-top-100.md": {
+      "percentage": 2.2,
+      "words": 4494
+    },
+    "data-structures.md": {
+      "percentage": 1.0,
+      "words": 1968
+    },
+    "strategy.md": {
+      "percentage": 0.9,
+      "words": 1737
+    },
+    "algorithms.md": {
+      "percentage": 0.6,
+      "words": 1108
+    },
+    "coding-problem-template.md": {
+      "percentage": 0.4,
+      "words": 866
+    },
+    "behavioral-interview-template.md": {
+      "percentage": 0.7,
+      "words": 1387
+    },
+    "star-story-template.md": {
+      "percentage": 0.2,
+      "words": 451
+    },
+    "l6-system-design-template.md": {
+      "percentage": 0.3,
+      "words": 652
+    },
+    "reference-template.md": {
+      "percentage": 0.7,
+      "words": 1359
+    },
+    "tutorial-template.md": {
+      "percentage": 0.5,
+      "words": 1031
+    },
+    "assessment-template.md": {
+      "percentage": 1.4,
+      "words": 2861
+    },
+    "l7-system-design-template.md": {
+      "percentage": 0.5,
+      "words": 995
+    },
+    "problem-template.md": {
+      "percentage": 0.3,
+      "words": 692
+    },
+    "guide-template.md": {
+      "percentage": 0.6,
+      "words": 1117
+    },
+    "section-overview-template.md": {
+      "percentage": 0.6,
+      "words": 1159
+    },
+    "quick-reference-template.md": {
+      "percentage": 0.6,
+      "words": 1107
+    },
+    "negotiation-guide.md": {
+      "percentage": 1.5,
+      "words": 3082
+    },
+    "decision-making.md": {
+      "percentage": 0.2,
+      "words": 336
+    },
+    "question-response-framework.md": {
+      "percentage": 0.1,
+      "words": 165
+    },
+    "star-plus-plus-template.md": {
+      "percentage": 0.3,
+      "words": 654
+    },
+    "bar-raiser.md": {
+      "percentage": 0.4,
+      "words": 874
+    },
+    "writing-assignment-template.md": {
+      "percentage": 0.1,
+      "words": 189
+    },
+    "l6-scenarios.md": {
+      "percentage": 7.8,
+      "words": 15699
+    },
+    "star-framework.md": {
+      "percentage": 0.2,
+      "words": 387
+    },
+    "60-day-pip-template.md": {
+      "percentage": 0.2,
+      "words": 472
+    },
+    "bar-raiser-deep-dive.md": {
+      "percentage": 0.1,
+      "words": 236
+    },
+    "trade-off-framework.md": {
+      "percentage": 0.2,
+      "words": 418
+    },
+    "l7-scenarios.md": {
+      "percentage": 7.9,
+      "words": 15895
+    },
+    "story-bank-matrix.md": {
+      "percentage": 0.4,
+      "words": 763
+    },
+    "video-learning.md": {
+      "percentage": 0.5,
+      "words": 964
+    },
+    "learning-objectives-framework.md": {
+      "percentage": 1.1,
+      "words": 2208
+    },
+    "assessment-tools.md": {
+      "percentage": 0.7,
+      "words": 1336
+    },
+    "analytics-dashboard.md": {
+      "percentage": 0.4,
+      "words": 712
+    },
+    "design-canvas.md": {
+      "percentage": 0.5,
+      "words": 1041
+    },
+    "leadership-principles.md": {
+      "percentage": 0.6,
+      "words": 1131
+    },
+    "internal-promotion-guide.md": {
+      "percentage": 0.3,
+      "words": 602
+    },
+    "l6-vs-l7.md": {
+      "percentage": 1.3,
+      "words": 2666
+    },
+    "interview-process.md": {
+      "percentage": 0.3,
+      "words": 631
+    },
+    "technical-competencies.md": {
+      "percentage": 0.6,
+      "words": 1257
+    },
+    "industry-transition-guide.md": {
+      "percentage": 0.2,
+      "words": 476
+    },
+    "competency-comparison-framework.md": {
+      "percentage": 0.2,
+      "words": 313
+    },
+    "technical-portfolio.md": {
+      "percentage": 0.1,
+      "words": 255
+    },
+    "architecture-diagrams.md": {
+      "percentage": 0.5,
+      "words": 1055
+    },
+    "case-study-templates.md": {
+      "percentage": 1.8,
+      "words": 3637
+    },
+    "code-samples.md": {
+      "percentage": 0.5,
+      "words": 1008
+    },
+    "decision-records.md": {
+      "percentage": 2.3,
+      "words": 4713
+    },
+    "failure-case-studies.md": {
+      "percentage": 0.7,
+      "words": 1384
+    },
+    "timeline-examples.md": {
+      "percentage": 0.5,
+      "words": 984
+    },
+    "question-database.md": {
+      "percentage": 0.8,
+      "words": 1704
+    },
+    "candidate-quotes.md": {
+      "percentage": 0.7,
+      "words": 1321
+    },
+    "success-templates.md": {
+      "percentage": 0.2,
+      "words": 398
+    },
+    "technical-examples.md": {
+      "percentage": 0.2,
+      "words": 360
+    },
+    "skill-assessment.md": {
+      "percentage": 0.5,
+      "words": 989
+    },
+    "12-week-plan.md": {
+      "percentage": 2.6,
+      "words": 5320
+    },
+    "resources.md": {
+      "percentage": 1.1,
+      "words": 2292
+    },
+    "6-week-plan.md": {
+      "percentage": 1.5,
+      "words": 2933
+    },
+    "mock-interviews.md": {
+      "percentage": 0.6,
+      "words": 1243
+    },
+    "weekly-plan.md": {
+      "percentage": 0.7,
+      "words": 1315
+    },
+    "coding-practice.md": {
+      "percentage": 1.0,
+      "words": 1934
+    },
+    "timeline.md": {
+      "percentage": 0.1,
+      "words": 227
+    },
+    "behavioral-questions.md": {
+      "percentage": 4.7,
+      "words": 9433
+    },
+    "self-assessment.md": {
+      "percentage": 1.8,
+      "words": 3580
+    },
+    "prep-checklist-template.md": {
+      "percentage": 0.2,
+      "words": 311
+    },
+    "comprehensive-timeline.md": {
+      "percentage": 1.1,
+      "words": 2172
+    },
+    "system-design-problems.md": {
+      "percentage": 1.2,
+      "words": 2433
+    },
+    "lp-list.md": {
+      "percentage": 0.2,
+      "words": 418
+    },
+    "star-template.md": {
+      "percentage": 0.1,
+      "words": 260
+    },
+    "README.md": {
+      "percentage": 0.5,
+      "words": 974
+    },
+    "common-questions.md": {
+      "percentage": 0.4,
+      "words": 893
+    },
+    "interview-rounds.md": {
+      "percentage": 0.3,
+      "words": 526
+    },
+    "l6-vs-l7-summary.md": {
+      "percentage": 0.2,
+      "words": 318
+    },
+    "lp-abbreviations.md": {
+      "percentage": 0.2,
+      "words": 380
+    },
+    "comp-summary.md": {
+      "percentage": 0.2,
+      "words": 453
+    }
+  },
+  "section_details": {
+    "root": {
+      "files": 9,
+      "words": 9899,
+      "code_examples": 201,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 32
+    },
+    "l6-problems.md": {
+      "files": 1,
+      "words": 5937,
+      "code_examples": 311,
+      "external_links": 2,
+      "templates": 0,
+      "practice_problems": 17
+    },
+    "index.md": {
+      "files": 23,
+      "words": 30163,
+      "code_examples": 366,
+      "external_links": 6,
+      "templates": 0,
+      "practice_problems": 2
+    },
+    "well-architected.md": {
+      "files": 1,
+      "words": 928,
+      "code_examples": 63,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "aws-services.md": {
+      "files": 1,
+      "words": 517,
+      "code_examples": 56,
+      "external_links": 3,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "case-studies.md": {
+      "files": 1,
+      "words": 3241,
+      "code_examples": 53,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 1
+    },
+    "l7-problems.md": {
+      "files": 1,
+      "words": 5673,
+      "code_examples": 170,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 14
+    },
+    "scale-architecture.md": {
+      "files": 1,
+      "words": 596,
+      "code_examples": 65,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "fundamentals.md": {
+      "files": 1,
+      "words": 1974,
+      "code_examples": 128,
+      "external_links": 4,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "time-management-template.md": {
+      "files": 1,
+      "words": 334,
+      "code_examples": 74,
+      "external_links": 0,
+      "templates": 1,
+      "practice_problems": 0
+    },
+    "incident-response.md": {
+      "files": 1,
+      "words": 720,
+      "code_examples": 23,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "distributed-systems.md": {
+      "files": 1,
+      "words": 2272,
+      "code_examples": 77,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 7
+    },
+    "security.md": {
+      "files": 1,
+      "words": 760,
+      "code_examples": 38,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "consistency-models.md": {
+      "files": 1,
+      "words": 1833,
+      "code_examples": 50,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "performance-scale.md": {
+      "files": 1,
+      "words": 682,
+      "code_examples": 47,
+      "external_links": 2,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "mock-problems.md": {
+      "files": 2,
+      "words": 2281,
+      "code_examples": 40,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 29
+    },
+    "patterns.md": {
+      "files": 1,
+      "words": 2534,
+      "code_examples": 110,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 20
+    },
+    "amazon-top-100.md": {
+      "files": 1,
+      "words": 4494,
+      "code_examples": 296,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 5
+    },
+    "data-structures.md": {
+      "files": 1,
+      "words": 1968,
+      "code_examples": 35,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "strategy.md": {
+      "files": 1,
+      "words": 1737,
+      "code_examples": 68,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "algorithms.md": {
+      "files": 1,
+      "words": 1108,
+      "code_examples": 128,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "coding-problem-template.md": {
+      "files": 1,
+      "words": 866,
+      "code_examples": 14,
+      "external_links": 0,
+      "templates": 1,
+      "practice_problems": 1
+    },
+    "behavioral-interview-template.md": {
+      "files": 1,
+      "words": 1387,
+      "code_examples": 0,
+      "external_links": 0,
+      "templates": 1,
+      "practice_problems": 0
+    },
+    "star-story-template.md": {
+      "files": 1,
+      "words": 451,
+      "code_examples": 47,
+      "external_links": 0,
+      "templates": 1,
+      "practice_problems": 0
+    },
+    "l6-system-design-template.md": {
+      "files": 1,
+      "words": 652,
+      "code_examples": 26,
+      "external_links": 0,
+      "templates": 1,
+      "practice_problems": 0
+    },
+    "reference-template.md": {
+      "files": 1,
+      "words": 1359,
+      "code_examples": 24,
+      "external_links": 6,
+      "templates": 1,
+      "practice_problems": 1
+    },
+    "tutorial-template.md": {
+      "files": 1,
+      "words": 1031,
+      "code_examples": 45,
+      "external_links": 0,
+      "templates": 1,
+      "practice_problems": 0
+    },
+    "assessment-template.md": {
+      "files": 1,
+      "words": 2861,
+      "code_examples": 1,
+      "external_links": 0,
+      "templates": 1,
+      "practice_problems": 20
+    },
+    "l7-system-design-template.md": {
+      "files": 1,
+      "words": 995,
+      "code_examples": 26,
+      "external_links": 0,
+      "templates": 1,
+      "practice_problems": 0
+    },
+    "problem-template.md": {
+      "files": 1,
+      "words": 692,
+      "code_examples": 5,
+      "external_links": 0,
+      "templates": 1,
+      "practice_problems": 0
+    },
+    "guide-template.md": {
+      "files": 1,
+      "words": 1117,
+      "code_examples": 3,
+      "external_links": 3,
+      "templates": 1,
+      "practice_problems": 2
+    },
+    "section-overview-template.md": {
+      "files": 1,
+      "words": 1159,
+      "code_examples": 0,
+      "external_links": 0,
+      "templates": 1,
+      "practice_problems": 0
+    },
+    "quick-reference-template.md": {
+      "files": 1,
+      "words": 1107,
+      "code_examples": 8,
+      "external_links": 0,
+      "templates": 1,
+      "practice_problems": 0
+    },
+    "negotiation-guide.md": {
+      "files": 1,
+      "words": 3082,
+      "code_examples": 86,
+      "external_links": 3,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "decision-making.md": {
+      "files": 1,
+      "words": 336,
+      "code_examples": 50,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "question-response-framework.md": {
+      "files": 1,
+      "words": 165,
+      "code_examples": 53,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "star-plus-plus-template.md": {
+      "files": 1,
+      "words": 654,
+      "code_examples": 35,
+      "external_links": 0,
+      "templates": 1,
+      "practice_problems": 0
+    },
+    "bar-raiser.md": {
+      "files": 1,
+      "words": 874,
+      "code_examples": 23,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "writing-assignment-template.md": {
+      "files": 1,
+      "words": 189,
+      "code_examples": 50,
+      "external_links": 0,
+      "templates": 1,
+      "practice_problems": 1
+    },
+    "l6-scenarios.md": {
+      "files": 1,
+      "words": 15699,
+      "code_examples": 0,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "star-framework.md": {
+      "files": 1,
+      "words": 387,
+      "code_examples": 65,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 1
+    },
+    "60-day-pip-template.md": {
+      "files": 1,
+      "words": 472,
+      "code_examples": 53,
+      "external_links": 0,
+      "templates": 1,
+      "practice_problems": 0
+    },
+    "bar-raiser-deep-dive.md": {
+      "files": 1,
+      "words": 236,
+      "code_examples": 62,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "trade-off-framework.md": {
+      "files": 1,
+      "words": 418,
+      "code_examples": 53,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "l7-scenarios.md": {
+      "files": 1,
+      "words": 15895,
+      "code_examples": 2,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "story-bank-matrix.md": {
+      "files": 1,
+      "words": 763,
+      "code_examples": 53,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "video-learning.md": {
+      "files": 1,
+      "words": 964,
+      "code_examples": 29,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "learning-objectives-framework.md": {
+      "files": 1,
+      "words": 2208,
+      "code_examples": 0,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 1
+    },
+    "assessment-tools.md": {
+      "files": 1,
+      "words": 1336,
+      "code_examples": 8,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "analytics-dashboard.md": {
+      "files": 1,
+      "words": 712,
+      "code_examples": 1,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "design-canvas.md": {
+      "files": 1,
+      "words": 1041,
+      "code_examples": 0,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 3
+    },
+    "leadership-principles.md": {
+      "files": 1,
+      "words": 1131,
+      "code_examples": 59,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "internal-promotion-guide.md": {
+      "files": 1,
+      "words": 602,
+      "code_examples": 56,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "l6-vs-l7.md": {
+      "files": 1,
+      "words": 2666,
+      "code_examples": 47,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 1
+    },
+    "interview-process.md": {
+      "files": 1,
+      "words": 631,
+      "code_examples": 77,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "technical-competencies.md": {
+      "files": 1,
+      "words": 1257,
+      "code_examples": 11,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "industry-transition-guide.md": {
+      "files": 1,
+      "words": 476,
+      "code_examples": 74,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "competency-comparison-framework.md": {
+      "files": 1,
+      "words": 313,
+      "code_examples": 53,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "technical-portfolio.md": {
+      "files": 1,
+      "words": 255,
+      "code_examples": 29,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "architecture-diagrams.md": {
+      "files": 1,
+      "words": 1055,
+      "code_examples": 29,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "case-study-templates.md": {
+      "files": 1,
+      "words": 3637,
+      "code_examples": 14,
+      "external_links": 0,
+      "templates": 1,
+      "practice_problems": 2
+    },
+    "code-samples.md": {
+      "files": 1,
+      "words": 1008,
+      "code_examples": 56,
+      "external_links": 1,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "decision-records.md": {
+      "files": 1,
+      "words": 4713,
+      "code_examples": 17,
+      "external_links": 4,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "failure-case-studies.md": {
+      "files": 1,
+      "words": 1384,
+      "code_examples": 116,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 3
+    },
+    "timeline-examples.md": {
+      "files": 1,
+      "words": 984,
+      "code_examples": 218,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "question-database.md": {
+      "files": 1,
+      "words": 1704,
+      "code_examples": 0,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 10
+    },
+    "candidate-quotes.md": {
+      "files": 1,
+      "words": 1321,
+      "code_examples": 0,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "success-templates.md": {
+      "files": 1,
+      "words": 398,
+      "code_examples": 107,
+      "external_links": 0,
+      "templates": 1,
+      "practice_problems": 0
+    },
+    "technical-examples.md": {
+      "files": 1,
+      "words": 360,
+      "code_examples": 83,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 2
+    },
+    "skill-assessment.md": {
+      "files": 1,
+      "words": 989,
+      "code_examples": 71,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "12-week-plan.md": {
+      "files": 1,
+      "words": 5320,
+      "code_examples": 32,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "resources.md": {
+      "files": 1,
+      "words": 2292,
+      "code_examples": 20,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "6-week-plan.md": {
+      "files": 1,
+      "words": 2933,
+      "code_examples": 29,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "mock-interviews.md": {
+      "files": 1,
+      "words": 1243,
+      "code_examples": 155,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "weekly-plan.md": {
+      "files": 1,
+      "words": 1315,
+      "code_examples": 71,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "coding-practice.md": {
+      "files": 1,
+      "words": 1934,
+      "code_examples": 50,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 8
+    },
+    "timeline.md": {
+      "files": 1,
+      "words": 227,
+      "code_examples": 0,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "behavioral-questions.md": {
+      "files": 1,
+      "words": 9433,
+      "code_examples": 0,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "self-assessment.md": {
+      "files": 1,
+      "words": 3580,
+      "code_examples": 32,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "prep-checklist-template.md": {
+      "files": 1,
+      "words": 311,
+      "code_examples": 80,
+      "external_links": 0,
+      "templates": 1,
+      "practice_problems": 0
+    },
+    "comprehensive-timeline.md": {
+      "files": 1,
+      "words": 2172,
+      "code_examples": 23,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "system-design-problems.md": {
+      "files": 1,
+      "words": 2433,
+      "code_examples": 104,
+      "external_links": 1,
+      "templates": 0,
+      "practice_problems": 10
+    },
+    "lp-list.md": {
+      "files": 1,
+      "words": 418,
+      "code_examples": 0,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "star-template.md": {
+      "files": 1,
+      "words": 260,
+      "code_examples": 2,
+      "external_links": 0,
+      "templates": 1,
+      "practice_problems": 0
+    },
+    "README.md": {
+      "files": 1,
+      "words": 974,
+      "code_examples": 32,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "common-questions.md": {
+      "files": 1,
+      "words": 893,
+      "code_examples": 0,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 1
+    },
+    "interview-rounds.md": {
+      "files": 1,
+      "words": 526,
+      "code_examples": 2,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "l6-vs-l7-summary.md": {
+      "files": 1,
+      "words": 318,
+      "code_examples": 0,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "lp-abbreviations.md": {
+      "files": 1,
+      "words": 380,
+      "code_examples": 0,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    },
+    "comp-summary.md": {
+      "files": 1,
+      "words": 453,
+      "code_examples": 2,
+      "external_links": 0,
+      "templates": 0,
+      "practice_problems": 0
+    }
+  },
+  "reading_times": {
+    "by_section": {
+      "root": 49,
+      "l6-problems.md": 30,
+      "index.md": 151,
+      "well-architected.md": 5,
+      "aws-services.md": 3,
+      "case-studies.md": 16,
+      "l7-problems.md": 28,
+      "scale-architecture.md": 3,
+      "fundamentals.md": 10,
+      "time-management-template.md": 2,
+      "incident-response.md": 4,
+      "distributed-systems.md": 11,
+      "security.md": 4,
+      "consistency-models.md": 9,
+      "performance-scale.md": 3,
+      "mock-problems.md": 11,
+      "patterns.md": 13,
+      "amazon-top-100.md": 22,
+      "data-structures.md": 10,
+      "strategy.md": 9,
+      "algorithms.md": 6,
+      "coding-problem-template.md": 4,
+      "behavioral-interview-template.md": 7,
+      "star-story-template.md": 2,
+      "l6-system-design-template.md": 3,
+      "reference-template.md": 7,
+      "tutorial-template.md": 5,
+      "assessment-template.md": 14,
+      "l7-system-design-template.md": 5,
+      "problem-template.md": 3,
+      "guide-template.md": 6,
+      "section-overview-template.md": 6,
+      "quick-reference-template.md": 6,
+      "negotiation-guide.md": 15,
+      "decision-making.md": 2,
+      "question-response-framework.md": 1,
+      "star-plus-plus-template.md": 3,
+      "bar-raiser.md": 4,
+      "writing-assignment-template.md": 1,
+      "l6-scenarios.md": 78,
+      "star-framework.md": 2,
+      "60-day-pip-template.md": 2,
+      "bar-raiser-deep-dive.md": 1,
+      "trade-off-framework.md": 2,
+      "l7-scenarios.md": 79,
+      "story-bank-matrix.md": 4,
+      "video-learning.md": 5,
+      "learning-objectives-framework.md": 11,
+      "assessment-tools.md": 7,
+      "analytics-dashboard.md": 4,
+      "design-canvas.md": 5,
+      "leadership-principles.md": 6,
+      "internal-promotion-guide.md": 3,
+      "l6-vs-l7.md": 13,
+      "interview-process.md": 3,
+      "technical-competencies.md": 6,
+      "industry-transition-guide.md": 2,
+      "competency-comparison-framework.md": 2,
+      "technical-portfolio.md": 1,
+      "architecture-diagrams.md": 5,
+      "case-study-templates.md": 18,
+      "code-samples.md": 5,
+      "decision-records.md": 24,
+      "failure-case-studies.md": 7,
+      "timeline-examples.md": 5,
+      "question-database.md": 9,
+      "candidate-quotes.md": 7,
+      "success-templates.md": 2,
+      "technical-examples.md": 2,
+      "skill-assessment.md": 5,
+      "12-week-plan.md": 27,
+      "resources.md": 11,
+      "6-week-plan.md": 15,
+      "mock-interviews.md": 6,
+      "weekly-plan.md": 7,
+      "coding-practice.md": 10,
+      "timeline.md": 1,
+      "behavioral-questions.md": 47,
+      "self-assessment.md": 18,
+      "prep-checklist-template.md": 2,
+      "comprehensive-timeline.md": 11,
+      "system-design-problems.md": 12,
+      "lp-list.md": 2,
+      "star-template.md": 1,
+      "README.md": 5,
+      "common-questions.md": 4,
+      "interview-rounds.md": 3,
+      "l6-vs-l7-summary.md": 2,
+      "lp-abbreviations.md": 2,
+      "comp-summary.md": 2
+    },
+    "total": 1005
+  },
+  "code_examples": {
+    "total": 4972,
+    "by_language": {
+      "yaml": 184,
+      "markdown": 580,
+      "mermaid": 64,
+      "python": 468,
+      "text": 341,
+      "sql": 17,
+      "json": 7,
+      "bash": 2,
+      "go": 1,
+      "java": 7,
+      "hcl": 1,
+      "dockerfile": 1,
+      "javascript": 2,
+      "css": 2,
+      "html": 1
+    },
+    "by_section": {
+      "root": 201,
+      "l6-problems.md": 311,
+      "index.md": 366,
+      "well-architected.md": 63,
+      "aws-services.md": 56,
+      "case-studies.md": 53,
+      "l7-problems.md": 170,
+      "scale-architecture.md": 65,
+      "fundamentals.md": 128,
+      "time-management-template.md": 74,
+      "incident-response.md": 23,
+      "distributed-systems.md": 77,
+      "security.md": 38,
+      "consistency-models.md": 50,
+      "performance-scale.md": 47,
+      "mock-problems.md": 40,
+      "patterns.md": 110,
+      "amazon-top-100.md": 296,
+      "data-structures.md": 35,
+      "strategy.md": 68,
+      "algorithms.md": 128,
+      "coding-problem-template.md": 14,
+      "behavioral-interview-template.md": 0,
+      "star-story-template.md": 47,
+      "l6-system-design-template.md": 26,
+      "reference-template.md": 24,
+      "tutorial-template.md": 45,
+      "assessment-template.md": 1,
+      "l7-system-design-template.md": 26,
+      "problem-template.md": 5,
+      "guide-template.md": 3,
+      "section-overview-template.md": 0,
+      "quick-reference-template.md": 8,
+      "negotiation-guide.md": 86,
+      "decision-making.md": 50,
+      "question-response-framework.md": 53,
+      "star-plus-plus-template.md": 35,
+      "bar-raiser.md": 23,
+      "writing-assignment-template.md": 50,
+      "l6-scenarios.md": 0,
+      "star-framework.md": 65,
+      "60-day-pip-template.md": 53,
+      "bar-raiser-deep-dive.md": 62,
+      "trade-off-framework.md": 53,
+      "l7-scenarios.md": 2,
+      "story-bank-matrix.md": 53,
+      "video-learning.md": 29,
+      "learning-objectives-framework.md": 0,
+      "assessment-tools.md": 8,
+      "analytics-dashboard.md": 1,
+      "design-canvas.md": 0,
+      "leadership-principles.md": 59,
+      "internal-promotion-guide.md": 56,
+      "l6-vs-l7.md": 47,
+      "interview-process.md": 77,
+      "technical-competencies.md": 11,
+      "industry-transition-guide.md": 74,
+      "competency-comparison-framework.md": 53,
+      "technical-portfolio.md": 29,
+      "architecture-diagrams.md": 29,
+      "case-study-templates.md": 14,
+      "code-samples.md": 56,
+      "decision-records.md": 17,
+      "failure-case-studies.md": 116,
+      "timeline-examples.md": 218,
+      "question-database.md": 0,
+      "candidate-quotes.md": 0,
+      "success-templates.md": 107,
+      "technical-examples.md": 83,
+      "skill-assessment.md": 71,
+      "12-week-plan.md": 32,
+      "resources.md": 20,
+      "6-week-plan.md": 29,
+      "mock-interviews.md": 155,
+      "weekly-plan.md": 71,
+      "coding-practice.md": 50,
+      "timeline.md": 0,
+      "behavioral-questions.md": 0,
+      "self-assessment.md": 32,
+      "prep-checklist-template.md": 80,
+      "comprehensive-timeline.md": 23,
+      "system-design-problems.md": 104,
+      "lp-list.md": 0,
+      "star-template.md": 2,
+      "README.md": 32,
+      "common-questions.md": 0,
+      "interview-rounds.md": 2,
+      "l6-vs-l7-summary.md": 0,
+      "lp-abbreviations.md": 0,
+      "comp-summary.md": 2
+    }
+  },
+  "practice_problems": {
+    "behavioral": 2,
+    "coding": 43,
+    "system_design": 42,
+    "total": 194
+  },
+  "templates": [
+    "system-design/time-management-template.md",
+    "_templates/coding-problem-template.md",
+    "_templates/behavioral-interview-template.md",
+    "_templates/star-story-template.md",
+    "_templates/l6-system-design-template.md",
+    "_templates/reference-template.md",
+    "_templates/tutorial-template.md",
+    "_templates/assessment-template.md",
+    "_templates/l7-system-design-template.md",
+    "_templates/problem-template.md",
+    "_templates/guide-template.md",
+    "_templates/section-overview-template.md",
+    "_templates/quick-reference-template.md",
+    "behavioral/star-plus-plus-template.md",
+    "behavioral/writing-assignment-template.md",
+    "behavioral/60-day-pip-template.md",
+    "portfolio/case-study-templates.md",
+    "experiences/success-templates.md",
+    "practice/prep-checklist-template.md",
+    "_includes/star-template.md"
+  ],
+  "preparation_paths": {
+    "quick_start": {
+      "minutes": 0,
+      "hours": 0.0
+    },
+    "l6_preparation": {
+      "minutes": 0,
+      "hours": 0.0
+    },
+    "l7_preparation": {
+      "minutes": 0,
+      "hours": 0.0
+    },
+    "complete_study": {
+      "minutes": 1005,
+      "hours": 16.8
+    }
+  }
+}

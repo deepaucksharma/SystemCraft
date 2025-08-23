@@ -211,7 +211,7 @@ RESULT (20% - Sustained Impact)
 
 ### Critical Reading Available Now
 
-1. **Study existing Bar Raiser content** in our [Bar Raiser Deep Dive](bar-raiser-deep-dive.md)
+1. **Study this Bar Raiser content** thoroughly
 2. **Review real candidate experiences** in our [Candidate Quotes](../experiences/candidate-quotes.md)
 3. **Practice with actual questions** from our [Question Database](../experiences/question-database.md)
 
@@ -258,7 +258,7 @@ Start developing stories specifically for Bar Raiser scenarios:
 ## 📖 Essential Resources Available Now
 
 ### Must-Read Content
-- **[Bar Raiser Deep Dive](bar-raiser-deep-dive.md)** - Detailed strategies and insights
+- **Bar Raiser Strategies** - Detailed strategies and insights (covered in this guide)
 - **[Complete Behavioral Guide](index.md)** - Foundation STAR framework 
 - **[Leadership Principles Guide](../fundamentals/leadership-principles.md)** - Detailed LP understanding
 
@@ -339,4 +339,4 @@ path usually leads to better outcomes for everyone involved."
 
 ---
 
-*This guide will be dramatically expanded by February 5, 2025. Start with [Bar Raiser Deep Dive](bar-raiser-deep-dive.md) for immediate preparation needs.*
+*This guide provides comprehensive Bar Raiser preparation strategies. It will be expanded by February 5, 2025.*

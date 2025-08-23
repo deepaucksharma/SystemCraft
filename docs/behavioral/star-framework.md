@@ -593,6 +593,6 @@ Show vulnerability, admit mistakes, and demonstrate reliability over time
 - [L6 Behavioral Scenarios](l6-scenarios.md) - Practice scenarios for L6 candidates
 - [L7 Behavioral Scenarios](l7-scenarios.md) - Advanced scenarios for L7 candidates
 - [Story Bank Matrix](story-bank-matrix.md) - Template for organizing your STAR stories
-- [Bar Raiser Deep Dive](bar-raiser-deep-dive.md) - Specialized preparation for Bar Raiser rounds
+- [Bar Raiser Guide](bar-raiser.md) - Specialized preparation for Bar Raiser rounds
 
 *Continue to: [L6 Behavioral Scenarios](l6-scenarios.md) →*

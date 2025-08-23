@@ -1,15 +1,29 @@
 # 6-Week Intensive Amazon L6/L7 Interview Preparation Plan
 
-!!! warning "Intensive Preparation Timeline"
-    This 6-week plan is designed for candidates with **confirmed interview dates**. It requires **20-25 hours per week** of focused study and assumes you already have foundational engineering management experience. If you need more preparation time, consider the [12-week comprehensive plan](12-week-plan.md).
+!!! info "Professional-Friendly Intensive Preparation"
+    This 6-week plan is designed for **working professionals** with confirmed interview dates. It requires **12-15 hours per week** with flexible scheduling options. Choose between full-time (15 hours/week) and part-time (10-12 hours/week) tracks based on your availability. If you need more preparation time or lighter commitment, consider the [12-week comprehensive plan](12-week-plan.md).
 
 ## 🎯 Plan Overview & Success Metrics
 
-### Target Allocation (Weekly 22 hours)
-- **System Design**: 30% (6.6 hours) - Core technical preparation
-- **Behavioral**: 30% (6.6 hours) - Leadership stories and principles  
-- **Coding**: 20% (4.4 hours) - Technical fundamentals
-- **Mock Interviews**: 20% (4.4 hours) - Practice and feedback integration
+### Target Allocation Options
+
+#### Full-Time Track (15 hours/week)
+- **System Design**: 30% (4.5 hours) - Core technical preparation
+- **Behavioral**: 35% (5.25 hours) - Leadership stories and principles  
+- **Coding**: 20% (3 hours) - Technical fundamentals
+- **Mock Interviews**: 15% (2.25 hours) - Practice and feedback integration
+
+#### Part-Time Track (12 hours/week)
+- **System Design**: 35% (4.2 hours) - Prioritized technical focus
+- **Behavioral**: 40% (4.8 hours) - Essential story development
+- **Coding**: 15% (1.8 hours) - Core patterns only
+- **Mock Interviews**: 10% (1.2 hours) - Essential practice
+
+#### Minimum Viable Track (10 hours/week)
+- **System Design**: 40% (4 hours) - High-impact problems only
+- **Behavioral**: 45% (4.5 hours) - Core story portfolio
+- **Coding**: 10% (1 hour) - Maintenance practice
+- **Mock Interviews**: 5% (0.5 hours) - Weekly brief sessions
 
 ### Success Benchmarks by Week
 ```markdown
@@ -26,135 +40,179 @@ Week 6: Final Preparation (90% completion target)
 ### Week 1: Foundation Assessment & Core Setup
 **Theme: "Know Your Starting Point"**
 
-#### Monday: Comprehensive Assessment (3.5 hours)
-**Morning Block (2 hours)**
-- [ ] Complete [self-assessment framework](self-assessment.md) - all sections
-- [ ] Identify top 3 weakness areas requiring focus
-- [ ] Map your experiences to Leadership Principles using [LP mapping guide](../fundamentals/leadership-principles.md)
+#### Monday: Comprehensive Assessment (2.5 hours)
+**Morning Block (1.5 hours) - OR - Evening Block (1.5 hours)**
+- [ ] Complete [self-assessment framework](self-assessment.md) - focus on critical gaps
+- [ ] Identify top 3 weakness areas requiring immediate focus
+- [ ] Map 5-7 key experiences to Leadership Principles using [LP mapping guide](../fundamentals/leadership-principles.md)
 
-**Evening Block (1.5 hours)**
+**Flexible Block (1 hour - can be split across day)**
 - [ ] Set up practice environment (whiteboard, timer, recording setup)
 - [ ] Review [L6 vs L7 expectations](../fundamentals/l6-vs-l7.md) - align target level
-- [ ] Create initial study calendar with blocked time slots
+- [ ] Create realistic study calendar with your work schedule
 
-#### Tuesday: System Design Foundations (3.5 hours)
-**Morning Block (2.5 hours)**
-- [ ] Study [system design fundamentals](../system-design/fundamentals.md) - complete review
-- [ ] Complete practice problem: "Design URL Shortener" (45 min timed)
-- [ ] Review [AWS services overview](../system-design/aws-services.md) - key services
+*Part-time option: Reduce LP mapping to 3-4 experiences, skip detailed environment setup*
 
-**Evening Block (1 hour)**
-- [ ] Practice whiteboard presentation of URL shortener solution
-- [ ] Review [scale architecture patterns](../system-design/scale-architecture.md) - caching, load balancing
+#### Tuesday: System Design Foundations (2.5 hours)
+**Main Block (1.5-2 hours - flexible timing)**
+- [ ] Study [system design fundamentals](../system-design/fundamentals.md) - core concepts only
+- [ ] Complete practice problem: "Design URL Shortener" (30-45 min timed)
+- [ ] Review [AWS services overview](../system-design/aws-services.md) - top 10 services
 
-#### Wednesday: Coding Assessment & Setup (3 hours)
-**Morning Block (2 hours)**  
-- [ ] Solve 5 medium LeetCode problems - time each solution
-- [ ] Focus areas: Arrays, Strings, Hash Maps, Binary Search
-- [ ] Document problem-solving approach and patterns identified
+**Flex Block (30-60 min - can be lunch break or commute)**
+- [ ] Practice explaining URL shortener solution out loud
+- [ ] Review [scale architecture patterns](../system-design/scale-architecture.md) - basic patterns
 
-**Evening Block (1 hour)**
-- [ ] Review [coding strategy guide](../coding/strategy.md)
+*Part-time option: Skip AWS deep dive, focus on fundamental patterns only*
+*Minimum viable: URL shortener problem only, 30-min solution practice*
+
+#### Wednesday: Coding Assessment & Setup (2 hours)
+**Main Block (1.5 hours - flexible timing)**
+- [ ] Solve 3-4 medium LeetCode problems - time each solution
+- [ ] Focus areas: Arrays, Strings, Hash Maps (core patterns)
+- [ ] Document patterns and time to solution
+
+**Quick Block (30 min - can be evening or lunch)**
+- [ ] Review [coding strategy guide](../coding/strategy.md) - key strategies
 - [ ] Set up preferred IDE and practice environment
-- [ ] Identify 2-3 coding pattern areas needing work
+- [ ] Identify top 2 coding pattern areas needing work
 
-#### Thursday: Behavioral Foundation (3.5 hours)
-**Morning Block (2.5 hours)**
-- [ ] Read [STAR framework guide](../behavioral/star-framework.md) completely
-- [ ] Draft 3 initial STAR stories covering different Leadership Principles
-- [ ] Practice 1 story delivery with timing (6-8 minutes each)
+*Part-time option: 3 problems maximum, focus on Arrays and Strings*
+*Minimum viable: 2 problems, basic pattern recognition only*
 
-**Evening Block (1 hour)**
-- [ ] Review [L6](../behavioral/l6-scenarios.md) or [L7 scenarios](../behavioral/l7-scenarios.md) based on target level
-- [ ] Identify 5 additional experiences to develop into stories
+#### Thursday: Behavioral Foundation (2.5 hours)
+**Main Block (1.5-2 hours)**
+- [ ] Read [STAR framework guide](../behavioral/star-framework.md) - focus on structure
+- [ ] Draft 2-3 initial STAR stories covering key Leadership Principles
+- [ ] Practice 1 story delivery with timing (aim for 5-6 minutes)
 
-#### Friday: Integration & Planning (3 hours)
-**Morning Block (2 hours)**
-- [ ] Conduct first mock interview: 45-minute behavioral focus
-- [ ] Self-evaluate using [question-response framework](../behavioral/question-response-framework.md)
+**Flexible Block (30-60 min)**
+- [ ] Review [L6](../behavioral/l6-scenarios.md) or [L7 scenarios](../behavioral/l7-scenarios.md) - key scenarios
+- [ ] Identify 3-4 additional experiences to develop later
 
-**Evening Block (1 hour)**
-- [ ] Review week 1 progress against targets
-- [ ] Adjust Week 2 plan based on identified gaps
-- [ ] Schedule Week 2 mock interview partner
+*Part-time option: 2 stories maximum, basic framework understanding*
+*Minimum viable: 1 strong story, framework overview*
 
-#### Weekend: Light Review & Preparation (2 hours total)
-- [ ] Read Amazon news and recent technical blog posts (30 min)
-- [ ] Mental preparation and stress management techniques (30 min)
-- [ ] Review and organize Week 1 notes and materials (1 hour)
+#### Friday: Integration & Planning (2 hours)
+**Main Block (1 hour)**
+- [ ] Conduct first mock interview: 30-minute behavioral focus
+- [ ] Quick self-evaluate using [question-response framework](../behavioral/question-response-framework.md)
+
+**Planning Block (1 hour)**
+- [ ] Review week 1 progress - celebrate wins, note gaps
+- [ ] Adjust Week 2 plan based on realistic time availability
+- [ ] Schedule Week 2 practice sessions (can be informal)
+
+*Part-time option: 20-minute mock, streamlined planning*
+*Minimum viable: Self-practice with recording, 30-min planning*
+
+#### Weekend: Recovery & Light Review (1.5 hours total)
+**Saturday (1 hour)** - Optional based on energy
+- [ ] Read Amazon news or recent technical blog posts (30 min)
+- [ ] Review and organize Week 1 notes (30 min)
+
+**Sunday (30 min)** - Recovery day
+- [ ] Mental preparation and stress management (15 min)
+- [ ] Quick prep for Week 2 schedule (15 min)
+
+*Part-time option: Skip Saturday, keep Sunday light*
+*Minimum viable: Sunday prep only, focus on rest*
+
+**Recovery day reminder**: Rest is crucial for retention and avoiding burnout!
 
 ---
 
 ### Week 2: Skill Building & Pattern Recognition
 **Theme: "Build Your Arsenal"**
 
-#### Monday: Advanced Behavioral Development (4 hours)
-**Morning Block (2.5 hours)**
-- [ ] Develop 3 new STAR stories focusing on:
+#### Monday: Advanced Behavioral Development (2.5 hours)
+**Main Block (1.5-2 hours)**
+- [ ] Develop 2-3 new STAR stories focusing on:
   - Technical leadership and decision-making
-  - Cross-functional collaboration
-  - Conflict resolution and difficult conversations
-- [ ] Practice delivery of all 6 stories with timing
+  - Cross-functional collaboration OR conflict resolution
+- [ ] Practice delivery of 3-4 best stories with timing
 
-**Evening Block (1.5 hours)**
+**Flexible Block (30-60 min)**
 - [ ] Study [trade-off framework](../behavioral/trade-off-framework.md)
-- [ ] Apply framework to 2 technical decision scenarios
-- [ ] Review [decision-making guide](../behavioral/decision-making.md)
+- [ ] Apply framework to 1 technical decision scenario
+- [ ] Skim [decision-making guide](../behavioral/decision-making.md)
 
-#### Tuesday: System Design Mastery Building (4 hours)
-**Morning Block (2.5 hours)**
-- [ ] Complete 2 system design problems (45 min each):
-  - Target level appropriate: [L6 problems](../system-design/l6-problems.md) or [L7 problems](../system-design/l7-problems.md)
-  - Focus: Chat system and Social media feed
-- [ ] Study [well-architected principles](../system-design/well-architected.md)
+*Part-time: 2 stories max, focus on strongest LP areas*
+*Minimum viable: 1 new story, practice 2 existing stories*
 
-**Evening Block (1.5 hours)**
-- [ ] Deep dive: Distributed systems concepts - consistency models
-- [ ] Review [case studies](../system-design/case-studies.md) - Netflix, Uber architectures
-- [ ] Practice explaining trade-offs clearly and concisely
+#### Tuesday: System Design Mastery Building (2.5 hours)
+**Main Block (1.5-2 hours)**
+- [ ] Complete 1-2 system design problems (30-40 min each):
+  - Target level: [L6 problems](../system-design/l6-problems.md) or [L7 problems](../system-design/l7-problems.md)
+  - Focus: Chat system OR Social media feed
+- [ ] Review [well-architected principles](../system-design/well-architected.md) - key concepts
 
-#### Wednesday: Coding Pattern Mastery (3.5 hours)
-**Morning Block (2.5 hours)**
+**Flexible Block (30-60 min)**
+- [ ] Basic distributed systems concepts - consistency models overview
+- [ ] Quick review: [case studies](../system-design/case-studies.md) - 1 architecture (Netflix OR Uber)
+- [ ] Practice explaining one trade-off clearly
+
+*Part-time: 1 problem, basic principles only*
+*Minimum viable: 1 problem (30 min), skip case studies*
+
+#### Wednesday: Coding Pattern Mastery (2.5 hours)
+**Main Block (1.5-2 hours)**
 - [ ] Focus on identified weak patterns from Week 1
-- [ ] Solve 8-10 problems covering:
-  - Trees and Graphs (3 problems)
-  - Dynamic Programming (3 problems)  
-  - System Design coding (2 problems: LRU Cache, Rate Limiter)
-  - Two pointers/Sliding window (2 problems)
+- [ ] Solve 5-6 problems covering:
+  - Trees and Graphs (2 problems)
+  - Dynamic Programming (2 problems)  
+  - System Design coding (1 problem: LRU Cache OR Rate Limiter)
+  - Two pointers/Sliding window (1 problem)
 
-**Evening Block (1 hour)**
-- [ ] Review [algorithm patterns guide](../coding/patterns.md)
-- [ ] Practice explaining algorithmic choices and trade-offs
-- [ ] Time management practice - solve problems under pressure
+**Quick Block (30-60 min)**
+- [ ] Review [algorithm patterns guide](../coding/patterns.md) - focus on weak areas
+- [ ] Practice explaining 1-2 algorithmic choices clearly
+- [ ] Quick timed practice - solve 1 problem under pressure
 
-#### Thursday: Integration Mock Interview (4 hours)
-**Morning Block (2.5 hours)**
-- [ ] Full technical mock interview:
-  - 45 min behavioral round
-  - 60 min system design round
-  - Record for self-review
+*Part-time: 4 problems max, skip system design coding*
+*Minimum viable: 3 problems focusing on weakest patterns*
 
-**Evening Block (1.5 hours)**
-- [ ] Review recording and identify improvement areas
-- [ ] Practice specific weak areas identified
-- [ ] Get external feedback if possible
+#### Thursday: Integration Mock Interview (2.5 hours)
+**Main Block (1.5-2 hours)**
+- [ ] Focused mock interview:
+  - 30 min behavioral round
+  - 45 min system design round
+  - Quick recording notes
 
-#### Friday: Technical Deep Dive (3.5 hours)
-**Morning Block (2.5 hours)**
-- [ ] Choose 1 advanced topic based on target level:
-  - **L6**: Microservices architecture, API design, database scaling
-  - **L7**: Platform engineering, ML infrastructure, or distributed systems
-- [ ] Study topic deeply and create summary notes
+**Review Block (30-60 min)**
+- [ ] Review notes and identify top 2 improvement areas
+- [ ] Practice 1 specific weak area immediately
+- [ ] Get external feedback if available (or self-assess)
 
-**Evening Block (1 hour)**
-- [ ] Apply deep dive knowledge to system design practice
-- [ ] Practice explaining complex concepts simply
-- [ ] Review industry best practices and current trends
+*Part-time: 20 min behavioral + 30 min system design*
+*Minimum viable: 30 min behavioral focus, quick self-notes*
 
-#### Weekend: Review & Strategy Refinement (2.5 hours total)
-- [ ] Comprehensive week 2 review and gap analysis (1 hour)
-- [ ] Refine behavioral stories based on practice feedback (1 hour)
-- [ ] Plan Week 3 with adjusted priorities (30 min)
+#### Friday: Technical Deep Dive (2 hours)
+**Main Block (1-1.5 hours)**
+- [ ] Choose 1 focused topic based on target level:
+  - **L6**: Microservices basics, API design, OR database scaling
+  - **L7**: Platform engineering, ML infrastructure, OR distributed systems
+- [ ] Study topic with practical focus, create brief notes
+
+**Application Block (30-60 min)**
+- [ ] Apply knowledge to 1 system design practice
+- [ ] Practice explaining the concept in simple terms
+- [ ] Quick review of 1-2 industry best practices
+
+*Part-time: 1 hour total, basic concept understanding*
+*Minimum viable: 30 min concept study, skip application*
+
+#### Weekend: Review & Strategy Refinement (1.5 hours total)
+**Saturday (1 hour)** - Optional
+- [ ] Week 2 review - wins and gaps (30 min)
+- [ ] Refine 1-2 behavioral stories based on feedback (30 min)
+
+**Sunday (30 min)** - Planning
+- [ ] Plan Week 3 with realistic priorities and buffer time
+- [ ] Adjust schedule based on what worked/didn't work
+
+*Part-time: Sunday planning only*
+*Minimum viable: 15-min Sunday planning*
 
 ---
 
@@ -432,25 +490,46 @@ Week 6: Final Preparation (90% completion target)
 - [ ] Light review only - no intensive studying
 - [ ] Execute interview with confidence and authenticity
 
-## 📊 Daily Schedule Template
+## 📊 Daily Schedule Templates for Working Professionals
 
-### Intensive Daily Schedule (3.5-4 hours/day)
+### Full-Time Track Schedule (2.5-3 hours/day)
 ```markdown
-**Early Morning (7:00-8:30 AM): 1.5 hours**
-- Primary skill building (alternates by day)
-- High-energy, challenging work when fresh
+**Option A: Early Bird (Before Work)**
+- 6:30-7:30 AM: Main study block (1 hour)
+- 7:30-8:00 AM: Quick review/planning (30 min)
+- Evening: 7:30-8:30 PM: Practice block (1 hour)
 
-**Morning Break (8:30-9:00 AM): 30 min**
-- Review previous day notes
-- Set intentions for current day
+**Option B: Evening Focus (After Work)**  
+- Lunch: 12:00-12:30 PM: Light review (30 min)
+- Evening: 7:00-9:00 PM: Main study blocks (2 hours)
+- Before bed: 9:30-9:45 PM: Planning (15 min)
 
-**Extended Morning (9:00-11:00 AM): 2 hours**  
-- Deep work session (behavioral practice, system design, coding)
-- Most challenging work of the day
+**Option C: Split Schedule**
+- Morning: 7:00-8:00 AM: Core study (1 hour)
+- Lunch: 12:00-12:45 PM: Practice/review (45 min)
+- Evening: 8:00-9:00 PM: Application work (1 hour)
+```
 
-**Evening Review (7:00-7:30 PM): 30 min**
-- Progress tracking and next day planning
-- Light review and reflection
+### Part-Time Track Schedule (2-2.5 hours/day)
+```markdown
+**Weekday Minimal (1.5-2 hours/day)**
+- Morning OR Evening: 1-1.5 hours main study
+- Lunch OR Commute: 30 min light review
+
+**Weekend Catch-up (3-4 hours total)**
+- Saturday: 2 hours focused study
+- Sunday: 1-2 hours review and planning
+```
+
+### Minimum Viable Schedule (1.5-2 hours/day)
+```markdown
+**Daily Core (1-1.5 hours)**
+- Single focused study block
+- Quick 15-30 min review
+
+**Weekend Essential (2-3 hours total)**
+- Mock interview practice
+- Week planning and catch-up
 ```
 
 ## 🎯 Weekly Assessment Framework
@@ -458,22 +537,22 @@ Week 6: Final Preparation (90% completion target)
 ### Week Completion Criteria
 ```markdown
 **Minimum Viable Week (70% target):**
-- [ ] Completed all planned study hours (18+ hours)
-- [ ] Met practice problem quotas (coding, system design)  
-- [ ] Completed behavioral story development goals
-- [ ] Conducted scheduled mock interview
+- [ ] Completed core study hours (10+ hours any track)
+- [ ] Met essential practice quotas (reduced targets)
+- [ ] Made progress on behavioral story portfolio
+- [ ] Some form of practice interview/feedback
 
 **Strong Week (85% target):**
-- [ ] Exceeded study hour goals (20+ hours)
+- [ ] Met or exceeded chosen track goals
 - [ ] Demonstrated measurable skill improvement
-- [ ] Received positive external feedback
-- [ ] Integrated feedback into next week planning
+- [ ] Received external feedback or strong self-assessment
+- [ ] Maintained sustainable pace without burnout
 
 **Exceptional Week (95% target):**
-- [ ] Significantly exceeded all quantitative goals
+- [ ] Exceeded goals while maintaining work-life balance
 - [ ] Breakthrough moments in skill development
-- [ ] Strong external validation of progress
-- [ ] Inspired confidence for upcoming weeks
+- [ ] Strong validation of progress from mock interviews
+- [ ] Built confidence and momentum for next week
 ```
 
 ### Weekly Self-Assessment Questions
@@ -557,11 +636,29 @@ Week 6: Final Preparation (90% completion target)
 
 ---
 
-!!! success "6-Week Plan Success Factors"
-    **Commitment**: This plan requires genuine 20-25 hour/week commitment
-    **Focus**: Prioritize highest-impact activities when time is limited  
-    **Feedback**: Regular external input is crucial for rapid improvement
-    **Adaptation**: Adjust based on weekly performance and interview feedback
-    **Confidence**: Balance skill building with maintaining strong self-belief
+## 🔄 Flexibility and Recovery Strategies
+
+### Weekly Buffer Management
+```markdown
+**High-Energy Weeks**: Exceed targets by 20-30%
+**Normal Weeks**: Meet minimum targets consistently
+**Recovery Weeks**: Drop to minimum viable (40-50% reduction)
+**Catch-up Strategy**: Use weekends flexibly based on weekday performance
+```
+
+### Working Professional Adaptations
+```markdown
+**Business Travel**: Switch to mobile study (behavioral stories, case studies)
+**High Work Load**: Focus on highest ROI activities (mock interviews, core stories)
+**Family Commitments**: Reduce daily targets, extend weekend study
+**Illness/Emergency**: Full recovery day, resume at minimum viable level
+```
+
+!!! success "6-Week Plan Success Factors for Working Professionals"
+    **Realistic Commitment**: Choose track that fits your current life situation
+    **Flexible Focus**: Prioritize highest-impact when time is scarce
+    **Sustainable Pace**: Better to be consistent at lower intensity than burn out
+    **Smart Recovery**: Plan rest days and buffer time for unexpected work demands
+    **Quality over Quantity**: Focus on deep practice rather than hours logged
 
 *For more extensive preparation with deeper skill building, see our [12-week comprehensive plan](12-week-plan.md).*

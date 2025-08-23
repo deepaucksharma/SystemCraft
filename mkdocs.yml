@@ -32,7 +32,10 @@ theme:
     code: Roboto Mono
   
   features:
+    # Navigation performance features
     - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
     - navigation.tracking
     - navigation.tabs
     - navigation.tabs.sticky
@@ -42,12 +45,16 @@ theme:
     - navigation.indexes
     - navigation.top
     - navigation.footer
+    - navigation.prune  # Reduces navigation tree size
+    # TOC optimization
     - toc.follow
     - toc.integrate
+    # Enhanced search features
     - search.suggest
     - search.highlight
     - search.share
-    - header.autohide
+    # Performance and UX features
+    - header.autohide  # Saves screen space on mobile
     - content.code.copy
     - content.code.select
     - content.code.annotate
@@ -59,8 +66,7 @@ plugins:
   - search:
       lang:
         - en
-  - tags:
-      tags_file: tags.md
+  - tags
   - glightbox:
       touchNavigation: true
       loop: false
@@ -68,15 +74,32 @@ plugins:
       slide_effect: slide
       width: 100%
       height: auto
+      zoomable: true
+      draggable: true
+      auto_caption: false
+      caption_position: bottom
   - git-revision-date-localized:
       enable_creation_date: true
       type: timeago
+      custom_format: "%B %d, %Y"
+      timezone: UTC
+      exclude:
+        - index.md
   - minify:
       minify_html: true
       minify_js: true
       minify_css: true
       htmlmin_opts:
           remove_comments: true
+          remove_empty_space: true
+          remove_all_empty_space: false
+          reduce_empty_attributes: true
+          reduce_boolean_attributes: true
+      js_files:
+        - js/timeago.min.js
+        - js/timeago_mkdocs_material.js
+      css_files:
+        - stylesheets/extra.css
 
 markdown_extensions:
   - abbr
@@ -128,116 +151,104 @@ extra:
       link: https://github.com/deepaucksharma
     - icon: fontawesome/brands/linkedin
       link: https://linkedin.com
+  
+  # Security configuration
+  security:
+    csp_enabled: true
+    external_link_security: true
 
 extra_javascript:
+  # Performance optimization loaded first
+  - javascripts/performance.js
+  # Analytics and monitoring
+  - javascripts/analytics.js
+  # Critical scripts loaded synchronously
+  - javascripts/security.js
+  - javascripts/mobile-enhancements.js
   - javascripts/mathjax.js
-  - javascripts/learning-analytics.js
-  - javascripts/interactive-design-canvas.js
-  - javascripts/gamification-engine.js
-  - javascripts/spaced-repetition.js
-  - javascripts/assessment-tools.js
+  # External scripts with resource hints (loaded asynchronously when possible)
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-  - https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js
-  - https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js
-  - https://unpkg.com/konva@8.4.3/konva.min.js
 
 extra_css:
   - stylesheets/extra.css
-  - stylesheets/learning-platform.css
-  - stylesheets/interactive-components.css
-  - stylesheets/gamification.css
 
 nav:
+  - Home: index.md
+  
+  # CLEAR USER JOURNEY PATHS
   - Getting Started:
-    - Home: index.md
-    - Quick Start: getting-started.md
-    - Quick Reference: quick-reference.md
-    - Study Plans:
-      - Enhancement Plan: enhancement-plan.md
-      - Complete 6-Month Timeline: practice/comprehensive-timeline.md
-      - Week-by-Week Plan: practice/weekly-plan.md
-  
-  - Fundamentals:
-    - fundamentals/index.md
-    - L6 vs L7 Differences: fundamentals/l6-vs-l7.md
-    - Leadership Principles: fundamentals/leadership-principles.md
+    - Start Here: getting-started.md
+    - Assessment & Placement: self-assessment-quiz.md
+    - L6 vs L7 Guide: fundamentals/l6-vs-l7.md
     - Interview Process: fundamentals/interview-process.md
-    - Technical Competencies: fundamentals/technical-competencies.md
-    - Foundational Mindset: foundational-mindset/index.md
   
-  - Technical Preparation:
-    - System Design:
-      - system-design/index.md
-      - Design Fundamentals: system-design/fundamentals.md
-      - Scale & Architecture: system-design/scale-architecture.md
-      - AWS Services Deep Dive: system-design/aws-services.md
-      - Well-Architected Framework: system-design/well-architected.md
-      - L6 Design Problems: system-design/l6-problems.md
-      - L7 Design Problems: system-design/l7-problems.md
-      - Case Studies: system-design/case-studies.md
-    - Coding Preparation:
-      - coding/index.md
-      - Coding Strategy: coding/strategy.md
-      - Data Structures: coding/data-structures.md
-      - Algorithms: coding/algorithms.md
-      - Problem Patterns: coding/patterns.md
-      - Amazon Top 100: coding/amazon-top-100.md
-      - Mock Problems: coding/mock-problems.md
-    - Technical Deep Dives:
-      - deep-dives/index.md
-      - Distributed Systems: deep-dives/distributed-systems.md
-      - Consistency Models: deep-dives/consistency-models.md
-      - Performance & Scale: deep-dives/performance-scale.md
-      - Security & Compliance: deep-dives/security.md
-      - Incident Response: deep-dives/incident-response.md
+  # STUDY PLANS (Time-based progression)
+  - Study Plans:
+    - Quick Start (2 weeks): quick-reference.md
+    - Intensive (6 weeks): practice/6-week-plan.md
+    - Comprehensive (12 weeks): practice/12-week-plan.md
+    - Custom Planning: practice/weekly-plan.md
   
-  - Behavioral & Leadership:
-    - behavioral/index.md
+  # CORE SKILLS (Topic-based mastery)
+  - Behavioral Leadership:
+    - Overview & Strategy: behavioral/index.md
     - STAR Framework: behavioral/star-framework.md
+    - Leadership Principles: fundamentals/leadership-principles.md
     - L6 Scenarios: behavioral/l6-scenarios.md
     - L7 Scenarios: behavioral/l7-scenarios.md
     - Bar Raiser Prep: behavioral/bar-raiser.md
     - Decision Making: behavioral/decision-making.md
-    - Story Engineering Workshop: story-engineering/index.md
-    - Interview Mechanics Masterclass: interview-mechanics/index.md
   
-  - Practice & Assessment:
-    - practice/index.md
-    - Mock Interviews: practice/mock-interviews.md
-    - Self Assessment: practice/self-assessment.md
-    - Resources & Tools: practice/resources.md
-    - Level-Specific Playbooks: level-playbooks/index.md
-    - Red Flags & Success Patterns: red-flags-success/index.md
-    - 2025 Special Considerations: 2025-considerations/index.md
+  - System Design:
+    - Overview & Strategy: system-design/index.md
+    - Fundamentals: system-design/fundamentals.md
+    - Scale & Architecture: system-design/scale-architecture.md
+    - AWS Services: system-design/aws-services.md
+    - Well-Architected: system-design/well-architected.md
+    - L6 Problems: system-design/l6-problems.md
+    - L7 Problems: system-design/l7-problems.md
+    - Case Studies: system-design/case-studies.md
   
-  - Portfolio & Artifacts:
-    - portfolio/index.md
+  - Technical Coding:
+    - Overview & Strategy: coding/index.md
+    - Data Structures: coding/data-structures.md
+    - Algorithms: coding/algorithms.md
+    - Problem Patterns: coding/patterns.md
+    - Amazon Top 100: coding/amazon-top-100.md
+    - Mock Problems: coding/mock-problems.md
+  
+  # ADVANCED PREPARATION
+  - Deep Technical Knowledge:
+    - Technical Competencies: fundamentals/technical-competencies.md
+    - Distributed Systems: deep-dives/distributed-systems.md
+    - Performance & Scale: deep-dives/performance-scale.md
+    - Consistency Models: deep-dives/consistency-models.md
+    - Security: deep-dives/security.md
+    - Incident Response: deep-dives/incident-response.md
+  
+  - Portfolio & Examples:
     - Technical Portfolio: portfolio/technical-portfolio.md
-    - Architecture Diagrams: portfolio/architecture-diagrams.md
-    - Case Study Templates: portfolio/case-study-templates.md
     - Code Samples: portfolio/code-samples.md
     - Decision Records: portfolio/decision-records.md
-    - Success Story Templates: experiences/success-templates.md
-    - Technical Examples Library: experiences/technical-examples.md
+    - Architecture Diagrams: portfolio/architecture-diagrams.md
   
-  - Interactive Tools:
-    - interactive/index.md
-    - Learning Analytics Dashboard: interactive/analytics-dashboard.md
-    - Interactive Assessment Tools: interactive/assessment-tools.md
-    - System Design Canvas: interactive/design-canvas.md
-    - Collaborative Learning Hub: interactive/collaborative-hub.md
-    - Progress Tracking: interactive/progress-tracking.md
-    - Learning Style Assessment: interactive/learning-style-assessment.md
+  # PRACTICE & REFINEMENT
+  - Progress Tracking & Assessment:
+    - Complete Progress System: practice/comprehensive-progress-system.md
+    - Progress Tracking Framework: practice/progress-tracking-system.md
+    - Competency Checkpoints: practice/competency-checkpoints.md
+    - Learning Prerequisites: practice/learning-prerequisites.md
+    - Diagnostic Gap Analysis: practice/diagnostic-gap-analysis.md
+    - Adaptive Learning Framework: practice/adaptive-learning-framework.md
+    - Self Assessment: practice/self-assessment.md
+    - Weekly Planning: practice/weekly-plan.md
+    - Mock Interview Guide: practice/mock-interviews.md
   
-  - Resources:
+  # REFERENCE & SUPPORT
+  - Quick Reference & Support:
+    - Interview Day Checklist: quick-reference.md
     - FAQ: faq/index.md
-    - Downloads: downloads/index.md
-    - Video Learning: resources/video-learning.md
-    - Real Experiences:
-      - experiences/index.md
-      - Candidate Quotes 2024-2025: experiences/candidate-quotes.md
-      - Interview Questions Database: experiences/question-database.md
-      - Failure Case Studies: experiences/failure-case-studies.md
-      - Timeline Examples: experiences/timeline-examples.md
-    - Compensation & Negotiation: compensation/negotiation-guide.md
+    - Real Experiences: experiences/index.md
+    - Compensation Guide: compensation/negotiation-guide.md
+    - Resources & Downloads: downloads/index.md

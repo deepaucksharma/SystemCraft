@@ -4,10 +4,10 @@
 
 This comprehensive guide combines strategic planning with detailed daily execution to prepare you for Amazon L6/L7 Engineering Manager interviews over 6 months, requiring **15-20 hours per week** of focused preparation.
 
-!!! success "Success Insights from 2024-2025 Candidates"
-    **January 2024 L6 Hire**: "Following a structured timeline was crucial. I spent 6 months preparing, landed multiple L6 offers."
+!!! success "Success Insights from Recent Candidates"
+    **L6 Hire**: "Following a structured timeline was crucial. I spent 6 months preparing, landed multiple L6 offers."
     
-    **L7 Success (March 2025)**: "The day-by-day schedule kept me on track. Having both strategic goals AND daily tasks was the winning combination."
+    **L7 Success**: "The day-by-day schedule kept me on track. Having both strategic goals AND daily tasks was the winning combination."
 
 ## 📚 Real Timeline Examples
 
