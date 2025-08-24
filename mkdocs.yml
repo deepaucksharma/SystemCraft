@@ -194,10 +194,19 @@ extra_javascript:
   - javascripts/mobile-optimizations.js
   - javascripts/interactive-diagrams.js
   - javascripts/onboarding.js
+  - javascripts/mock-interview-system.js
+  - javascripts/video-practice.js
+  - javascripts/collaborative-coding.js
+  - javascripts/analytics-dashboard.js
+  # External libraries for advanced features
   - https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js
   - https://cdn.jsdelivr.net/npm/vega@5
   - https://cdn.jsdelivr.net/npm/vega-lite@5
   - https://cdn.jsdelivr.net/npm/vega-embed@6
+  # Monaco Editor for collaborative coding
+  - https://cdn.jsdelivr.net/npm/monaco-editor@latest/min/vs/loader.js
+  # Chart.js for analytics dashboard
+  - https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js
 
 
 nav:
@@ -208,6 +217,7 @@ nav:
     - Self-Assessment & Placement: self-assessment-quiz.md
     - L6 vs L7 Guide: fundamentals/l6-vs-l7.md
     - Interview Process: fundamentals/interview-process.md
+    - Written Assessment Guide: interview-process/written-assessment-guide.md
     - Interview Mechanics: interview-mechanics/index.md
   - Level Playbooks:
     - L6/L7 Success Formulas: level-playbooks/index.md
@@ -223,12 +233,18 @@ nav:
   - Behavioral Leadership:
     - Overview & Strategy: behavioral/index.md
     - STAR Framework: behavioral/star-framework.md
-    - Missing Leadership Principles: behavioral/missing-leadership-principles.md
+    - L6 Behavioral Mastery: behavioral/l6-behavioral-mastery.md
+    - L7 Behavioral Mastery: behavioral/l7-behavioral-mastery.md
+    - L6 vs L7 Differentiation: behavioral/l6-vs-l7-differentiation.md
+    - Impact Quantification: behavioral/impact-quantification.md
+    - Bar Raiser Mastery: behavioral/bar-raiser-mastery.md
+    - Bar Raiser Questions: behavioral/bar-raiser-questions.md
+    - Bar Raiser Recovery: behavioral/bar-raiser-recovery.md
     - L6 Scenarios: behavioral/l6-scenarios.md
     - L7 Scenarios: behavioral/l7-scenarios.md
     - DEI Leadership: behavioral/dei-leadership.md
-    - Bar Raiser Prep: behavioral/bar-raiser.md
     - Decision Making: behavioral/decision-making.md
+    - Missing Leadership Principles: behavioral/missing-leadership-principles.md
   - System Design:
     - Overview & Strategy: system-design/index.md
     - Fundamentals: system-design/fundamentals.md
@@ -239,6 +255,9 @@ nav:
     - Scale & Architecture: system-design/scale-architecture.md
     - AWS Services: system-design/aws-services.md
     - Well-Architected: system-design/well-architected.md
+    - Generative AI Systems: system-design/generative-ai-systems.md
+    - ML Systems Design: system-design/ml-systems-design.md
+    - ML Design Problems: system-design/ml-design-problems.md
     - L6 Problems: system-design/l6-problems.md
     - L7 Problems: system-design/l7-problems.md
     - Case Studies: system-design/case-studies.md
@@ -259,6 +278,19 @@ nav:
     - Consistency Models: deep-dives/consistency-models.md
     - Security: deep-dives/security.md
     - Incident Response: deep-dives/incident-response.md
+  - Team-Specific Tracks:
+    - Team Comparison Guide: team-specific/team-comparison.md
+    - Team Fit Assessment: team-specific/team-fit-guide.md
+    - AWS Track: team-specific/aws-track.md
+    - Retail Track: team-specific/retail-track.md
+    - Alexa Track: team-specific/alexa-track.md
+    - Prime Video Track: team-specific/prime-video-track.md
+    - Ads Track: team-specific/ads-track.md
+    - Logistics Track: team-specific/logistics-track.md
+    - FinTech Track: team-specific/fintech-track.md
+  - Interactive Features:
+    - Mock Interview Guide: features/mock-interview-guide.md
+    - Interactive Features Overview: features/interactive-features.md
   - 2025 Updates:
     - Latest Considerations: 2025-considerations/index.md
   - Portfolio & Career:
@@ -269,6 +301,22 @@ nav:
     - Technology Evaluation: portfolio/technology-evaluation-frameworks.md
     - Risk Assessment: portfolio/risk-assessment-templates.md
     - Technical Portfolio: portfolio/technical-portfolio.md
+  - Team-Specific Tracks:
+    - Team Comparison: team-specific/team-comparison.md
+    - Team Fit Assessment: team-specific/team-fit-guide.md
+    - AWS Track: team-specific/aws-track.md
+    - Retail Track: team-specific/retail-track.md
+    - Alexa Track: team-specific/alexa-track.md
+    - Prime Video Track: team-specific/prime-video-track.md
+    - Amazon Ads Track: team-specific/ads-track.md
+    - Logistics Track: team-specific/logistics-track.md
+    - FinTech Track: team-specific/fintech-track.md
+  - Interactive Features:
+    - Mock Interview System: features/mock-interview-guide.md
+    - Interactive Features Guide: features/interactive-features.md
+    - Video Practice Platform: practice/video-practice.md
+    - Collaborative Coding: practice/collaborative-coding.md
+    - Analytics Dashboard: interactive/analytics-dashboard.md
   - Support & Resources:
     - Interview Day Checklist: quick-reference.md
     - FAQ: fundamentals/faq.md

@@ -335,6 +335,31 @@ Before you finish, ensure you've covered:
 - [ ] Team structure discussed
 - [ ] Migration/rollout planned
 
+## 🤖 AI/ML System Design (2025 Focus)
+
+Amazon's 2025 technical interviews now heavily emphasize AI/ML system design. These are critical areas:
+
+### 🚀 Generative AI Systems
+📚 **[Generative AI Systems Design](generative-ai-systems.md)** - Master Amazon Bedrock and GenAI architectures
+- RAG (Retrieval-Augmented Generation) patterns
+- Multi-model orchestration and cost optimization
+- Token economics and scaling strategies
+- Responsible AI and safety patterns
+
+### 🔬 ML Infrastructure & MLOps
+📚 **[ML Systems Design](ml-systems-design.md)** - Build production ML platforms at scale
+- Feature store architecture (real-time vs batch)
+- Model serving and inference optimization
+- MLOps pipelines and deployment patterns
+- Vector databases and embedding systems
+
+### 🎯 ML Design Problems
+📚 **[ML Design Problems](ml-design-problems.md)** - Practice with 10 production scenarios
+- ChatGPT competitor using AWS services
+- AI code review system for 10K developers
+- Multi-modal AI platform (text, image, video)
+- Real-time fraud detection at scale
+
 ## 🎓 Practice Problems by Difficulty
 
 ### L6 Level (Component Systems)
@@ -346,6 +371,8 @@ Before you finish, ensure you've covered:
 6. YouTube
 7. Google Drive
 8. Ticketmaster
+9. **AI Customer Service Chatbot**
+10. **Real-time Fraud Detection**
 
 ### L7 Level (Platform Systems)
 1. AWS S3
@@ -356,6 +383,8 @@ Before you finish, ensure you've covered:
 6. Facebook's TAO
 7. Google's Borg
 8. Amazon's Dynamo
+9. **Amazon Bedrock Platform**
+10. **Multi-Modal AI Infrastructure**
 
 ## 📚 Essential Reading
 
@@ -388,11 +417,13 @@ Before you finish, ensure you've covered:
 
 ## 🎯 Next Steps
 
-1. **Learn Fundamentals**: Study [Design Fundamentals](fundamentals.md)
-2. **Master AWS**: Deep dive into [AWS Services](aws-services.md)
-3. **Practice L6 Problems**: Work through [L6 Design Problems](l6-problems.md)
-4. **Practice L7 Problems**: Challenge yourself with [L7 Design Problems](l7-problems.md)
-5. **Study Cases**: Learn from [Real Case Studies](case-studies.md)
+1. **Start with AI/ML (2025 Priority)**: Master [Generative AI Systems](generative-ai-systems.md)
+2. **Learn ML Infrastructure**: Study [ML Systems Design](ml-systems-design.md)
+3. **Practice ML Problems**: Work through [ML Design Problems](ml-design-problems.md)
+4. **Master AWS**: Deep dive into [AWS Services](aws-services.md)
+5. **Practice L6 Problems**: Work through [L6 Design Problems](l6-problems.md)
+6. **Practice L7 Problems**: Challenge yourself with [L7 Design Problems](l7-problems.md)
+7. **Study Cases**: Learn from [Real Case Studies](case-studies.md)
 
 ---
 
