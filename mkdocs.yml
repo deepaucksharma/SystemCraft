@@ -82,23 +82,23 @@ plugins:
       auto_caption: false
       caption_position: bottom
   
-  # Content organization
-  - minify:
-      minify_html: true
-      minify_js: true
-      minify_css: true
-      htmlmin_opts:
-          remove_comments: true
-      cache_safe: true
+  # Content organization (temporarily disabled - need to install)
+  # - minify:
+  #     minify_html: true
+  #     minify_js: true
+  #     minify_css: true
+  #     htmlmin_opts:
+  #         remove_comments: true
+  #     cache_safe: true
   
-  # Analytics and tracking
-  - git-revision-date-localized:
-      enable_creation_date: true
-      type: timeago
-      timezone: UTC
-      locale: en
-      fallback_to_build_date: false
-      enabled: true
+  # Analytics and tracking (temporarily disabled - need to install)
+  # - git-revision-date-localized:
+  #     enable_creation_date: true
+  #     type: timeago
+  #     timezone: UTC
+  #     locale: en
+  #     fallback_to_build_date: false
+  #     enabled: true
   
   # Enhanced content features (commented out - need installation)
   # - awesome-pages
