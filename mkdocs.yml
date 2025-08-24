@@ -1,17 +1,18 @@
 site_name: Amazon L6/L7 Engineering Manager Interview Prep
-site_description: Complete 6-month preparation guide for Amazon L6/L7 Engineering Manager Technical Interviews
 site_url: https://deepaucksharma.github.io/SystemCraft/
+site_description: Complete preparation guide for Amazon L6/L7 Engineering Manager Technical Interviews
 site_author: SystemCraft
+
 repo_url: https://github.com/deepaucksharma/SystemCraft
 repo_name: deepaucksharma/SystemCraft
 edit_uri: edit/main/docs/
+
 copyright: Copyright &copy; 2025 SystemCraft
 
 theme:
   name: material
-  language: en
-  
   palette:
+    # Light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: orange
@@ -19,6 +20,7 @@ theme:
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
+    # Dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: orange
@@ -26,16 +28,8 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
-  
-  font:
-    text: Roboto
-    code: Roboto Mono
-  
   features:
-    # Navigation performance features
     - navigation.instant
-    - navigation.instant.prefetch
-    - navigation.instant.progress
     - navigation.tracking
     - navigation.tabs
     - navigation.tabs.sticky
@@ -44,79 +38,36 @@ theme:
     - navigation.path
     - navigation.indexes
     - navigation.top
-    - navigation.footer
-    - navigation.prune  # Reduces navigation tree size
-    # TOC optimization
     - toc.follow
     - toc.integrate
-    # Enhanced search features
     - search.suggest
     - search.highlight
     - search.share
-    # Performance and UX features
-    - header.autohide  # Saves screen space on mobile
     - content.code.copy
     - content.code.select
-    - content.code.annotate
-    - content.tabs.link
-    - content.tooltips
-    - announce.dismiss
 
 plugins:
   - search:
-      lang:
-        - en
-  - tags
-  - glightbox:
-      touchNavigation: true
-      loop: false
-      effect: zoom
-      slide_effect: slide
-      width: 100%
-      height: auto
-      zoomable: true
-      draggable: true
-      auto_caption: false
-      caption_position: bottom
-  - git-revision-date-localized:
-      enable_creation_date: true
-      type: timeago
-      custom_format: "%B %d, %Y"
-      timezone: UTC
-      exclude:
-        - index.md
-  - minify:
-      minify_html: true
-      minify_js: true
-      minify_css: true
-      htmlmin_opts:
-          remove_comments: true
-          remove_empty_space: true
-          remove_all_empty_space: false
-          reduce_empty_attributes: true
-          reduce_boolean_attributes: true
-      js_files:
-        - js/timeago.min.js
-        - js/timeago_mkdocs_material.js
-      css_files:
-        - stylesheets/extra.css
+      lang: en
+  - glightbox
 
 markdown_extensions:
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - tables
+  - fenced_code
   - abbr
   - admonition
   - attr_list
   - def_list
   - footnotes
   - md_in_html
-  - toc:
-      permalink: true
-      toc_depth: 3
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.betterem:
       smart_enable: all
   - pymdownx.caret
-  - pymdownx.critic
   - pymdownx.details
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
@@ -141,56 +92,26 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tilde
 
-  # Enable snippets for content includes from your consolidation plan
-  - pymdownx.snippets:
-      base_path: docs/_includes
-
-extra:
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/deepaucksharma
-    - icon: fontawesome/brands/linkedin
-      link: https://linkedin.com
-  
-  # Security configuration
-  security:
-    csp_enabled: true
-    external_link_security: true
-
-extra_javascript:
-  # Performance optimization loaded first
-  - javascripts/performance.js
-  # Analytics and monitoring
-  - javascripts/analytics.js
-  # Critical scripts loaded synchronously
-  - javascripts/security.js
-  - javascripts/mobile-enhancements.js
-  - javascripts/mathjax.js
-  # External scripts with resource hints (loaded asynchronously when possible)
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-
 extra_css:
   - stylesheets/extra.css
 
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mtml-chtml.js
+
 nav:
   - Home: index.md
-  
-  # CLEAR USER JOURNEY PATHS
   - Getting Started:
     - Start Here: getting-started.md
     - Assessment & Placement: self-assessment-quiz.md
     - L6 vs L7 Guide: fundamentals/l6-vs-l7.md
     - Interview Process: fundamentals/interview-process.md
-  
-  # STUDY PLANS (Time-based progression)
   - Study Plans:
     - Quick Start (2 weeks): quick-reference.md
     - Intensive (6 weeks): practice/6-week-plan.md
     - Comprehensive (12 weeks): practice/12-week-plan.md
     - Custom Planning: practice/weekly-plan.md
-  
-  # CORE SKILLS (Topic-based mastery)
   - Behavioral Leadership:
     - Overview & Strategy: behavioral/index.md
     - STAR Framework: behavioral/star-framework.md
@@ -199,7 +120,6 @@ nav:
     - L7 Scenarios: behavioral/l7-scenarios.md
     - Bar Raiser Prep: behavioral/bar-raiser.md
     - Decision Making: behavioral/decision-making.md
-  
   - System Design:
     - Overview & Strategy: system-design/index.md
     - Fundamentals: system-design/fundamentals.md
@@ -209,7 +129,6 @@ nav:
     - L6 Problems: system-design/l6-problems.md
     - L7 Problems: system-design/l7-problems.md
     - Case Studies: system-design/case-studies.md
-  
   - Technical Coding:
     - Overview & Strategy: coding/index.md
     - Data Structures: coding/data-structures.md
@@ -217,8 +136,6 @@ nav:
     - Problem Patterns: coding/patterns.md
     - Amazon Top 100: coding/amazon-top-100.md
     - Mock Problems: coding/mock-problems.md
-  
-  # ADVANCED PREPARATION
   - Deep Technical Knowledge:
     - Technical Competencies: fundamentals/technical-competencies.md
     - Distributed Systems: deep-dives/distributed-systems.md
@@ -226,14 +143,11 @@ nav:
     - Consistency Models: deep-dives/consistency-models.md
     - Security: deep-dives/security.md
     - Incident Response: deep-dives/incident-response.md
-  
   - Portfolio & Examples:
     - Technical Portfolio: portfolio/technical-portfolio.md
     - Code Samples: portfolio/code-samples.md
     - Decision Records: portfolio/decision-records.md
     - Architecture Diagrams: portfolio/architecture-diagrams.md
-  
-  # PRACTICE & REFINEMENT
   - Progress Tracking & Assessment:
     - Complete Progress System: practice/comprehensive-progress-system.md
     - Progress Tracking Framework: practice/progress-tracking-system.md
@@ -244,8 +158,6 @@ nav:
     - Self Assessment: practice/self-assessment.md
     - Weekly Planning: practice/weekly-plan.md
     - Mock Interview Guide: practice/mock-interviews.md
-  
-  # REFERENCE & SUPPORT
   - Quick Reference & Support:
     - Interview Day Checklist: quick-reference.md
     - FAQ: faq/index.md

@@ -50,19 +50,11 @@ jobs:
           echo "📋 Validating content standards compliance..."
           python scripts/validate-content.py
         
-      - name: Generate content report
+      - name: Generate content metrics
         run: |
-          echo "📊 Generating content quality report..."
-          python scripts/generate-content-report.py
+          echo "📊 Generating content quality metrics..."
+          python scripts/content_metrics_analyzer.py
         continue-on-error: true
-        
-      - name: Upload content report
-        uses: actions/upload-artifact@v3
-        with:
-          name: content-validation-report
-          path: content-report.html
-          retention-days: 30
-        if: always()
 
   markdown-lint:
     runs-on: ubuntu-latest
@@ -141,16 +133,8 @@ jobs:
       - name: Generate analytics report
         run: |
           echo "📈 Generating content analytics..."
-          python scripts/generate-analytics.py
+          python scripts/detailed_content_analysis.py
         continue-on-error: true
-        
-      - name: Upload analytics report
-        uses: actions/upload-artifact@v3
-        with:
-          name: content-analytics
-          path: analytics-report.html
-          retention-days: 90
-        if: always()
 
   validate-pr-changes:
     runs-on: ubuntu-latest
@@ -181,7 +165,7 @@ jobs:
       - name: Validate changed content
         run: |
           echo "🔍 Validating changed files: ${{ steps.changed-files.outputs.changed_files }}"
-          python scripts/validate-pr-changes.py ${{ steps.changed-files.outputs.changed_files }}
+          python scripts/validate-content.py
         if: steps.changed-files.outputs.changed_files != ''
         
       - name: Comment on PR
