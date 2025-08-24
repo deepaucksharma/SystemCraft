@@ -183,6 +183,7 @@ extra_css:
   - stylesheets/mobile-enhancements.css
   - stylesheets/accessibility.css
   - stylesheets/interactive-elements.css
+  - stylesheets/visual-learning.css
 
 extra_javascript:
   - javascripts/mathjax.js
@@ -198,6 +199,8 @@ extra_javascript:
   - javascripts/video-practice.js
   - javascripts/collaborative-coding.js
   - javascripts/analytics-dashboard.js
+  - javascripts/visual-learning.js
+  - javascripts/spaced-repetition.js
   # External libraries for advanced features
   - https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js
   - https://cdn.jsdelivr.net/npm/vega@5
@@ -228,6 +231,7 @@ nav:
     - Intensive (6 weeks): practice/6-week-plan.md
     - Comprehensive (12 weeks): practice/12-week-plan.md
     - Complete Study Plan (6 months): study-plan.md
+    - Visual Learning Guide: learning/visual-learning-guide.md
     - Progress Tracking System: practice/comprehensive-progress-system.md
     - Mock Interview Guide: practice/mock-interviews.md
   - Behavioral Leadership:
