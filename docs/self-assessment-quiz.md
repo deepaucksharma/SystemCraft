@@ -403,12 +403,12 @@ E) I'm recognized for transformational results that have changed organizational 
 
 **Choose Your Preparation Path**:
 - **Score 85+**: [Final Interview Preparation](quick-reference.md)
-- **Score 70-84**: [Quick Start Guide](getting-started.md) - use the 6-week intensive plan
-- **Score 55-69**: [Comprehensive Preparation Timeline](practice/comprehensive-timeline.md)
-- **Score <55**: [Foundational Skills Development](fundamentals/technical-competencies.md)
+- **Score 70-84**: [6-Week Intensive Plan](practice/6-week-plan.md)
+- **Score 55-69**: [12-Week Comprehensive Plan](practice/12-week-plan.md) 
+- **Score <55**: [6-Month Study Plan](study-plan.md) - focus on foundational development
 
 **Weekly Progress Tracking**:
-Use the [Progress Tracking Templates](practice/self-assessment.md) to monitor improvement and maintain motivation throughout your preparation journey.
+Use the progress tracking templates included in this assessment to monitor improvement and maintain motivation throughout your preparation journey.
 
 ---
 

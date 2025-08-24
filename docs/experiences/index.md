@@ -34,6 +34,13 @@
 - **[Timeline Examples](timeline-examples.md)** - Real preparation schedules that worked
 - **[Technical Examples Library](technical-examples.md)** - L6/L7 level technical decision making
 
+### 🚀 NEW: Enhanced Portfolio & Decision Frameworks
+- **[L6 Industry-Specific Portfolios](../portfolio/l6-industry-portfolios.md)** - Detailed examples for E-commerce, Cloud, Video Streaming, Logistics, Payments
+- **[L7 Strategic Leadership Portfolios](../portfolio/l7-strategic-portfolios.md)** - Multi-org initiatives, cross-business innovation, strategic partnerships
+- **[Business Impact Calculation Methods](../portfolio/business-impact-calculation.md)** - Revenue attribution, cost avoidance, productivity metrics with calculation frameworks
+- **[Technology Evaluation Frameworks](../portfolio/technology-evaluation-frameworks.md)** - Build vs buy, vendor selection, architecture decisions with ROI analysis
+- **[Risk Assessment Templates](../portfolio/risk-assessment-templates.md)** - Technical debt, security, scalability, organizational change risk frameworks
+
 !!! quote "2025 Candidate Insight"
     **May 2025:** "Amazon prioritized leadership questions over coding. Out of 6 rounds, only 1 was pure coding. The rest had significant behavioral components."
 

@@ -15,9 +15,9 @@ on:
       - 'mkdocs.yml'
 
 jobs:
-  validate-content-standards:
+  content-validation:
     runs-on: ubuntu-latest
-    name: Validate Content Standards
+    name: Content Validation & Build Test
     
     steps:
       - name: Checkout repository
@@ -29,76 +29,32 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
+          cache: 'pip'
           
       - name: Install dependencies
         run: |
           pip install --upgrade pip
           pip install pyyaml markdown beautifulsoup4 requests
+          pip install -r requirements.txt
           
       - name: Validate YAML front-matter
         run: |
-          echo "🔍 Validating YAML front-matter compliance..."
+          echo "Validating YAML front-matter compliance..."
           python scripts/validate-frontmatter.py
         
       - name: Check internal links
         run: |
-          echo "🔗 Validating internal links..."
+          echo "Validating internal links..."
           python scripts/check-links.py
         
       - name: Validate content standards
         run: |
-          echo "📋 Validating content standards compliance..."
+          echo "Validating content standards compliance..."
           python scripts/validate-content.py
         
-      - name: Generate content metrics
-        run: |
-          echo "📊 Generating content quality metrics..."
-          python scripts/content_metrics_analyzer.py
-        continue-on-error: true
-
-  markdown-lint:
-    runs-on: ubuntu-latest
-    name: Markdown Linting
-    
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-          
-      - name: Install markdownlint
-        run: npm install -g markdownlint-cli
-        
-      - name: Run markdownlint
-        run: |
-          echo "📝 Running markdown linting..."
-          markdownlint docs/**/*.md --config .markdownlint.yaml
-        continue-on-error: true
-
-  build-test:
-    runs-on: ubuntu-latest
-    name: Test MkDocs Build
-    
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-          
-      - name: Install MkDocs and dependencies
-        run: |
-          pip install --upgrade pip
-          pip install -r requirements.txt
-          
       - name: Test MkDocs build
         run: |
-          echo "🏗️ Testing MkDocs build..."
+          echo "Testing MkDocs build..."
           mkdocs build --strict --verbose
         
       - name: Upload build artifacts
@@ -109,36 +65,47 @@ jobs:
           retention-days: 7
         if: success()
 
-  content-analytics:
+  markdown-lint:
     runs-on: ubuntu-latest
-    name: Content Analytics
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    name: Markdown Linting & Security Scan
     
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          fetch-depth: 0
+          node-version: '18'
+          cache: 'npm'
           
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-          
-      - name: Install dependencies
+      - name: Install markdownlint
+        run: npm install -g markdownlint-cli
+        
+      - name: Run markdownlint
         run: |
-          pip install --upgrade pip
-          pip install pyyaml markdown beautifulsoup4 matplotlib seaborn pandas
-          
-      - name: Generate analytics report
+          echo "Running markdown linting..."
+          markdownlint docs/**/*.md --config .markdownlint.yaml
+        continue-on-error: true
+        
+      - name: Run security scan
         run: |
-          echo "📈 Generating content analytics..."
-          python scripts/detailed_content_analysis.py
+          echo "Running security scan on content..."
+          # Check for potential security issues in content
+          find docs -name "*.md" -exec grep -l "password\|secret\|key\|token" {} \; > potential_secrets.txt || true
+          if [ -s potential_secrets.txt ]; then
+            echo "⚠️ Potential secrets found in content:"
+            cat potential_secrets.txt
+            echo "Please review these files for sensitive information."
+            exit 1
+          else
+            echo "✅ No potential secrets found in content."
+          fi
         continue-on-error: true
 
-  validate-pr-changes:
+  pr-validation:
     runs-on: ubuntu-latest
-    name: Validate PR Changes
+    name: PR Change Validation
     if: github.event_name == 'pull_request'
     
     steps:
@@ -151,6 +118,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
+          cache: 'pip'
           
       - name: Install dependencies
         run: |
@@ -164,7 +132,7 @@ jobs:
           
       - name: Validate changed content
         run: |
-          echo "🔍 Validating changed files: ${{ steps.changed-files.outputs.changed_files }}"
+          echo "Validating changed files: ${{ steps.changed-files.outputs.changed_files }}"
           python scripts/validate-content.py
         if: steps.changed-files.outputs.changed_files != ''
         
@@ -180,30 +148,6 @@ jobs:
               body: '⚠️ Content validation failed. Please check the workflow logs for details and fix any issues before merging.'
             })
 
-  security-scan:
-    runs-on: ubuntu-latest
-    name: Security Scan
-    
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        
-      - name: Run security scan
-        run: |
-          echo "🔒 Running security scan on content..."
-          # Check for potential security issues in content
-          find docs -name "*.md" -exec grep -l "password\|secret\|key\|token" {} \; > potential_secrets.txt
-          if [ -s potential_secrets.txt ]; then
-            echo "⚠️ Potential secrets found in content:"
-            cat potential_secrets.txt
-            echo "Please review these files for sensitive information."
-            exit 1
-          else
-            echo "✅ No potential secrets found in content."
-          fi
-        continue-on-error: true
-
-# Workflow permissions
 permissions:
   contents: read
   pull-requests: write

@@ -1,0 +1,138 @@
+/* Mobile-First Responsive Enhancements */
+
+/* Mobile Navigation Improvements */
+@media (max-width: 768px) {
+  /* Enhanced mobile header */
+  .md-header {
+    position: sticky;
+    height: auto;
+    min-height: 3rem;
+  }
+  
+  .md-header__inner {
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .md-header__button {
+    margin: 0 var(--spacing-xs);
+    padding: var(--spacing-sm);
+  }
+  
+  /* Mobile search enhancements */
+  .md-search {
+    position: relative;
+  }
+  
+  .md-search__form {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+  }
+  
+  .md-search__input {
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+  
+  /* Mobile-friendly sidebar */
+  .md-sidebar {
+    width: 280px;
+  }
+  
+  .md-sidebar__scrollwrap {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .md-sidebar__scrollwrap::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Mobile navigation items */
+  .md-nav__item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .md-nav__link {
+    padding: var(--spacing-md);
+    font-size: 1rem;
+    line-height: 1.4;
+    min-height: 48px; /* Touch-friendly target size */
+    display: flex;
+    align-items: center;
+  }
+  
+  .md-nav__link:hover {
+    background: rgba(255, 153, 0, 0.1);
+  }
+  
+  /* Content area adjustments */
+  .md-content {
+    padding: var(--spacing-md);
+  }
+  
+  .md-typeset h1,
+  .md-typeset h2,
+  .md-typeset h3 {
+    line-height: 1.2;
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .md-typeset h1 {
+    font-size: 1.8rem;
+  }
+  
+  .md-typeset h2 {
+    font-size: 1.4rem;
+  }
+  
+  .md-typeset h3 {
+    font-size: 1.2rem;
+  }
+  
+  /* Mobile-optimized tables */
+  .md-typeset table {
+    font-size: 0.9rem;
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .md-typeset table thead {
+    background: var(--md-primary-fg-color);
+    color: white;
+  }
+  
+  .md-typeset table th,
+  .md-typeset table td {
+    padding: var(--spacing-sm);
+    min-width: 120px;
+  }
+  
+  /* Mobile card layouts */
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  .card {
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-md);
+  }
+  
+  /* Mobile buttons */
+  .md-button {
+    width: 100%;
+    text-align: center;
+    padding: var(--spacing-md);
+    margin: var(--spacing-xs) 0;
+    font-size: 1rem;
+    min-height: 48px;
+  }
+  
+  /* Mobile forms */
+  input[type=\"text\"],
+  input[type=\"email\"],
+  select,
+  textarea {\n    font-size: 16px; /* Prevents zoom */\n    padding: var(--spacing-md);\n    border-radius: var(--radius-md);\n    width: 100%;\n    box-sizing: border-box;\n  }\n}\n\n/* Touch-friendly enhancements */\n.touch-target {\n  min-height: 48px;\n  min-width: 48px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  transition: var(--hover-transition);\n}\n\n.touch-target:hover {\n  background: rgba(255, 153, 0, 0.1);\n  border-radius: var(--radius-md);\n}\n\n/* Swipe gesture indicators */\n.swipe-indicator {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  background: var(--md-primary-fg-color);\n  color: white;\n  padding: var(--spacing-sm) var(--spacing-md);\n  border-radius: var(--radius-xl);\n  font-size: 0.8rem;\n  opacity: 0;\n  transform: translateY(20px);\n  transition: all 0.3s ease;\n  z-index: 1000;\n  pointer-events: none;\n}\n\n.swipe-indicator.show {\n  opacity: 1;\n  transform: translateY(0);\n}\n\n/* Mobile-specific quick access toolbar */\n.mobile-toolbar {\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  background: var(--md-default-bg-color);\n  border-top: 1px solid var(--md-default-fg-color--lightest);\n  padding: var(--spacing-sm);\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n  z-index: 100;\n  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);\n  display: none; /* Hidden by default, shown via JS */\n}\n\n@media (max-width: 768px) {\n  .mobile-toolbar.active {\n    display: flex;\n  }\n  \n  .md-content {\n    padding-bottom: calc(var(--spacing-md) + 60px); /* Account for toolbar */\n  }\n}\n\n.mobile-toolbar-item {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  gap: var(--spacing-xs);\n  padding: var(--spacing-sm);\n  border-radius: var(--radius-md);\n  transition: var(--hover-transition);\n  text-decoration: none;\n  color: var(--md-default-fg-color);\n  min-width: 60px;\n}\n\n.mobile-toolbar-item:hover {\n  background: rgba(255, 153, 0, 0.1);\n  color: var(--md-primary-fg-color);\n}\n\n.mobile-toolbar-item.active {\n  background: var(--md-primary-fg-color);\n  color: white;\n}\n\n.mobile-toolbar-icon {\n  font-size: 1.2rem;\n}\n\n.mobile-toolbar-label {\n  font-size: 0.7rem;\n  font-weight: 500;\n}\n\n/* Mobile reading enhancements */\n@media (max-width: 768px) {\n  .md-typeset {\n    line-height: 1.6;\n    font-size: 1rem;\n  }\n  \n  .md-typeset p {\n    margin-bottom: var(--spacing-md);\n  }\n  \n  .md-typeset li {\n    margin-bottom: var(--spacing-xs);\n  }\n  \n  .md-typeset blockquote {\n    padding: var(--spacing-md);\n    margin: var(--spacing-md) 0;\n    border-radius: var(--radius-md);\n  }\n  \n  .md-typeset code {\n    padding: 0.2em 0.4em;\n    font-size: 0.9rem;\n  }\n  \n  .md-typeset pre {\n    padding: var(--spacing-md);\n    border-radius: var(--radius-md);\n    overflow-x: auto;\n    font-size: 0.9rem;\n  }\n}\n\n/* Mobile-optimized admonitions */\n@media (max-width: 768px) {\n  .md-typeset .admonition {\n    margin: var(--spacing-md) calc(-1 * var(--spacing-md));\n    border-radius: 0;\n  }\n  \n  .md-typeset .admonition-title {\n    padding: var(--spacing-md);\n    font-size: 1rem;\n  }\n  \n  .md-typeset .admonition > * {\n    padding-left: var(--spacing-md);\n    padding-right: var(--spacing-md);\n  }\n}\n\n/* Mobile tabs */\n@media (max-width: 768px) {\n  .md-tabs {\n    overflow-x: auto;\n    scrollbar-width: none;\n    -ms-overflow-style: none;\n  }\n  \n  .md-tabs::-webkit-scrollbar {\n    display: none;\n  }\n  \n  .md-tabs__list {\n    white-space: nowrap;\n  }\n  \n  .md-tabs__item {\n    display: inline-block;\n    min-width: 120px;\n  }\n  \n  .md-tabs__link {\n    padding: var(--spacing-md) var(--spacing-lg);\n    font-size: 0.9rem;\n  }\n}\n\n/* Pull-to-refresh indicator */\n.pull-to-refresh {\n  position: absolute;\n  top: -60px;\n  left: 50%;\n  transform: translateX(-50%);\n  background: var(--md-primary-fg-color);\n  color: white;\n  padding: var(--spacing-sm) var(--spacing-md);\n  border-radius: 0 0 var(--radius-md) var(--radius-md);\n  font-size: 0.8rem;\n  transition: transform 0.3s ease;\n  z-index: 1000;\n}\n\n.pull-to-refresh.active {\n  transform: translateX(-50%) translateY(60px);\n}\n\n/* Mobile-specific progress indicators */\n.mobile-progress {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  height: 3px;\n  background: rgba(255, 153, 0, 0.2);\n  z-index: 1000;\n}\n\n.mobile-progress-bar {\n  height: 100%;\n  background: var(--md-primary-fg-color);\n  transition: width 0.3s ease;\n  border-radius: 0 3px 3px 0;\n}\n\n/* Offline indicator */\n.offline-indicator {\n  position: fixed;\n  top: 60px;\n  left: 50%;\n  transform: translateX(-50%);\n  background: var(--error-color);\n  color: white;\n  padding: var(--spacing-sm) var(--spacing-lg);\n  border-radius: var(--radius-md);\n  font-size: 0.8rem;\n  z-index: 1000;\n  opacity: 0;\n  transform: translateX(-50%) translateY(-20px);\n  transition: all 0.3s ease;\n  pointer-events: none;\n}\n\n.offline-indicator.show {\n  opacity: 1;\n  transform: translateX(-50%) translateY(0);\n}\n\n/* Mobile-friendly tooltips */\n@media (max-width: 768px) {\n  [title] {\n    position: relative;\n  }\n  \n  [title]:hover::after {\n    content: attr(title);\n    position: absolute;\n    bottom: 100%;\n    left: 50%;\n    transform: translateX(-50%);\n    background: rgba(0, 0, 0, 0.8);\n    color: white;\n    padding: var(--spacing-xs) var(--spacing-sm);\n    border-radius: var(--radius-sm);\n    font-size: 0.8rem;\n    white-space: nowrap;\n    z-index: 1000;\n    pointer-events: none;\n  }\n}\n\n/* Mobile keyboard support */\n@media (max-width: 768px) {\n  .keyboard-shortcut {\n    display: none; /* Hide keyboard shortcuts on mobile */\n  }\n  \n  .touch-gesture {\n    display: inline-block;\n    background: rgba(255, 153, 0, 0.1);\n    padding: var(--spacing-xs) var(--spacing-sm);\n    border-radius: var(--radius-sm);\n    font-size: 0.8rem;\n    margin-left: var(--spacing-sm);\n  }\n}\n\n/* High contrast mode for mobile */\n@media (max-width: 768px) and (prefers-contrast: high) {\n  .md-typeset {\n    color: #000;\n  }\n  \n  .md-button {\n    border: 2px solid currentColor;\n  }\n  \n  .card {\n    border: 2px solid var(--md-default-fg-color--lighter);\n  }\n}\n\n/* Reduced motion support */\n@media (max-width: 768px) and (prefers-reduced-motion: reduce) {\n  * {\n    animation-duration: 0.01ms !important;\n    animation-iteration-count: 1 !important;\n    transition-duration: 0.01ms !important;\n    scroll-behavior: auto !important;\n  }\n}\n\n/* Mobile focus styles */\n@media (max-width: 768px) {\n  *:focus {\n    outline: 3px solid var(--md-primary-fg-color);\n    outline-offset: 2px;\n  }\n  \n  .md-nav__link:focus,\n  .md-button:focus,\n  .touch-target:focus {\n    background: rgba(255, 153, 0, 0.2);\n    outline: 3px solid var(--md-primary-fg-color);\n  }\n}\n\n/* Mobile print styles */\n@media print {\n  .mobile-toolbar,\n  .pull-to-refresh,\n  .offline-indicator,\n  .mobile-progress {\n    display: none !important;\n  }\n  \n  .md-content {\n    padding-bottom: 0 !important;\n  }\n}

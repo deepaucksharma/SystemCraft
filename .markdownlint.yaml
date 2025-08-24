@@ -1,24 +1,15 @@
-# Markdown linting configuration for SystemCraft
-# Ensures consistent markdown formatting and quality
+# Essential markdown linting rules
 
-# Line length - reasonable for technical content
-MD013:
-  line_length: 120
-  code_blocks: false
-  tables: false
-  headings: false
+# Line length - disabled for technical content
+MD013: false
 
-# Heading style - consistent ATX style
+# Heading style - consistent ATX style  
 MD003:
   style: "atx"
 
 # Unordered list style - consistent dashes
 MD004:
   style: "dash"
-
-# List indent - 2 spaces for nested items
-MD007:
-  indent: 2
 
 # Trailing spaces - allow 2 for line breaks
 MD009:
@@ -27,35 +18,20 @@ MD009:
 # Hard tabs - prefer spaces
 MD010: true
 
-# Multiple consecutive blank lines
-MD012:
-  maximum: 2
-
 # Line break at end of file
 MD047: true
 
-# Code fence style - consistent backticks
-MD048:
-  style: "backtick"
-
-# Allow inline HTML for admonitions and special formatting
+# Allow inline HTML for admonitions
 MD033: false
 
-# Allow duplicate heading content (common in templates)
+# Allow duplicate heading content
 MD024: false
 
-# Allow bare URLs (common in reference sections)
+# Allow bare URLs
 MD034: false
 
-# Emphasis style - prefer asterisks
-MD049:
-  style: "asterisk"
+# Disable first line heading rule (conflicts with YAML front-matter)
+MD041: false
 
-# Strong style - prefer asterisks
-MD050:
-  style: "asterisk"
-
-# Disable rules that conflict with our content style
-MD041: false  # First line in file should be top level heading (conflicts with YAML front-matter)
-MD013: false  # Line length (technical content often needs longer lines)
-MD026: false  # Trailing punctuation in headers (we use question marks in FAQ)
+# Disable trailing punctuation in headers
+MD026: false

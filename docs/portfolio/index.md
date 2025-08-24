@@ -2,7 +2,20 @@
 
 ## Overview
 
-Your portfolio demonstrates tangible engineering leadership impact through real projects, metrics, and outcomes. This guide provides templates and examples specifically tailored for L6/L7 Amazon Engineering Manager interviews.
+Your portfolio demonstrates tangible engineering leadership impact through real projects, metrics, and outcomes. This comprehensive guide provides templates, frameworks, and examples specifically tailored for L6/L7 Amazon Engineering Manager interviews.
+
+---
+
+## 🚀 Enhanced Portfolio Resources
+
+### NEW: Industry-Specific & Strategic Portfolio Examples
+- **[L6 Industry-Specific Portfolios](l6-industry-portfolios.md)** - Detailed portfolio examples for E-commerce, Cloud Infrastructure, Video Streaming, Logistics, and Payment platforms
+- **[L7 Strategic Leadership Portfolios](l7-strategic-portfolios.md)** - Multi-organizational initiatives, cross-business innovation, and strategic partnerships
+
+### NEW: Business Impact & Decision Frameworks  
+- **[Business Impact Calculation Methods](business-impact-calculation.md)** - Revenue attribution, cost avoidance, customer satisfaction correlation, and developer productivity metrics
+- **[Technology Evaluation Frameworks](technology-evaluation-frameworks.md)** - Build vs buy decisions, vendor selection, architecture patterns, and cloud migration assessments
+- **[Risk Assessment Templates](risk-assessment-templates.md)** - Technical debt quantification, security risks, scalability assessments, and compliance frameworks
 
 ---
 

@@ -4,6 +4,52 @@
 
 This comprehensive resource guide provides curated tools, platforms, and materials for Amazon L6/L7 engineering manager interview preparation. Each resource includes specific recommendations for how to use it effectively, time investment required, and level-appropriate guidance.
 
+## 📺 Video Learning Resources & Visual Aids
+
+### Recommended Video Content
+
+#### **System Design Video Series**
+- **"System Design Interview" by Alex Xu**: Case study walkthroughs perfect for L6/L7
+- **"Gaurav Sen - System Design"**: Deep technical explanations of distributed systems
+- **AWS re:Invent Presentations**: Real Amazon architecture patterns and practices
+
+#### **Leadership & Behavioral Content**
+- **Engineering Management Talks**: Focus on team scaling, performance management
+- **Amazon Leadership Principles in Practice**: Cultural understanding and examples
+- **MIT OpenCourseWare Distributed Systems**: Graduate-level theoretical foundation (L7)
+
+#### **Visual Aids and Diagrams**
+- **VisuAlgo**: Interactive data structure and algorithm visualizations
+- **Excalidraw/Miro**: Virtual whiteboarding tools for interviews
+- **Architecture Templates**: Microservices, global distribution patterns
+
+### Digital Tools for Practice
+- **Virtual Whiteboarding**: Excalidraw, Miro, Draw.io for system design
+- **Diagram Creation**: Lucidchart, PlantUML for portfolio development
+- **Template Libraries**: AWS architecture stencils and professional diagrams
+
+### Downloadable Resources & Templates
+
+#### Essential Cheat Sheets
+- **Leadership Principles Quick Reference**: Amazon 16 LPs with behavioral questions and L6/L7 differences
+- **System Design Patterns**: 20 essential patterns with AWS service mappings and scalability formulas
+- **Coding Patterns Reference**: Top 15 patterns with time/space complexity analysis
+
+#### Study Templates
+- **STAR Story Development Worksheet**: 16 LP story templates with situation/task/action/result prompts
+- **System Design Canvas**: Requirements gathering, architecture components, scaling calculations
+- **Interview Day Checklist**: Technical setup, story reference, energy management tips
+
+#### Practice Problem Banks
+- **L6 Coding Problems**: 100 problems categorized by pattern and difficulty with solutions
+- **L7 Advanced Cases**: Complex system design scenarios for Principal-level preparation
+- **Behavioral Scenarios**: Real Amazon LP examples organized by principle
+
+#### Progress Tracking Tools
+- **Weekly Practice Dashboard**: Track coding practice, system design, behavioral prep, and mock interviews
+- **Study Calendar**: 6-month customizable calendar with daily task assignments
+- **Skill Assessment Matrix**: Track improvement across technical and behavioral dimensions
+
 ## 📚 Books and Publications
 
 ### Technical Leadership Books

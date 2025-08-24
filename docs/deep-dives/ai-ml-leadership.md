@@ -1,7 +1,7 @@
 # AI/ML Leadership for Amazon L6/L7 Engineering Managers
 
-!!! success "Essential AI/ML Management Skills for 2024-2025"
-    AI/ML is now critical infrastructure at Amazon. L6/L7 engineering managers must understand model lifecycle, cost optimization, governance, and responsible AI practices to lead effectively in the modern engineering landscape.
+!!! success "Essential AI/ML Management Skills for 2025"
+    AI/ML has become mission-critical infrastructure at Amazon with explosive growth in 2025. L6/L7 engineering managers must master generative AI integration, responsible AI governance, cost optimization at scale, and leadership of AI transformation initiatives. The AI/ML talent market has seen 300% growth in job postings with 40% talent gap, making leadership skills in this domain essential for career advancement.
 
 ## Why AI/ML Leadership Skills Are Critical in 2024-2025
 
@@ -10,22 +10,24 @@
 Amazon's AI/ML initiatives have evolved from experimental to business-critical:
 
 ```markdown
-**Amazon's AI/ML Investment Areas (2024-2025):**
-- Amazon Bedrock: $10B+ investment in foundation models
-- AWS SageMaker: Platform serving millions of model endpoints
-- Alexa: Processing 10+ billion interactions monthly
-- Amazon Go: Computer vision at retail scale
-- Supply Chain: ML optimizing $500B+ in logistics
-- Advertising: $40B+ revenue driven by ML personalization
-- AWS AI Services: Powering thousands of enterprise customers
+**Amazon's AI/ML Investment Areas (2025 Updates):**
+- Amazon Bedrock: Massive expansion with 100+ models, 4.7x customer growth
+- Amazon Nova Models: State-of-the-art multimodal models for text, image, video
+- AWS Trainium3: Next-generation AI chips, 4x performance improvement
+- Amazon Bedrock AgentCore: Enterprise AI agents at scale
+- S3 Vectors: 90% cost reduction for vector storage and querying
+- Generative AI Innovation Center: Second $100M investment announced
+- Claude 4 Models: Latest Anthropic models available first on Bedrock
+- Luma Ray 2: State-of-the-art video generation from Luma AI
 ```
 
-**For L6/L7 Managers, This Means:**
-- 60%+ of engineering teams now integrate ML components
-- AI/ML projects represent $100B+ in Amazon's future revenue
-- Cost optimization for ML workloads is a $1B+ opportunity
-- Regulatory compliance (EU AI Act, etc.) requires governance expertise
-- Competition for AI/ML talent is the highest in tech history
+**For L6/L7 Managers, This Means (2025 Reality):**
+- 80%+ of engineering teams now integrate generative AI capabilities
+- AI/ML engineering managers command 25-50% salary premiums
+- L6 AI/ML total comp ranges $400K-$530K, L7 reaches $600K-$825K
+- Bedrock Guardrails can block 88% harmful content, 99% hallucination accuracy
+- EU AI Act compliance mandatory, Corporate Sustainability Reporting Directive active
+- Return-to-office policy emphasizes collaborative AI innovation culture
 
 ## Core AI/ML Leadership Competencies for L6/L7
 

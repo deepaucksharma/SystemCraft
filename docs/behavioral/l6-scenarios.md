@@ -1527,4 +1527,391 @@ Most importantly, I changed how I engaged with stakeholders, involving Product a
 
 ---
 
-*This comprehensive L6 behavioral interview guide provides 23 detailed scenarios with complete STAR responses, leadership principles mapping, and success frameworks specifically designed for Amazon L6 interviews. Focus on demonstrating component-level leadership excellence, technical decision-making balance, and quantifiable business impact within the L6 scope and expectations.*
+## L6 Advanced Scenarios: Missing Critical Areas
+
+The following 10 scenarios address commonly overlooked but critical L6 competencies that frequently appear in Amazon interviews, covering budget management, vendor relationships, international team leadership, compliance challenges, and cross-business unit collaboration.
+
+---
+
+## L6 Scenario 21: P&L Management and Budget Accountability
+
+### The Interview Question
+*"Tell me about a time you had P&L responsibility for your team or product. How did you manage financial performance?"*
+
+### What the Interviewer is Evaluating
+- **Financial accountability** and business acumen
+- **Cost-benefit analysis** and ROI optimization
+- **Resource allocation** and budget management
+- **Strategic financial planning** and forecasting
+- **Stakeholder communication** about financial performance
+
+### Complete STAR Response Example
+
+**Situation (30 seconds)**
+"I was given P&L responsibility for our API platform serving 15 internal teams with a $3.2M annual budget including infrastructure, personnel, and vendor costs. The platform had been running over budget by 20% for two quarters while customer satisfaction was declining due to performance issues. Leadership expected me to restore profitability while improving service quality, essentially doing more with less during a budget tightening period."
+
+**Task (20 seconds)**
+"I needed to analyze cost drivers and revenue attribution, identify optimization opportunities without sacrificing quality, establish financial governance and accountability systems, and demonstrate measurable ROI improvements that would justify continued investment in the platform."
+
+**Action (90 seconds)**
+"I started with comprehensive cost analysis, discovering that 40% of infrastructure spend was on over-provisioned resources and 25% of engineering time was spent on low-value maintenance tasks. I implemented usage-based capacity planning that reduced infrastructure costs by $400K annually while improving performance.
+
+I created a chargeback system where internal customers paid based on actual usage, creating incentives for efficient API design and eliminating waste. This shifted our model from cost center to profit center, generating $800K in internal revenue while funding continued innovation.
+
+For team efficiency, I automated routine maintenance tasks and redirected engineering effort toward high-impact improvements. I also negotiated vendor contracts, consolidating three monitoring tools into one comprehensive solution that reduced licensing costs by 60% while improving functionality.
+
+I established monthly financial reviews with stakeholders, showing cost per transaction, ROI calculations, and platform value metrics. I also created a reserve fund from cost savings to handle unexpected capacity needs without budget overruns."
+
+**Result (30 seconds)**
+"Over 12 months, I turned the platform from 20% over budget to 15% under budget while improving performance by 40% and customer satisfaction from 3.2/5 to 4.6/5. The cost optimization generated $1.2M in savings that funded two new strategic initiatives. Internal customer adoption increased 60% due to improved service quality and transparent pricing. Leadership recognized the financial turnaround as a model for other platform teams, and I was promoted based on demonstrated business leadership capabilities."
+
+### Follow-up Questions and Answers
+**Q: "How did you balance cost reduction with quality improvements?"**
+A: "I focused on waste elimination rather than capability reduction. By automating manual work and right-sizing resources, we actually improved service quality while reducing costs. The key was measuring value delivered per dollar spent, not just absolute cost reduction."
+
+### Leadership Principles Demonstrated
+- **Frugality**: Accomplished more with less through smart resource management
+- **Ownership**: Long-term financial accountability and sustainable profitability
+- **Customer Obsession**: Improved service quality while optimizing costs
+
+---
+
+## L6 Scenario 22: Vendor Relationship Management and Partnership Development
+
+### The Interview Question
+*"Describe a challenging vendor relationship you managed. How did you turn it into a strategic partnership?"*
+
+### Complete STAR Response Example
+
+**Situation (30 seconds)**
+"Our primary security vendor was consistently missing SLA commitments, with 30% of critical security patches delivered late and support response times averaging 48 hours instead of the contracted 4 hours. This affected our compliance posture and created security risks for our 2M+ user platform. The vendor relationship had become adversarial, with both sides focused on contract disputes rather than problem-solving."
+
+**Task (20 seconds)**
+"I needed to transform the adversarial relationship into collaborative partnership, ensure vendor performance met our business needs, negotiate sustainable contract terms that aligned incentives, and establish governance systems that prevented future relationship deterioration."
+
+**Action (90 seconds)**
+"I shifted from blame-focused interactions to partnership-focused problem-solving. I organized joint working sessions with the vendor's technical and account teams to understand their constraints and challenges. I discovered they were understaffed for our requirements and struggling with our custom integration needs.
+
+I proposed a partnership restructuring: we provided technical resources to help with integration challenges in exchange for dedicated support personnel and improved SLAs. I also created joint success metrics focused on business outcomes rather than just contract compliance.
+
+For long-term partnership development, I established quarterly business reviews where we planned roadmap alignment, shared feedback openly, and identified mutual growth opportunities. I also created vendor performance dashboards visible to both teams, promoting transparency and accountability.
+
+Most importantly, I expanded the relationship beyond transactional service delivery. We collaborated on security research, co-developed security tooling that benefited both companies, and established knowledge sharing that improved both teams' capabilities."
+
+**Result (30 seconds)**
+"Within 6 months, vendor SLA compliance improved to 95% and support response times averaged 2 hours. Security patch delivery became proactive rather than reactive, improving our security posture significantly. The expanded partnership generated $500K in shared cost savings through collaborative tool development. The vendor designated us as a 'strategic partner,' providing preferential support and early access to new capabilities. The relationship management framework was adopted for our other critical vendor relationships."
+
+### Key Success Factors
+- Partnership mindset rather than adversarial contract enforcement
+- Understanding vendor constraints and creating win-win solutions
+- Transparent performance measurement and collaborative improvement
+- Expanding relationships beyond basic service delivery
+
+---
+
+## L6 Scenario 23: International Team Leadership and Cultural Integration
+
+### The Interview Question
+*"Tell me about leading a team across multiple countries and cultures. What challenges did you face?"*
+
+### Complete STAR Response Example
+
+**Situation (30 seconds)**
+"I inherited a 22-person engineering team distributed across Seattle, Dublin, Hyderabad, and Tokyo, working on our global payment processing system. Cultural differences were creating communication gaps, timezone challenges were delaying decisions, and team cohesion was low with each location operating somewhat independently. Productivity varied significantly across locations, and knowledge sharing was minimal due to cultural and communication barriers."
+
+**Task (20 seconds)**
+"I needed to build genuine team cohesion across cultures and timezones, establish effective communication and decision-making processes, leverage cultural diversity as a strategic advantage, and create unified team culture while respecting local cultural contexts and practices."
+
+**Action (90 seconds)**
+"I spent the first month learning about each location's cultural context, communication styles, and working preferences through individual conversations and cultural mentorship. I discovered that direct feedback worked well in Seattle but was counterproductive in Japan, while Hyderabad team members wanted more structured meetings.
+
+I implemented culturally adaptive communication strategies: asynchronous decision-making documentation for timezone differences, rotating meeting times to share timezone burdens fairly, and region-specific communication styles while maintaining consistent team goals.
+
+For cultural integration, I created 'culture sharing' sessions where each location presented their working styles and cultural perspectives, helping everyone understand and adapt. I also established regional liaisons who helped translate not just language but cultural context across locations.
+
+Most importantly, I leveraged cultural diversity strategically. The Tokyo team's attention to detail improved our quality processes, Dublin's regulatory expertise helped with European compliance, Hyderabad's cost optimization mindset reduced our operational expenses, and Seattle's innovation focus drove new feature development."
+
+**Result (30 seconds)**
+"Over 8 months, team productivity increased 35% and all locations achieved similar performance metrics, eliminating previous disparities. Cross-cultural collaboration improved significantly, with team satisfaction scores reaching 4.4/5 across all locations. We developed cultural competencies that became our competitive advantage - our payment system's global compliance and localization capabilities exceeded competitors. The cultural integration framework was adopted by 6 other international teams across Amazon."
+
+### Cultural Leadership Indicators
+- Understanding and adapting to diverse cultural communication styles
+- Creating unified team culture while respecting local contexts
+- Leveraging cultural diversity as strategic business advantage
+- Scalable approaches that work across multiple cultures and timezones
+
+---
+
+## L6 Scenario 24: Regulatory Compliance and Risk Management
+
+### The Interview Question
+*"Describe how you've managed regulatory compliance requirements while maintaining development velocity."*
+
+### Complete STAR Response Example
+
+**Situation (30 seconds)**
+"Our fintech platform needed to comply with PCI DSS, SOX, and GDPR regulations across 8 countries, each with different compliance requirements and audit schedules. Compliance work was consuming 40% of engineering capacity, slowing feature development and creating friction between business needs and regulatory requirements. Previous compliance approaches were reactive, expensive, and disruptive to normal operations."
+
+**Task (20 seconds)**
+"I needed to build proactive compliance into development processes, reduce compliance overhead while improving security posture, establish scalable compliance practices that worked across multiple regulatory frameworks, and demonstrate that strong compliance could accelerate rather than hinder business growth."
+
+**Action (90 seconds)**
+"I implemented 'compliance by design' rather than retrofit compliance. I embedded compliance requirements into our development lifecycle, creating automated compliance checking in our CI/CD pipeline that caught issues before they reached production.
+
+I established compliance expertise within the engineering team through training and certification programs, reducing dependency on external consultants. I also created compliance-as-code frameworks that treated regulatory requirements like any other technical specification, making them trackable and testable.
+
+For efficiency, I identified common compliance patterns across regulations and built reusable compliance modules that could be configured for different jurisdictions. This reduced duplicated effort and improved consistency.
+
+Most importantly, I made compliance visible and measurable, creating compliance dashboards that showed real-time status and trends. I also established partnerships with legal and regulatory affairs teams, creating shared accountability for compliance outcomes."
+
+**Result (30 seconds)**
+"Compliance engineering effort decreased from 40% to 15% of team capacity while achieving 100% audit success rates across all jurisdictions. Development velocity increased 25% due to reduced compliance friction and rework. The compliance automation framework saved $800K annually in consultant costs and audit preparation time. Our proactive compliance approach was recognized by regulators and became a competitive advantage in winning security-conscious customers."
+
+### Regulatory Leadership Competencies
+- Proactive compliance integration rather than reactive scrambling
+- Technical automation of compliance processes and monitoring
+- Cross-functional collaboration with legal and regulatory teams
+- Business value creation through strong regulatory posture
+
+---
+
+## L6 Scenario 25: Cross-Business Unit Collaboration and Matrix Management
+
+### The Interview Question
+*"Tell me about a project requiring coordination across multiple business units. How did you align different priorities?"*
+
+### Complete STAR Response Example
+
+**Situation (30 seconds)**
+"I was asked to lead development of a unified customer data platform serving Amazon Retail, AWS, and Prime Video - three business units with different customer data needs, privacy requirements, and business models. Each BU had their own engineering teams, roadmaps, and success metrics, creating potential conflicts over platform priorities, resource allocation, and feature development. Previous attempts at cross-BU platforms had failed due to alignment challenges."
+
+**Task (20 seconds)**
+"I needed to create platform architecture that served all three business units effectively, establish governance and decision-making processes for conflicting priorities, build consensus among multiple engineering leaders and product teams, and demonstrate unified platform value while respecting individual BU autonomy."
+
+**Action (90 seconds)**
+"I established a cross-BU steering committee with representatives from each engineering organization and created shared success metrics that aligned with all three business units' goals. I facilitated intensive requirements gathering to identify common needs and unique requirements for each BU.
+
+The breakthrough was designing a federated platform architecture with shared core services and BU-specific adapters, allowing customization without fragmenting the platform. I created a 'fair share' resource allocation model where each BU contributed engineering resources proportional to their platform usage.
+
+For ongoing alignment, I implemented quarterly cross-BU planning sessions where roadmap priorities were negotiated transparently, and I established conflict resolution processes for competing requirements. I also created shared KPIs showing how the platform benefited all BUs collectively.
+
+Most importantly, I made individual BU success stories visible to other BUs, showing how platform investments by one team could benefit others and creating positive-sum thinking rather than zero-sum competition."
+
+**Result (30 seconds)**
+"The unified platform launched 8 months later serving all three BUs with 95% shared core functionality and BU-specific customizations. Customer data consistency improved 60% across Amazon properties, and each BU achieved 20%+ improvement in customer personalization capabilities. Engineering efficiency increased 30% through shared infrastructure and tooling. The cross-BU collaboration model was adopted for 4 other platform initiatives, and senior leadership recognized the matrix management approach as a template for complex organizational projects."
+
+### Matrix Leadership Capabilities
+- Multi-stakeholder negotiation and consensus building
+- Federated architecture thinking for complex organizational requirements
+- Fair resource allocation across competing priorities
+- Governance systems that balance autonomy with alignment
+
+---
+
+## L6 Scenario 26: Data Privacy and Ethical Technology Leadership
+
+### The Interview Question
+*"How have you addressed data privacy or ethical concerns in technology decisions?"*
+
+### Complete STAR Response Example
+
+**Situation (30 seconds)**
+"Our machine learning recommendation system was generating impressive engagement metrics but analysis revealed it was creating filter bubbles and potentially amplifying bias in product recommendations. The system served 5M+ users and significantly impacted purchasing decisions, but addressing these ethical concerns would require substantial engineering effort and potentially reduce short-term engagement metrics that business stakeholders valued."
+
+**Task (20 seconds)**
+"I needed to balance ethical technology practices with business performance requirements, build consensus for ethical improvements across engineering and business teams, and establish sustainable frameworks for ongoing ethical technology evaluation and improvement."
+
+**Action (90 seconds)**
+"I initiated comprehensive ethical impact assessment of our recommendation algorithms, bringing in external ethics experts and conducting user research to understand real-world impacts. I discovered that algorithmic bias was disproportionately affecting certain user groups and limiting product discovery for niche categories.
+
+I proposed algorithmic fairness improvements that would reduce bias while maintaining recommendation quality. This required significant ML model retraining and new evaluation metrics beyond traditional engagement measures. I built business case showing that ethical improvements would improve long-term customer trust and reduce regulatory risk.
+
+I established ongoing ethical review processes integrated into our development lifecycle, including diverse review panels and bias testing requirements for algorithm changes. I also created transparency reporting showing how recommendation algorithms worked and performed for different user groups.
+
+Most importantly, I made ethical technology practices a team competency, providing training on algorithmic fairness and creating recognition systems that rewarded ethical innovation alongside business performance."
+
+**Result (30 seconds)**
+"The ethical algorithm improvements reduced measured bias by 70% while maintaining recommendation accuracy within 5% of previous performance. Customer satisfaction with recommendations increased 15%, particularly among previously underserved user groups. The ethical AI framework was adopted across Amazon's ML systems, affecting 20M+ users. Industry publications recognized our approach to ethical recommendations, and I was invited to speak at conferences on responsible AI development."
+
+### Ethical Technology Leadership
+- Proactive identification and mitigation of algorithmic bias
+- Business case development for ethical technology investments
+- Cross-functional collaboration on complex ethical-technical challenges
+- Industry leadership in responsible technology development
+
+---
+
+## L6 Scenario 27: Knowledge Management and Institutional Learning
+
+### The Interview Question
+*"Tell me about building knowledge sharing and learning systems for your teams."*
+
+### Complete STAR Response Example
+
+**Situation (30 seconds)**
+"Our engineering organization of 35+ engineers had significant knowledge silos, with critical system knowledge concentrated in individual experts. When we had 3 senior engineers leave within 6 months, knowledge gaps caused multiple production incidents and delayed feature development. New engineers took 4+ months to become productive, and tribal knowledge wasn't being captured or shared effectively across teams."
+
+**Task (20 seconds)**
+"I needed to capture and systematize critical institutional knowledge, create scalable knowledge sharing processes that would survive personnel changes, reduce new engineer onboarding time while improving overall team capability, and establish learning culture that prioritized knowledge transfer and continuous improvement."
+
+**Action (90 seconds)**
+"I implemented comprehensive knowledge management strategy over 6 months. I started by identifying critical knowledge areas through incident analysis and productivity bottleneck assessment, then created systematic documentation standards and knowledge capture processes.
+
+I established 'knowledge transfer sprints' where subject matter experts spent dedicated time creating comprehensive documentation, architectural decision records, and troubleshooting guides. I also implemented pair programming and cross-training rotations to distribute knowledge across team members.
+
+For ongoing knowledge sharing, I created weekly 'tech talks' where engineers presented on systems, tools, or lessons learned, and quarterly 'failure retrospectives' where we captured learnings from incidents and near-misses. I also built searchable knowledge bases integrated into our development tools.
+
+Most importantly, I made knowledge sharing part of performance expectations and career advancement criteria, incentivizing documentation and knowledge transfer as core engineering responsibilities rather than optional activities."
+
+**Result (30 seconds)**
+"New engineer productivity improved dramatically - onboarding time reduced from 4 months to 6 weeks with 90% faster contribution to production systems. Knowledge-related production incidents decreased by 80%, and system troubleshooting time improved by 60%. Team satisfaction with knowledge access increased from 2.8/5 to 4.5/5. The knowledge management framework was adopted by 8 other engineering teams, and I received recognition for organizational learning innovation."
+
+### Knowledge Management Leadership
+- Systematic approach to capturing and distributing institutional knowledge
+- Cultural change that incentivizes knowledge sharing and documentation
+- Measurable improvements in team capability and incident prevention
+- Scalable systems that outlast individual team member tenure
+
+---
+
+## L6 Scenario 28: Technical Debt Recovery and System Modernization
+
+### The Interview Question
+*"Describe leading a major technical debt recovery effort. How did you prioritize and execute?"*
+
+### Complete STAR Response Example
+
+**Situation (30 seconds)**
+"I inherited a critical customer service platform with 5 years of accumulated technical debt - the codebase had 40% test coverage, deployments took 6 hours, and 60% of engineering effort was spent on maintenance rather than features. The platform served 10M+ customer interactions monthly but was becoming increasingly unreliable and expensive to maintain. Business stakeholders were frustrated with slow feature delivery and frequent outages."
+
+**Task (20 seconds)**
+"I needed to systematically address technical debt while maintaining business functionality, create sustainable development practices that prevented debt accumulation, and demonstrate measurable improvements in both technical metrics and business value delivery."
+
+**Action (90 seconds)**
+"I conducted comprehensive technical debt assessment, categorizing debt by business impact, technical risk, and remediation effort. I created a prioritized roadmap focusing on debt that most constrained feature development and system reliability.
+
+I implemented incremental debt reduction approach: allocated 30% of sprint capacity to debt remediation, starting with automated testing infrastructure and deployment pipeline improvements. These foundational improvements accelerated subsequent debt reduction work.
+
+I established 'debt prevention' practices including mandatory code reviews, automated quality gates, and technical design reviews for all new features. I also created technical debt visibility through dashboards showing code quality metrics, test coverage, and deployment frequency.
+
+Most importantly, I connected technical debt reduction to business outcomes, showing how improved test coverage reduced outages, faster deployments enabled quicker feature delivery, and cleaner code architecture accelerated development velocity."
+
+**Result (30 seconds)**
+"Over 12 months, test coverage increased from 40% to 90%, deployment time reduced from 6 hours to 20 minutes, and feature development velocity increased 150%. System reliability improved dramatically - outages decreased 80% and customer satisfaction increased from 3.1/5 to 4.3/5. Engineering efficiency improvements saved an estimated $1.5M annually. The technical debt recovery methodology was adopted as standard practice across our engineering organization."
+
+### Technical Debt Leadership
+- Strategic prioritization of technical debt based on business impact
+- Incremental improvement approach that delivers continuous value
+- Prevention systems that maintain code quality over time
+- Clear demonstration of business value from technical improvements
+
+---
+
+## L6 Scenario 29: Performance Management and Team Productivity Optimization
+
+### The Interview Question
+*"Tell me about improving team productivity and performance. What was your approach and what results did you achieve?"*
+
+### Complete STAR Response Example
+
+**Situation (30 seconds)**
+"My 18-person engineering team had productivity challenges - sprint commitment accuracy was 60%, code review cycles took 3+ days, and individual performance varied significantly across team members. Some engineers were highly productive while others struggled with focus and execution. Team morale was declining due to missed commitments and inconsistent performance expectations."
+
+**Task (20 seconds)**
+"I needed to identify root causes of productivity challenges, establish fair and effective performance management systems, improve team execution consistency while supporting individual growth, and create sustainable productivity improvements that maintained team morale and engagement."
+
+**Action (90 seconds)**
+"I started with individual performance analysis to understand specific challenges each engineer faced. I discovered wide variation in technical skills, different approaches to time management, and unclear performance expectations across the team.
+
+I implemented structured performance improvement approach: established clear role expectations and success criteria, created individual development plans with specific skill-building goals, and provided coaching and mentoring support for struggling team members.
+
+For team-level productivity, I improved sprint planning processes with better estimation techniques, implemented workflow optimization reducing context switching, and established code review standards that balanced quality with velocity.
+
+I also created performance visibility through individual and team productivity dashboards, showing objective metrics like code quality, delivery predictability, and collaboration effectiveness. This enabled data-driven performance conversations and fair recognition of contributions."
+
+**Result (30 seconds)**
+"Over 6 months, sprint commitment accuracy improved from 60% to 90%, code review cycle time reduced from 3 days to 8 hours, and individual performance variation decreased significantly. Team velocity increased 40% while maintaining code quality standards. Employee satisfaction improved from 3.2/5 to 4.4/5 as performance expectations became clear and achievable. Two previously struggling engineers achieved promotion eligibility through focused development support."
+
+### Performance Management Excellence
+- Individual coaching combined with team-level process improvement
+- Objective performance measurement and fair recognition systems
+- Skill development support that improves both individual and team capability
+- Sustainable productivity improvements that maintain team engagement
+
+---
+
+## L6 Scenario 30: Innovation and Competitive Advantage Development
+
+### The Interview Question
+*"Describe how you've driven innovation that created competitive advantage for your organization."*
+
+### Complete STAR Response Example
+
+**Situation (30 seconds)**
+"Our e-commerce search platform was losing market share to competitors who offered more personalized and accurate search results. Our search conversion rate was 15% below industry leaders, and customer feedback indicated frustration with search relevance. Traditional search improvement approaches would require 18+ months of development, but competitive pressure demanded faster innovation to maintain market position."
+
+**Task (20 seconds)**
+"I needed to develop innovative search capabilities that would differentiate us competitively, deliver measurable improvements in customer experience and business metrics, and establish sustainable innovation processes that would maintain our competitive advantage over time."
+
+**Action (90 seconds)**
+"I established an innovation lab approach, allocating 20% of team time to experimental search technologies and breakthrough thinking. I encouraged engineers to explore ML/AI approaches, real-time personalization, and novel search paradigms beyond traditional keyword matching.
+
+The breakthrough innovation was implementing real-time behavioral search personalization using streaming data and edge computing. This required significant architectural innovation and cross-team collaboration with our data platform and infrastructure teams.
+
+I created rapid prototyping processes allowing quick validation of search improvements with live traffic experiments. I also established innovation partnerships with universities and research organizations to access cutting-edge search and ML research.
+
+Most importantly, I made innovation measurable and accountable, tracking not just search accuracy but business impact including conversion rates, customer satisfaction, and competitive differentiation metrics."
+
+**Result (30 seconds)**
+"The innovative search platform increased conversion rates by 35%, exceeding industry leaders and creating clear competitive advantage. Customer satisfaction with search improved from 3.4/5 to 4.6/5, and the platform handled 25% more complex search queries effectively. The innovation approach generated 3 patent applications and established us as technology leaders in personalized search. Revenue impact exceeded $8M annually, and the innovation methodology was adopted across our product development organization."
+
+### Innovation Leadership Indicators
+- Systematic approach to breakthrough thinking and experimentation
+- Cross-functional collaboration to achieve complex technical innovation
+- Measurable business impact from innovative technology development
+- Sustainable innovation processes that create ongoing competitive advantage
+
+---
+
+## Enhanced L6 Success Framework
+
+### Comprehensive L6 Competency Coverage
+
+The expanded scenario collection now covers all critical L6 leadership areas:
+
+#### Core L6 Leadership Competencies
+1. **Team Management Excellence** (Scenarios 1, 6, 10, 14, 15, 17, 29)
+2. **Technical Decision Making** (Scenarios 2, 5, 8, 28, 30)
+3. **Cross-Functional Collaboration** (Scenarios 3, 7, 19, 25)
+4. **Resource and Budget Management** (Scenarios 4, 11, 21, 22)
+5. **Process Innovation and Improvement** (Scenarios 9, 12, 18, 27)
+6. **Stakeholder Management** (Scenarios 13, 16, 23, 24)
+7. **Cultural and Organizational Development** (Scenarios 20, 26)
+
+#### L6 Interview Success Metrics
+- **Component-Level Impact**: Managing 10-25 engineers effectively
+- **Business Value**: $10-50M revenue responsibility and measurable ROI
+- **Technical Excellence**: Balance of innovation and operational excellence
+- **Cross-Functional Leadership**: Effective collaboration with multiple teams
+- **People Development**: Individual and team capability building
+- **Process Innovation**: Creating reusable frameworks adopted by others
+
+### L6-Specific Red Flags Prevention
+- Avoid claiming organizational-level transformation (save for L7)
+- Don't take sole credit for team achievements
+- Balance technical depth with people leadership examples
+- Include specific quantifiable metrics in every scenario
+- Demonstrate hands-on involvement in technical and people decisions
+
+### Advanced L6 Interview Preparation Strategy
+1. **Story Portfolio Balance**: Ensure coverage across all 10 new critical areas
+2. **Metric Sophistication**: Prepare specific numbers for financial, operational, and people metrics
+3. **Cross-Functional Depth**: Show collaboration complexity appropriate for L6 scope
+4. **Leadership Evolution**: Demonstrate progression from individual contributor to component leader
+5. **Innovation Balance**: Technical innovation within business constraints and accountability
+
+The expanded L6 scenario collection provides candidates with comprehensive preparation for all aspects of L6 behavioral interviews, ensuring no critical leadership competencies are overlooked during preparation and interviews.
+
+---
+
+*This comprehensive L6 behavioral interview guide now provides 33 detailed scenarios with complete STAR responses, leadership principles mapping, and success frameworks specifically designed for Amazon L6 interviews. The expanded coverage ensures preparation for all critical L6 competencies including budget management, vendor relationships, international team leadership, compliance challenges, and cross-business unit collaboration.*

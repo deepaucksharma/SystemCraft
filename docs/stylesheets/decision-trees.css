@@ -1,0 +1,397 @@
+/* Decision Trees and Interactive Flowcharts */
+
+.decision-tree {
+  background: var(--md-default-bg-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  margin: var(--spacing-xl) 0;
+  box-shadow: var(--shadow-medium);
+  position: relative;
+  overflow: hidden;
+}
+
+.decision-tree::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--md-primary-fg-color), var(--md-accent-fg-color));
+}
+
+.decision-node {
+  background: white;
+  border: 2px solid var(--md-primary-fg-color);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  margin: var(--spacing-md);
+  cursor: pointer;
+  transition: var(--hover-transition);
+  position: relative;
+  text-align: center;
+  box-shadow: var(--shadow-light);
+}
+
+.decision-node:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--md-accent-fg-color);
+}
+
+.decision-node.active {
+  background: linear-gradient(135deg, var(--md-primary-fg-color), var(--md-accent-fg-color));
+  color: white;
+  border-color: var(--md-primary-fg-color--dark);
+}
+
+.decision-node.completed {
+  background: var(--success-color);
+  border-color: var(--success-color);
+  color: white;
+}
+
+.decision-node.completed::after {
+  content: '✓';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: white;
+  color: var(--success-color);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.decision-branch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.decision-branch::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  width: 2px;
+  height: 40px;
+  background: var(--md-primary-fg-color--light);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.decision-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  justify-content: center;
+  margin-top: var(--spacing-lg);
+}
+
+.decision-option {
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  cursor: pointer;
+  transition: var(--hover-transition);
+  min-width: 120px;
+  text-align: center;
+}
+
+.decision-option:hover {
+  background: var(--md-primary-fg-color--light);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.decision-option.selected {
+  background: var(--md-primary-fg-color);
+  color: white;
+  border-color: var(--md-primary-fg-color--dark);
+}
+
+.decision-result {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-left: 4px solid var(--info-color);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+  position: relative;
+}
+
+.decision-result.positive {
+  border-left-color: var(--success-color);
+  background: linear-gradient(135deg, #f8fff8, #e8f5e8);
+}
+
+.decision-result.negative {
+  border-left-color: var(--warning-color);
+  background: linear-gradient(135deg, #fff8f0, #fef2e8);
+}
+
+.decision-result::before {
+  content: attr(data-icon);
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  font-size: 24px;
+}
+
+/* Flowchart connections */
+.flowchart-connector {
+  width: 2px;
+  background: var(--md-primary-fg-color--light);
+  margin: var(--spacing-sm) auto;
+  height: 30px;
+  position: relative;
+}
+
+.flowchart-connector::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid var(--md-primary-fg-color--light);
+}
+
+/* Assessment tools styling */
+.assessment-container {
+  background: var(--md-default-bg-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-light);
+  margin: var(--spacing-xl) 0;
+}
+
+.assessment-question {
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  background: rgba(255, 153, 0, 0.05);
+  border-left: 4px solid var(--md-primary-fg-color);
+}
+
+.assessment-question h4 {
+  margin-top: 0;
+  color: var(--md-primary-fg-color--dark);
+}
+
+.assessment-scale {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+
+.scale-option {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--md-default-fg-color--lighter);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--hover-transition);
+  font-weight: 500;
+}
+
+.scale-option:hover {
+  border-color: var(--md-primary-fg-color);
+  background: rgba(255, 153, 0, 0.1);
+}
+
+.scale-option.selected {
+  background: var(--md-primary-fg-color);
+  color: white;
+  border-color: var(--md-primary-fg-color--dark);
+}
+
+.assessment-progress {
+  margin-bottom: var(--spacing-lg);
+}
+
+.progress-indicator {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 0.9rem;
+  color: var(--md-default-fg-color--light);
+}
+
+/* Recommendation engine styling */
+.recommendation-card {
+  background: linear-gradient(135deg, #fff, #f8f9fa);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin: var(--spacing-md) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.recommendation-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--info-color);
+}
+
+.recommendation-card.high-priority::before {
+  background: var(--error-color);
+}
+
+.recommendation-card.medium-priority::before {
+  background: var(--warning-color);
+}
+
+.recommendation-card.low-priority::before {
+  background: var(--success-color);
+}
+
+.recommendation-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.priority-badge {
+  font-size: 0.75rem;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-xl);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.priority-high {
+  background: var(--error-color);
+  color: white;
+}
+
+.priority-medium {
+  background: var(--warning-color);
+  color: white;
+}
+
+.priority-low {
+  background: var(--success-color);
+  color: white;
+}
+
+.recommendation-actions {
+  margin-top: var(--spacing-md);
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.action-button {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  border: none;
+  background: var(--md-primary-fg-color);
+  color: white;
+  cursor: pointer;
+  transition: var(--hover-transition);
+  font-size: 0.9rem;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.action-button:hover {
+  background: var(--md-primary-fg-color--dark);
+  transform: translateY(-1px);
+}
+
+.action-button.secondary {
+  background: var(--md-default-fg-color--lighter);
+  color: var(--md-default-fg-color);
+}
+
+.action-button.secondary:hover {
+  background: var(--md-default-fg-color--light);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .decision-options {
+    flex-direction: column;
+  }
+  
+  .assessment-scale {
+    justify-content: space-between;
+  }
+  
+  .scale-option {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+  
+  .recommendation-actions {
+    flex-direction: column;
+  }
+  
+  .action-button {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+/* Animation for decision tree interactions */
+.decision-tree-animate {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes branchGrow {
+  from {
+    height: 0;
+  }
+  to {
+    height: 40px;
+  }
+}
+
+.decision-branch.animate::before {
+  animation: branchGrow 0.3s ease-out;
+}
+
+/* Loading states */
+.assessment-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl);
+  color: var(--md-default-fg-color--light);
+}
+
+.assessment-loading::after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--md-default-fg-color--lighter);
+  border-top: 2px solid var(--md-primary-fg-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-left: var(--spacing-sm);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

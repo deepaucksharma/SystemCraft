@@ -1,7 +1,52 @@
 # Getting Started Guide - Amazon L6/L7 Interview Prep
 
 !!! info "New to SystemCraft? Start Here"
-    This guide walks you through SystemCraft's approach and helps you understand what you need to succeed in Amazon L6/L7 interviews.
+    This guide walks you through SystemCraft's approach and helps you understand what you need to succeed in Amazon L6/L7 interviews. Whether you're coming from a senior engineer role, another FAANG company, or looking to advance within Amazon, this personalized approach will help you succeed.
+
+## 🎯 Your Personalized Preparation Path
+
+Let's create your customized preparation journey based on your background, timeline, and target level.
+
+### Your Current Level:
+=== "Senior Engineer (L5)"
+    Focus on gaining management experience and scaling technical skills for L6 transition.
+    
+    **Typical Timeline:** 8-12 months preparation
+    
+=== "Engineering Manager (L6)"
+    Ready to advance to Principal level with strategic leadership focus.
+    
+    **Typical Timeline:** 6-8 months preparation
+
+=== "Experienced Manager"
+    Transitioning from other FAANG companies to Amazon's unique culture.
+    
+    **Typical Timeline:** 4-6 months preparation
+
+### Your Timeline:
+=== "6-Week Crash Course"
+    **High-intensity preparation for urgent opportunities**
+    
+    - 25+ hours/week commitment
+    - Focus on highest-impact areas
+    - Aggressive mock interview schedule
+    - Risk: Limited depth building
+    
+=== "8-12 Week Intensive"
+    **Balanced preparation with good depth**
+    
+    - 15-20 hours/week commitment
+    - Comprehensive skill building
+    - Regular mock interviews
+    - Recommended for most candidates
+    
+=== "6-Month Comprehensive"
+    **Deep mastery with career development focus**
+    
+    - 10-15 hours/week commitment
+    - Full skill transformation
+    - Leadership development emphasis
+    - Best for significant level jumps
 
 ## Step 1: Understand What You're Up Against
 
@@ -14,16 +59,62 @@
 **Most successful candidates excel at:** Behavioral storytelling with quantified business impact  
 **Most failed candidates struggle with:** Demonstrating leadership through authentic stories
 
-## Step 2: Take the Assessment to Find Your Starting Point
+## Step 2: Complete Your Initial Assessment
 
-!!! tip "Required First Step"
-    Before diving into study materials, take our 15-minute assessment to identify your specific gaps and get a personalized study plan.
-    
-    [Take the Assessment Now →](self-assessment-quiz.md)
+<div class="assessment-wizard">
+  <div class="progress-bar">
+    <div class="progress" style="width: 0%"></div>
+  </div>
+  
+  **Technical Readiness** (Answer 1-5 scale):
+  
+  1. I can design systems handling millions of users: ___
+  2. I solve LeetCode medium problems in 30-45 minutes: ___
+  3. I understand AWS services for production systems: ___
+  4. I can explain distributed systems trade-offs: ___
+  
+  **Leadership Readiness**:
+  
+  1. I've managed 8+ engineers effectively: ___
+  2. I have quantified leadership impact stories: ___
+  3. I influence decisions beyond my direct team: ___
+  4. I can articulate technical strategy clearly: ___
+  
+  **Cultural Readiness**:
+  
+  1. I understand Amazon's Leadership Principles: ___
+  2. I have specific examples for each LP: ___
+  3. I know Amazon's interview format: ___
+  4. I understand L6 vs L7 expectations: ___
+</div>
 
-## Step 3: Choose Your Study Plan Based on Assessment Results
+!!! tip "Complete Assessment Available"
+    For a comprehensive 20-question assessment that takes 15-20 minutes, use our [Complete Assessment Tool](self-assessment-quiz.md) which provides detailed scoring and personalized recommendations.
 
-After taking the assessment, you'll be directed to one of these paths:
+## Step 3: Your Customized Learning Path
+
+Based on your responses, here's your recommended path:
+
+<div class="learning-path-generator">
+  <div class="path-card high-priority">
+    <h4>🔥 Critical Gaps - Week 1-2</h4>
+    <ul id="critical-gaps"></ul>
+  </div>
+  
+  <div class="path-card medium-priority">
+    <h4>📈 Skill Building - Week 3-6</h4>
+    <ul id="skill-gaps"></ul>
+  </div>
+  
+  <div class="path-card low-priority">
+    <h4>✨ Excellence Areas - Week 7+</h4>
+    <ul id="excellence-areas"></ul>
+  </div>
+</div>
+
+### Choose Your Study Plan Based on Assessment Results
+
+After completing the assessment, you'll be directed to one of these paths:
 
 | Assessment Score | Recommended Path | Timeline | Focus |
 |-----------------|------------------|----------|-------|
@@ -71,7 +162,30 @@ You need strong STAR stories for these core scenarios:
 
 **Start here:** [Coding Strategy for Managers](coding/index.md)
 
-## Step 6: Set Up for Success
+## Step 4: Your Dashboard Setup
+
+<div class="dashboard-preview">
+  <h4>📊 Your Personal Dashboard</h4>
+  
+  **Daily Minimums:**
+  - [ ] 1 coding problem (30 min)
+  - [ ] 1 system design concept (30 min) 
+  - [ ] 1 behavioral story refinement (15 min)
+  
+  **Weekly Goals:**
+  - [ ] Complete 2 full system designs
+  - [ ] Solve 10 coding problems
+  - [ ] Document 3 STAR stories
+  - [ ] 1 mock interview session
+  
+  **Progress Tracking:**
+  - Technical Skills: ███░░ 60%
+  - Behavioral Stories: ██░░░ 40% 
+  - Cultural Alignment: ████░ 80%
+  - Interview Readiness: ██░░░ 40%
+</div>
+
+## Step 5: Set Up for Success
 
 ### Essential First Resources
 1. **[Leadership Principles Deep Dive](fundamentals/leadership-principles.md)** - Master Amazon's culture
@@ -91,6 +205,14 @@ You need strong STAR stories for these core scenarios:
 - **Mentors or coaches** for expert feedback
 
 [Mock Interview Setup Guide →](practice/mock-interviews.md)
+
+## 🚀 Ready to Begin?
+
+<div class="action-buttons">
+  <a href="#personalized-path" class="btn primary">Start My Journey →</a>
+  <a href="self-assessment-quiz.md" class="btn secondary">Take Full Assessment</a>
+  <a href="quick-reference.md" class="btn tertiary">Skip to Quick Start</a>
+</div>
 
 ## Quick Wins You Can Do Today
 
@@ -129,6 +251,14 @@ Once you complete the assessment, you'll be guided to the right path:
 
 [Take Assessment to Get Your Personalized Path →](self-assessment-quiz.md)
 
+## 💡 Success Stories by Path
+
+!!! success "6-Week Success: Sarah T., L6 at Amazon"
+    "The personalized path helped me focus on my weak areas first. I went from struggling with system design to confidently architecting solutions in 6 weeks."
+
+!!! success "3-Month Journey: Marcus L., L7 at Amazon"  
+    "The strategic leadership focus was exactly what I needed. The behavioral preparation alone was worth the investment."
+
 ## Success Tips from L6/L7 Hires
 
 !!! success "#1 Success Factor"
@@ -148,5 +278,9 @@ Once you complete the assessment, you'll be guided to the right path:
 - **💰 Planning offer negotiation?** [Compensation Guide](compensation/negotiation-guide.md)
 
 ---
+
+---
+
+*Your journey to Amazon starts with a single step. Let's take it together.*
 
 **Ready to start?** [Take the 15-minute assessment](self-assessment-quiz.md) to get your personalized roadmap.
