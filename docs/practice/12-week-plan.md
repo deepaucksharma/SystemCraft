@@ -54,7 +54,7 @@
 #### Monday: Complete Skills Assessment (2 hours)
 **Main Block (1.5 hours - flexible timing)**
 - [ ] Complete [comprehensive self-assessment](self-assessment.md) - focus on key dimensions
-- [ ] Map current experience to [L6 vs L7 requirements](../fundamentals/l6-vs-l7.md)
+- [ ] Map current experience to [L6 vs L7 requirements](/fundamentals/l6-vs-l7.md)
 - [ ] Identify top 3-4 improvement areas with specific gaps
 
 **Planning Block (30 min)**
@@ -69,7 +69,7 @@
 **Main Block (1.5 hours)**
 - [ ] Solve 3-4 coding problems across patterns - establish baseline
 - [ ] Attempt 1 system design problem - note approach and gaps
-- [ ] Skim [technical competencies framework](../fundamentals/technical-competencies.md)
+- [ ] Skim [technical competencies framework](/fundamentals/technical-competencies.md)
 
 **Analysis Block (30 min)**
 - [ ] Analyze performance and identify top 2 improvement areas
@@ -81,9 +81,9 @@
 
 #### Wednesday: Behavioral Foundation Assessment (2 hours)
 **Main Block (1.5 hours)**
-- [ ] Map your experiences to key [Leadership Principles](../fundamentals/leadership-principles.md) (focus on top 10)
+- [ ] Map your experiences to key [Leadership Principles](/fundamentals/leadership-principles.md) (focus on top 10)
 - [ ] Identify 6-8 strong potential STAR story experiences
-- [ ] Draft 1-2 initial STAR stories using [framework](../behavioral/star-framework.md)
+- [ ] Draft 1-2 initial STAR stories using [framework](/behavioral/star-framework.md)
 
 **Practice Block (30 min)**
 - [ ] Practice 1 story delivery and basic timing
@@ -96,7 +96,7 @@
 #### Thursday: Mock Interview Baseline (3 hours)
 **Morning Block (2 hours)**
 - [ ] Conduct baseline mock interview: 45-minute behavioral focus
-- [ ] Self-evaluate using [question-response framework](../behavioral/question-response-framework.md)
+- [ ] Self-evaluate using [question-response framework](/behavioral/question-response-framework.md)
 - [ ] Document specific areas for improvement
 
 **Evening Block (1 hour)**
@@ -125,7 +125,7 @@
 
 #### Monday: Algorithm Pattern Mastery (3.5 hours)
 **Morning Block (2.5 hours)**
-- [ ] Study core algorithm patterns from [patterns guide](../coding/patterns.md):
+- [ ] Study core algorithm patterns from [patterns guide](/coding/patterns.md):
   - Arrays and Strings (5 problems)
   - Two Pointers and Sliding Window (4 problems)  
   - Hash Maps and Sets (4 problems)
@@ -138,14 +138,14 @@
 
 #### Tuesday: System Design Fundamentals (3.5 hours)
 **Morning Block (2.5 hours)**
-- [ ] Study [system design fundamentals](../system-design/fundamentals.md) completely
+- [ ] Study [system design fundamentals](/system-design/fundamentals.md) completely
 - [ ] Complete foundational problems: URL Shortener, Chat System
 - [ ] Learn systematic approach to problem decomposition
 
 **Evening Block (1 hour)**
-- [ ] Review [scale architecture patterns](../system-design/scale-architecture.md)
+- [ ] Review [scale architecture patterns](/system-design/scale-architecture.md)
 - [ ] Practice whiteboard presentation skills
-- [ ] Study [AWS services overview](../system-design/aws-services.md) - basic services
+- [ ] Study [AWS services overview](/system-design/aws-services.md) - basic services
 
 #### Wednesday: STAR Story Development (3.5 hours)
 **Morning Block (2.5 hours)**
@@ -212,7 +212,7 @@
 - [ ] Focus on operational concerns and real-world constraints
 
 **Evening Block (1 hour)**
-- [ ] Study [case studies](../system-design/case-studies.md) - Netflix, Uber
+- [ ] Study [case studies](/system-design/case-studies.md) - Netflix, Uber
 - [ ] Practice handling ambiguous requirements and scope changes
 - [ ] Work on confident presentation and stakeholder communication
 
@@ -227,7 +227,7 @@
 **Evening Block (1 hour)**
 - [ ] Practice handling challenging follow-up questions
 - [ ] Work on natural storytelling without sounding rehearsed
-- [ ] Study [trade-off framework](../behavioral/trade-off-framework.md)
+- [ ] Study [trade-off framework](/behavioral/trade-off-framework.md)
 
 #### Thursday: Mock Interview Progression (3.5 hours)
 **Morning Block (2.5 hours)**
@@ -348,7 +348,7 @@
 - [ ] Focus on trade-offs, scalability, and operational excellence
 
 **Evening Block (1.5 hours)**
-- [ ] Study advanced concepts: [Consistency models](../deep-dives/consistency-models.md)
+- [ ] Study advanced concepts: [Consistency models](/deep-dives/consistency-models.md)
 - [ ] Practice handling capacity planning and cost optimization
 - [ ] Work on explaining complex architecture to non-technical stakeholders
 
@@ -363,7 +363,7 @@
 **Evening Block (1.5 hours)**
 - [ ] Practice explaining technical decisions in business context
 - [ ] Work on influencing technical strategy across multiple teams
-- [ ] Study [decision-making frameworks](../behavioral/decision-making.md)
+- [ ] Study [decision-making frameworks](/behavioral/decision-making.md)
 
 #### Thursday: Advanced Mock Interview (4 hours)
 **Morning Block (2.5 hours)**
@@ -406,7 +406,7 @@
 **Evening Block (1.5 hours)**
 - [ ] Practice handling complex ethical and business dilemmas
 - [ ] Work on demonstrating judgment and wisdom in ambiguous situations
-- [ ] Study [L6](../behavioral/l6-scenarios.md) or [L7 scenarios](../behavioral/l7-scenarios.md) for advanced situations
+- [ ] Study [L6](/behavioral/l6-scenarios.md) or [L7 scenarios](/behavioral/l7-scenarios.md) for advanced situations
 
 #### Tuesday: Cross-Functional Influence (4 hours)
 **Morning Block (2.5 hours)**

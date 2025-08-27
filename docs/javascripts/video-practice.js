@@ -161,7 +161,7 @@ class VideoPractice {
 
     showAnalysisOptions() {
         const container = document.getElementById('analysis-options');
-        container.innerHTML = `
+        const content = `
             <div class="analysis-panel">
                 <h3>Video Analysis Options</h3>
                 <div class="analysis-types">
@@ -197,11 +197,20 @@ class VideoPractice {
             </div>
         `;
         
+        // Use secure innerHTML replacement
+        window.securityUtils.safeInnerHTML(container, content, {
+            allowedTags: ['div', 'h3', 'label', 'input', 'button'],
+            allowedAttributes: ['class', 'id', 'type', 'checked']
+        });
+        
         container.style.display = 'block';
         
-        document.getElementById('run-analysis').addEventListener('click', () => {
-            this.runComprehensiveAnalysis();
-        });
+        // Use secure event listener
+        window.secureEventSystem.addEventListener(
+            document.getElementById('run-analysis'), 
+            'click', 
+            () => this.runComprehensiveAnalysis()
+        );
     }
 
     async runComprehensiveAnalysis() {
@@ -231,7 +240,7 @@ class VideoPractice {
 
     showAnalysisProgress() {
         const container = document.getElementById('analysis-progress');
-        container.innerHTML = `
+        const content = `
             <div class="progress-panel">
                 <h3>Analyzing Your Performance...</h3>
                 <div class="progress-steps">
@@ -258,6 +267,12 @@ class VideoPractice {
             </div>
         `;
         
+        // Use secure innerHTML replacement
+        window.securityUtils.safeInnerHTML(container, content, {
+            allowedTags: ['div', 'h3', 'span'],
+            allowedAttributes: ['class', 'id']
+        });
+        
         container.style.display = 'block';
     }
 
@@ -265,40 +280,44 @@ class VideoPractice {
         document.getElementById('analysis-progress').style.display = 'none';
         
         const container = document.getElementById('analysis-results');
-        container.innerHTML = `
+        
+        // Sanitize all user-generated content in results
+        const sanitizedResults = this.sanitizeAnalysisResults(results);
+        
+        const content = `
             <div class="results-dashboard">
                 <h3>Performance Analysis Results</h3>
                 
                 <div class="metrics-overview">
                     <div class="metric-card">
-                        <div class="metric-value">${results.overallScore}/100</div>
+                        <div class="metric-value">${sanitizedResults.overallScore}/100</div>
                         <div class="metric-label">Overall Performance</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value">${results.eyeContact.percentage}%</div>
+                        <div class="metric-value">${sanitizedResults.eyeContact.percentage}%</div>
                         <div class="metric-label">Eye Contact</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value">${results.energy.averageLevel}</div>
+                        <div class="metric-value">${sanitizedResults.energy.averageLevel}</div>
                         <div class="metric-label">Energy Level</div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-value">${results.speechPace.wordsPerMinute}</div>
+                        <div class="metric-value">${sanitizedResults.speechPace.wordsPerMinute}</div>
                         <div class="metric-label">Words/Minute</div>
                     </div>
                 </div>
 
                 <div class="detailed-analysis">
-                    ${this.renderBodyLanguageAnalysis(results.bodyLanguage)}
-                    ${this.renderGestureAnalysis(results.gestures)}
-                    ${this.renderSpeechAnalysis(results.speechPace)}
-                    ${this.renderEnergyAnalysis(results.energy)}
+                    ${this.renderBodyLanguageAnalysis(sanitizedResults.bodyLanguage)}
+                    ${this.renderGestureAnalysis(sanitizedResults.gestures)}
+                    ${this.renderSpeechAnalysis(sanitizedResults.speechPace)}
+                    ${this.renderEnergyAnalysis(sanitizedResults.energy)}
                 </div>
 
                 <div class="improvement-suggestions">
                     <h4>💡 Improvement Suggestions</h4>
                     <ul>
-                        ${results.suggestions.map(suggestion => `
+                        ${sanitizedResults.suggestions.map(suggestion => `
                             <li>
                                 <strong>${suggestion.category}:</strong> ${suggestion.text}
                                 <span class="impact">Impact: ${suggestion.impact}</span>
@@ -310,7 +329,7 @@ class VideoPractice {
                 <div class="practice-recommendations">
                     <h4>🎯 Recommended Practice Areas</h4>
                     <div class="practice-areas">
-                        ${results.practiceAreas.map(area => `
+                        ${sanitizedResults.practiceAreas.map(area => `
                             <div class="practice-card">
                                 <h5>${area.title}</h5>
                                 <p>${area.description}</p>
@@ -333,9 +352,55 @@ class VideoPractice {
             </div>
         `;
         
+        // Use secure innerHTML replacement
+        window.securityUtils.safeInnerHTML(container, content, {
+            allowedTags: ['div', 'h3', 'h4', 'h5', 'p', 'ul', 'li', 'strong', 'span', 'button'],
+            allowedAttributes: ['class', 'id', 'data-exercise']
+        });
+        
         container.style.display = 'block';
-        this.renderPerformanceTimeline(results.timeline);
+        this.renderPerformanceTimeline(sanitizedResults.timeline);
         this.setupAnalysisInteractions();
+    }
+
+    sanitizeAnalysisResults(results) {
+        // Deep clone and sanitize all user-generated content
+        const sanitized = JSON.parse(JSON.stringify(results));
+        
+        // Sanitize suggestions
+        if (sanitized.suggestions && Array.isArray(sanitized.suggestions)) {
+            sanitized.suggestions = sanitized.suggestions.map(suggestion => ({
+                category: window.securityUtils.validateInput(String(suggestion.category || ''), 'text'),
+                text: window.securityUtils.validateInput(String(suggestion.text || ''), 'text'),
+                impact: window.securityUtils.validateInput(String(suggestion.impact || ''), 'text')
+            }));
+        }
+        
+        // Sanitize practice areas
+        if (sanitized.practiceAreas && Array.isArray(sanitized.practiceAreas)) {
+            sanitized.practiceAreas = sanitized.practiceAreas.map(area => ({
+                title: window.securityUtils.validateInput(String(area.title || ''), 'text'),
+                description: window.securityUtils.validateInput(String(area.description || ''), 'text'),
+                exercises: Array.isArray(area.exercises) ? area.exercises.map(exercise => ({
+                    id: window.securityUtils.validateInput(String(exercise.id || ''), 'text'),
+                    title: window.securityUtils.validateInput(String(exercise.title || ''), 'text')
+                })) : []
+            }));
+        }
+        
+        // Sanitize numeric values to prevent injection through numbers
+        sanitized.overallScore = Math.max(0, Math.min(100, parseInt(sanitized.overallScore) || 0));
+        if (sanitized.eyeContact) {
+            sanitized.eyeContact.percentage = Math.max(0, Math.min(100, parseInt(sanitized.eyeContact.percentage) || 0));
+        }
+        if (sanitized.energy) {
+            sanitized.energy.averageLevel = Math.max(0, Math.min(10, parseInt(sanitized.energy.averageLevel) || 0));
+        }
+        if (sanitized.speechPace) {
+            sanitized.speechPace.wordsPerMinute = Math.max(0, Math.min(1000, parseInt(sanitized.speechPace.wordsPerMinute) || 0));
+        }
+        
+        return sanitized;
     }
 
     renderBodyLanguageAnalysis(analysis) {
@@ -833,24 +898,44 @@ class VideoPractice {
         }
     }
 
-    loadUserSettings() {
-        const stored = localStorage.getItem('systemcraft_video_settings');
-        this.settings = stored ? JSON.parse(stored) : {
-            videoQuality: 'medium',
-            enableRealTimeAnalysis: true,
-            autoSave: false,
-            analysisTypes: {
-                bodyLanguage: true,
-                eyeContact: true,
-                speechPace: true,
-                gestures: true,
-                energy: true
-            }
-        };
+    async loadUserSettings() {
+        try {
+            const stored = await window.securityUtils.getSecureItem('video_settings');
+            this.settings = stored || {
+                videoQuality: 'medium',
+                enableRealTimeAnalysis: true,
+                autoSave: false,
+                analysisTypes: {
+                    bodyLanguage: true,
+                    eyeContact: true,
+                    speechPace: true,
+                    gestures: true,
+                    energy: true
+                }
+            };
+        } catch (error) {
+            console.error('Failed to load user settings:', error);
+            this.settings = {
+                videoQuality: 'medium',
+                enableRealTimeAnalysis: true,
+                autoSave: false,
+                analysisTypes: {
+                    bodyLanguage: true,
+                    eyeContact: true,
+                    speechPace: true,
+                    gestures: true,
+                    energy: true
+                }
+            };
+        }
     }
 
-    saveUserSettings() {
-        localStorage.setItem('systemcraft_video_settings', JSON.stringify(this.settings));
+    async saveUserSettings() {
+        try {
+            await window.securityUtils.setSecureItem('video_settings', this.settings);
+        } catch (error) {
+            console.error('Failed to save user settings:', error);
+        }
     }
 
     updateRecordingUI(isRecording) {

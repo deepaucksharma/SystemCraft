@@ -89,7 +89,7 @@ Let's create your customized preparation journey based on your background, timel
 </div>
 
 !!! tip "Complete Assessment Available"
-    For a comprehensive 20-question assessment that takes 15-20 minutes, use our [Complete Assessment Tool](self-assessment-quiz.md) which provides detailed scoring and personalized recommendations.
+    For a comprehensive 20-question assessment that takes 15-20 minutes, use our [Complete Assessment Tool](/self-assessment-quiz.md) which provides detailed scoring and personalized recommendations.
 
 ## Step 3: Your Customized Learning Path
 
@@ -118,9 +118,9 @@ After completing the assessment, you'll be directed to one of these paths:
 
 | Assessment Score | Recommended Path | Timeline | Focus |
 |-----------------|------------------|----------|-------|
-| **85-100** | [Quick Reference](quick-reference.md) | 1-2 weeks | Final polish & practice |
-| **70-84** | [6-Week Intensive](practice/6-week-plan.md) | 6 weeks | Targeted skill building |
-| **55-69** | [12-Week Comprehensive](practice/12-week-plan.md) | 12 weeks | Foundation + mastery |
+| **85-100** | [Quick Reference](/quick-reference.md) | 1-2 weeks | Final polish & practice |
+| **70-84** | [6-Week Intensive](/practice/6-week-plan.md) | 6 weeks | Targeted skill building |
+| **55-69** | [12-Week Comprehensive](/practice/12-week-plan.md) | 12 weeks | Foundation + mastery |
 | **<55** | Foundation Building | 16+ weeks | Gain experience first |
 
 !!! warning "Important: Don't Skip the Assessment"
@@ -145,7 +145,7 @@ You need strong STAR stories for these core scenarios:
 4. **Failure & Learning** - Significant failure and how you grew from it
 5. **Innovation** - Something new you created or pioneered
 
-[Master STAR Framework →](behavioral/star-framework.md)
+[Master STAR Framework →](/behavioral/star-framework.md)
 
 ## Step 5: Build Technical Credibility
 
@@ -153,14 +153,14 @@ You need strong STAR stories for these core scenarios:
 - **L6**: Component and service-level design (10M+ users)
 - **L7**: Platform and ecosystem design (100M+ users)
 
-**Start here:** [System Design Fundamentals](system-design/fundamentals.md)
+**Start here:** [System Design Fundamentals](/system-design/fundamentals.md)
 
 ### Coding Expectations
 - **Medium-level problems** solved clearly in 30-45 minutes
 - **Code quality** and **explanation clarity** matter more than speed
 - **Leadership context** - How would you scale this with a team?
 
-**Start here:** [Coding Strategy for Managers](coding/index.md)
+**Start here:** [Coding Strategy for Managers](/coding/index.md)
 
 ## Step 4: Your Dashboard Setup
 
@@ -188,7 +188,7 @@ You need strong STAR stories for these core scenarios:
 ## Step 5: Set Up for Success
 
 ### Essential First Resources
-1. **[Leadership Principles Deep Dive](fundamentals/leadership-principles.md)** - Master Amazon's culture
+1. **[Leadership Principles Deep Dive](/fundamentals/leadership-principles.md)** - Master Amazon's culture
 2. **[L6 vs L7 Comparison](fundamentals/l6-vs-l7.md)** - Target the right level
 3. **[Interview Process Guide](fundamentals/interview-process.md)** - Know what to expect
 4. **[STAR Framework](behavioral/star-framework.md)** - Structure your stories

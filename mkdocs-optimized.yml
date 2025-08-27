@@ -1,0 +1,353 @@
+# Optimized MkDocs Configuration for SystemCraft
+# Performance-first configuration targeting <2s TTI and <1MB bundle size
+
+site_name: Amazon L6/L7 Engineering Manager Interview Prep
+site_url: https://deepaucksharma.github.io/SystemCraft/
+site_description: Complete preparation guide for Amazon L6/L7 Engineering Manager Technical Interviews
+site_author: SystemCraft
+
+repo_url: https://github.com/deepaucksharma/SystemCraft
+repo_name: deepaucksharma/SystemCraft
+edit_uri: edit/main/docs/
+
+copyright: Copyright &copy; 2025 SystemCraft
+
+theme:
+  name: material
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: orange
+      accent: deep orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: orange
+      accent: deep orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    # Performance-optimized navigation features
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.path
+    - navigation.prune  # Critical for performance - reduces DOM size
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    # Enhanced Table of Contents
+    - toc.follow
+    - toc.integrate
+    # Enhanced Search (optimized)
+    - search.suggest
+    - search.highlight
+    - search.share
+    # Content Enhancements
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
+    - content.tabs.link
+    - content.tooltips
+    - content.footnote.tooltips
+    # Header optimizations
+    - header.autohide
+    - announce.dismiss
+
+plugins:
+  # Core functionality with performance optimizations
+  - search:
+      lang: en
+      separator: '[\s\-,:!=\[\]()"/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+      prebuild_index: true  # Performance: Pre-build search index
+  
+  - tags
+  
+  # Performance optimization plugins
+  - minify:
+      minify_html: true
+      minify_js: true
+      minify_css: true
+      htmlmin_opts:
+        remove_comments: true
+        collapse_whitespace: true
+        remove_optional_end_tags: true
+        remove_redundant_attributes: true
+        use_short_doctype: true
+        remove_script_type_attributes: true
+        remove_style_link_type_attributes: true
+      cache_safe: true
+  
+  # Optimize plugin for automatic media optimization
+  - optimize:
+      enabled: true
+      cache: true
+      cache_dir: .cache/plugin/optimize
+      print_gain: true
+      print_gain_summary: true
+  
+  # Visual enhancements (optimized)
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      slide_effect: slide
+      width: 100%
+      height: auto
+      zoomable: true
+      draggable: true
+      skip_classes:
+        - custom-skip-class-name
+      auto_caption: false
+      caption_position: bottom
+  
+  # Git information (for cache busting)
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+      timezone: UTC
+      locale: en
+      fallback_to_build_date: false
+      enabled: true
+
+markdown_extensions:
+  # Core markdown
+  - toc:
+      permalink: true
+      permalink_title: Anchor link to this section for reference
+      toc_depth: 4
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - tables
+  - fenced_code
+  - attr_list
+  - md_in_html
+  - def_list
+  - footnotes
+  - abbr
+  
+  # Enhanced content features
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+        - name: vega-lite
+          class: vegalite
+          format: !!python/name:pymdownx.superfences.fence_div_format
+  
+  # Code enhancements
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+      auto_title: true
+      linenums: false  # Reduce HTML size
+  - pymdownx.inlinehilite
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
+  
+  # Content organization
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+      clickable_checkbox: true
+  
+  # Enhanced formatting
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.caret
+  - pymdownx.smartsymbols
+  
+  # Mathematical content
+  - pymdownx.arithmatex:
+      generic: true
+  
+  # Advanced features
+  - pymdownx.critic:
+      mode: view
+  - pymdownx.betterem:
+      smart_enable: all
+
+# PERFORMANCE-OPTIMIZED CSS LOADING
+extra_css:
+  # Critical CSS inlined in HTML head (not listed here)
+  # Non-critical CSS loaded asynchronously
+  - assets/css/extra.min.css
+  - assets/css/decision-trees.min.css
+  - assets/css/learning-paths.min.css
+  - assets/css/mobile-enhancements.min.css
+  - assets/css/accessibility.min.css
+  - assets/css/interactive-elements.min.css
+  - assets/css/visual-learning.min.css
+
+# PERFORMANCE-OPTIMIZED JAVASCRIPT LOADING
+extra_javascript:
+  # Service Worker registration (highest priority)
+  - assets/js/sw-register.js
+  
+  # Core bundle (essential functionality)
+  - assets/js/core.min.js
+  
+  # Feature bundles (loaded on demand)
+  # Note: Most of these will be loaded dynamically via webpack code splitting
+  # Only critical/universal scripts are loaded here
+  
+  # Mathematical content (if needed on page)
+  - assets/js/mathjax.min.js
+  
+  # External libraries with resource hints
+  # These use preconnect/dns-prefetch for performance
+  - https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js
+  - https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js
+
+# Enhanced navigation structure (unchanged)
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Start Here: getting-started.md
+    - Foundational Mindset: foundational-mindset/index.md
+    - Self-Assessment & Placement: self-assessment-quiz.md
+    - L6 vs L7 Guide: fundamentals/l6-vs-l7.md
+    - Interview Process: fundamentals/interview-process.md
+    - Written Assessment Guide: interview-process/written-assessment-guide.md
+    - Interview Mechanics: interview-mechanics/index.md
+  - Level Playbooks:
+    - L6/L7 Success Formulas: level-playbooks/index.md
+    - Technical Competencies: fundamentals/technical-competencies.md
+    - Leadership Principles: fundamentals/leadership-principles.md
+  - Study & Progress:
+    - Quick Start (2 weeks): quick-reference.md
+    - Intensive (6 weeks): practice/6-week-plan.md
+    - Comprehensive (12 weeks): practice/12-week-plan.md
+    - Complete Study Plan (6 months): study-plan.md
+    - Visual Learning Guide: learning/visual-learning-guide.md
+    - Progress Tracking System: practice/comprehensive-progress-system.md
+    - Mock Interview Guide: practice/mock-interviews.md
+  - Behavioral Leadership:
+    - Overview & Strategy: behavioral/index.md
+    - STAR Framework: behavioral/star-framework.md
+    - L6 Behavioral Mastery: behavioral/l6-behavioral-mastery.md
+    - L7 Behavioral Mastery: behavioral/l7-behavioral-mastery.md
+    - L6 vs L7 Differentiation: behavioral/l6-vs-l7-differentiation.md
+    - Impact Quantification: behavioral/impact-quantification.md
+    - Bar Raiser Mastery: behavioral/bar-raiser-mastery.md
+    - Bar Raiser Questions: behavioral/bar-raiser-questions.md
+    - Bar Raiser Recovery: behavioral/bar-raiser-recovery.md
+    - L6 Scenarios: behavioral/l6-scenarios.md
+    - L7 Scenarios: behavioral/l7-scenarios.md
+    - DEI Leadership: behavioral/dei-leadership.md
+    - Decision Making: behavioral/decision-making.md
+    - Missing Leadership Principles: behavioral/missing-leadership-principles.md
+  - System Design:
+    - Overview & Strategy: system-design/index.md
+    - Fundamentals: system-design/fundamentals.md
+    - Advanced Distributed Systems: system-design/advanced-distributed-systems.md
+    - Performance Engineering: system-design/performance-engineering.md
+    - Database Architecture: system-design/database-architecture.md
+    - Security Architecture: system-design/security-architecture.md
+    - Scale & Architecture: system-design/scale-architecture.md
+    - AWS Services: system-design/aws-services.md
+    - Well-Architected: system-design/well-architected.md
+    - Generative AI Systems: system-design/generative-ai-systems.md
+    - ML Systems Design: system-design/ml-systems-design.md
+    - ML Design Problems: system-design/ml-design-problems.md
+    - L6 Problems: system-design/l6-problems.md
+    - L7 Problems: system-design/l7-problems.md
+    - Case Studies: system-design/case-studies.md
+  - Technical Coding:
+    - Overview & Strategy: coding/index.md
+    - Data Structures: coding/data-structures.md
+    - Algorithms: coding/algorithms.md
+    - Advanced Graph Algorithms: coding/advanced-graph-algorithms.md
+    - System-Scale Algorithms: coding/system-scale-algorithms.md
+    - String Algorithms: coding/string-algorithms.md
+    - Problem Patterns: coding/patterns.md
+    - Amazon Top 100: coding/amazon-top-100.md
+    - Mock Problems: coding/mock-problems.md
+  - Deep Technical Knowledge:
+    - Distributed Systems: deep-dives/distributed-systems.md
+    - AI/ML Leadership: deep-dives/ai-ml-leadership.md
+    - Performance & Scale: deep-dives/performance-scale.md
+    - Consistency Models: deep-dives/consistency-models.md
+    - Security: deep-dives/security.md
+    - Incident Response: deep-dives/incident-response.md
+  - Team-Specific Tracks:
+    - Team Comparison Guide: team-specific/team-comparison.md
+    - Team Fit Assessment: team-specific/team-fit-guide.md
+    - AWS Track: team-specific/aws-track.md
+    - Retail Track: team-specific/retail-track.md
+    - Alexa Track: team-specific/alexa-track.md
+    - Prime Video Track: team-specific/prime-video-track.md
+    - Ads Track: team-specific/ads-track.md
+    - Logistics Track: team-specific/logistics-track.md
+    - FinTech Track: team-specific/fintech-track.md
+  - Interactive Features:
+    - Mock Interview Guide: features/mock-interview-guide.md
+    - Interactive Features Overview: features/interactive-features.md
+  - 2025 Updates:
+    - Latest Considerations: 2025-considerations/index.md
+  - Portfolio & Career:
+    - Portfolio Overview: portfolio/index.md
+    - L6 Industry Portfolios: portfolio/l6-industry-portfolios.md
+    - L7 Strategic Portfolios: portfolio/l7-strategic-portfolios.md
+    - Business Impact Calculation: portfolio/business-impact-calculation.md
+    - Technology Evaluation: portfolio/technology-evaluation-frameworks.md
+    - Risk Assessment: portfolio/risk-assessment-templates.md
+    - Technical Portfolio: portfolio/technical-portfolio.md
+  - Team-Specific Tracks:
+    - Team Comparison: team-specific/team-comparison.md
+    - Team Fit Assessment: team-specific/team-fit-guide.md
+    - AWS Track: team-specific/aws-track.md
+    - Retail Track: team-specific/retail-track.md
+    - Alexa Track: team-specific/alexa-track.md
+    - Prime Video Track: team-specific/prime-video-track.md
+    - Amazon Ads Track: team-specific/ads-track.md
+    - Logistics Track: team-specific/logistics-track.md
+    - FinTech Track: team-specific/fintech-track.md
+  - Interactive Features:
+    - Mock Interview System: features/mock-interview-guide.md
+    - Interactive Features Guide: features/interactive-features.md
+    - Video Practice Platform: practice/video-practice.md
+    - Collaborative Coding: practice/collaborative-coding.md
+    - Analytics Dashboard: interactive/analytics-dashboard.md
+  - Support & Resources:
+    - Interview Day Checklist: quick-reference.md
+    - FAQ: fundamentals/faq.md
+    - Real Experiences: experiences/index.md
+    - Compensation Guide: fundamentals/compensation.md
+    - Resources & Downloads: downloads/index.md
+
+# Performance hooks and customizations
+hooks:
+  - hooks/performance_optimizer.py  # Custom hook for additional optimizations
+
+# Strict mode for better performance
+strict: true
+
+# Performance validation
+validation:
+  omitted_files: warn
+  absolute_links: warn
+  unrecognized_links: warn

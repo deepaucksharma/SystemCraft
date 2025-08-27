@@ -1041,8 +1041,12 @@ class AnalyticsDashboard {
 // Supporting Classes
 class DataStore {
     async getCurrentUser() {
-        const stored = localStorage.getItem('systemcraft_user_profile');
-        return stored ? JSON.parse(stored) : null;
+        try {
+            return await window.securityUtils.getSecureItem('user_profile');
+        } catch (error) {
+            console.error('Failed to get current user:', error);
+            return null;
+        }
     }
 
     async getPerformanceData(criteria) {

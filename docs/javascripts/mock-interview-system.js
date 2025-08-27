@@ -362,11 +362,12 @@ class MockInterviewSystem {
         this.scheduler.renderCalendar(document.getElementById('calendar-container'));
     }
 
-    loadUserProfile() {
-        const stored = localStorage.getItem('systemcraft_user_profile');
-        if (stored) {
-            this.userProfile = JSON.parse(stored);
-        } else {
+    async loadUserProfile() {
+        try {
+            const stored = await window.securityUtils.getSecureItem('user_profile');
+            this.userProfile = stored || this.createDefaultProfile();
+        } catch (error) {
+            console.error('Failed to load user profile:', error);
             this.userProfile = this.createDefaultProfile();
         }
     }

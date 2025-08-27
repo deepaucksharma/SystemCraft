@@ -212,8 +212,8 @@ RESULT (20% - Sustained Impact)
 ### Critical Reading Available Now
 
 1. **Study this Bar Raiser content** thoroughly
-2. **Review real candidate experiences** in our [Candidate Quotes](../experiences/candidate-quotes.md)
-3. **Practice with actual questions** from our [Question Database](../experiences/question-database.md)
+2. **Review real candidate experiences** in our [Candidate Quotes](/experiences/candidate-quotes.md)
+3. **Practice with actual questions** from our [Question Database](/experiences/question-database.md)
 
 ### Bar Raiser Story Preparation Framework
 
@@ -260,12 +260,12 @@ Start developing stories specifically for Bar Raiser scenarios:
 ### Must-Read Content
 - **Bar Raiser Strategies** - Detailed strategies and insights (covered in this guide)
 - **[Complete Behavioral Guide](index.md)** - Foundation STAR framework 
-- **[Leadership Principles Guide](../fundamentals/leadership-principles.md)** - Detailed LP understanding
+- **[Leadership Principles Guide](/fundamentals/leadership-principles.md)** - Detailed LP understanding
 
 ### Practice Resources  
-- **[Mock Interview Scripts](../practice/mock-interviews.md)** - Bar Raiser-specific scenarios
-- **[Self Assessment](../practice/self-assessment.md)** - Evaluate your Bar Raiser readiness
-- **[Question Database](../experiences/question-database.md)** - Real Bar Raiser questions
+- **[Mock Interview Scripts](/practice/mock-interviews.md)** - Bar Raiser-specific scenarios
+- **[Self Assessment](/practice/self-assessment.md)** - Evaluate your Bar Raiser readiness
+- **[Question Database](/experiences/question-database.md)** - Real Bar Raiser questions
 
 ## 🎯 Advanced Bar Raiser Techniques
 

@@ -213,17 +213,29 @@ class CollaborativeCoding {
         
         // Show session info
         const sessionInfo = document.getElementById('session-info');
-        sessionInfo.innerHTML = `
+        
+        // Sanitize session data
+        const sessionId = window.securityUtils.validateInput(String(this.currentSession.sessionId || ''), 'text');
+        const userRole = window.securityUtils.validateInput(String(this.currentSession.config.role || ''), 'text');
+        const participantCount = Math.max(0, parseInt(this.collaborators.size + 1) || 1);
+        
+        const content = `
             <div class="session-details">
-                <span class="session-id">Session: ${this.currentSession.sessionId}</span>
-                <span class="user-role">Role: ${this.currentSession.config.role}</span>
-                <span class="participants">Participants: ${this.collaborators.size + 1}</span>
+                <span class="session-id">Session: ${sessionId}</span>
+                <span class="user-role">Role: ${userRole}</span>
+                <span class="participants">Participants: ${participantCount}</span>
             </div>
             <div class="session-controls">
                 <button id="share-session" class="btn-secondary">Share Link</button>
                 <button id="session-settings" class="btn-secondary">Settings</button>
             </div>
         `;
+        
+        // Use secure innerHTML replacement
+        window.securityUtils.safeInnerHTML(sessionInfo, content, {
+            allowedTags: ['div', 'span', 'button'],
+            allowedAttributes: ['class', 'id']
+        });
 
         // Setup real-time collaboration indicators
         this.setupCollaborationIndicators();
@@ -938,11 +950,18 @@ class Solution {
         return localStorage.getItem('systemcraft_username') || 'Anonymous';
     }
 
-    loadUserPreferences() {
-        const prefs = localStorage.getItem('systemcraft_coding_prefs');
-        if (prefs) {
-            this.preferences = JSON.parse(prefs);
-        } else {
+    async loadUserPreferences() {
+        try {
+            const prefs = await window.securityUtils.getSecureItem('coding_prefs');
+            this.preferences = prefs || {
+                theme: 'vs-dark',
+                fontSize: 14,
+                language: 'javascript',
+                autoSave: true,
+                enableCollaboration: true
+            };
+        } catch (error) {
+            console.error('Failed to load user preferences:', error);
             this.preferences = {
                 theme: 'vs-dark',
                 fontSize: 14,

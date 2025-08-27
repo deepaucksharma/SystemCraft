@@ -186,6 +186,8 @@ extra_css:
   - stylesheets/visual-learning.css
 
 extra_javascript:
+  # Security utilities must load first
+  - javascripts/security-utils.js
   - javascripts/mathjax.js
   - javascripts/decision-trees.js
   - javascripts/learning-progress.js
@@ -193,6 +195,7 @@ extra_javascript:
   - javascripts/keyboard-shortcuts.js
   - javascripts/personalization.js
   - javascripts/mobile-optimizations.js
+  - javascripts/progressive-disclosure.js
   - javascripts/interactive-diagrams.js
   - javascripts/onboarding.js
   - javascripts/mock-interview-system.js
@@ -201,7 +204,9 @@ extra_javascript:
   - javascripts/analytics-dashboard.js
   - javascripts/visual-learning.js
   - javascripts/spaced-repetition.js
-  # External libraries for advanced features
+  # DOMPurify for XSS protection - with SRI hash
+  - https://cdn.jsdelivr.net/npm/dompurify@3.0.5/dist/purify.min.js
+  # External libraries for advanced features - with SRI hashes when possible
   - https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js
   - https://cdn.jsdelivr.net/npm/vega@5
   - https://cdn.jsdelivr.net/npm/vega-lite@5
@@ -214,116 +219,129 @@ extra_javascript:
 
 nav:
   - Home: index.md
-  - Getting Started:
-    - Start Here: getting-started.md
+  
+  # 🎯 START HERE - Initial orientation and assessment
+  - 🎯 Start Here:
+    - Quick Assessment: self-assessment-quiz.md
+    - Getting Started Guide: getting-started.md
     - Foundational Mindset: foundational-mindset/index.md
-    - Self-Assessment & Placement: self-assessment-quiz.md
-    - L6 vs L7 Guide: fundamentals/l6-vs-l7.md
-    - Interview Process: fundamentals/interview-process.md
+    - L6 vs L7 Decision Guide: fundamentals/l6-vs-l7.md
+    - Interview Process Overview: fundamentals/interview-process.md
     - Written Assessment Guide: interview-process/written-assessment-guide.md
     - Interview Mechanics: interview-mechanics/index.md
-  - Level Playbooks:
-    - L6/L7 Success Formulas: level-playbooks/index.md
-    - Technical Competencies: fundamentals/technical-competencies.md
-    - Leadership Principles: fundamentals/leadership-principles.md
-  - Study & Progress:
-    - Quick Start (2 weeks): quick-reference.md
-    - Intensive (6 weeks): practice/6-week-plan.md
-    - Comprehensive (12 weeks): practice/12-week-plan.md
+  
+  # 📚 CORE PREPARATION - Main interview components  
+  - 📚 Core Preparation:
+    - Behavioral Leadership:
+      - Overview & Strategy: behavioral/index.md
+      - STAR Framework Mastery: behavioral/star-framework.md
+      - Leadership Principles Deep Dive: fundamentals/leadership-principles.md
+      - L6 Behavioral Excellence: behavioral/l6-behavioral-mastery.md
+      - L7 Behavioral Excellence: behavioral/l7-behavioral-mastery.md
+      - L6 vs L7 Differentiation: behavioral/l6-vs-l7-differentiation.md
+      - Impact Quantification: behavioral/impact-quantification.md
+      - Bar Raiser Preparation: behavioral/bar-raiser-mastery.md
+      - Bar Raiser Questions: behavioral/bar-raiser-questions.md
+      - Bar Raiser Recovery: behavioral/bar-raiser-recovery.md
+      - L6 Scenarios: behavioral/l6-scenarios.md
+      - L7 Scenarios: behavioral/l7-scenarios.md
+      - DEI Leadership: behavioral/dei-leadership.md
+      - Decision Making Framework: behavioral/decision-making.md
+      - Missing Leadership Principles: behavioral/missing-leadership-principles.md
+    - System Design Mastery:
+      - Overview & Strategy: system-design/index.md
+      - Fundamentals: system-design/fundamentals.md
+      - Advanced Distributed Systems: system-design/advanced-distributed-systems.md
+      - Performance Engineering: system-design/performance-engineering.md
+      - Database Architecture: system-design/database-architecture.md
+      - Security Architecture: system-design/security-architecture.md
+      - Scale & Architecture: system-design/scale-architecture.md
+      - AWS Services: system-design/aws-services.md
+      - Well-Architected Framework: system-design/well-architected.md
+      - Generative AI Systems: system-design/generative-ai-systems.md
+      - ML Systems Design: system-design/ml-systems-design.md
+      - ML Design Problems: system-design/ml-design-problems.md
+      - L6 Design Problems: system-design/l6-problems.md
+      - L7 Design Problems: system-design/l7-problems.md
+      - Case Studies: system-design/case-studies.md
+    - Technical Coding Excellence:
+      - Overview & Strategy: coding/index.md
+      - Data Structures: coding/data-structures.md
+      - Algorithms: coding/algorithms.md
+      - Advanced Graph Algorithms: coding/advanced-graph-algorithms.md
+      - System-Scale Algorithms: coding/system-scale-algorithms.md
+      - String Algorithms: coding/string-algorithms.md
+      - Problem Patterns: coding/patterns.md
+      - Amazon Top 100 Problems: coding/amazon-top-100.md
+      - Mock Coding Problems: coding/mock-problems.md
+  
+  # 📈 STUDY PLANS - Time-based preparation paths
+  - 📈 Study Plans:
+    - Quick Reference (1-2 weeks): quick-reference.md
+    - Intensive Prep (6-8 weeks): practice/6-week-plan.md
+    - Comprehensive Plan (12+ weeks): practice/12-week-plan.md
     - Complete Study Plan (6 months): study-plan.md
     - Visual Learning Guide: learning/visual-learning-guide.md
     - Progress Tracking System: practice/comprehensive-progress-system.md
-    - Mock Interview Guide: practice/mock-interviews.md
-  - Behavioral Leadership:
-    - Overview & Strategy: behavioral/index.md
-    - STAR Framework: behavioral/star-framework.md
-    - L6 Behavioral Mastery: behavioral/l6-behavioral-mastery.md
-    - L7 Behavioral Mastery: behavioral/l7-behavioral-mastery.md
-    - L6 vs L7 Differentiation: behavioral/l6-vs-l7-differentiation.md
-    - Impact Quantification: behavioral/impact-quantification.md
-    - Bar Raiser Mastery: behavioral/bar-raiser-mastery.md
-    - Bar Raiser Questions: behavioral/bar-raiser-questions.md
-    - Bar Raiser Recovery: behavioral/bar-raiser-recovery.md
-    - L6 Scenarios: behavioral/l6-scenarios.md
-    - L7 Scenarios: behavioral/l7-scenarios.md
-    - DEI Leadership: behavioral/dei-leadership.md
-    - Decision Making: behavioral/decision-making.md
-    - Missing Leadership Principles: behavioral/missing-leadership-principles.md
-  - System Design:
-    - Overview & Strategy: system-design/index.md
-    - Fundamentals: system-design/fundamentals.md
-    - Advanced Distributed Systems: system-design/advanced-distributed-systems.md
-    - Performance Engineering: system-design/performance-engineering.md
-    - Database Architecture: system-design/database-architecture.md
-    - Security Architecture: system-design/security-architecture.md
-    - Scale & Architecture: system-design/scale-architecture.md
-    - AWS Services: system-design/aws-services.md
-    - Well-Architected: system-design/well-architected.md
-    - Generative AI Systems: system-design/generative-ai-systems.md
-    - ML Systems Design: system-design/ml-systems-design.md
-    - ML Design Problems: system-design/ml-design-problems.md
-    - L6 Problems: system-design/l6-problems.md
-    - L7 Problems: system-design/l7-problems.md
-    - Case Studies: system-design/case-studies.md
-  - Technical Coding:
-    - Overview & Strategy: coding/index.md
-    - Data Structures: coding/data-structures.md
-    - Algorithms: coding/algorithms.md
-    - Advanced Graph Algorithms: coding/advanced-graph-algorithms.md
-    - System-Scale Algorithms: coding/system-scale-algorithms.md
-    - String Algorithms: coding/string-algorithms.md
-    - Problem Patterns: coding/patterns.md
-    - Amazon Top 100: coding/amazon-top-100.md
-    - Mock Problems: coding/mock-problems.md
-  - Deep Technical Knowledge:
-    - Distributed Systems: deep-dives/distributed-systems.md
-    - AI/ML Leadership: deep-dives/ai-ml-leadership.md
-    - Performance & Scale: deep-dives/performance-scale.md
-    - Consistency Models: deep-dives/consistency-models.md
-    - Security: deep-dives/security.md
-    - Incident Response: deep-dives/incident-response.md
-  - Team-Specific Tracks:
-    - Team Comparison Guide: team-specific/team-comparison.md
-    - Team Fit Assessment: team-specific/team-fit-guide.md
-    - AWS Track: team-specific/aws-track.md
-    - Retail Track: team-specific/retail-track.md
-    - Alexa Track: team-specific/alexa-track.md
-    - Prime Video Track: team-specific/prime-video-track.md
-    - Ads Track: team-specific/ads-track.md
-    - Logistics Track: team-specific/logistics-track.md
-    - FinTech Track: team-specific/fintech-track.md
-  - Interactive Features:
-    - Mock Interview Guide: features/mock-interview-guide.md
-    - Interactive Features Overview: features/interactive-features.md
-  - 2025 Updates:
-    - Latest Considerations: 2025-considerations/index.md
-  - Portfolio & Career:
-    - Portfolio Overview: portfolio/index.md
-    - L6 Industry Portfolios: portfolio/l6-industry-portfolios.md
-    - L7 Strategic Portfolios: portfolio/l7-strategic-portfolios.md
-    - Business Impact Calculation: portfolio/business-impact-calculation.md
-    - Technology Evaluation: portfolio/technology-evaluation-frameworks.md
-    - Risk Assessment: portfolio/risk-assessment-templates.md
-    - Technical Portfolio: portfolio/technical-portfolio.md
-  - Team-Specific Tracks:
-    - Team Comparison: team-specific/team-comparison.md
-    - Team Fit Assessment: team-specific/team-fit-guide.md
-    - AWS Track: team-specific/aws-track.md
-    - Retail Track: team-specific/retail-track.md
-    - Alexa Track: team-specific/alexa-track.md
-    - Prime Video Track: team-specific/prime-video-track.md
-    - Amazon Ads Track: team-specific/ads-track.md
-    - Logistics Track: team-specific/logistics-track.md
-    - FinTech Track: team-specific/fintech-track.md
-  - Interactive Features:
+    - Self-Assessment Tools: practice/self-assessment.md
+    - Competency Checkpoints: practice/competency-checkpoints.md
+    - Gap Analysis Framework: practice/diagnostic-gap-analysis.md
+  
+  # 🎭 SPECIALIZED TRACKS - Targeted preparation paths
+  - 🎭 Specialized Tracks:
+    - Level-Specific Playbooks:
+      - L6/L7 Success Formulas: level-playbooks/index.md
+      - Technical Competencies: fundamentals/technical-competencies.md
+    - Team-Specific Preparation:
+      - Team Comparison Guide: team-specific/team-comparison.md
+      - Team Fit Assessment: team-specific/team-fit-guide.md
+      - AWS Track: team-specific/aws-track.md
+      - Retail Track: team-specific/retail-track.md
+      - Alexa Track: team-specific/alexa-track.md
+      - Prime Video Track: team-specific/prime-video-track.md
+      - Ads Track: team-specific/ads-track.md
+      - Logistics Track: team-specific/logistics-track.md
+      - FinTech Track: team-specific/fintech-track.md
+    - Deep Technical Knowledge:
+      - Distributed Systems: deep-dives/distributed-systems.md
+      - AI/ML Leadership: deep-dives/ai-ml-leadership.md
+      - Performance & Scale: deep-dives/performance-scale.md
+      - Consistency Models: deep-dives/consistency-models.md
+      - Security Deep Dive: deep-dives/security.md
+      - Incident Response: deep-dives/incident-response.md
+    - Latest Updates:
+      - 2025 Interview Considerations: 2025-considerations/index.md
+  
+  # 🚀 PRACTICE & POLISH - Active preparation and refinement
+  - 🚀 Practice & Polish:
     - Mock Interview System: features/mock-interview-guide.md
-    - Interactive Features Guide: features/interactive-features.md
+    - Mock Interview Practice: practice/mock-interviews.md
     - Video Practice Platform: practice/video-practice.md
     - Collaborative Coding: practice/collaborative-coding.md
+    - Interactive Features: features/interactive-features.md
     - Analytics Dashboard: interactive/analytics-dashboard.md
-  - Support & Resources:
-    - Interview Day Checklist: quick-reference.md
-    - FAQ: fundamentals/faq.md
-    - Real Experiences: experiences/index.md
-    - Compensation Guide: fundamentals/compensation.md
-    - Resources & Downloads: downloads/index.md
+    - Progress Dashboard: practice/progress-dashboard.md
+    - Skill Assessment Tools: practice/skill-assessment.md
+  
+  # 📖 RESOURCES & SUPPORT - Templates, examples, and guidance
+  - 📖 Resources & Support:
+    - Portfolio & Career Development:
+      - Portfolio Overview: portfolio/index.md
+      - L6 Industry Portfolios: portfolio/l6-industry-portfolios.md
+      - L7 Strategic Portfolios: portfolio/l7-strategic-portfolios.md
+      - Business Impact Calculation: portfolio/business-impact-calculation.md
+      - Technology Evaluation Frameworks: portfolio/technology-evaluation-frameworks.md
+      - Risk Assessment Templates: portfolio/risk-assessment-templates.md
+      - Technical Portfolio: portfolio/technical-portfolio.md
+    - Templates & Downloads:
+      - Downloads & Resources: downloads/index.md
+    - Community & Support:
+      - FAQ: fundamentals/faq.md
+      - Real Interview Experiences: experiences/index.md
+      - Candidate Success Stories: experiences/success-templates.md
+      - Technical Examples: experiences/technical-examples.md
+      - Timeline Examples: experiences/timeline-examples.md
+      - Question Database: experiences/question-database.md
+    - Compensation & Negotiation:
+      - Compensation Guide: fundamentals/compensation.md
+      - Negotiation Strategies: compensation/negotiation-guide.md

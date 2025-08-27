@@ -1,0 +1,434 @@
+/* Critical CSS - Above the Fold Styles Only */
+/* This should be inlined in the HTML head for optimal performance */
+
+/* Core variables - needed for theming */
+:root {
+  /* Primary colors */
+  --md-primary-fg-color: #FF9900;
+  --md-primary-fg-color--light: #FFB84D;
+  --md-primary-fg-color--dark: #CC7A00;
+  --md-accent-fg-color: #FF6600;
+  
+  /* Essential colors */
+  --success-color: #4CAF50;
+  --warning-color: #FF9800;
+  --error-color: #F44336;
+  --info-color: #2196F3;
+  
+  /* Critical layout values */
+  --md-default-fg-color: #000;
+  --md-default-bg-color: #fff;
+  --hover-transition: all 0.2s ease;
+  
+  /* Essential spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+}
+
+/* Dark theme overrides */
+[data-md-color-scheme="slate"] {
+  --md-default-fg-color: #fff;
+  --md-default-bg-color: #1a1a1a;
+}
+
+/* Reset and base styles for immediate rendering */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  color: var(--md-default-fg-color);
+  background-color: var(--md-default-bg-color);
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+/* Critical header styles */
+.md-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 48px;
+  background-color: var(--md-primary-fg-color);
+  color: white;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.md-header__inner {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  height: 100%;
+  max-width: 100%;
+}
+
+.md-header__button {
+  background: none;
+  border: none;
+  color: white;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--hover-transition);
+}
+
+.md-header__button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.md-header__title {
+  flex: 1;
+  margin: 0 16px;
+  font-size: 18px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Critical search styles */
+.md-search {
+  flex: 1;
+  max-width: 300px;
+  margin: 0 16px;
+}
+
+.md-search__form {
+  position: relative;
+}
+
+.md-search__input {
+  width: 100%;
+  height: 36px;
+  padding: 8px 40px 8px 16px;
+  border: none;
+  border-radius: var(--radius-md);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 14px;
+  transition: var(--hover-transition);
+}
+
+.md-search__input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.md-search__input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Critical navigation drawer */
+.md-nav--primary {
+  position: fixed;
+  top: 48px;
+  left: -300px;
+  width: 300px;
+  height: calc(100vh - 48px);
+  background-color: var(--md-default-bg-color);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  transition: left 0.3s ease;
+  z-index: 999;
+}
+
+.md-nav--primary.md-nav--open {
+  left: 0;
+}
+
+.md-nav__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.md-nav__item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.md-nav__link {
+  display: block;
+  padding: 12px 16px;
+  color: var(--md-default-fg-color);
+  text-decoration: none;
+  transition: var(--hover-transition);
+  border-left: 3px solid transparent;
+}
+
+.md-nav__link:hover {
+  background-color: rgba(255, 153, 0, 0.1);
+  border-left-color: var(--md-primary-fg-color);
+}
+
+.md-nav__link--active {
+  background-color: rgba(255, 153, 0, 0.1);
+  border-left-color: var(--md-primary-fg-color);
+  font-weight: 500;
+}
+
+/* Critical main content area */
+.md-main {
+  margin-top: 48px;
+  min-height: calc(100vh - 48px);
+}
+
+.md-main__inner {
+  margin-top: 0;
+  padding: 0;
+}
+
+.md-content {
+  max-width: 100%;
+  margin: 0;
+  padding: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .md-content {
+    margin-left: 300px;
+    max-width: calc(100% - 300px);
+  }
+  
+  .md-nav--primary {
+    left: 0;
+  }
+}
+
+/* Critical typography */
+.md-typeset h1 {
+  margin: 0 0 24px 0;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--md-default-fg-color);
+}
+
+.md-typeset h2 {
+  margin: 32px 0 16px 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--md-default-fg-color);
+}
+
+.md-typeset h3 {
+  margin: 24px 0 12px 0;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.md-typeset p {
+  margin: 0 0 16px 0;
+  line-height: 1.6;
+}
+
+.md-typeset a {
+  color: var(--md-primary-fg-color);
+  text-decoration: none;
+  transition: var(--hover-transition);
+}
+
+.md-typeset a:hover {
+  text-decoration: underline;
+}
+
+/* Critical button styles */
+.md-button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: var(--md-primary-fg-color);
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--hover-transition);
+}
+
+.md-button:hover {
+  background-color: var(--md-primary-fg-color--dark);
+  color: white;
+  text-decoration: none;
+}
+
+.md-button--primary {
+  background-color: var(--md-primary-fg-color);
+}
+
+.md-button--secondary {
+  background-color: transparent;
+  color: var(--md-primary-fg-color);
+  border: 1px solid var(--md-primary-fg-color);
+}
+
+.md-button--secondary:hover {
+  background-color: var(--md-primary-fg-color);
+  color: white;
+}
+
+/* Critical loading states */
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 153, 0, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--md-primary-fg-color);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Critical utilities */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Critical responsive utilities */
+@media screen and (max-width: 767px) {
+  .md-header__title {
+    font-size: 16px;
+    margin: 0 8px;
+  }
+  
+  .md-search {
+    max-width: 200px;
+    margin: 0 8px;
+  }
+  
+  .md-search__input {
+    height: 32px;
+    font-size: 13px;
+  }
+  
+  .md-content {
+    padding: 16px;
+  }
+  
+  .md-typeset h1 {
+    font-size: 1.5rem;
+  }
+  
+  .md-typeset h2 {
+    font-size: 1.25rem;
+  }
+}
+
+/* Critical theme switching */
+.md-header__option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+}
+
+.md-header__option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.md-header__option label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: var(--hover-transition);
+}
+
+.md-header__option label:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Performance optimization: Prevent layout shifts */
+.md-header,
+.md-nav--primary,
+.md-content {
+  contain: layout style;
+}
+
+/* Critical accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .md-header {
+    border-bottom: 2px solid;
+  }
+  
+  .md-nav__link {
+    border-left-width: 4px;
+  }
+  
+  .md-button {
+    border: 2px solid;
+  }
+}
+
+/* Focus management for keyboard navigation */
+*:focus {
+  outline: 2px solid var(--md-primary-fg-color);
+  outline-offset: 2px;
+}
+
+.md-header__button:focus,
+.md-search__input:focus,
+.md-nav__link:focus,
+.md-button:focus {
+  outline-color: white;
+}
+
+/* Ensure text remains visible during webfont load */
+body {
+  font-display: swap;
+}
