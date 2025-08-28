@@ -256,6 +256,9 @@ nav:
       - DEI Leadership: behavioral/dei-leadership.md
       - Decision Making Framework: behavioral/decision-making.md
       - Missing Leadership Principles: behavioral/missing-leadership-principles.md
+      - Advanced Psychological Preparation: behavioral/advanced-psychological-preparation.md
+      - Bar Raiser Insider Guide: behavioral/bar-raiser-insider-guide.md
+      - Data-Driven Answer Optimization: behavioral/data-driven-answer-optimization.md
     - System Design Mastery:
       - Overview & Strategy: system-design/index.md
       - Fundamentals: system-design/fundamentals.md
@@ -354,3 +357,4 @@ nav:
     - Compensation & Negotiation:
       - Compensation Guide: fundamentals/compensation.md
       - Negotiation Strategies: compensation/negotiation-guide.md
+      - Negotiation Masterclass: compensation/negotiation-masterclass.md
