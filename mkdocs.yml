@@ -224,10 +224,13 @@ nav:
   - 🎯 Start Here:
     - Quick Assessment: self-assessment-quiz.md
     - Getting Started Guide: getting-started.md
+    - Interview Success Mindset: fundamentals/interview-success-mindset.md
     - Foundational Mindset: foundational-mindset/index.md
     - L6 vs L7 Decision Guide: fundamentals/l6-vs-l7.md
     - Interview Process Overview: fundamentals/interview-process.md
     - Written Assessment Guide: interview-process/written-assessment-guide.md
+    - Work Simulation Assessment: interview-process/work-simulation-assessment.md
+    - Behavioral Multiple Choice: interview-process/behavioral-multiple-choice.md
     - Interview Mechanics: interview-mechanics/index.md
   
   # 📚 CORE PREPARATION - Main interview components  
@@ -235,6 +238,7 @@ nav:
     - Behavioral Leadership:
       - Overview & Strategy: behavioral/index.md
       - STAR Framework Mastery: behavioral/star-framework.md
+      - STAR Story Bank Template: behavioral/star-story-bank-template.md
       - Leadership Principles Deep Dive: fundamentals/leadership-principles.md
       - L6 Behavioral Excellence: behavioral/l6-behavioral-mastery.md
       - L7 Behavioral Excellence: behavioral/l7-behavioral-mastery.md
@@ -245,6 +249,10 @@ nav:
       - Bar Raiser Recovery: behavioral/bar-raiser-recovery.md
       - L6 Scenarios: behavioral/l6-scenarios.md
       - L7 Scenarios: behavioral/l7-scenarios.md
+      - RTO Leadership Scenarios: behavioral/rto-leadership-scenarios.md
+      - Climate Sustainability Leadership: behavioral/climate-sustainability-leadership.md
+      - Neurodiversity Management: behavioral/neurodiversity-management.md
+      - AI Ethics Leadership: behavioral/ai-ethics-leadership.md
       - DEI Leadership: behavioral/dei-leadership.md
       - Decision Making Framework: behavioral/decision-making.md
       - Missing Leadership Principles: behavioral/missing-leadership-principles.md
@@ -261,6 +269,7 @@ nav:
       - Generative AI Systems: system-design/generative-ai-systems.md
       - ML Systems Design: system-design/ml-systems-design.md
       - ML Design Problems: system-design/ml-design-problems.md
+      - Amazon Scale Problems: system-design/amazon-scale-problems.md
       - L6 Design Problems: system-design/l6-problems.md
       - L7 Design Problems: system-design/l7-problems.md
       - Case Studies: system-design/case-studies.md
