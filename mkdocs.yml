@@ -259,6 +259,8 @@ nav:
       - Advanced Psychological Preparation: behavioral/advanced-psychological-preparation.md
       - Bar Raiser Insider Guide: behavioral/bar-raiser-insider-guide.md
       - Data-Driven Answer Optimization: behavioral/data-driven-answer-optimization.md
+      - Virtual Interview Mastery: behavioral/virtual-interview-mastery.md
+      - Crisis Story Engineering: behavioral/crisis-story-engineering.md
     - System Design Mastery:
       - Overview & Strategy: system-design/index.md
       - Fundamentals: system-design/fundamentals.md
@@ -276,6 +278,7 @@ nav:
       - L6 Design Problems: system-design/l6-problems.md
       - L7 Design Problems: system-design/l7-problems.md
       - Case Studies: system-design/case-studies.md
+      - Speed-Solving Techniques: system-design/speed-solving-techniques.md
     - Technical Coding Excellence:
       - Overview & Strategy: coding/index.md
       - Data Structures: coding/data-structures.md
@@ -303,6 +306,7 @@ nav:
   - 🎭 Specialized Tracks:
     - Level-Specific Playbooks:
       - L6/L7 Success Formulas: level-playbooks/index.md
+      - L6 to L7 Promotion Accelerator: level-playbooks/l6-to-l7-accelerator.md
       - Technical Competencies: fundamentals/technical-competencies.md
     - Team-Specific Preparation:
       - Team Comparison Guide: team-specific/team-comparison.md
